@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="ToolBarTheme" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/primaryText</item>
+        <item name="android:textColorSecondary">@color/secondaryTextToolbar</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="sticker_height">140</integer>
+    <integer name="sticker_width">140</integer>
+</resources>

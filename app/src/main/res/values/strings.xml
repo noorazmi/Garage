@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">" كراجي"</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">" كراجي"</string>
+    <string name="home">Home</string>
+    <string name="offer">Offer</string>
+    <string name="setting">Setting</string>
+    <string name="title_activity_level_one_menu">@string/karajat</string>
+    <string name="title_activity_level_two_menu">@string/karajat</string>
+
+    <string name="title_activity_category_sale_list">CategorySaleListActivity</string>
+    <string name="title_activity_category_description">CategoryDescriptionActivity</string>
+
+
+    <!--Arabic Text-->
+    <string name="karajat">        الكراجات         </string>
+    <string name="tariqal_salmi">        طريق السالمي       </string>
+    <string name="tariqal_sabih">        طريق الصبيه      </string>
+    <string name="tariqal_abdali">     طريق العبدلي     </string>
+    <string name="tariq_kabad">    طريق كبد   </string>
+    <string name="al_wafrah_wal_naviseeb">    الوفرة والنويصيب   </string>
+    <string name="al_asma">     العاصمه   </string>
+    <string name="al_jahra">    الجهراء   </string>
+    <string name="al_farwania">     الفروانية  </string>
+    <string name="al_ahmadi">   الاحمدي </string>
+    <string name="hauli">  حولي  </string>
+    <string name="mubarakal_kabir">  مبارك الكبير </string>
+    <string name="title_activity_help_car">Help Car</string>
+    <string name="title_activity_scrap">ScrapActivity</string>
+    <string name="category_sale">CATEGORY SALE</string>
+    <string name="description">DESCRIPTION</string>
+
+
+</resources>
