@@ -1,4 +1,4 @@
-package com.arsalan.garage.customeui;
+package com.arsalan.garage.uicomponents;
 
 import android.content.Context;
 import android.util.AttributeSet;

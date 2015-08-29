@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
@@ -27,8 +29,12 @@ public class TaxiActivity extends BaseActivity implements LevelOneMenuActivityFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getResources().getString(R.string.karajat));
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle(getResources().getString(R.string.karajat));
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, getResources().getString(R.string.karajat), true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

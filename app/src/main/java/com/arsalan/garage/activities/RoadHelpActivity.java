@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
@@ -27,8 +29,10 @@ public class RoadHelpActivity extends BaseActivity implements LevelOneMenuActivi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("المساعدة على الطريق");
+        //getSupportActionBar().setTitle("المساعدة على الطريق");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, "المساعدة على الطريق" ,true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

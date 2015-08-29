@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
@@ -14,17 +16,16 @@ import com.arsalan.garage.utils.Logger;
 
 public class LevelOneMenuActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener {
 
-    private CharSequence mTitle;
+    //private CharSequence mTitle;
     private FragmentManager mFragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one_menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setToolbar(toolbar, "Title", true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, getResources().getString(R.string.karajat), true, Gravity.CENTER);
 
-        mTitle = getTitle();
+        //mTitle = getTitle();
 
         setLevelOneMenuFragment();
     }

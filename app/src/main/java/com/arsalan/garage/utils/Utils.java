@@ -37,12 +37,12 @@ public class Utils {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "شرق"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الجهراء"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "صليبيه"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الفحيحيل"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
+       // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الفحيحيل"));
         return menuItemsArrayLis;
     }
 
@@ -50,7 +50,7 @@ public class Utils {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "دودج / كلايزلر"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوربي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
         return menuItemsArrayLis;
@@ -109,7 +109,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, "بورش"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, "اودي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, "بيجو / ستروين"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا\""));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car11, "رينو"));
         return menuItemsArrayLis;
@@ -127,10 +127,10 @@ public class Utils {
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, "هيونداي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, "كيا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "ميتسوبيشي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "سوزوكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, "مازدا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "ايسوزو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));

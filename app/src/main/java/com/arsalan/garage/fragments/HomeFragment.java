@@ -21,28 +21,18 @@ import com.arsalan.garage.adapters.HomeFragmentStatePagerAdapter;
  */
 public class HomeFragment extends Fragment {
 
-    //private MaterialTabHost mMaterialTabHost;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private boolean isAboutFTLFragmentActive = true;
-    //private AboutFtlModel mAboutFtlModel;
     private int[] mPageTitles = {R.string.home, R.string.offer, R.string.setting};
-
     private TextView[] mTabTextViews;
 
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            //mAboutFtlModel = bundle.getParcelable(AppConstants.EXTRA_ABOUT_FTL_PARCEL);
-        }
-
-
+        if (bundle != null) {}
         super.onCreate(savedInstanceState);
     }
 

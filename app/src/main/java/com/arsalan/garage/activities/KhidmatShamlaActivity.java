@@ -3,6 +3,8 @@ package com.arsalan.garage.activities;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
@@ -25,8 +27,12 @@ public class KhidmatShamlaActivity extends BaseActivity implements LevelOneMenuA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(" خدمات شامله");
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle(" خدمات شامله");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, " خدمات شامله", true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

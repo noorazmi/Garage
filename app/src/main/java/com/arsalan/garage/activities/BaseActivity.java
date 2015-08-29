@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -23,15 +25,8 @@ import com.arsalan.garage.R;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-        TextView mTextViewTitle;
-        Activity mActivity = this;
+        //private TextView mTextViewTitle;
         private static final String TAG = "BaseActionBarActivity";
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            // ApptimizeUtils apptimizeUtils = new ApptimizeUtils(this);
-        }
 
         public void setToolbar(Toolbar toolbar, boolean displayHomeAsUpEnabled) {
             setSupportActionBar(toolbar);
@@ -45,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
             toolbar.setPadding(0, padding, 0, 0);
             getSupportActionBar().setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);
-            mTextViewTitle = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
+            //mTextViewTitle = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
@@ -54,35 +49,32 @@ public abstract class BaseActivity extends AppCompatActivity {
             setTitle(title);
         }
 
+    public void setToolbar(Toolbar toolbar, CharSequence title, boolean displayHomeAsUpEnabled, int gravity) {
+        setToolbar(toolbar, displayHomeAsUpEnabled);
+        setCustomTitle(title, toolbar ,gravity);
+    }
+
+    private void setCustomTitle(CharSequence title, Toolbar toolbar, int gravity){
+        TextView textViewTitle = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_title, null);
+        textViewTitle.setText(title);
+        toolbar.addView(textViewTitle, new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.CENTER
+        ));
+
+    }
+
         public void setToolbar(Toolbar toolbar, int title, boolean displayHomeAsUpEnabled) {
             setToolbar(toolbar, displayHomeAsUpEnabled);
             setTitle(title);
         }
 
-        public void setCustomToolbar(Toolbar toolbar, int title, boolean displayHomeAsUpEnabled) {
-            setSupportActionBar(toolbar);
-            toolbar.setPadding(0, 0, 0, 0);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);
-            mTextViewTitle = (TextView) toolbar.findViewById(R.id.textview_toolbar_title);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            setTitle(title);
-        }
 
         public void setBackIconIndicator(int resourceId) {
             getSupportActionBar().setHomeAsUpIndicator(resourceId);
         }
 
-        @Override
-        public void setTitle(int resId) {
-            super.setTitle(resId);
-            mTextViewTitle.setText(resId);
-        }
-
-        @Override
-        public void setTitle(CharSequence title) {
-            super.setTitle(title);
-            mTextViewTitle.setText(title);
-        }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {

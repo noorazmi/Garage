@@ -31,9 +31,7 @@ import java.util.ArrayList;
 public class LevelTwoMenuActivityFragment extends Fragment {
 
 
-    public LevelTwoMenuActivityFragment() {
-        // Required empty public constructor
-    }
+    public LevelTwoMenuActivityFragment() {}
 
 
     private static final String TAG = "LevelTwoMenuActivityFragment";
@@ -58,31 +56,6 @@ public class LevelTwoMenuActivityFragment extends Fragment {
 
 
         RecyclerView.LayoutManager layoutManager = null;
-//        String type = getArguments().getString(MainActivity.TYPE);
-//        if( type.equals(MainActivity.TYPE_VERTICAL_LIST)){
-//            /*LinearLayoutManager to show a vertical list view*/
-//            layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-//        }else if(type.equals(MainActivity.TYPE_HORIZONTAL_LIST)){
-//            /*LinearLayoutManager to show a horizontal list view*/
-//            layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        }else if(type.equals(MainActivity.TYPE_GRID_VIEW)){
-//             /*LinearLayoutManager to show a grid view. We can specify number of columns in the grid.*/
-//            layoutManager = new GridLayoutManager(getActivity(), NUM_OF_COLUMNS);
-//
-//        }else if(type.equals(MainActivity.TYPE_HORIZONTAL_GRID_VIEW_STAGGERED)){
-//             /*LinearLayoutManager to show a staggered grid view. We can specify number of columns in the grid.*/
-//            //spanCount:   If orientation is vertical, spanCount is number of columns. If orientation is horizontal, spanCount is number of rows.
-//            //orientation: StaggeredGridLayoutManager.HORIZONTAL or StaggeredGridLayoutManager.HORIZONTAL
-//            layoutManager = new StaggeredGridLayoutManager(3/*span count*/, StaggeredGridLayoutManager.HORIZONTAL/* orientation*/);
-//
-//        }else if(type.equals(MainActivity.TYPE_VERTICAL_GRID_VIEW_STAGGERED)){
-//             /*LinearLayoutManager to show a staggered grid view. We can specify number of columns in the grid.*/
-//            //spanCount:   If orientation is vertical, spanCount is number of columns. If orientation is horizontal, spanCount is number of rows.
-//            //orientation: StaggeredGridLayoutManager.HORIZONTAL or StaggeredGridLayoutManager.HORIZONTAL
-//            layoutManager = new StaggeredGridLayoutManager(2/*span count*/, StaggeredGridLayoutManager.VERTICAL/* orientation*/);
-//
-//        }
-
         layoutManager = new GridLayoutManager(getActivity(), NUM_OF_COLUMNS);
 
         mRecyclerView.setLayoutManager(layoutManager);

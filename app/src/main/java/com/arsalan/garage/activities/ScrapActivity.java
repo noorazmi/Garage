@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -24,27 +26,47 @@ public class ScrapActivity extends BaseActivity implements LevelOneMenuActivityF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getBundleExtra(AppConstants.BUNDLE_EXTRA);
         scrapeType =  bundle.getInt(AppConstants.SCRAP_TYPE);
-        setTitle();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, getToolbarTitle(), true, Gravity.CENTER);
+
+
+
+        //setTitle();
 
         setMenuHolderFragment();
     }
 
-    private void setTitle(){
+    private String getToolbarTitle(){
+        String title = null;
+
         if(scrapeType == AppConstants.SCRAP_MAIN){
-            getSupportActionBar().setTitle("السكراب");
+//            getSupportActionBar().setTitle("السكراب");
+            title = "السكراب";
         }else if(scrapeType == AppConstants.SCRAP_AMERICA){
-            getSupportActionBar().setTitle("Scrap-امريكي");
+//            getSupportActionBar().setTitle("Scrap-امريكي");
+            //title = "Scrap-امريكي";
+            title = "Scrap";
         }else if(scrapeType == AppConstants.SCRAP_AWARBY){
-            getSupportActionBar().setTitle("Scrap-اوربي");
+            //getSupportActionBar().setTitle("Scrap-اوربي");
+            //title =  "Scrap-اوربي";
+            title =  "Scrap";
         }else if(scrapeType == AppConstants.SCRAP_ASIBI){
-            getSupportActionBar().setTitle("Scrap-اسيوي");
+            //getSupportActionBar().setTitle("Scrap-اسيوي");
+//            title = "Scrap-اسيوي";
+            title = "Scrap";
         }else if(scrapeType == AppConstants.SCRAP_TAUSIL_KATA){
-            getSupportActionBar().setTitle("Scrap-توصيل قطع");
+//            getSupportActionBar().setTitle("Scrap-توصيل قطع");
+            //title = "Scrap-توصيل قطع";
+            title = "Scrap";
 
         }
+
+        return title;
     }
 
 

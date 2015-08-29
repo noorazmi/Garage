@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat"
+        android:theme="@style/AppTheme"
         android:largeHeap="true"
         >
         <activity
@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".activities.HomeActivity"
-            android:label="@string/title_activity_home" >
+            android:label="@string/karaji" >
         </activity>
         <activity
             android:name=".activities.LevelOneMenuActivity"
@@ -32,16 +32,13 @@
             android:label="@string/title_activity_level_two_menu" >
         </activity>
         <activity
-            android:name=".activities.CategorySaleListActivity"
-            android:label="@string/title_activity_category_sale_list" >
+            android:name=".activities.CategorySaleListActivity" >
         </activity>
         <activity
-            android:name=".activities.CategoryDescriptionActivity"
-            android:label="@string/title_activity_category_description" >
+            android:name=".activities.CategoryDescriptionActivity">
         </activity>
         <activity
-            android:name=".activities.RoadHelpActivity"
-            android:label="@string/title_activity_category_description" >
+            android:name=".activities.RoadHelpActivity">
         </activity>
         <activity
             android:name=".activities.HelpCarActivity"

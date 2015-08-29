@@ -3,15 +3,16 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_home">" كراجي"</string>
+    <string name="karaji">" كراجي"</string>
     <string name="home">Home</string>
     <string name="offer">Offer</string>
     <string name="setting">Setting</string>
     <string name="title_activity_level_one_menu">@string/karajat</string>
     <string name="title_activity_level_two_menu">@string/karajat</string>
 
-    <string name="title_activity_category_sale_list">CategorySaleListActivity</string>
-    <string name="title_activity_category_description">CategoryDescriptionActivity</string>
+
+    <!-- font names -->
+    <string name="font_alhambra">alhambra.ttf</string>
 
 
     <!--Arabic Text-->
@@ -29,6 +30,7 @@
     <string name="mubarakal_kabir">  مبارك الكبير </string>
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
+
     <string name="category_sale">CATEGORY SALE</string>
     <string name="description">DESCRIPTION</string>
 

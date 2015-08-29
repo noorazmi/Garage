@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -20,14 +22,14 @@ public class CategorySaleListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_sale_list);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getResources().getString(R.string.category_sale));
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setToolbar(toolbar, "Title", true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle(getResources().getString(R.string.category_sale));
 
-        mTitle = getTitle();
 
-        setLevelOneMenuFragment();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, getResources().getString(R.string.category_sale), true, Gravity.CENTER);
+
+       setLevelOneMenuFragment();
     }
 
 

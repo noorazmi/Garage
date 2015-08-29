@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
@@ -18,12 +20,16 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setToolbar(toolbar, getResources().getString(R.string.karaji), false, Gravity.CENTER);
+
+
         setHomeFragment();
     }
 
 
     private void setHomeFragment(){
-        FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
+        //FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout_container, new HomeFragment()).commit();
