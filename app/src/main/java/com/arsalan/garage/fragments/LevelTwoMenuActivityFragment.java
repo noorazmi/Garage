@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arsalan.garage.DataModel;
+import com.arsalan.garage.models.DataModel;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;

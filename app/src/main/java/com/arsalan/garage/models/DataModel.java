@@ -1,4 +1,4 @@
-package com.arsalan.garage;
+package com.arsalan.garage.models;
 
 /**
  * Created by noor on 05/05/15.

@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arsalan.garage.DataModel;
+import com.arsalan.garage.models.DataModel;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.ForRentActivity;
 import com.arsalan.garage.activities.KhidmatShamlaActivity;
 import com.arsalan.garage.activities.LevelOneMenuActivity;
 import com.arsalan.garage.activities.RoadHelpActivity;
-import com.arsalan.garage.activities.ScrapActivity;
+import com.arsalan.garage.activities.ScrapMainMenuActivity;
 import com.arsalan.garage.activities.TaxiActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -90,31 +90,31 @@ public class HomeTabFragment extends Fragment {
                 if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
                     Intent intent = null;
-                    if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_KARAJAT){
+                    if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)){
                          intent = new Intent(getActivity(), LevelOneMenuActivity.class);
-                    }else if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD){
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)){
                         intent = new Intent(getActivity(), RoadHelpActivity.class);
-                    }else if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_SCRAP){
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_SCRAP)){
                         Bundle bundle = new Bundle();
-                        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_SCRAP);
-                        bundle.putInt(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_MAIN);
-                        intent = new Intent(getActivity(), ScrapActivity.class);
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_SCRAP);
+                        bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_MAIN);
+                        intent = new Intent(getActivity(), ScrapMainMenuActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
-                    }else if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_TAXI){
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_TAXI)){
                         Bundle bundle = new Bundle();
-                        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TAXI);
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TAXI);
                         intent = new Intent(getActivity(), TaxiActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
-                    }else if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_FOR_RENT){
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_FOR_RENT)){
                         Bundle bundle = new Bundle();
-                        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
                         intent = new Intent(getActivity(), ForRentActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
-                    }else if(homeMenuItem.getMenuType() == AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA){
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA)){
                         Bundle bundle = new Bundle();
-                        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
                         intent = new Intent(getActivity(), KhidmatShamlaActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 

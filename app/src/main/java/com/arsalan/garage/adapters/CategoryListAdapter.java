@@ -1,8 +1,6 @@
 package com.arsalan.garage.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.models.HomeMenuItem;
+import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.AmericanCarsVO;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.ArrayList;
 
@@ -24,11 +26,16 @@ import java.util.ArrayList;
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ListItemViewHolder> {
 
     private Context mContext;
-    private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
+    //private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
+    private ArrayList<AmericanCarsVO.Result> mHomeMenuItemArrayList;
+    private AmericanCarsVO americanCarsVO;
 
-    public CategoryListAdapter(ArrayList<HomeMenuItem> mHomeMenuItemArrayList, Context context) {
-        this.mHomeMenuItemArrayList = mHomeMenuItemArrayList;
+
+    //public CategoryListAdapter(ArrayList<HomeMenuItem> mHomeMenuItemArrayList, Context context) {
+    public CategoryListAdapter(AmericanCarsVO americanCarsVO, Context context) {
+        this.mHomeMenuItemArrayList = (ArrayList<AmericanCarsVO.Result>) americanCarsVO.getResults();
         this.mContext = context;
+
     }
 
 
@@ -41,16 +48,11 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     @Override
     public void onBindViewHolder(CategoryListAdapter.ListItemViewHolder holder, int position) {
-        HomeMenuItem model = mHomeMenuItemArrayList.get(position);
-        holder.title.setText(model.getMenuTitle());
-        holder.phoneNumbet.setText("99507307");
-        holder.imgView.setImageResource(model.getImageId());
-
-        //BitmapFactory.Options options = new BitmapFactory.Options();
-        //options.inPreferredConfig=Bitmap.Config.RGB_565;
-        //Bitmap bitmap=BitmapFactory.decodeResource(mContext.getResources(), model.getImageId() ,options);
-
-        //holder.imgView.setImageBitmap(bitmap);
+        AmericanCarsVO.Result model = mHomeMenuItemArrayList.get(position);
+        holder.title.setText(model.getDescription());
+        holder.phoneNumbet.setText(model.getPhone());
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
     }
 
     /**

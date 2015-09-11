@@ -31,27 +31,28 @@ import java.util.ArrayList;
  */
 public class LevelOneMenuActivityFragment extends Fragment {
 
-    public LevelOneMenuActivityFragment() {}
 
     private static final String TAG = "LevelOneMenuActivityFragment";
     private ArrayList<HomeMenuItem> mMenuItemsArrayList;
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
-    private int mScreenType;
+    private String mScreenType;
     private OnMenuItemClickListener mOnMenuItemClickListener;
     private int mNumberOfColumns;
     private Bundle mBundle;
-    private int scrapType;
+    private String scrapType;
+
+    public LevelOneMenuActivityFragment() {}
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBundle = getArguments();
-        mScreenType = mBundle.getInt(AppConstants.SCREEN_TYPE);
-        scrapType = mBundle.getInt(AppConstants.SCRAP_TYPE);
-        if (mScreenType == AppConstants.SCREEN_SCRAP) {
-            if (scrapType == AppConstants.SCRAP_MAIN) {
+        mScreenType = mBundle.getString(AppConstants.SCREEN_TYPE);
+        scrapType = mBundle.getString(AppConstants.SCRAP_TYPE);
+        if (mScreenType.equals( AppConstants.SCREEN_SCRAP)) {
+            if (scrapType.equals(AppConstants.SCRAP_MAIN)) {
                 mNumberOfColumns = 2;
             } else {
                 mNumberOfColumns = AppConstants.NUM_OF_COLUMNS;
@@ -69,14 +70,6 @@ public class LevelOneMenuActivityFragment extends Fragment {
         } else if (mScreenType == AppConstants.SCREEN_SCRAP) {
             if (scrapType == AppConstants.SCRAP_MAIN) {
                 mMenuItemsArrayList = Utils.getScrapScreenMenuItems();
-            } else if (scrapType == AppConstants.SCRAP_AMERICA) {
-                mMenuItemsArrayList = Utils.getScrapAmericaMenuItems();
-            } else if (scrapType == AppConstants.SCRAP_AWARBY) {
-                mMenuItemsArrayList = Utils.getScrapAwarbiMenuItems();
-            } else if (scrapType == AppConstants.SCRAP_ASIBI) {
-                mMenuItemsArrayList = Utils.getScrapAsibiMenuItems();
-            } else if (scrapType == AppConstants.SCRAP_TAUSIL_KATA) {
-                mMenuItemsArrayList = Utils.getScrapTawsilKataMenuItems();
             }
         } else if (mScreenType == AppConstants.SCREEN_KARAJAT) {
             mMenuItemsArrayList = Utils.getKarajatScreenMenuItems();

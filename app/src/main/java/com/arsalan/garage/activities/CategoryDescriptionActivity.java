@@ -1,5 +1,6 @@
 package com.arsalan.garage.activities;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
@@ -36,7 +37,9 @@ public class CategoryDescriptionActivity extends BaseActivity {
         FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout_container, new CategoryDescriptionActivityFragment()).commit();
+        Fragment fragment = new CategoryDescriptionActivityFragment();
+        fragment.setArguments(getIntent().getExtras());
+        fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 
     }
 }

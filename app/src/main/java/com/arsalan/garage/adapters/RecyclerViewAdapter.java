@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arsalan.garage.DataModel;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.HomeMenuItem;
 

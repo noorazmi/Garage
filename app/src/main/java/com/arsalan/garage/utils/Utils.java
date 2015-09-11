@@ -1,9 +1,17 @@
 package com.arsalan.garage.utils;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.HomeMenuItem;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 
@@ -146,5 +154,52 @@ public class Utils {
 
 
         return menuItemsArrayLis;
+    }
+
+
+    public static void showToastMessage(Context context ,String msg) {
+        Toast.makeText(context, msg + "", Toast.LENGTH_SHORT).show();
+    }
+
+    public static void setImageFromUrl(String imageUrl, ImageView imageView, int placeholderResId, ImageLoadingListener imageLoadingListener) {
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(placeholderResId)
+                .showImageOnFail(placeholderResId)
+                .showImageOnLoading(placeholderResId)
+                .resetViewBeforeLoading(true).cacheInMemory(true).build();
+        ImageLoader.getInstance().displayImage(imageUrl, imageView, options, imageLoadingListener);
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        try {
+            if (connMgr != null) {
+                if (connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED
+                        || connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTING) {
+                    return true;
+                } else if (connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED
+                        || connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTING) {
+                    return true;
+                } else
+                    return false;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    public static DisplayImageOptions gerDisplayImageOptions(){
+        return  new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.mipmap.ic_launcher)
+                .showImageForEmptyUri(R.mipmap.ic_launcher)
+                .showImageOnFail(R.mipmap.ic_launcher)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .displayer(new FadeInBitmapDisplayer(20))
+                .build();
     }
 }

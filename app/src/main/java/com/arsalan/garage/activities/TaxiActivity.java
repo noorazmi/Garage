@@ -45,7 +45,7 @@ public class TaxiActivity extends BaseActivity implements LevelOneMenuActivityFr
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TAXI);
+        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TAXI);
         LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

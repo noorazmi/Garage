@@ -43,7 +43,7 @@ public class KhidmatShamlaActivity extends BaseActivity implements LevelOneMenuA
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
+        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
         LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

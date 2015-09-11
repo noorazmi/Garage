@@ -8,13 +8,14 @@
     android:gravity="center_horizontal">
 
     <ImageView
+        android:layout_marginTop="15dp"
         android:layout_weight="1"
         android:id="@+id/imageview_icon"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:src="@drawable/scarptest"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_placeholder_item"
         android:layout_centerHorizontal="true"
         />
     <RelativeLayout
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:text="مؤسسة المناور لسكراب كاديلاك شفر جمس"
+            android:text="Please Wait..."
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="99507307"
+            android:text="Please Wait..."
             android:id="@+id/textview_phone_number"
             android:layout_below="@+id/textview_title"
             android:layout_marginTop="15dp"

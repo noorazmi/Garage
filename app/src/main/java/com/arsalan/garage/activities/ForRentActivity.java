@@ -46,7 +46,7 @@ public class ForRentActivity  extends BaseActivity implements LevelOneMenuActivi
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
+        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
         LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

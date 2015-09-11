@@ -43,7 +43,7 @@ public class RoadHelpActivity extends BaseActivity implements LevelOneMenuActivi
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_ROAD_HELP);
+        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_ROAD_HELP);
         LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
