@@ -23,10 +23,10 @@ import java.util.ArrayList;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class HelpCarActivityFragment extends Fragment {
+public class HelpCarFragment extends Fragment {
 
 
-    public HelpCarActivityFragment() {
+    public HelpCarFragment() {
         // Required empty public constructor
     }
 
@@ -51,32 +51,6 @@ public class HelpCarActivityFragment extends Fragment {
 
 
         RecyclerView.LayoutManager layoutManager = null;
-//        String type = getArguments().getString(MainActivity.TYPE);
-//        if( type.equals(MainActivity.TYPE_VERTICAL_LIST)){
-//            /*LinearLayoutManager to show a vertical list view*/
-//            layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-//        }else if(type.equals(MainActivity.TYPE_HORIZONTAL_LIST)){
-//            /*LinearLayoutManager to show a horizontal list view*/
-//            layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        }else if(type.equals(MainActivity.TYPE_GRID_VIEW)){
-//             /*LinearLayoutManager to show a grid view. We can specify number of columns in the grid.*/
-//            layoutManager = new GridLayoutManager(getActivity(), NUM_OF_COLUMNS);
-//
-//        }else if(type.equals(MainActivity.TYPE_HORIZONTAL_GRID_VIEW_STAGGERED)){
-//             /*LinearLayoutManager to show a staggered grid view. We can specify number of columns in the grid.*/
-//            //spanCount:   If orientation is vertical, spanCount is number of columns. If orientation is horizontal, spanCount is number of rows.
-//            //orientation: StaggeredGridLayoutManager.HORIZONTAL or StaggeredGridLayoutManager.HORIZONTAL
-//            layoutManager = new StaggeredGridLayoutManager(3/*span count*/, StaggeredGridLayoutManager.HORIZONTAL/* orientation*/);
-//
-//        }else if(type.equals(MainActivity.TYPE_VERTICAL_GRID_VIEW_STAGGERED)){
-//             /*LinearLayoutManager to show a staggered grid view. We can specify number of columns in the grid.*/
-//            //spanCount:   If orientation is vertical, spanCount is number of columns. If orientation is horizontal, spanCount is number of rows.
-//            //orientation: StaggeredGridLayoutManager.HORIZONTAL or StaggeredGridLayoutManager.HORIZONTAL
-//            layoutManager = new StaggeredGridLayoutManager(2/*span count*/, StaggeredGridLayoutManager.VERTICAL/* orientation*/);
-//
-//        }
-
-        //layoutManager = new GridLayoutManager(getActivity(), NUM_OF_COLUMNS);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
@@ -124,28 +98,6 @@ public class HelpCarActivityFragment extends Fragment {
 
         return dataModels;
     }
-
-
-    /**
-     * Adds a single item in the existing list
-     */
-    private final void addItem() {
-        //Adding item at top second position(i.e. at index 1).
-        //mDataModels.set(1, new DataModel("Added Item "+String.valueOf(++addItemCount)));
-        //See for similar methods to know more item insertion options
-        mCategoryListAdapter.notifyItemInserted(1);
-    }
-
-    /**
-     * Deletes a single item from the existing list
-     */
-    private void deleteItem() {
-        //Removing top item
-        //mDataModels.remove(0);
-        //See for similar methods to know more item removing options
-        mCategoryListAdapter.notifyItemRemoved(0);
-    }
-
 
     private ArrayList<HelpCarItem> getMenuItems() {
 

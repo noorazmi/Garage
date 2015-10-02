@@ -46,7 +46,7 @@ public class ScrapSubMenuActivity extends BaseActivity {
             title = "اوربي";
         } else if (scrapeType.equals(AppConstants.SCRAP_ASIAN)) {
             title = "اسيوي";
-        } else if (scrapeType.equals(AppConstants.SCRAP_TAUSIL_KATA)) {
+        } else if (scrapeType.equals(AppConstants.SCRAP_DELIVERY)) {
             title = "توصيل قطع";
         }
 

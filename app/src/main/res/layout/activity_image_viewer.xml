@@ -12,8 +12,14 @@
         android:layout_alignParentTop="true"
         android:paddingTop="@dimen/toolbar_padding"/>
 
-    <com.arsalan.garage.uicomponents.ZoomableImageView
-        android:layout_marginTop="15dp"
+    <!--<com.arsalan.garage.uicomponents.ZoomableImageView-->
+        <!--android:id="@+id/imageview_profile_pic"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/toolbar"-->
+        <!--android:scaleType="fitXY"-->
+        <!--android:visibility="gone"/>-->
+    <ImageView
         android:id="@+id/imageview_profile_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

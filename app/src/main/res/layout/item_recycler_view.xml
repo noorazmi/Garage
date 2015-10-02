@@ -13,7 +13,8 @@
         android:layout_gravity="center"
         />
 
-    <TextView
+    <com.arsalan.garage.uicomponents.CustomTextView
+        style="@style/TextViewStyle.Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="السرعه والاداء العالي"

@@ -1,62 +1,59 @@
 package com.arsalan.garage.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.CategorySaleListActivityFragment;
-import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
+import com.arsalan.garage.fragments.CategorySaleListFragment;
 import com.arsalan.garage.utils.AppConstants;
-import com.arsalan.garage.utils.Logger;
-import com.arsalan.garage.vo.AmericanCarsVO;
-
-import networking.HttpConstants;
-import networking.listeners.OnLoadCompleteListener;
-import networking.loader.LoaderHandler;
-import networking.models.HTTPModel;
-import networking.models.HTTPRequest;
-import networking.models.HTTPResponse;
 
 public class CategorySaleListActivity extends BaseActivity {
 
     private CharSequence mTitle;
     private FragmentManager mFragmentManager;
     private String TAG = "CategorySaleListActivity";
+    private Toolbar mToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_sale_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.category_sale), true, Gravity.CENTER);
-        setLevelOneMenuFragment();
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setToolbar(toolbar, getResources().getString(R.string.category_sale), true, Gravity.CENTER);
+        setToolbar(mToolbar, getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);
+        setCategorySaleListFragment();
     }
 
 
-
-
-    private void setLevelOneMenuFragment(){
-        //FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
+    private void setCategorySaleListFragment() {
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        Fragment categorySaleListActivityFragment = new CategorySaleListActivityFragment();
+        Fragment categorySaleListFragment = new CategorySaleListFragment();
         Bundle bundle = getIntent().getExtras();
         Log.e(TAG, " bundle URL:" + bundle.getString(AppConstants.URL));
-        categorySaleListActivityFragment.setArguments(bundle);
-        fragmentTransaction.replace(R.id.framelayout_container, categorySaleListActivityFragment).commit();
+        categorySaleListFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.framelayout_container, categorySaleListFragment).commit();
 
     }
 
 
+    public void setNoOfItemsInTooBar(int itemCount) {
+        TextView textViewTitle = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_item_count, null);
+        textViewTitle.setText(String.valueOf(itemCount + " Items"));
+        mToolbar.addView(textViewTitle, new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.RIGHT
+        ));
+    }
 
 
 }

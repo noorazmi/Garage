@@ -23,7 +23,10 @@ public interface AppConstants {
     String SCREEN_KARAJAT = "screen_type_karajat";
     String SCREEN_ROAD_HELP = "screen_type_help";
     String SCREEN_SCRAP = "screen_type_scrap";
-    String SCREEN_TAXI = "screen_type_taxi";
+    String SCREEN_TYPE_TAXI = "screen_type_taxi";
+    String SCREEN_TYPE_AGENCIES = "screen_type_agencies";
+    String SCREEN_TYPE_MOVABLE_WASH = "screen_type_movable_wash";
+    String SCREEN_TYPE_TECHNICAL_INSPECTION = "screen_type_technical_inspection";
     String SCREEN_FOR_RENT = "screen_type_rent";
     String SCREEN_KHIDMAT_SHAMLA = "screen_type_shamla";
 
@@ -32,9 +35,25 @@ public interface AppConstants {
     String MENU_ITEM_TYPE_KARAJAT = "menu_item_type_karajat";
     String MENU_ITEM_TYPE_HELP_ON_ROAD = "menu_item_type_help_on_road";
     String MENU_ITEM_TYPE_SCRAP = "menu_item_type_scrap";
-    String MENU_ITEM_TYPE_TAXI = "MENU_ITEM_TYPE_TAXI";
+    String MENU_ITEM_TYPE_TAXI = "menu_item_type_taxi";
+    String MENU_ITEM_TYPE_AGENCIES = "menu_item_type_agencies";
     String MENU_ITEM_TYPE_FOR_RENT = "menu_item_type_for_rent";
+    String MENU_ITEM_TYPE_MOVABLE_WASH = "menu_item_type_movable_wash";
+    String MENU_ITEM_TYPE_TECHNICAL_INSPECTION = "menu_item_type_technical_inspection";
     String MENU_ITEM_TYPE_KHIDMAT_SHAMLA = "menu_item_type_khidmat_shamla";
+
+    String MENU_ITEM_TYPE_TAREEQALABDALI =  "menu_item_type_tareeqalabdali";
+    String MENU_ITEM_TYPE_TAREEQALKABAD =  "menu_item_type_tareeqalkabad";
+    String MENU_ITEM_TYPE_TAREEQALSABEEH =  "menu_item_type_tareeqalsabeeh";
+    String MENU_ITEM_TYPE_TAREEQALSALMI =  "menu_item_type_tareeqalsalmi";
+    String MENU_ITEM_TYPE_ALASMAH =  "menu_item_type_alasmah";
+    String MENU_ITEM_TYPE_ALFARWANIYA =  "menu_item_type_alfarwaniya";
+    String MENU_ITEM_TYPE_ALJAHRA =  "menu_item_type_aljahra";
+    String MENU_ITEM_TYPE_TAREEQALWAFRATWAALNUWAISIB =  "menu_item_type_tareeqalwafratwaalnuwaisib";
+    String MENU_ITEM_TYPE_ALAHMADI =  "menu_item_type_alahmadi";
+    String MENU_ITEM_TYPE_FANIMOTANQAL =  "menu_item_type_fanimotanqal";
+    String MENU_ITEM_TYPE_HAULI =  "menu_item_type_hauli";
+    String MENU_ITEM_TYPE_MUBARAKALKABEER =  "menu_item_type_mubarakalkabeer";
 
     String BUNDLE_EXTRA = "bundle_extra";
 
@@ -43,7 +62,7 @@ public interface AppConstants {
     String SCRAP_AMERICA = "scrap_type_america";
     String SCRAP_EUROPEAN = "scrap_type_awarby";
     String SCRAP_ASIAN = "scrap_type_asibi";
-    String SCRAP_TAUSIL_KATA = "scrap_type_tausil_kata";
+    String SCRAP_DELIVERY = "scrap_type_delivery";
 
     String SCRAP_AMERICA_SUB_TYPE = "scrap_america_sub_type";
     String SCRAP_AMERICA_SUB_TYPE_CADILLAC = "scrap_america_sub_type_cadillac";
@@ -82,6 +101,12 @@ public interface AppConstants {
     String SCRAP_ASIA_SUB_TYPE_SUBARU = "scrap_asia_sub_type_subaru";
     String SCRAP_ASIA_SUB_TYPE_SHERI = "scrap_asia_sub_type_sheri";
 
+    String SCRAP_DELIVERY_SUB_TYPE = "scrap_delivery_sub_type";
+    String SCRAP_DELIVERY_SUB_TYPE_NONE = "scrap_delivery_sub_type_none";
+
+
+
+
 
 
     /* BUILD_TYPE_CONSTANTS*/
@@ -97,4 +122,7 @@ public interface AppConstants {
 
     String EXTRA_TITLE = "title";
     String EXTRA_IMAGE_PATH = "imagePath";
+
+    String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
+    String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";
 }

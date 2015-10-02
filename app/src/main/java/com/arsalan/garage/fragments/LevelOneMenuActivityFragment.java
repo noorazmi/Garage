@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
-import com.arsalan.garage.activities.LevelTwoMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -73,7 +72,7 @@ public class LevelOneMenuActivityFragment extends Fragment {
             }
         } else if (mScreenType == AppConstants.SCREEN_KARAJAT) {
             mMenuItemsArrayList = Utils.getKarajatScreenMenuItems();
-        } else if (mScreenType == AppConstants.SCREEN_TAXI) {
+        } else if (mScreenType == AppConstants.SCREEN_TYPE_TAXI) {
             mMenuItemsArrayList = Utils.getTaxiMenuItems();
         } else if (mScreenType == AppConstants.SCREEN_FOR_RENT) {
             mMenuItemsArrayList = Utils.getTaxiMenuItems();

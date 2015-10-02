@@ -1,16 +1,13 @@
 package com.arsalan.garage.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
-import com.arsalan.garage.models.HomeMenuItem;
+import com.arsalan.garage.fragments.HelpOnRoadFragment;
 import com.arsalan.garage.utils.AppConstants;
 
 /**
@@ -21,7 +18,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class RoadHelpActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
+public class HelpOnRoadActivity extends BaseActivity {
 
     private FragmentManager mFragmentManager;
 
@@ -29,8 +26,6 @@ public class RoadHelpActivity extends BaseActivity implements LevelOneMenuActivi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //getSupportActionBar().setTitle("المساعدة على الطريق");
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setToolbar(toolbar, "المساعدة على الطريق" ,true, Gravity.CENTER);
 
@@ -39,23 +34,13 @@ public class RoadHelpActivity extends BaseActivity implements LevelOneMenuActivi
 
 
     private void setMenuHolderFragment(){
-        FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_ROAD_HELP);
-        LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
+        HelpOnRoadFragment fragment = new HelpOnRoadFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 
-    }
-
-    @Override
-    public void onMenuItemClick(HomeMenuItem homeMenuItem, int position) {
-        if(position == 0){
-            Intent intent = new Intent(this, HelpCarActivity.class);
-            startActivity(intent);
-
-        }
     }
 }

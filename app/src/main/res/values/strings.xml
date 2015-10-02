@@ -31,15 +31,62 @@
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
 
+    <!--American Car Brands-->
+    <string name="car_brand_cadillac">كاديلاك</string>
+    <string name="car_brand_dodgenchrysler">اوربي</string>
+    <string name="car_brand_chevrolet">شيفروليه</string>
+    <string name="car_brand_gmc">جمس</string>
+    <string name="car_brand_fordnlincoln">فورد /لنكون</string>
+    <string name="car_brand_hummer">همر</string>
+    <string name="car_brand_jeep">جيب</string>
+
+    <!--European Car Brands-->
+    <string name="car_brand_mercedes">مرسيدس</string>
+    <string name="car_brand_bmw">بي ام دبليو</string>
+    <string name="car_brand_rangerover">رنج روفر</string>
+    <string name="car_brand_volvowagon">فولكس</string>
+    <string name="car_brand_jaguar">جاغوار</string>
+    <string name="car_brand_porsche">بورش</string>
+    <string name="car_brand_audi">اودي</string>
+    <string name="car_brand_peugeot">بيجو / ستروين</string>
+    <string name="car_brand_skoda">سكودا</string>
+    <string name="car_brand_mini">ميني</string>
+    <string name="car_brand_renault">رينو</string>
+    <string name="car_brand_volvo"></string>
+
+    <!--Asian Car Brands-->
+    <string name="car_brand_toyota">تويوتا</string>
+    <string name="car_brand_nissan">نيسان</string>
+    <string name="car_brand_lexus">لكزس</string>
+    <string name="car_brand_sheri">شيري</string>
+    <string name="car_brand_subaru">سوبارو</string>
+    <string name="car_brand_isuza">ايسوزو</string>
+    <string name="car_brand_mazda">مازدا</string>
+    <string name="car_brand_suzuki">سوزوكي</string>
+    <string name="car_brand_mitsubishi">ميتسوبيشي</string>
+    <string name="car_brand_kia">كيا</string>
+    <string name="car_brand_hyundai">هيونداي</string>
+    <string name="car_brand_honda">هوندا</string>
+    <string name="car_brand_infiniti">انفينتي</string>
+
+    <string name="delivery">توصيل قطع</string>
+    <string name="car_delivery">سيارة الولادة</string>
+
     <string name="category_sale">CATEGORY SALE</string>
     <string name="description">DESCRIPTION</string>
     <string name="title_activity_scrap_sub_menu">ScrapSubMenuActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <string name="taxi"> تكسي </string>
+    <string name="movable_wash">  غسيل متنقل </string>
+    <string name="technical_inspection">   فحص فني    </string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_out_of_memory"><![CDATA[<string name=\"error_out_of_memory\">We are unable to process this image</string>]]></string>
     <string name="msg_5xx"><![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
     <string name="no_internet_connection"><![CDATA[<string name=\"no_internet_connection\">No Network connectivity. Check your internet connection</string>]]></string>
+    <string name="agencies">الوكالات</string>
 
 
 </resources>

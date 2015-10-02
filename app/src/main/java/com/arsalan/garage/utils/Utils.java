@@ -1,8 +1,10 @@
 package com.arsalan.garage.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,15 +31,15 @@ public class Utils {
         ArrayList<HomeMenuItem> menuItemsArrayList = new ArrayList<>();
         menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_salmi, AppConstants.SCREEN_ROAD_HELP)));
         menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_sabih, AppConstants.SCREEN_ROAD_HELP)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_abdali), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariq_kabad), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.al_wafrah_wal_naviseeb), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_asma), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_jahra), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_farwania), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_ahmadi), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.hauli), AppConstants.SCREEN_ROAD_HELP));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.mubarakal_kabir), AppConstants.SCREEN_ROAD_HELP));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_abdali)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariq_kabad)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.al_wafrah_wal_naviseeb)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_asma)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_jahra)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_farwania)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_ahmadi)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.hauli)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.mubarakal_kabir)));
         return menuItemsArrayList;
     }
 
@@ -58,7 +60,7 @@ public class Utils {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوربي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
         return menuItemsArrayLis;
@@ -105,7 +107,8 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapAwarbiMenuItems(){
+
+    public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems(){
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -123,7 +126,9 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapAsibiMenuItems(){
+
+
+    public static ArrayList<HomeMenuItem> getScrapAsianMenuItems(){
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -132,7 +137,6 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name, "لكزس"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, "انفينتي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, "هوندا"));
-
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, "هيونداي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, "كيا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
@@ -140,10 +144,10 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.great, "جريت ويل"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ssangyong, "سانج يونج"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.great, "جريت ويل"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ssangyong, "سانج يونج"));
         return menuItemsArrayLis;
     }
 
@@ -201,5 +205,12 @@ public class Utils {
                 .considerExifParams(true)
                 .displayer(new FadeInBitmapDisplayer(20))
                 .build();
+    }
+
+
+    public static  void initCall(String phoneNumber, Context context){
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        context.startActivity(intent);
     }
 }

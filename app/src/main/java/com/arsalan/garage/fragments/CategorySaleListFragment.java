@@ -14,16 +14,14 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategoryDescriptionActivity;
+import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.adapters.CategoryListAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
-import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.vo.AmericanCarsVO;
-
-import java.util.ArrayList;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -36,7 +34,7 @@ import networking.models.HTTPResponse;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategorySaleListActivityFragment extends Fragment {
+public class CategorySaleListFragment extends Fragment {
 
 
 
@@ -46,18 +44,17 @@ public class CategorySaleListActivityFragment extends Fragment {
     private static final int NUM_OF_COLUMNS = 3;
     /*Total number of items in the RecyclerView*/
     private static final int NUM_OF_ITEMS = 6;
-    //private ArrayList<DataModel> mDataModels;
-//    private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
     private RecyclerView mRecyclerView;
     private CategoryListAdapter mCategoryListAdapter;
     private int addItemCount = 0;
     AmericanCarsVO mAmericanCarsVO;
 
-    public CategorySaleListActivityFragment() {}
+    public CategorySaleListFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        performGET();
 
     }
 
@@ -70,28 +67,15 @@ public class CategorySaleListActivityFragment extends Fragment {
         return rootView;
     }
 
-
-
-
-//    private ArrayList<HomeMenuItem> getMenuItems() {
-//
-//        mHomeMenuItemArrayList = new ArrayList<>();
-//
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scarptest, "مؤسسة المناور لسكراب كاديلاك شفر جمس"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.car_red, "مؤسسة المناور لسكراب كاديلاك شفر جمس"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mobile_sample, "مؤسسة المناور لسكراب كاديلاك شفر جمس"));
-//        return mHomeMenuItemArrayList;
-//    }
-
-
     private void setAdapter(AmericanCarsVO americanCarsVO ){
+        ((CategorySaleListActivity)getActivity()).setNoOfItemsInTooBar(americanCarsVO.getResults().size());
         RecyclerView.LayoutManager layoutManager = null;
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         //mDataModels = getDataModelList();
 
-        mCategoryListAdapter = new CategoryListAdapter( americanCarsVO, getActivity());
+        mCategoryListAdapter = new CategoryListAdapter( americanCarsVO, getActivity(), getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
 
         /*Third party ItemDecoration found from https://gist.github.com/alexfu/0f464fc3742f134ccd1e*/
         //RecyclerView.ItemDecoration verticalDivider = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
@@ -111,6 +95,9 @@ public class CategorySaleListActivityFragment extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
+                if(AppConstants.SCRAP_DELIVERY.equals(getArguments().getString(AppConstants.SCRAP_TYPE))){
+                    return;
+                }
                 //if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
                     Bundle bundle = new Bundle();
@@ -119,6 +106,8 @@ public class CategorySaleListActivityFragment extends Fragment {
                     bundle.putString(AppConstants.IMAGE_URL, result.getImage());
                     bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
                     bundle.putString(AppConstants.ID, result.getItem_id());
+                    bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+                    bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
                     intent.putExtras(bundle);
                     //Logger.i("UserId", mHomeMenuItemArrayList.get(position).getMenuTitle());
                     getActivity().startActivity(intent);
@@ -131,7 +120,6 @@ public class CategorySaleListActivityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        performGET();
     }
 
     private void performGET(){
@@ -139,7 +127,7 @@ public class CategorySaleListActivityFragment extends Fragment {
         httpRequest.setShowProgressDialog(false);
         Bundle bundle = getArguments();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
-        httpRequest.setUrl(getArguments().getString(AppConstants.URL));
+        httpRequest.setUrl(getArguments().getString(AppConstants.URL)+"?page=all");
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(AmericanCarsVO.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

@@ -17,7 +17,8 @@
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,49 +27,47 @@
         </activity>
         <activity
             android:name=".activities.HomeActivity"
-            android:label="@string/karaji" >
+            android:label="@string/karaji"
+            android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".activities.LevelOneMenuActivity"
-            android:label="@string/title_activity_level_one_menu" >
+        <activity android:name=".activities.CategorySaleListActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".activities.LevelTwoMenuActivity"
-            android:label="@string/title_activity_level_two_menu" >
+        <activity android:name=".activities.CategoryDescriptionActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.CategorySaleListActivity" >
-        </activity>
-        <activity android:name=".activities.CategoryDescriptionActivity" >
-        </activity>
-        <activity android:name=".activities.RoadHelpActivity" >
-        </activity>
-        <activity
-            android:name=".activities.HelpCarActivity"
-            android:label="@string/title_activity_help_car" >
+        <activity android:name=".activities.HelpOnRoadActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ScrapMainMenuActivity"
-            android:label="@string/title_activity_scrap" >
+            android:label="@string/title_activity_scrap"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.TaxiActivity"
-            android:label="@string/title_activity_scrap" >
+            android:label="@string/title_activity_scrap"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ForRentActivity"
-            android:label="@string/title_activity_scrap" >
+            android:label="@string/title_activity_scrap"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.KhidmatShamlaActivity"
-            android:label="@string/title_activity_scrap" >
+            android:label="@string/title_activity_scrap"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ScrapSubMenuActivity"
-            android:label="@string/title_activity_scrap_sub_menu" >
+            android:label="@string/title_activity_scrap_sub_menu"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ImageViewerActivity"
-            android:label="@string/title_activity_scrap_sub_menu" >
+            android:label="@string/title_activity_scrap_sub_menu"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

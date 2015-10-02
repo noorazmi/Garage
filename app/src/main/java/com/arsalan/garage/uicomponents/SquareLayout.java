@@ -31,10 +31,14 @@ public class SquareLayout extends RelativeLayout {
 //        super(context, attrs, defStyleAttr, defStyleRes);
 //    }
 
+    private static final double WIDTH_RATIO = 3;
+    private static final double HEIGHT_RATIO = 4;
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // Set a square layout.
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = (int) (HEIGHT_RATIO / WIDTH_RATIO * widthSize);
+        int newHeightSpec = MeasureSpec.makeMeasureSpec(heightSize, MeasureSpec.EXACTLY);
+        super.onMeasure(widthMeasureSpec, newHeightSpec);
     }
 
 }

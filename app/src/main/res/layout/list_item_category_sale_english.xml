@@ -25,14 +25,14 @@
         android:id="@+id/relativeLayout"
         android:layout_marginLeft="20dp">
 
-        <com.arsalan.garage.uicomponents.CustomTextView
+        <TextView
             style="@style/TextViewStyle.Regular"
             android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:gravity="left"
-            android:text="السرعه والاداء العالي"
+            android:text="Some Text"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"

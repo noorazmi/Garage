@@ -1,15 +1,14 @@
 package com.arsalan.garage.activities;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.uicomponents.ZoomableImageView;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
@@ -17,7 +16,8 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 public class ImageViewerActivity extends BaseActivity {
-    private ZoomableImageView mZoomableImageView;
+    //private ZoomableImageView mZoomableImageView;
+    private ImageView mZoomableImageView;
     private ProgressBar mProgressBarLoading;
     //private Utility utility;
 
@@ -25,11 +25,9 @@ public class ImageViewerActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_viewer);
-        // ApptimizeUtils apptimizeUtils = new ApptimizeUtils(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (getIntent().hasExtra(AppConstants.EXTRA_TITLE)) {
-            setToolbar(toolbar, getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true);
-        }
+        setToolbar(toolbar,  getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);
+
         linkViewsId();
         if (getIntent().hasExtra(AppConstants.EXTRA_IMAGE_PATH)) {
             if (Utils.isNetworkAvailable(this)) {
@@ -44,7 +42,7 @@ public class ImageViewerActivity extends BaseActivity {
     }
 
     private void linkViewsId() {
-        mZoomableImageView = (ZoomableImageView) findViewById(R.id.imageview_profile_pic);
+        mZoomableImageView = (ImageView) findViewById(R.id.imageview_profile_pic);
         mProgressBarLoading = (ProgressBar) findViewById(R.id.progressbar_loading);
     }
 

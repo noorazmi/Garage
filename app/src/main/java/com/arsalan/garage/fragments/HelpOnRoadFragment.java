@@ -1,5 +1,6 @@
 package com.arsalan.garage.fragments;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
-import com.arsalan.garage.activities.ScrapSubMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -24,39 +24,36 @@ import com.arsalan.garage.utils.Utils;
 
 import java.util.ArrayList;
 
-public class ScrapMainMenuFragment extends Fragment {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class HelpOnRoadFragment extends Fragment {
 
 
-
-    private static final String TAG = "ScrapMainMenuFragment";
+    private static final String TAG = "HelpOnRoadFragment";
     private ArrayList<HomeMenuItem> mMenuItemsArrayList;
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private int mNumberOfColumns;
     private Bundle mBundle;
-    private String scrapType;
 
+    public HelpOnRoadFragment() {
+    }
 
-    public ScrapMainMenuFragment() {  }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBundle = getArguments();
-        scrapType = mBundle.getString(AppConstants.SCRAP_TYPE);
-        mNumberOfColumns = 2;
-        initMenuItems();
+        mNumberOfColumns = AppConstants.NUM_OF_COLUMNS;
+        mMenuItemsArrayList = Utils.getRoadHelpScreenMenuItems(getActivity());
     }
-
-    private void initMenuItems() {
-        mMenuItemsArrayList = Utils.getScrapScreenMenuItems();
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Must be set in order to capture menu item click events. If you don't set it, it will not show the menu items set in the Activity holding this fragment.
-        View rootView = inflater.inflate(R.layout.fragment_scrap_main_menu, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home_tab, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager layoutManager = null;
         layoutManager = new GridLayoutManager(getActivity(), mNumberOfColumns);
@@ -81,37 +78,64 @@ public class ScrapMainMenuFragment extends Fragment {
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
+
             @Override
             public void onClick(View view, int position) {
-                if (mMenuItemsArrayList != null && !mMenuItemsArrayList.isEmpty()) {
-                    Bundle bundle = new Bundle();
-                    Intent intent = null;
-                    if (position == 0) {
-                        intent = new Intent(getActivity(), ScrapSubMenuActivity.class);
-                        bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_AMERICA);
-                    }else if(position == 1){
-                        intent = new Intent(getActivity(), ScrapSubMenuActivity.class);
-                        bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_EUROPEAN);
-                    }else if(position == 2){
-                        intent = new Intent(getActivity(), ScrapSubMenuActivity.class);
-                        bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_ASIAN);
-                    }else if(position == 3){
-                        bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_DELIVERY);
-                        bundle.putString(AppConstants.SCRAP_DELIVERY_SUB_TYPE, AppConstants.SCRAP_DELIVERY_SUB_TYPE_NONE);
-                        bundle.putString(AppConstants.URL, Urls.DELIVERY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.delivery));
-                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                String url = null;
+                switch (position) {
+                    case 0:
+                        url = Urls.TAREEQALSALMI;
+                        break;
+                    case 1:
+                        url = Urls.TAREEQALSABEEH;
+                        break;
+                    case 2:
+                        url = Urls.TAREEQALABDALI;
+                        break;
+                    case 3:
+                        url = Urls.TAREEQALKABAD;
+                        break;
+                    case 4:
+                        url = Urls.TAREEQALWAFRATWAALNUWAISIB;
+                        break;
+                    case 5:
+                        url = Urls.ALASMAH;
+                        break;
+                    case 6:
+                        url = Urls.ALJAHRA;
+                        break;
+                    case 7:
+                        url = Urls.ALFARWANIYA;
+                        break;
+                    case 8:
+                        url = Urls.ALAHMADI;
+                        break;
+                    case 9:
+                        url = Urls.HAULI;
+                        break;
+                    case 10:
+                        url = Urls.MUBARAKALKABEER;
+                        break;
+                    default:
+                        break;
 
-                    }
-
-                    intent.putExtras(bundle);
-                    getActivity().startActivity(intent);
 
                 }
+
+                Bundle bundle = new Bundle();
+                bundle.putString(AppConstants.URL, url  );
+                bundle.putString(AppConstants.EXTRA_TITLE, ((HomeMenuItem)mMenuItemsArrayList.get(position)).getMenuTitle());
+                Intent intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         }));
 
 
         return rootView;
     }
+
 }
+
+
+

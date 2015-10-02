@@ -1,19 +1,16 @@
 package com.arsalan.garage.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.CategoryDescriptionActivityFragment;
-import com.arsalan.garage.fragments.CategorySaleListActivityFragment;
+import com.arsalan.garage.fragments.CategoryDescriptionFragment;
+import com.arsalan.garage.utils.AppConstants;
 
 public class CategoryDescriptionActivity extends BaseActivity {
 
@@ -25,7 +22,7 @@ public class CategoryDescriptionActivity extends BaseActivity {
         setContentView(R.layout.activity_category_description);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.description), true, Gravity.CENTER);
+        setToolbar(toolbar,  getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);
 
         setLevelOneMenuFragment();
     }
@@ -37,7 +34,7 @@ public class CategoryDescriptionActivity extends BaseActivity {
         FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        Fragment fragment = new CategoryDescriptionActivityFragment();
+        Fragment fragment = new CategoryDescriptionFragment();
         fragment.setArguments(getIntent().getExtras());
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 

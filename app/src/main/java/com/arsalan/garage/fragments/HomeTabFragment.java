@@ -11,14 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arsalan.garage.models.DataModel;
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.activities.ForRentActivity;
+import com.arsalan.garage.activities.HelpOnRoadActivity;
 import com.arsalan.garage.activities.KhidmatShamlaActivity;
-import com.arsalan.garage.activities.LevelOneMenuActivity;
-import com.arsalan.garage.activities.RoadHelpActivity;
 import com.arsalan.garage.activities.ScrapMainMenuActivity;
-import com.arsalan.garage.activities.TaxiActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -26,19 +24,14 @@ import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeTabFragment extends Fragment {
 
-
-    public HomeTabFragment() {
-        // Required empty public constructor
-    }
+    public HomeTabFragment() {}
 
 
     private static final String TAG = "PlaceholderFragment";
@@ -60,7 +53,7 @@ public class HomeTabFragment extends Fragment {
         //Must be set in order to capture menu item click events. If you don't set it, it will not show the menu items set in the Activity holding this fragment.
         setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_home_tab, container, false);
-        mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerview);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
 
 
         RecyclerView.LayoutManager layoutManager = null;
@@ -73,7 +66,7 @@ public class HomeTabFragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(getMenuItems());
 
         /*Third party ItemDecoration found from https://gist.github.com/alexfu/0f464fc3742f134ccd1e*/
-       /// RecyclerView.ItemDecoration verticalDivider  = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
+        /// RecyclerView.ItemDecoration verticalDivider  = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
         RecyclerView.ItemDecoration horizontalDivider = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
         mRecyclerView.addItemDecoration(horizontalDivider);
         //mRecyclerView.addItemDecoration(verticalDivider);
@@ -90,35 +83,63 @@ public class HomeTabFragment extends Fragment {
                 if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
                     Intent intent = null;
-                    if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)){
-                         intent = new Intent(getActivity(), LevelOneMenuActivity.class);
-                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)){
-                        intent = new Intent(getActivity(), RoadHelpActivity.class);
-                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_SCRAP)){
+                    if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)) {
+                        //intent = new Intent(getActivity(), LevelOneMenuActivity.class);
+                    } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)) {
+                        intent = new Intent(getActivity(), HelpOnRoadActivity.class);
+                    } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_SCRAP)) {
                         Bundle bundle = new Bundle();
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_SCRAP);
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_MAIN);
                         intent = new Intent(getActivity(), ScrapMainMenuActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
-                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_TAXI)){
+                    } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_TAXI)) {
                         Bundle bundle = new Bundle();
-                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TAXI);
-                        intent = new Intent(getActivity(), TaxiActivity.class);
-                        intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_TAXI);
+                        bundle.putString(AppConstants.URL, Urls.TAXI);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.taxi));
+                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        intent.putExtras(bundle);
 
-                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_FOR_RENT)){
+                    }else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_AGENCIES)) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_AGENCIES);
+                        //bundle.putString(AppConstants.URL, Urls.AGENCIES);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.agencies));
+                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        //intent.putExtras(bundle);
+
+                    }else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH)) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MOVABLE_WASH);
+                        bundle.putString(AppConstants.URL, Urls.MOVABLE_WASH);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.movable_wash));
+                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
+                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        intent.putExtras(bundle);
+
+                    }else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION)) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_TECHNICAL_INSPECTION);
+                        bundle.putString(AppConstants.URL, Urls.TECHNICAL_INSPECTION);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.technical_inspection));
+                        //bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
+                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        intent.putExtras(bundle);
+
+                    } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_FOR_RENT)) {
                         Bundle bundle = new Bundle();
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
                         intent = new Intent(getActivity(), ForRentActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
-                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA)){
+                    } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA)) {
                         Bundle bundle = new Bundle();
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
                         intent = new Intent(getActivity(), KhidmatShamlaActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
-                    }else {
+                    } else {
                         return;
                         //intent = new Intent(getActivity(), LevelOneMenuActivity.class);
                     }
@@ -130,37 +151,10 @@ public class HomeTabFragment extends Fragment {
         }));
 
         return rootView;
+
+
     }
 
-
-
-    /** Creates and returns the data items to be shown in the Recycler View*/
-    private ArrayList<DataModel> getDataModelList(){
-        ArrayList<DataModel> dataModels = new ArrayList<>();
-
-        for (int i = 0; i < NUM_OF_ITEMS; i++) {
-            dataModels.add(new DataModel("Title:"+i));
-        }
-
-        return dataModels;
-    }
-
-
-    /** Adds a single item in the existing list*/
-    private final void addItem(){
-        //Adding item at top second position(i.e. at index 1).
-        //mDataModels.set(1, new DataModel("Added Item "+String.valueOf(++addItemCount)));
-        //See for similar methods to know more item insertion options
-        recyclerViewAdapter.notifyItemInserted(1);
-    }
-
-    /** Deletes a single item from the existing list*/
-    private void deleteItem(){
-        //Removing top item
-        //mDataModels.remove(0);
-        //See for similar methods to know more item removing options
-        recyclerViewAdapter.notifyItemRemoved(0);
-    }
 
 
     private ArrayList<HomeMenuItem> getMenuItems(){
@@ -170,16 +164,19 @@ public class HomeTabFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.hellpthecarhome, " المساعده على الطريق", AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, "السكراب", AppConstants.MENU_ITEM_TYPE_SCRAP));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, "تكسي",AppConstants.MENU_ITEM_TYPE_TAXI));
+
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.agencies, "الوكالات",AppConstants.MENU_ITEM_TYPE_AGENCIES));
+
+
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.rent_car, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, "فحص فني" ));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل", AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, " خدمات شامله" , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.sspeedtrail, "السرعه والاداء العالي"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, "مارين"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.autoservice, "الوكالات"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, "فحص فني", AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.autoservice, "الوكالات"));
         return mHomeMenuItemArrayList;
     }
-
 
 }
