@@ -74,5 +74,7 @@ public interface Urls {
     String HAULI = "http://www.kuwaitgarage.com/api/helpinroad3/hauli";
     String MUBARAKALKABEER = "http://www.kuwaitgarage.com/api/helpinroad3/mubarakalkabeer";
 
+    String ALWAKALAT_AGENCIES = "alwakalat_agencies";
+
 
 }

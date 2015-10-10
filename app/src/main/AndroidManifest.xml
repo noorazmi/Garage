@@ -2,23 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.arsalan.garage" >
 
-   <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
+        android:name=".GarageApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme"
-        android:name=".GarageApp">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,46 +28,64 @@
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/karaji"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".activities.CategorySaleListActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.CategorySaleListActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".activities.CategoryDescriptionActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.CategoryDescriptionActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".activities.HelpOnRoadActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.HelpOnRoadActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.ScrapMainMenuActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.TaxiActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.ForRentActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.KhidmatShamlaActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.ScrapSubMenuActivity"
             android:label="@string/title_activity_scrap_sub_menu"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activities.ImageViewerActivity"
             android:label="@string/title_activity_scrap_sub_menu"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.AlwakalatAgencyMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.AlwakalatAgencySubMenuActivity"
+            android:label="@string/title_activity_alwakalat_agency_sub_menu"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.CategorySaleStaticListActivity"
+            android:label="@string/title_activity_alwakalat_agency_sub_menu"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 

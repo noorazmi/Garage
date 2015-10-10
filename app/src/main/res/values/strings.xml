@@ -87,6 +87,8 @@
     <string name="msg_5xx"><![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
     <string name="no_internet_connection"><![CDATA[<string name=\"no_internet_connection\">No Network connectivity. Check your internet connection</string>]]></string>
     <string name="agencies">الوكالات</string>
+    <string name="title_activity_alwakalat_agency_menu">AlwakalatAgencyMenuActivity</string>
+    <string name="title_activity_alwakalat_agency_sub_menu">AlwakalatAgencySubMenuActivity</string>
 
 
 </resources>

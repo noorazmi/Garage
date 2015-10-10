@@ -125,4 +125,5 @@ public interface AppConstants {
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";
+    String EXTRA_DESCRIPTION_LANGUAGE_ARABIC = "extra_description_language_arabic";
 }

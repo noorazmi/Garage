@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.AlwakalatAgencyMenuActivity;
 import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.activities.ForRentActivity;
 import com.arsalan.garage.activities.HelpOnRoadActivity;
@@ -85,6 +86,7 @@ public class HomeTabFragment extends Fragment {
                     Intent intent = null;
                     if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)) {
                         //intent = new Intent(getActivity(), LevelOneMenuActivity.class);
+                        return;
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)) {
                         intent = new Intent(getActivity(), HelpOnRoadActivity.class);
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_SCRAP)) {
@@ -106,7 +108,7 @@ public class HomeTabFragment extends Fragment {
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_AGENCIES);
                         //bundle.putString(AppConstants.URL, Urls.AGENCIES);
                         bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.agencies));
-                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        intent = new Intent(getActivity(), AlwakalatAgencyMenuActivity.class);
                         //intent.putExtras(bundle);
 
                     }else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH)) {
@@ -165,10 +167,10 @@ public class HomeTabFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, "السكراب", AppConstants.MENU_ITEM_TYPE_SCRAP));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, "تكسي",AppConstants.MENU_ITEM_TYPE_TAXI));
 
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.agencies, "الوكالات",AppConstants.MENU_ITEM_TYPE_AGENCIES));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "الوكالات",AppConstants.MENU_ITEM_TYPE_AGENCIES));
 
 
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.rent_car, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل", AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, " خدمات شامله" , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
