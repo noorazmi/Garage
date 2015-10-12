@@ -80,11 +80,23 @@
         <activity
             android:name=".activities.AlwakalatAgencySubMenuActivity"
             android:label="@string/title_activity_alwakalat_agency_sub_menu"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name=".activities.CategorySaleStaticListActivity"
             android:label="@string/title_activity_alwakalat_agency_sub_menu"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.KarajatMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.KarajatSubMenuActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
     </application>

@@ -74,7 +74,32 @@ public interface Urls {
     String HAULI = "http://www.kuwaitgarage.com/api/helpinroad3/hauli";
     String MUBARAKALKABEER = "http://www.kuwaitgarage.com/api/helpinroad3/mubarakalkabeer";
 
+
+    //Karajat
+
+    String  MECHANIC = "http://kuwaitgarage.com/api/garage/mechanic";
+    String  JERAT = "http://kuwaitgarage.com/api/garage/jerat";
+    String  SHABAGWAHADADA = "http://kuwaitgarage.com/api/garage/shabagwahadada";
+    String  BREAKMIZANWAHEENA = "http://kuwaitgarage.com/api/garage/breakmizanwaheena";
+    String  TANJEED = "http://kuwaitgarage.com/api/garage/tanjeed";
+    String  ITARAAT = "http://kuwaitgarage.com/api/garage/itaraat";
+    String  ZAJAJ = "http://kuwaitgarage.com/api/garage/zajaj";
+    String  KHARBAAWATAKEEF = "http://kuwaitgarage.com/api/garage/kharbaawatakeef";
+    String  KATAGYAAR = "http://kuwaitgarage.com/api/garage/katagyaar";
+    String  BARMAJATSAYARAAT = "http://kuwaitgarage.com/api/garage/barmajatsayaraat";
+    String  TADEELRANJAT = "http://kuwaitgarage.com/api/garage/tadeelranjat";
+    String  MAKHRTH = "http://kuwaitgarage.com/api/garage/makhrth";
+    String  AWADAMWARADEETARAT = "http://kuwaitgarage.com/api/garage/awadamwaradeetarat";
+    String  TALEEMAYAADIN = "http://kuwaitgarage.com/api/garage/taleemayaadin";
+    String  ZEENATSAYARATMASJALAT = "http://kuwaitgarage.com/api/garage/zeenatsayaratmasjalat";
+    String  HYDRAULICS = "http://kuwaitgarage.com/api/garage/hydraulics";
+    String  SHAFTSADMAT = "http://kuwaitgarage.com/api/garage/shaftsadmat";
+
+
+
+
     String ALWAKALAT_AGENCIES = "alwakalat_agencies";
+    String TINTINGCAR = "http://kuwaitgarage.com/api/tintingcar";
 
 
 }

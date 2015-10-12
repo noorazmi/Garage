@@ -66,7 +66,7 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         mTextViewPhone1.setOnClickListener(this);
         mTextViewPhone2.setOnClickListener(this);
         mImageViewItem.setOnClickListener(this);
-
+        performGET();
         return rootView;
     }
 
@@ -79,12 +79,11 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     @Override
     public void onResume() {
         super.onResume();
-        performGET();
     }
 
     private void performGET(){
         HTTPRequest httpRequest = new HTTPRequest();
-        httpRequest.setShowProgressDialog(false);
+        httpRequest.setShowProgressDialog(true);
         Bundle bundle = getArguments();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.URL_ITEM_DESCRIPTION_BASE+getArguments().getString(AppConstants.ID)));
         httpRequest.setUrl(Urls.URL_ITEM_DESCRIPTION_BASE+getArguments().getString(AppConstants.ID));
@@ -106,6 +105,9 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
 
 
     private void setValuesInUI(ItemDescriptionVO valueObject){
+        if(valueObject == null){
+            return;
+        }
         mTextViewDescription.setText(valueObject.getResults().getDescription());
 
 

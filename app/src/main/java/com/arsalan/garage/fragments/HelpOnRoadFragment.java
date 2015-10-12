@@ -99,21 +99,24 @@ public class HelpOnRoadFragment extends Fragment {
                         url = Urls.TAREEQALWAFRATWAALNUWAISIB;
                         break;
                     case 5:
-                        url = Urls.ALASMAH;
+                        url = Urls.FANIMOTANQAL;
                         break;
                     case 6:
-                        url = Urls.ALJAHRA;
+                        url = Urls.ALASMAH;
                         break;
                     case 7:
-                        url = Urls.ALFARWANIYA;
+                        url = Urls.ALJAHRA;
                         break;
                     case 8:
-                        url = Urls.ALAHMADI;
+                        url = Urls.ALFARWANIYA;
                         break;
                     case 9:
-                        url = Urls.HAULI;
+                        url = Urls.ALAHMADI;
                         break;
                     case 10:
+                        url = Urls.HAULI;
+                        break;
+                    case 11:
                         url = Urls.MUBARAKALKABEER;
                         break;
                     default:

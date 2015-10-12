@@ -22,6 +22,7 @@
     <string name="tariqal_abdali">     طريق العبدلي     </string>
     <string name="tariq_kabad">    طريق كبد   </string>
     <string name="al_wafrah_wal_naviseeb">    الوفرة والنويصيب   </string>
+    <string name="fani_mutnaqal">   فني متنقل  </string>
     <string name="al_asma">     العاصمه   </string>
     <string name="al_jahra">    الجهراء   </string>
     <string name="al_farwania">     الفروانية  </string>
@@ -78,6 +79,7 @@
 
     <string name="taxi"> تكسي </string>
     <string name="movable_wash">  غسيل متنقل </string>
+    <string name="tintingcar">    حمايه وتظليل     </string>
     <string name="technical_inspection">   فحص فني    </string>
 
 

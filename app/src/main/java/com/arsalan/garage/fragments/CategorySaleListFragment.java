@@ -1,9 +1,11 @@
 package com.arsalan.garage.fragments;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,9 +38,6 @@ import networking.models.HTTPResponse;
  */
 public class CategorySaleListFragment extends Fragment {
 
-
-
-
     private static final String TAG = "PlaceholderFragment";
     /*Number of columns in the grid view*/
     private static final int NUM_OF_COLUMNS = 3;
@@ -48,13 +47,14 @@ public class CategorySaleListFragment extends Fragment {
     private CategoryListAdapter mCategoryListAdapter;
     private int addItemCount = 0;
     AmericanCarsVO mAmericanCarsVO;
+    //private ProgressBar mProgressBar;
 
     public CategorySaleListFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        performGET();
+
 
     }
 
@@ -63,11 +63,27 @@ public class CategorySaleListFragment extends Fragment {
         //Must be set in order to capture menu item click events. If you don't set it, it will not show the menu items set in the Activity holding this fragment.
         View rootView = inflater.inflate(R.layout.fragment_category_sale_list, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        //mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressbar);
+        performGET();
 
         return rootView;
     }
 
     private void setAdapter(AmericanCarsVO americanCarsVO ){
+        if(americanCarsVO == null){
+            AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            alertDialog.setTitle("Error!");
+            alertDialog.setMessage("There is network or server problem. Please try again.");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            getActivity().finish();
+                        }
+                    });
+            alertDialog.show();
+            return;
+        }
         ((CategorySaleListActivity)getActivity()).setNoOfItemsInTooBar(americanCarsVO.getResults().size());
         RecyclerView.LayoutManager layoutManager = null;
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -123,8 +139,9 @@ public class CategorySaleListFragment extends Fragment {
     }
 
     private void performGET(){
+        //mProgressBar.setVisibility(View.VISIBLE);
         HTTPRequest httpRequest = new HTTPRequest();
-        httpRequest.setShowProgressDialog(false);
+        httpRequest.setShowProgressDialog(true);
         Bundle bundle = getArguments();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
         httpRequest.setUrl(getArguments().getString(AppConstants.URL)+"?page=all");
@@ -137,7 +154,7 @@ public class CategorySaleListFragment extends Fragment {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mAmericanCarsVO = (AmericanCarsVO) httpResponse.getValueObject();
                 setAdapter(mAmericanCarsVO);
-
+                //mProgressBar.setVisibility(View.GONE);
 
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
             }

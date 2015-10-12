@@ -39,6 +39,7 @@ public interface AppConstants {
     String MENU_ITEM_TYPE_AGENCIES = "menu_item_type_agencies";
     String MENU_ITEM_TYPE_FOR_RENT = "menu_item_type_for_rent";
     String MENU_ITEM_TYPE_MOVABLE_WASH = "menu_item_type_movable_wash";
+    String MENU_ITEM_TYPE_TINTINGCAR = "menu_item_type_tintingcar";
     String MENU_ITEM_TYPE_TECHNICAL_INSPECTION = "menu_item_type_technical_inspection";
     String MENU_ITEM_TYPE_KHIDMAT_SHAMLA = "menu_item_type_khidmat_shamla";
 

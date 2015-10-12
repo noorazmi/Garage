@@ -16,6 +16,7 @@ import com.arsalan.garage.activities.AlwakalatAgencyMenuActivity;
 import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.activities.ForRentActivity;
 import com.arsalan.garage.activities.HelpOnRoadActivity;
+import com.arsalan.garage.activities.KarajatMenuActivity;
 import com.arsalan.garage.activities.KhidmatShamlaActivity;
 import com.arsalan.garage.activities.ScrapMainMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
@@ -85,8 +86,7 @@ public class HomeTabFragment extends Fragment {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
                     Intent intent = null;
                     if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)) {
-                        //intent = new Intent(getActivity(), LevelOneMenuActivity.class);
-                        return;
+                        intent = new Intent(getActivity(), KarajatMenuActivity.class);
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)) {
                         intent = new Intent(getActivity(), HelpOnRoadActivity.class);
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_SCRAP)) {
@@ -116,6 +116,15 @@ public class HomeTabFragment extends Fragment {
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MOVABLE_WASH);
                         bundle.putString(AppConstants.URL, Urls.MOVABLE_WASH);
                         bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.movable_wash));
+                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
+                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        intent.putExtras(bundle);
+
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_TINTINGCAR)){
+                        Bundle bundle = new Bundle();
+                        //bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MOVABLE_WASH);
+                        bundle.putString(AppConstants.URL, Urls.TINTINGCAR);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.tintingcar));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
                         intent = new Intent(getActivity(), CategorySaleListActivity.class);
                         intent.putExtras(bundle);
@@ -172,7 +181,7 @@ public class HomeTabFragment extends Fragment {
 
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل", AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل", AppConstants.MENU_ITEM_TYPE_TINTINGCAR));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, " خدمات شامله" , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.sspeedtrail, "السرعه والاداء العالي"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, "مارين"));
