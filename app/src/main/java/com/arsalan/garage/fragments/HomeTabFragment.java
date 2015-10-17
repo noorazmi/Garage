@@ -146,7 +146,7 @@ public class HomeTabFragment extends Fragment {
 
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA)) {
                         Bundle bundle = new Bundle();
-                        bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
+                        //bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
                         intent = new Intent(getActivity(), KhidmatShamlaActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 

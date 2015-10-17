@@ -8,8 +8,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
-import com.arsalan.garage.models.HomeMenuItem;
+import com.arsalan.garage.fragments.KhidmatShamlaFragment;
 import com.arsalan.garage.utils.AppConstants;
 
 /**
@@ -19,7 +18,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class KhidmatShamlaActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
+public class KhidmatShamlaActivity extends BaseActivity{
 
     private FragmentManager mFragmentManager;
 
@@ -44,18 +43,10 @@ public class KhidmatShamlaActivity extends BaseActivity implements LevelOneMenuA
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_KHIDMAT_SHAMLA);
-        LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
+        KhidmatShamlaFragment fragment = new KhidmatShamlaFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 
     }
 
-    @Override
-    public void onMenuItemClick(HomeMenuItem homeMenuItem, int position) {
-//        if(position == 0){
-//            Intent intent = new Intent(this, HelpCarActivity.class);
-//            startActivity(intent);
-//
-//        }
-    }
 }

@@ -95,6 +95,19 @@ public interface Urls {
     String  HYDRAULICS = "http://kuwaitgarage.com/api/garage/hydraulics";
     String  SHAFTSADMAT = "http://kuwaitgarage.com/api/garage/shaftsadmat";
 
+    // Comprehensive services
+
+
+    String HADADATWAMAJLAT = "http://kuwaitgarage.com/api/generalservices/hadadatwamajlat";
+    String TANKAD = "http://kuwaitgarage.com/api/generalservices/tankad";
+    String DARKATAR = "http://kuwaitgarage.com/api/generalservices/darkatar";
+    String CRANE = "http://kuwaitgarage.com/api/generalservices/crane";
+    String NASAAF = "http://kuwaitgarage.com/api/generalservices/nasaaf";
+    String NAKALAFSH = "http://kuwaitgarage.com/api/generalservices/nakalafsh";
+    String TALEEMQAYADAT = "http://kuwaitgarage.com/api/generalservices/taleemqayadat";
+    String KAFALSHAYARAT = "http://kuwaitgarage.com/api/generalservices/kafalshayarat";
+    String ALSHAHNALBARI = "http://kuwaitgarage.com/api/generalservices/alshahnalbari";
+
 
 
 
