@@ -118,6 +118,7 @@ public interface AppConstants {
 
     String DESCRIPTION = "description";
     String IMAGE_URL = "image_url";
+    String IMAGE_RESOURCE_ID = "image_resource_id";
     String PHONE_NUMBER = "phone_number";
     String ID = "id";
 

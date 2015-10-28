@@ -46,8 +46,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp">
 
-            <com.arsalan.garage.uicomponents.CustomTextView
-                style="@style/TextViewStyle.Regular"
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                style="@style/TextViewStyle.Regular.Arabic"
                 android:id="@+id/textview_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:id="@+id/textview_phone_number"
                 android:layout_below="@+id/textview_title"
                 android:layout_marginTop="15dp"
-                android:textColor="#0000ff"
+                android:textColor="@color/phone_number"
                 android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:drawableLeft="@drawable/ic_phone"
@@ -94,7 +94,7 @@
                 android:id="@+id/textview_phone_number1"
                 android:layout_below="@+id/textview_phone_number"
                 android:layout_marginTop="10dp"
-                android:textColor="#0000ff"
+                android:textColor="@color/phone_number"
                 android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:drawableLeft="@drawable/ic_phone"
@@ -108,7 +108,7 @@
                 android:id="@+id/textview_phone_number2"
                 android:layout_below="@+id/textview_phone_number1"
                 android:layout_marginTop="10dp"
-                android:textColor="#0000ff"
+                android:textColor="@color/phone_number"
                 android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:drawableLeft="@drawable/ic_phone"

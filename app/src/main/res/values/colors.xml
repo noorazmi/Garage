@@ -17,4 +17,6 @@
     <color name="grey_dark">#A9A9A9</color>
     <color name="grey">#808080</color>
     <color name="grey_dim">#696969</color>
+
+    <color name="phone_number">#0000ff</color>
 </resources>

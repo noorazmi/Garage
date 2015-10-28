@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.arsalan.garage.uicomponents.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.arsalan.garage.uicomponents.SquareLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rounded_bg">
 
     <ImageView
+        android:id="@+id/imageview_icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageview_icon"
-        android:src="@drawable/autoservice"
-        android:scaleType="centerInside"
         android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/autoservice"
         />
 
-    <com.arsalan.garage.uicomponents.CustomTextView
-        style="@style/TextViewStyle.Regular"
+    <com.arsalan.garage.uicomponents.CustomTextViewArabic
+        android:id="@+id/textview_title"
+        style="@style/TextViewStyle.Regular.Arabic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="السرعه والاداء العالي"
-        android:id="@+id/textview_title"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        android:textColor="@android:color/black"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="السرعه والاداء العالي"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
 </com.arsalan.garage.uicomponents.SquareLayout>

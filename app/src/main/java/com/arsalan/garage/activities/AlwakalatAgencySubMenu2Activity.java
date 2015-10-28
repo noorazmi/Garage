@@ -7,12 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.AlwakalatAgencySubMenuFragment;
+import com.arsalan.garage.fragments.AlwakalatAgencySubMenu2Fragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class AlwakalatAgencySubMenuActivity extends BaseActivity {
-
-    private FragmentManager mFragmentManager;
+public class AlwakalatAgencySubMenu2Activity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +22,11 @@ public class AlwakalatAgencySubMenuActivity extends BaseActivity {
     }
 
     private void setMenuHolderFragment() {
-        mFragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.EXTRA_TITLE, getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-        AlwakalatAgencySubMenuFragment fragment = new AlwakalatAgencySubMenuFragment();
+        AlwakalatAgencySubMenu2Fragment fragment = new AlwakalatAgencySubMenu2Fragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
     }

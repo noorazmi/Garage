@@ -1,0 +1,39 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.arsalan.garage.fragments.ModelFragment"
+    android:background="@android:color/white"
+    android:padding="10dp">
+
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Model 2016 GMC Canyon"
+        style="@style/TextViewStyle.Regular.English"
+        android:id="@+id/textview_description1"
+        android:textColor="@android:color/black"/>
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Description In the late ‘60s and early ‘70s the Dodge Scat Pack cars ruled the streets. In 2015, they are back to bring a little old-school muscle to modern times."
+        style="@style/TextViewStyle.Regular.English"
+        android:id="@+id/textview_description2"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="MSRP Range: $20,955 - $37,750"
+        style="@style/TextViewStyle.Regular.English"
+        android:id="@+id/textview_description3"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

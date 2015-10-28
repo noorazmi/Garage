@@ -1,0 +1,20 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arsalan.garage.fragments.ContactFragment"
+    android:background="@android:color/white">
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_phone_number"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4498765432"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/phone_number"
+        android:layout_gravity="center"/>
+
+
+</FrameLayout>

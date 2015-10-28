@@ -27,11 +27,51 @@
         <item name="android:textSize">18dp</item>
     </style>
 
-    <style name="TextViewStyle.Regular" parent="TextViewStyle">
+    <style name="TextViewStyle.Regular.Arabic" parent="TextViewStyle">
         <item name="fontName">@string/font_alhambra</item>
     </style>
+
+    <style name="TextViewStyle.Regular.English" parent="TextViewStyle">
+        <item name="fontName">@string/font_calibre_regular</item>
+    </style>
+
+    <style name="TextViewStyle.Calibre.Light.English" parent="TextViewStyle">
+        <item name="fontName">@string/font_calibre_light</item>
+    </style>
+
+    <style name="TextViewStyle.Medium.English" parent="TextViewStyle">
+        <item name="fontName">@string/font_calibre_medium</item>
+    </style>
+
+    <style name="TextViewStyle.SemiBold.English" parent="TextViewStyle">
+        <item name="fontName">@string/font_calibre_semibold</item>
+    </style>
+    <style name="TextViewStyle.Bold.English" parent="TextViewStyle">
+        <item name="fontName">@string/font_calibre_bold</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!--Refer following link to know more about TabLayout customization-->
+    <!--https://guides.codepath.com/android/Google-Play-Style-Tabs-using-TabLayout-->
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabMaxWidth">@dimen/tab_max_width</item>
+        <item name="tabIndicatorColor">@android:color/holo_red_light</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="tabBackground">@drawable/tab_background_selector</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextViewStyle.Bold.English">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_dark</item>
+        <item name="textAllCaps">true</item>
+    </style>
 
 
 </resources>

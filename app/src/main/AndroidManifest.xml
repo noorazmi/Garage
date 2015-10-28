@@ -74,7 +74,7 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name=".activities.AlwakalatAgencySubMenuActivity"
+            android:name=".activities.AlwakalatAgencySubMenu1Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
@@ -89,7 +89,17 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name=".activities.KarajatSubMenuActivity"
+            android:name=".activities.KarajatSubMenu1Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.AlwakalatAgencyDescriptionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".activities.AlwakalatAgencySubMenu2Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>

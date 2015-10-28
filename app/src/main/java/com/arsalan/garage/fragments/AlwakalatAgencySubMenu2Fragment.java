@@ -11,27 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.KarajatSubMenu1Activity;
+import com.arsalan.garage.activities.CategorySaleStaticListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
+import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class KarajatMenuFragment extends Fragment {
+
+public class AlwakalatAgencySubMenu2Fragment extends Fragment {
 
 
-    private static final String TAG = "KarajatFragment";
+    private static final String TAG = "PlaceholderFragment";
     /*Number of columns in the grid view*/
-    private static final int NUM_OF_COLUMNS = 3;
+    private static final int NUM_OF_COLUMNS = 2;
     /*Total number of items in the RecyclerView*/
-    private static final int NUM_OF_ITEMS = 12;
     //private ArrayList<DataModel> mDataModels;
     private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
     private RecyclerView mRecyclerView;
@@ -39,7 +37,7 @@ public class KarajatMenuFragment extends Fragment {
     private int addItemCount = 0;
 
 
-    public KarajatMenuFragment() {
+    public AlwakalatAgencySubMenu2Fragment() {
     }
 
 
@@ -75,11 +73,26 @@ public class KarajatMenuFragment extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                if (position == 0 && mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
-                    HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
-                    Intent intent = new Intent(getActivity(), KarajatSubMenu1Activity.class);
-                    intent.putExtra(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-                    getActivity().startActivity(intent);
+                HomeMenuItem homeMenuItem = null;
+                if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
+                    homeMenuItem = mHomeMenuItemArrayList.get(position);
+                }
+
+                Bundle bundle = new Bundle();
+
+                switch (position) {
+                    case 0:
+                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
+                       // bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
+                        Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
+                        intent.putExtras(bundle);
+                        getActivity().startActivity(intent);
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
                 }
             }
         }));
@@ -90,20 +103,26 @@ public class KarajatMenuFragment extends Fragment {
     }
 
 
+//    private ArrayList<HomeMenuItem> getMenuItems() {
+//
+//        mHomeMenuItemArrayList = new ArrayList<>();
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "المعرض"));
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, "مركز الصيانه"));
+//        return mHomeMenuItemArrayList;
+//    }
+
     private ArrayList<HomeMenuItem> getMenuItems() {
 
-        mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
-        // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الفحيحيل"));
-
+        ArrayList<HomeMenuItem> mHomeMenuItemArrayList = new ArrayList<>();
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc0, "كراجات"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc1, "المساعده على الطريق"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc2, "السكراب"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc3, "تكسي"));
         return mHomeMenuItemArrayList;
     }
 
 }
+
 
 
 

@@ -63,7 +63,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "سيارة توصيل"));
         return menuItemsArrayLis;
     }
 

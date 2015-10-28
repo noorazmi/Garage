@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.CategorySaleStaticListActivity;
+import com.arsalan.garage.activities.AlwakalatAgencySubMenu2Activity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -22,7 +22,7 @@ import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
-public class AlwakalatAgencySubMenuFragment extends Fragment {
+public class AlwakalatAgencySubMenu1Fragment extends Fragment {
 
 
     private static final String TAG = "PlaceholderFragment";
@@ -36,7 +36,7 @@ public class AlwakalatAgencySubMenuFragment extends Fragment {
     private int addItemCount = 0;
 
 
-    public AlwakalatAgencySubMenuFragment() {
+    public AlwakalatAgencySubMenu1Fragment() {
     }
 
 
@@ -84,7 +84,8 @@ public class AlwakalatAgencySubMenuFragment extends Fragment {
                         bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
                         bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
-                        Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
+                        //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
+                        Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu2Activity.class);
                         intent.putExtras(bundle);
                         getActivity().startActivity(intent);
                         break;

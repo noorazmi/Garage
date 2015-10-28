@@ -11,8 +11,15 @@
     <string name="title_activity_level_two_menu">@string/karajat</string>
 
 
-    <!-- font names -->
+    <!-- Font Names Arabic-->
     <string name="font_alhambra">alhambra.ttf</string>
+    <!-- Font Name English-->
+    <string name="font_calibre_light">Calibre-Light.otf</string>
+    <string name="font_calibre_regular">Calibre-Regular.otf</string>
+    <string name="font_calibre_medium">Calibre-Medium.otf</string>
+    <string name="font_calibre_semibold">Calibre-Semibold.otf</string>
+    <string name="font_calibre_bold">Calibre-Bold.otf</string>
+
 
 
     <!--Arabic Text-->
@@ -70,7 +77,7 @@
     <string name="car_brand_honda">هوندا</string>
     <string name="car_brand_infiniti">انفينتي</string>
 
-    <string name="delivery">توصيل قطع</string>
+    <string name="delivery">سيارة توصيل</string>
     <string name="car_delivery">سيارة الولادة</string>
 
     <string name="category_sale">CATEGORY SALE</string>
@@ -91,6 +98,8 @@
     <string name="agencies">الوكالات</string>
     <string name="title_activity_alwakalat_agency_menu">AlwakalatAgencyMenuActivity</string>
     <string name="title_activity_alwakalat_agency_sub_menu">AlwakalatAgencySubMenuActivity</string>
+    <string name="model">Model</string>
+    <string name="contact">Contact</string>
 
 
 </resources>

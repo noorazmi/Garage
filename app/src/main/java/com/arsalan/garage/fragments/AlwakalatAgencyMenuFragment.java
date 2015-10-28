@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.AlwakalatAgencySubMenuActivity;
+import com.arsalan.garage.activities.AlwakalatAgencySubMenu1Activity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -77,7 +77,7 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
             public void onClick(View view, int position) {
                 if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
-                    Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenuActivity.class);
+                    Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu1Activity.class);
                     intent.putExtra(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
                     getActivity().startActivity(intent);
                 }

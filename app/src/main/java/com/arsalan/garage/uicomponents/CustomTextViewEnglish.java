@@ -9,22 +9,18 @@ import android.widget.TextView;
 import com.arsalan.garage.R;
 
 
-/**
- * Created by rajendra on 26/11/14.
- * This is the custom class for font implementation
- */
-public class CustomTextView extends TextView {
-    public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
+public class CustomTextViewEnglish extends TextView {
+    public CustomTextViewEnglish(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs);
     }
 
-    public CustomTextView(Context context, AttributeSet attrs) {
+    public CustomTextViewEnglish(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public CustomTextView(Context context) {
+    public CustomTextViewEnglish(Context context) {
         super(context);
         init(null);
     }
@@ -38,7 +34,7 @@ public class CustomTextView extends TextView {
                 myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);
                 setTypeface(myTypeface);
             } else {
-                myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/alhambra.ttf");
+                myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Calibre-Regular.otf");
                 setTypeface(myTypeface);
             }
             a.recycle();

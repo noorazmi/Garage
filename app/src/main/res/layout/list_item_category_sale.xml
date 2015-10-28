@@ -25,8 +25,8 @@
         android:id="@+id/relativeLayout"
         android:layout_marginLeft="20dp">
 
-        <com.arsalan.garage.uicomponents.CustomTextView
-            style="@style/TextViewStyle.Regular"
+        <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            style="@style/TextViewStyle.Regular.Arabic"
             android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

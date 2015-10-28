@@ -1,5 +1,6 @@
 package com.arsalan.garage.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.AlwakalatAgencyDescriptionActivity;
 import com.arsalan.garage.activities.CategorySaleStaticListActivity;
 import com.arsalan.garage.adapters.CategoryStaticListAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -90,23 +92,18 @@ public class CategorySaleListStaticFragment extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-//                if(AppConstants.SCRAP_DELIVERY.equals(getArguments().getString(AppConstants.SCRAP_TYPE))){
-//                    return;
-//                }
-//                //if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
-//                Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
-//                Bundle bundle = new Bundle();
-//                AmericanCarsVO.Result result = mAmericanCarsVO.getResults().get(position);
-//                bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
-//                bundle.putString(AppConstants.IMAGE_URL, result.getImage());
-//                bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
-//                bundle.putString(AppConstants.ID, result.getItem_id());
-//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-//                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
-//                intent.putExtras(bundle);
-                //Logger.i("UserId", mHomeMenuItemArrayList.get(position).getMenuTitle());
-                //getActivity().startActivity(intent);
-                //}
+
+                Intent intent = new Intent(getActivity(), AlwakalatAgencyDescriptionActivity.class);
+                if(position == 0){
+                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc0);
+                }else if(position == 1){
+                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc1);
+                }else if(position == 2){
+                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc2);
+                }else if(position == 3){
+                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc3);
+                }
+                getActivity().startActivity(intent);
             }
         }));
 

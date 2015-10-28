@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.arsalan.garage.fragments.ModelFragment"
+    android:background="@android:color/white"
+    android:padding="10dp">
+
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_offer1"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OFFER FIRST THEM 70s the Dodge Scat Pack cars ruled the streets. In 2015, they are back to bring a little old-school muscle to modern times"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+</LinearLayout>

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class KarajatSubMenuFragment extends Fragment {
+public class KarajatSubMenu2Fragment extends Fragment {
 
 
     private static final String TAG = "KarajatSubMenuFragment";
@@ -40,7 +40,7 @@ public class KarajatSubMenuFragment extends Fragment {
     private int addItemCount = 0;
 
 
-    public KarajatSubMenuFragment() {
+    public KarajatSubMenu2Fragment() {
     }
 
 
