@@ -3,19 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.arsalan.garage.fragments.ModelFragment"
     android:background="@android:color/white"
-    android:padding="10dp">
+    android:gravity="right"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.arsalan.garage.fragments.ModelFragment">
 
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_offer1"
+        android:id="@+id/textview_description1"
         style="@style/TextViewStyle.Regular.English"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OFFER FIRST THEM 70s the Dodge Scat Pack cars ruled the streets. In 2015, they are back to bring a little old-school muscle to modern times"
+        android:text="Point1"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@color/grey_dim"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_description2"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/list_divider"
+        android:text="Point2"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@color/grey_dim"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_description3"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Point3"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@color/grey_dim"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_description4"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Point4"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@color/grey_dim"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_description5"
+        style="@style/TextViewStyle.Regular.English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Point5"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@color/grey_dim"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewArabic
+        android:id="@+id/textview_description6"
+        style="@style/TextViewStyle.Regular.Arabic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=" لمعرفة المزيد يرجى الإتصال"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
 </LinearLayout>

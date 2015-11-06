@@ -24,7 +24,7 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
     private static final int POSITION_OFFER = 1;
     private static final int POSITION_CONTACT = 2;
     private Context mContex;
-    private int[] mPageTitles = {R.string.model, R.string.offer, R.string.contact};
+    private int[] mPageTitles = {R.string.main_info, R.string.feature, R.string.contact};
 
     public AlwakalatAgencyDescriptionTabViewPagerAdapter(Context context, FragmentManager fragmentManager) {
         super(fragmentManager);
