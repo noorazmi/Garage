@@ -38,6 +38,8 @@
     <string name="mubarakal_kabir">  مبارك الكبير </string>
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
+    <string name="label_add_photo">Add Poster</string>
+
 
     <!--American Car Brands-->
     <string name="car_brand_cadillac">كاديلاك</string>
@@ -83,6 +85,13 @@
     <string name="category_sale">CATEGORY SALE</string>
     <string name="description">DESCRIPTION</string>
     <string name="title_activity_scrap_sub_menu">ScrapSubMenuActivity</string>
+    <string name="label_take_photo">Take a photo</string>
+    <string name="label_camera_roll">Select from camera roll</string>
+    <string name="label_remove_image"><u>Remove Image</u></string>
+
+
+
+
 
     <string name="taxi"> تكسي </string>
     <string name="movable_wash">  غسيل متنقل </string>
@@ -103,6 +112,10 @@
     <string name="main_info">معلومات اساسيه </string>
     <string name="feature">المزايا</string>
     <string name="contact"> اتصل بنا</string>
+    <string name="title">Title</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="price">Price</string>
+    <string name="msg_select_file">Select file to upload</string>
 
 
     <string-array name="car_category">

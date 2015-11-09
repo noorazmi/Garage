@@ -50,6 +50,56 @@
         <item name="fontName">@string/font_calibre_bold</item>
     </style>
 
+    <style name="ButtonStyleNew">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- common style for button -->
+    <style name="ButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- common style for button with red background-->
+    <style name="ButtonStyle.Red" parent="ButtonStyle">
+        <item name="android:background">@drawable/selector_red</item>
+    </style>
+
+    <!-- common style for button with green background-->
+    <style name="ButtonStyle.Green" parent="ButtonStyle">
+        <item name="android:background">@drawable/selector_green</item>
+    </style>
+    <!-- common style for button with  black background-->
+    <style name="ButtonStyle.Black" parent="ButtonStyle">
+        <item name="android:background">@drawable/selector_black</item>
+        <item name="android:padding">@dimen/profile_details_button_padding</item>
+    </style>
+
+    <!--new style for button with  black background-->
+    <style name="ButtonStyleNew.Black" parent="ButtonStyleNew">
+        <item name="android:background">@drawable/selector_black</item>
+        <item name="android:padding">@dimen/profile_details_button_padding</item>
+    </style>
+
+    <style name="ButtonStyle.Retry" parent="ButtonStyle">
+        <item name="android:background">@drawable/selector_retry</item>
+        <item name="android:textColor">@drawable/selector_retry_text_color</item>
+    </style>
+
+    <style name="ButtonStyle.White" parent="ButtonStyle">
+        <item name="android:background">@drawable/btn_red</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 

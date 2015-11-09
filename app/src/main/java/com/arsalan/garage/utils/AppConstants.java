@@ -128,4 +128,11 @@ public interface AppConstants {
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";
     String EXTRA_DESCRIPTION_LANGUAGE_ARABIC = "extra_description_language_arabic";
+
+    String FILE_PATH = "filePath";
+    String EXTRA_IS_REMOVE_IMAGE = "isRemoveEvent";
+    String EXTRA_IS_CAMERA_LAYOUT = "oldlayout";
+    String EXTRA_CAMERAPIC_STATUS = "cameraPic";
+    //String EXTRA_IMAGE_PATH = "imagePath";
+
 }
