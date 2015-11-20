@@ -1,5 +1,6 @@
 package com.arsalan.garage.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +8,8 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,7 +32,7 @@ import java.util.ArrayList;
  */
 public class Utils {
 
-    public static  ArrayList<HomeMenuItem> getRoadHelpScreenMenuItems(Context context){
+    public static ArrayList<HomeMenuItem> getRoadHelpScreenMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayList = new ArrayList<>();
         menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_salmi, AppConstants.SCREEN_ROAD_HELP)));
@@ -47,12 +50,12 @@ public class Utils {
         return menuItemsArrayList;
     }
 
-    public static ArrayList<HomeMenuItem> getKarajatScreenMenuItems(){
+    public static ArrayList<HomeMenuItem> getKarajatScreenMenuItems() {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
-       // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
+        // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
@@ -60,7 +63,7 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapScreenMenuItems(){
+    public static ArrayList<HomeMenuItem> getScrapScreenMenuItems() {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
@@ -70,7 +73,7 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getTaxiMenuItems(){
+    public static ArrayList<HomeMenuItem> getTaxiMenuItems() {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tax1, ""));
@@ -82,7 +85,7 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getKhidmatShamlaMenuItems(){
+    public static ArrayList<HomeMenuItem> getKhidmatShamlaMenuItems() {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser1, "مظلات"));
@@ -97,7 +100,7 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapAmericaMenuItems(){
+    public static ArrayList<HomeMenuItem> getScrapAmericaMenuItems() {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -112,7 +115,7 @@ public class Utils {
     }
 
 
-    public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems(){
+    public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems() {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -131,8 +134,7 @@ public class Utils {
     }
 
 
-
-    public static ArrayList<HomeMenuItem> getScrapAsianMenuItems(){
+    public static ArrayList<HomeMenuItem> getScrapAsianMenuItems() {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -156,7 +158,7 @@ public class Utils {
     }
 
 
-    public static ArrayList<HomeMenuItem> getScrapTawsilKataMenuItems(){
+    public static ArrayList<HomeMenuItem> getScrapTawsilKataMenuItems() {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
@@ -165,7 +167,7 @@ public class Utils {
     }
 
 
-    public static void showToastMessage(Context context ,String msg) {
+    public static void showToastMessage(Context context, String msg) {
         Toast.makeText(context, msg + "", Toast.LENGTH_SHORT).show();
     }
 
@@ -199,8 +201,8 @@ public class Utils {
         return false;
     }
 
-    public static DisplayImageOptions gerDisplayImageOptions(){
-        return  new DisplayImageOptions.Builder()
+    public static DisplayImageOptions gerDisplayImageOptions() {
+        return new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.mipmap.ic_launcher)
                 .showImageForEmptyUri(R.mipmap.ic_launcher)
                 .showImageOnFail(R.mipmap.ic_launcher)
@@ -212,7 +214,7 @@ public class Utils {
     }
 
 
-    public static  void initCall(String phoneNumber, Context context){
+    public static void initCall(String phoneNumber, Context context) {
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:" + phoneNumber));
         context.startActivity(intent);
@@ -228,5 +230,54 @@ public class Utils {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), bmOptions);
         return bitmap;
+    }
+
+    /** Swipable snack bar*/
+    public static void showSnackBar(final View rootLayout, String message) {
+
+        //View rootLayout;
+        //rootLayout = activity.findViewById(android.R.id.content);
+        //rootLayout = view.findViewById(R.id.root_layout);
+        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
+        //snackbar.setAction("Settings", new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
+        //    }
+        //});
+        View snackBarView = snackbar.getView();
+        snackBarView.setBackgroundResource(R.color.black_dark);
+        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+        // tv.setTextColor(Color.WHITE);
+        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
+        // params.gravity = Gravity.CENTER;
+        // snackBarView.setLayoutParams(params);
+
+        snackbar.show();
+
+    }
+
+    /** Non Swipable snackbar*/
+    public static void showSnackBar(final Activity activity, String message) {
+
+        View rootLayout;
+        rootLayout = activity.findViewById(android.R.id.content);
+        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
+        //snackbar.setAction("Settings", new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
+        //    }
+        //});
+        View snackBarView = snackbar.getView();
+        snackBarView.setBackgroundResource(R.color.black_dark);
+        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+        // tv.setTextColor(Color.WHITE);
+        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
+        // params.gravity = Gravity.CENTER;
+        // snackBarView.setLayoutParams(params);
+
+        snackbar.show();
+
     }
 }

@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.utils.AppConstants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,10 +23,11 @@ public class ContactFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_contact, container, false);
+        ((TextView) rootView.findViewById(R.id.textview_phone_number)).setText(getArguments().getString(AppConstants.EXTRA_CONTACT));
+        return rootView;
     }
 
 

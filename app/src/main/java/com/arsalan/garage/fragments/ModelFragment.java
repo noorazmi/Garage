@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.utils.AppConstants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +47,14 @@ public class ModelFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_model, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_model, container, false);
+        ((TextView)rootView.findViewById(R.id.textview_description1)).setText(getArguments().getString(AppConstants.EXTRA_ENGINE));
+        ((TextView)rootView.findViewById(R.id.textview_description2)).setText(getArguments().getString(AppConstants.EXTRA_TRANSMISSION));
+        ((TextView)rootView.findViewById(R.id.textview_description3)).setText(getArguments().getString(AppConstants.EXTRA_PAYMENT));
+        ((TextView)rootView.findViewById(R.id.textview_description3)).setText(getArguments().getString(AppConstants.EXTRA_PRICE));
+        ((TextView)rootView.findViewById(R.id.textview_description3)).setText(getArguments().getString(AppConstants.EXTRA_DESCRIPTION));
+
+        return rootView;
     }
 
 

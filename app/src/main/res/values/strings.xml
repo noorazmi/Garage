@@ -110,12 +110,15 @@
 
 
     <string name="main_info">معلومات اساسيه </string>
+    <string name="warranty"> الكفالة  </string>
     <string name="feature">المزايا</string>
-    <string name="contact"> اتصل بنا</string>
+    <string name="contact_us"> اتصل بنا</string>
     <string name="title">Title</string>
     <string name="mobile_no">Mobile No</string>
     <string name="price">Price</string>
     <string name="msg_select_file">Select file to upload</string>
+    <string name="no_network_connection">Internet connection in not available.</string>
+    <string name="details">المواصفات</string>
 
 
     <string-array name="car_category">

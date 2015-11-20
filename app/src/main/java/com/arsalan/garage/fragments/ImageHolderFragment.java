@@ -3,6 +3,7 @@ package com.arsalan.garage.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.ImageView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.ShowroomCarVo;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,12 +22,12 @@ import com.arsalan.garage.utils.AppConstants;
  */
 public class ImageHolderFragment extends Fragment {
 
-    private int mImageResId;
+    private String  mCarImageUrl;
 
-    public static ImageHolderFragment newInstance(int imageResId) {
+    public static ImageHolderFragment newInstance(ShowroomCarVo.CarImage carImage) {
         ImageHolderFragment fragment = new ImageHolderFragment();
         Bundle args = new Bundle();
-        args.putInt(AppConstants.IMAGE_RESOURCE_ID, imageResId);
+        args.putString(AppConstants.EXTRA_IMAGE_URL, carImage.getPhoto_name());
         fragment.setArguments(args);
         return fragment;
     }
@@ -34,7 +38,7 @@ public class ImageHolderFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mImageResId = getArguments().getInt(AppConstants.IMAGE_RESOURCE_ID);
+            mCarImageUrl = getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
         }
     }
 
@@ -44,7 +48,10 @@ public class ImageHolderFragment extends Fragment {
         //ImageLoader imageLoader = ImageLoader.getInstance();
         //imageLoader.displayImage(mImageResId, (ImageView)rootView.findViewById(R.id.imageview_car));
         ImageView imageView = (ImageView)rootView.findViewById(R.id.imageview_car);
-        imageView.setImageResource(mImageResId);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        if(!TextUtils.isEmpty(mCarImageUrl)){
+            imageLoader.displayImage(mCarImageUrl, imageView, Utils.gerDisplayImageOptions());
+        }
         return rootView;
     }
 

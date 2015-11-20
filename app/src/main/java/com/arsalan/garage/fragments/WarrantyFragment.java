@@ -12,10 +12,10 @@ import com.arsalan.garage.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OfferFragment extends Fragment {
+public class WarrantyFragment extends Fragment {
 
 
-    public OfferFragment() {}
+    public WarrantyFragment() {}
 
 
     @Override

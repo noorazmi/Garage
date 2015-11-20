@@ -123,7 +123,19 @@ public interface AppConstants {
     String ID = "id";
 
     String EXTRA_TITLE = "title";
+    String EXTRA_URL = "url";
+    String EXTRA_CONTACT = "contact";
     String EXTRA_IMAGE_PATH = "imagePath";
+    String EXTRA_CAR_ID = "car_id";
+    String EXTRA_MAKE = "make";
+    String EXTRA_MODEL = "model";
+    String EXTRA_PRICE = "price";
+    String EXTRA_ENGINE = "engine";
+    String EXTRA_TRANSMISSION = "transmission";
+    String EXTRA_PAYMENT = "payment";
+    String EXTRA_DESCRIPTION = "description";
+    String EXTRA_WORKING_HOURS = "working_hours";
+    String EXTRA_IMAGE_URL = "image_url";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";

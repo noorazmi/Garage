@@ -115,4 +115,12 @@ public interface Urls {
     String TINTINGCAR = "http://kuwaitgarage.com/api/tintingcar";
 
 
+    String  HOUSE_DISPLAY_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/house-display";
+    String  HOUSE_DISPLAY_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/house-display";
+    String  HOUSE_DISPLAY_ACURA = "http://kuwaitgarage.com/api/showroom/acura/house-display";
+
+    String  SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
+
+
+
 }

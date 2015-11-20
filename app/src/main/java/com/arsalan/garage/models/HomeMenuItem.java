@@ -1,7 +1,5 @@
 package com.arsalan.garage.models;
 
-import com.arsalan.garage.utils.AppConstants;
-
 /**
  * <p/>
  * Project: <b>Loud Shout</b><br/>
@@ -14,6 +12,7 @@ public class HomeMenuItem {
     private int imageId;
     private String menuTitle;
     private String menuType;
+    private String url;
 
 
     public HomeMenuItem(int imageId, String menuTitle, String menuType) {
@@ -22,7 +21,15 @@ public class HomeMenuItem {
         this.menuType = menuType;
     }
     public HomeMenuItem(int imageId, String menuTitle) {
-        this(imageId, menuTitle, AppConstants.SCREEN_TYPE);
+        this.imageId = imageId;
+        this.menuTitle = menuTitle;
+    }
+
+    public HomeMenuItem(int imageId, String menuTitle, String menuType, String url) {
+        this.imageId = imageId;
+        this.menuTitle = menuTitle;
+        this.menuType = menuType;
+        this.url = url;
     }
 
     public int getImageId() {
@@ -37,4 +44,7 @@ public class HomeMenuItem {
         return menuType;
     }
 
+    public String getUrl() {
+        return url;
+    }
 }

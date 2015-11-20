@@ -14,9 +14,9 @@
         android:src="@drawable/autoservice"
         />
 
-    <com.arsalan.garage.uicomponents.CustomTextViewArabic
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
         android:id="@+id/textview_title"
-        style="@style/TextViewStyle.Regular.Arabic"
+        style="@style/TextViewStyle.Regular.English"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

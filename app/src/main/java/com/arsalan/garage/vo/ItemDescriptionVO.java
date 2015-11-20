@@ -9,7 +9,7 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ItemDescriptionVO extends BaseVO implements ValueObject {
+public class ItemDescriptionVo extends BaseVO implements ValueObject {
     private Results results;
 
 

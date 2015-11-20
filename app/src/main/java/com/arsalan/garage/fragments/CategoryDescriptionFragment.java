@@ -20,7 +20,8 @@ import com.arsalan.garage.activities.ImageViewerActivity;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
-import com.arsalan.garage.vo.ItemDescriptionVO;
+import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.ItemDescriptionVo;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import networking.HttpConstants;
@@ -37,8 +38,8 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     private TextView mTextViewPhone1;
     private TextView mTextViewPhone2;
     private ImageView mImageViewItem;
-    private String TAG = "CategoryDescriptionActivityFragment";
-    private ItemDescriptionVO mItemDescriptionVO;
+    private String TAG = "CategoryDescriptionFragment";
+    private ItemDescriptionVo mItemDescriptionVO;
     private String mDescriptionLanguage;
 
     public CategoryDescriptionFragment() {
@@ -66,7 +67,11 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         mTextViewPhone1.setOnClickListener(this);
         mTextViewPhone2.setOnClickListener(this);
         mImageViewItem.setOnClickListener(this);
-        performGET();
+        if(Utils.isNetworkAvailable(getActivity())){
+            performGET();
+        }else {
+            Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
+        }
         return rootView;
     }
 
@@ -88,13 +93,13 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.URL_ITEM_DESCRIPTION_BASE+getArguments().getString(AppConstants.ID)));
         httpRequest.setUrl(Urls.URL_ITEM_DESCRIPTION_BASE+getArguments().getString(AppConstants.ID));
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(ItemDescriptionVO.class.getName());
+        httpRequest.setValueObjectFullyQualifiedName(ItemDescriptionVo.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
         loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mItemDescriptionVO = (ItemDescriptionVO) httpResponse.getValueObject();
+                mItemDescriptionVO = (ItemDescriptionVo) httpResponse.getValueObject();
                 setValuesInUI(mItemDescriptionVO);
 
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
@@ -104,7 +109,7 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     }
 
 
-    private void setValuesInUI(ItemDescriptionVO valueObject){
+    private void setValuesInUI(ItemDescriptionVo valueObject){
         if(valueObject == null){
             return;
         }

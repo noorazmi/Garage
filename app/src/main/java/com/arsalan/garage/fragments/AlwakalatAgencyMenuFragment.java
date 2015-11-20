@@ -18,6 +18,7 @@ import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
+import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class AlwakalatAgencyMenuFragment extends Fragment {
 
 
-    private static final String TAG = "PlaceholderFragment";
+    private static final String TAG = "AlwakalatAgencyMenuFragment";
     /*Number of columns in the grid view*/
     private static final int NUM_OF_COLUMNS = 3;
     /*Total number of items in the RecyclerView*/
@@ -79,6 +80,7 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
                     Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu1Activity.class);
                     intent.putExtra(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                    intent.putExtra(AppConstants.EXTRA_URL, homeMenuItem.getUrl());
                     getActivity().startActivity(intent);
                 }
             }
@@ -93,7 +95,9 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك", null, Urls.HOUSE_DISPLAY_CADILLAC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.acura, "اكورا", null, Urls.HOUSE_DISPLAY_ACURA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volvo, "فولفو", null, Urls.HOUSE_DISPLAY_VOLVO));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chryslerdodge2, "اوربي"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc4, "جمس"));

@@ -1,14 +1,18 @@
 package com.arsalan.garage.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.ContactFragment;
+import com.arsalan.garage.fragments.FeaturesFragment;
 import com.arsalan.garage.fragments.ModelFragment;
-import com.arsalan.garage.fragments.OfferFragment;
+import com.arsalan.garage.fragments.WarrantyFragment;
+import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.vo.ShowroomCarVo;
 
 /**
  * <p/>
@@ -19,31 +23,48 @@ import com.arsalan.garage.fragments.OfferFragment;
  */
 public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public static final int PAGE_COUNT = 3;
-    private static final int POSITION_MODEL = 0;
-    private static final int POSITION_OFFER = 1;
-    private static final int POSITION_CONTACT = 2;
+    public static final int PAGE_COUNT = 4;
+    private static final int POSITION_CONTACT_US = 0;
+    private static final int POSITION_WARRANTY = 1;
+    private static final int POSITION_FEATURES = 2;
+    private static final int POSITION_DETAILS = 3;
     private Context mContex;
-    private int[] mPageTitles = {R.string.main_info, R.string.feature, R.string.contact};
+    private int[] mPageTitles = { R.string.contact_us, R.string.warranty, R.string.feature, R.string.details};
+    private ShowroomCarVo mShowroomCarVo;
 
-    public AlwakalatAgencyDescriptionTabViewPagerAdapter(Context context, FragmentManager fragmentManager) {
+    public AlwakalatAgencyDescriptionTabViewPagerAdapter(Context context, FragmentManager fragmentManager, ShowroomCarVo showroomCarVo) {
         super(fragmentManager);
         this.mContex = context;
+        this.mShowroomCarVo = showroomCarVo;
     }
 
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
+        Bundle bundle = new Bundle();
         switch (position) {
 
-            case POSITION_MODEL:
-                fragment = new ModelFragment();
-                break;
-            case POSITION_OFFER:
-                fragment = new OfferFragment();
-                break;
-            case POSITION_CONTACT:
+            case POSITION_CONTACT_US:
                 fragment = new ContactFragment();
+                bundle.putString(AppConstants.EXTRA_CONTACT, mShowroomCarVo.getResults().getContact());
+                fragment.setArguments(bundle);
+                break;
+            case POSITION_WARRANTY:
+                fragment = new WarrantyFragment();
+                break;
+            case POSITION_FEATURES:
+                fragment = new FeaturesFragment();
+                bundle.putString(AppConstants.EXTRA_CONTACT, mShowroomCarVo.getResults().getContact());
+                fragment.setArguments(bundle);
+                break;
+            case POSITION_DETAILS:
+                fragment = new ModelFragment();
+                bundle.putString(AppConstants.EXTRA_ENGINE, mShowroomCarVo.getResults().getEngine());
+                bundle.putString(AppConstants.EXTRA_TRANSMISSION, mShowroomCarVo.getResults().getTransmission());
+                bundle.putString(AppConstants.EXTRA_PAYMENT, mShowroomCarVo.getResults().getPayment());
+                bundle.putString(AppConstants.EXTRA_PRICE, mShowroomCarVo.getResults().getPrice());
+                bundle.putString(AppConstants.EXTRA_DESCRIPTION, mShowroomCarVo.getResults().getDescription());
+                fragment.setArguments(bundle);
                 break;
             default:
                 break;

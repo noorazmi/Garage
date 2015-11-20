@@ -34,8 +34,9 @@ public class AlwakalatAgencyDescriptionActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putString(AppConstants.EXTRA_TITLE, getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-        bundle.putInt(AppConstants.IMAGE_URL, getIntent().getIntExtra(AppConstants.IMAGE_URL, 0));
+        //bundle.putString(AppConstants.EXTRA_TITLE, getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+        //bundle.putInt(AppConstants.IMAGE_URL, getIntent().getIntExtra(AppConstants.IMAGE_URL, 0));
+        bundle.putString(AppConstants.EXTRA_CAR_ID, getIntent().getStringExtra(AppConstants.EXTRA_CAR_ID));
         AlwakalatAgencyDescriptionFragment fragment = new AlwakalatAgencyDescriptionFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

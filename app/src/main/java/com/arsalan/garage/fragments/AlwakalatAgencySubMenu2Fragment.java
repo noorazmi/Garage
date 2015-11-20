@@ -6,21 +6,32 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.CategorySaleStaticListActivity;
-import com.arsalan.garage.adapters.RecyclerViewAdapter;
+import com.arsalan.garage.activities.AlwakalatAgencyDescriptionActivity;
+import com.arsalan.garage.adapters.AlwakalatAgencySubMenu2Adapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
+import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
+import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.HouseDisplayVo;
 
 import java.util.ArrayList;
+
+import networking.HttpConstants;
+import networking.listeners.OnLoadCompleteListener;
+import networking.loader.LoaderHandler;
+import networking.models.HTTPModel;
+import networking.models.HTTPRequest;
+import networking.models.HTTPResponse;
 
 
 public class AlwakalatAgencySubMenu2Fragment extends Fragment {
@@ -33,8 +44,9 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
     //private ArrayList<DataModel> mDataModels;
     private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
     private RecyclerView mRecyclerView;
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private AlwakalatAgencySubMenu2Adapter recyclerViewAdapter;
     private int addItemCount = 0;
+    private HouseDisplayVo mHouseDisplayVo;
 
 
     public AlwakalatAgencySubMenu2Fragment() {
@@ -56,7 +68,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
         //mDataModels = getDataModelList();
 
-        recyclerViewAdapter = new RecyclerViewAdapter(getMenuItems());
+        //recyclerViewAdapter = new RecyclerViewAdapter(getMenuItems());
 
         /*Third party ItemDecoration found from https://gist.github.com/alexfu/0f464fc3742f134ccd1e*/
         /// RecyclerView.ItemDecoration verticalDivider  = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
@@ -68,7 +80,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         // this call is actually only necessary with custom ItemAnimators
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mRecyclerView.setAdapter(recyclerViewAdapter);
+        //mRecyclerView.setAdapter(recyclerViewAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
@@ -80,22 +92,44 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
 
                 Bundle bundle = new Bundle();
 
-                switch (position) {
-                    case 0:
-                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                       // bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
-                        Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-                        intent.putExtras(bundle);
-                        getActivity().startActivity(intent);
-                        break;
-                    case 1:
-                        break;
-                    default:
-                        break;
-                }
+//                switch (position) {
+//                    case 0:
+//                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
+//                       // bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+//                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
+//                        Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
+//                        intent.putExtras(bundle);
+//                        getActivity().startActivity(intent);
+//                        break;
+//                    case 1:
+//                        break;
+//                    default:
+//                        break;
+//                }
+
+
+                Intent intent = new Intent(getActivity(), AlwakalatAgencyDescriptionActivity.class);
+//                if(position == 0){
+//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc0);
+//                }else if(position == 1){
+//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc1);
+//                }else if(position == 2){
+//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc2);
+//                }else if(position == 3){
+//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc3);
+//                }
+
+                HouseDisplayVo.CarModel carModel = mHouseDisplayVo.getResults().get(position);
+                intent.putExtra(AppConstants.EXTRA_CAR_ID, carModel.getShowroom_car_id());
+                getActivity().startActivity(intent);
             }
         }));
+
+        if(Utils.isNetworkAvailable(getActivity())){
+            performGET();
+        }else {
+            Utils.showSnackBar(rootView.findViewById(R.id.root_layout), getString(R.string.no_network_connection));
+        }
 
         return rootView;
 
@@ -103,23 +137,47 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
     }
 
 
+    private void performGET(){
+        HTTPRequest httpRequest = new HTTPRequest();
+        httpRequest.setShowProgressDialog(true);
+        //Bundle bundle = getArguments();
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.URL_ITEM_DESCRIPTION_BASE + getArguments().getString(AppConstants.ID)));
+        httpRequest.setUrl(getArguments().getString(AppConstants.EXTRA_URL));
+        httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
+        httpRequest.setValueObjectFullyQualifiedName(HouseDisplayVo.class.getName());
+        LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
+        loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+            @Override
+            public void onLoadComplete(HTTPModel httpModel) {
+                HTTPResponse httpResponse = (HTTPResponse) httpModel;
+                mHouseDisplayVo = (HouseDisplayVo) httpResponse.getValueObject();
+                //setValuesInUI(mItemDescriptionVO);
+                setAdapter();
+
+                Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
+            }
+        });
+        loaderHandler.loadData();
+    }
+
+    private void setAdapter(){
+        if(mHouseDisplayVo == null){
+            return;
+        }
+        ArrayList<HouseDisplayVo.CarModel> carModelArrayList = mHouseDisplayVo.getResults();
+        recyclerViewAdapter = new AlwakalatAgencySubMenu2Adapter(carModelArrayList);
+        mRecyclerView.setAdapter(recyclerViewAdapter);
+    }
+
 //    private ArrayList<HomeMenuItem> getMenuItems() {
 //
-//        mHomeMenuItemArrayList = new ArrayList<>();
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "المعرض"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, "مركز الصيانه"));
+//        ArrayList<HomeMenuItem> mHomeMenuItemArrayList = new ArrayList<>();
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc0, "كراجات"));
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc1, "المساعده على الطريق"));
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc2, "السكراب"));
+//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc3, "تكسي"));
 //        return mHomeMenuItemArrayList;
 //    }
-
-    private ArrayList<HomeMenuItem> getMenuItems() {
-
-        ArrayList<HomeMenuItem> mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc0, "كراجات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc1, "المساعده على الطريق"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc2, "السكراب"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc3, "تكسي"));
-        return mHomeMenuItemArrayList;
-    }
 
 }
 

@@ -83,6 +83,7 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
                     case 0:
                         bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
                         bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        bundle.putString(AppConstants.EXTRA_URL, getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
                         //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
                         Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu2Activity.class);

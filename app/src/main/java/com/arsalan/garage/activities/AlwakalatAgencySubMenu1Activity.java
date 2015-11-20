@@ -28,6 +28,7 @@ public class AlwakalatAgencySubMenu1Activity extends BaseActivity {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.EXTRA_TITLE, getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+        bundle.putString(AppConstants.EXTRA_URL, getIntent().getStringExtra(AppConstants.EXTRA_URL));
         AlwakalatAgencySubMenu1Fragment fragment = new AlwakalatAgencySubMenu1Fragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
