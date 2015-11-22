@@ -131,7 +131,9 @@ public interface AppConstants {
     String EXTRA_MODEL = "model";
     String EXTRA_PRICE = "price";
     String EXTRA_ENGINE = "engine";
+    String EXTRA_YEAR = "year";
     String EXTRA_TRANSMISSION = "transmission";
+    String EXTRA_WHEEL_DRIVE = "wheel_drive";
     String EXTRA_PAYMENT = "payment";
     String EXTRA_DESCRIPTION = "description";
     String EXTRA_WORKING_HOURS = "working_hours";

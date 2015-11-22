@@ -1,0 +1,234 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arsalan.garage.fragments.DetailsFragment"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_year_title"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/year"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"/>
+
+            <include
+                android:id="@+id/textview_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/textview_semicolon"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textview_year_title"
+                android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
+
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_year"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/year"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/textview_colon"
+                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_engine_title"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/engine"
+                android:textColor="@android:color/black"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"/>
+
+            <include
+                android:id="@+id/textview_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/textview_semicolon"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textview_engine_title"
+                android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
+
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_engine"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/engine"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/textview_colon"
+                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_transmission_title"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"/>
+
+            <include
+                android:id="@+id/textview_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/textview_semicolon"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textview_transmission_title"
+                android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
+
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_transmission"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/textview_colon"
+                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_wheel_drive_title"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/wheel_drive"
+                android:textColor="@android:color/black"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"/>
+
+            <include
+                android:id="@+id/textview_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/textview_semicolon"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textview_wheel_drive_title"
+                android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
+
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_wheel_drive"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/wheel_drive"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/textview_colon"
+                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_price_title"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/price_arb"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"/>
+
+            <include
+                android:id="@+id/textview_colon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/textview_semicolon"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/textview_price_title"
+                android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
+
+            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+                android:id="@+id/textview_price"
+                style="@style/TextViewStyle.Regular.Arabic"
+                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_height="wrap_content"
+                android:text="@string/price_arb"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/textview_colon"
+                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"/>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

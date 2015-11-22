@@ -1,0 +1,39 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <com.arsalan.garage.uicomponents.CustomTextViewArabic
+        android:id="@+id/textview_year_title"
+        style="@style/TextViewStyle.Regular.Arabic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/dot"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"/>
+
+
+    <com.arsalan.garage.uicomponents.CustomTextViewArabic
+        android:id="@+id/textview_year"
+        style="@style/TextViewStyle.Regular.Arabic"
+        android:layout_width="@dimen/gr_car_info_text_width"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/gr_desc_right_margin"
+        android:layout_toLeftOf="@+id/textview_year_title"
+        android:text="@string/year"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@drawable/divider"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

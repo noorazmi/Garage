@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.ContactFragment;
 import com.arsalan.garage.fragments.FeaturesFragment;
-import com.arsalan.garage.fragments.ModelFragment;
+import com.arsalan.garage.fragments.DetailsFragment;
 import com.arsalan.garage.fragments.WarrantyFragment;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.vo.ShowroomCarVo;
@@ -58,12 +58,14 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
                 fragment.setArguments(bundle);
                 break;
             case POSITION_DETAILS:
-                fragment = new ModelFragment();
+                fragment = new DetailsFragment();
+                bundle.putString(AppConstants.EXTRA_YEAR, mShowroomCarVo.getResults().getYear());
                 bundle.putString(AppConstants.EXTRA_ENGINE, mShowroomCarVo.getResults().getEngine());
                 bundle.putString(AppConstants.EXTRA_TRANSMISSION, mShowroomCarVo.getResults().getTransmission());
-                bundle.putString(AppConstants.EXTRA_PAYMENT, mShowroomCarVo.getResults().getPayment());
+                //bundle.putString(AppConstants.EXTRA_WHEEL_DRIVE, mShowroomCarVo.getResults().getWheelDrive());
+                //bundle.putString(AppConstants.EXTRA_PAYMENT, mShowroomCarVo.getResults().getPayment());
                 bundle.putString(AppConstants.EXTRA_PRICE, mShowroomCarVo.getResults().getPrice());
-                bundle.putString(AppConstants.EXTRA_DESCRIPTION, mShowroomCarVo.getResults().getDescription());
+                //bundle.putString(AppConstants.EXTRA_DESCRIPTION, mShowroomCarVo.getResults().getDescription());
                 fragment.setArguments(bundle);
                 break;
             default:
