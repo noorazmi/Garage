@@ -10,9 +10,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:id="@+id/scroll_view_container">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:id="@+id/scroll_view_container">
+        </LinearLayout>
+
+        <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            android:id="@+id/textview_year_title"
+            style="@style/TextViewStyle.Regular.Arabic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/for_more_information_please_call"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider"
+            android:background="@drawable/divider"
+            android:layout_alignParentBottom="true"/>
+
     </LinearLayout>
+
 
 </ScrollView>

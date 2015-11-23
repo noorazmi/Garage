@@ -125,6 +125,8 @@
     <string name="wheel_drive">دفع العجلات</string>
     <string name="price_arb">السعر</string>
     <string name="dot">•</string>
+    <string name="for_more_information_please_call"> لمعرفة المزيد يرجى الإتصال </string>
+
 
 
     <string-array name="car_category">

@@ -36,9 +36,12 @@ public class FeaturesFragment extends Fragment {
     }
 
     private void populateView(){
-        LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.layout_car_des_item, null);
-        mLinearLayoutContainer.addView(view);
+        for (int i = 0; i < 6 ; i++) {
+            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = layoutInflater.inflate(R.layout.layout_car_des_item, null);
+            mLinearLayoutContainer.addView(view);
+        }
+
 
 
     }

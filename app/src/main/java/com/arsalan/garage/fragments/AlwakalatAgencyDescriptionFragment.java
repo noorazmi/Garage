@@ -72,6 +72,7 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         AlwakalatAgencyDescriptionTabViewPagerAdapter seasonsFragmentStatePagerAdapter = new AlwakalatAgencyDescriptionTabViewPagerAdapter(getActivity(), getChildFragmentManager(), mShowroomCarVo);
         mViewpagerDescription.setAdapter(seasonsFragmentStatePagerAdapter);
         mTablayoutDescription.setupWithViewPager(mViewpagerDescription);
+        mViewpagerDescription.setCurrentItem(3);
     }
 
     private void performGET(){
