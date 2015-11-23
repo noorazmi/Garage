@@ -1,16 +1,20 @@
 package com.arsalan.garage.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.FullImageActivity;
 import com.arsalan.garage.adapters.AlwakalatAgencyDescriptionCarsViewPagerAdapter;
 import com.arsalan.garage.adapters.AlwakalatAgencyDescriptionTabViewPagerAdapter;
 import com.arsalan.garage.utils.AppConstants;
@@ -39,9 +43,10 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
     private ViewPager mViewpagerDescription;
     private TabLayout mTablayoutDescription;
     private ViewPager mViewPagerCarImages;
-    private int[] mCarImagesResIds;
     private String TAG = "AlwakalatAgencyDescriptionFragment";
     private ShowroomCarVo mShowroomCarVo;
+    private GestureDetector mGestureDetector;
+    private int mCurrentCarIndex = 0;
 
     public AlwakalatAgencyDescriptionFragment() {
     }
@@ -51,10 +56,15 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_alwakalat_agency_description, container, false);
         mViewPagerCarImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
+        mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
+        mViewPagerCarImages.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                mGestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
         mViewpagerDescription = (ViewPager) rootView.findViewById(R.id.viewpager_description);
         mTablayoutDescription = (TabLayout) rootView.findViewById(R.id.tablayout_description);
-        mCarImagesResIds = new int[1];
-        mCarImagesResIds[0] = getArguments().getInt(AppConstants.IMAGE_URL);
         if(Utils.isNetworkAvailable(getActivity())){
             performGET();
         }else {
@@ -100,4 +110,21 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         loaderHandler.loadData();
     }
 
+
+    GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            openFullImageActivity();
+            return super.onSingleTapConfirmed(e);
+        }
+    };
+
+
+    private void openFullImageActivity(){
+        Intent intent = new Intent(getActivity(), FullImageActivity.class);
+        intent.putExtra(AppConstants.EXTRA_CAR_ID, getArguments().getString(AppConstants.EXTRA_CAR_ID));
+        intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerCarImages.getCurrentItem());
+        startActivity(intent);
+    }
 }

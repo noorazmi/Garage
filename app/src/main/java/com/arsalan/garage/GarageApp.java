@@ -2,8 +2,6 @@ package com.arsalan.garage;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Build;
-import android.os.StrictMode;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
@@ -35,10 +33,10 @@ public class GarageApp extends Application {
     public void onCreate() {
         super.onCreate();
         sGarageApp = this;
-        if (FlavorConstants.BUILD_TYPE == AppConstants.BUILD_TYPE_DEVELOPMENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
-        }
+//        if (FlavorConstants.BUILD_TYPE == AppConstants.BUILD_TYPE_DEVELOPMENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+//            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
+//            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
+//        }
         initImageLoader(this);
         initLoaderHandler(this);
 

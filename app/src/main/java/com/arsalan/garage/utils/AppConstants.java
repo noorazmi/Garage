@@ -127,6 +127,7 @@ public interface AppConstants {
     String EXTRA_CONTACT = "contact";
     String EXTRA_IMAGE_PATH = "imagePath";
     String EXTRA_CAR_ID = "car_id";
+    String EXTRA_INDEX = "index";
     String EXTRA_MAKE = "make";
     String EXTRA_MODEL = "model";
     String EXTRA_PRICE = "price";
