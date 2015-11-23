@@ -11,5 +11,5 @@
         android:layout_height="300dp"
         android:id="@+id/imageview_car"
         android:src="@drawable/ic_placeholder_item"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitCenter"/>
 </FrameLayout>

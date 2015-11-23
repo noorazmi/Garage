@@ -26,7 +26,7 @@ public class FullImageActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.EXTRA_CAR_ID, getIntent().getStringExtra(AppConstants.EXTRA_CAR_ID));
-        bundle.putString(AppConstants.EXTRA_INDEX, getIntent().getStringExtra(AppConstants.EXTRA_INDEX));
+        bundle.putInt(AppConstants.EXTRA_INDEX, getIntent().getIntExtra(AppConstants.EXTRA_INDEX, 0));
         FullImageFragment fragment = new FullImageFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

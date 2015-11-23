@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
@@ -41,6 +42,13 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
         HouseDisplayVo.CarModel model = mHomeMenuItemArrayList.get(position);
         holder.title.setText(model.getModel());
         ImageLoader imageLoader = ImageLoader.getInstance();
+        holder.imgView.getLayoutParams().width = 350;
+        holder.imgView.getLayoutParams().height = 213;
+
+        RelativeLayout.LayoutParams layoutParams =(RelativeLayout.LayoutParams)holder.imgView.getLayoutParams();
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+        holder.imgView.setLayoutParams(layoutParams);
+
         if(!TextUtils.isEmpty(model.getImage())){
             imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
         }

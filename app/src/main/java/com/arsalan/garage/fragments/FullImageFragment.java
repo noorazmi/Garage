@@ -51,6 +51,7 @@ public class FullImageFragment extends Fragment {
         ArrayList<ShowroomCarVo.CarImage> carImageArrayList = mShowroomCarVo.getResults().getImages();
         ZoomImageViewPagerAdapter adapter = new ZoomImageViewPagerAdapter(getFragmentManager(), carImageArrayList);
         mViewPagerCarImages.setAdapter(adapter);
+        mViewPagerCarImages.setCurrentItem(getArguments().getInt(AppConstants.EXTRA_INDEX));
     }
 
     private void performGET() {
