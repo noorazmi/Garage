@@ -88,7 +88,7 @@
     <string name="label_take_photo">Take a photo</string>
     <string name="label_camera_roll">Select from camera roll</string>
     <string name="label_remove_image"><u>Remove Image</u></string>
-
+    <string name="message_app_exit">Press again to close the app</string>
 
 
 

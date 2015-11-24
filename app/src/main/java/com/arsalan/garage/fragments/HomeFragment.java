@@ -14,11 +14,8 @@ import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.adapters.HomeFragmentStatePagerAdapter;
+import com.arsalan.garage.utils.Utils;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
 
     private ViewPager mViewPager;
@@ -26,14 +23,9 @@ public class HomeFragment extends Fragment {
     private boolean isAboutFTLFragmentActive = true;
     private int[] mPageTitles = {R.string.home, R.string.post_add, R.string.setting};
     private TextView[] mTabTextViews;
+    private int backPressedCount = 0;
 
-    public HomeFragment() {}
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        Bundle bundle = getArguments();
-        if (bundle != null) {}
-        super.onCreate(savedInstanceState);
+    public HomeFragment() {
     }
 
     @Override
@@ -68,12 +60,12 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
-    private void setTabs(){
+    private void setTabs() {
         int tabCount = mTabLayout.getTabCount();
         mTabTextViews = new TextView[tabCount];
-        for (int i = 0; i < tabCount ; i++) {
+        for (int i = 0; i < tabCount; i++) {
             TextView tv = getTextView(mPageTitles[i], android.R.color.darker_gray);
-            if(i == 0){
+            if (i == 0) {
                 tv.setTextColor(getResources().getColor(android.R.color.black));
             }
             mTabLayout.getTabAt(i).setCustomView(tv);
@@ -81,7 +73,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private TextView getTextView(int title, int color){
+    private TextView getTextView(int title, int color) {
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TextView tv = (TextView) layoutInflater.inflate(R.layout.textview_tab, null);
         tv.setText(getString(title));
@@ -89,8 +81,8 @@ public class HomeFragment extends Fragment {
         return tv;
     }
 
-    private void resetTitleColor(){
-        for (int i = 0; i < mTabTextViews.length ; i++) {
+    private void resetTitleColor() {
+        for (int i = 0; i < mTabTextViews.length; i++) {
             mTabTextViews[i].setTextColor(getResources().getColor(R.color.grey));
         }
     }
@@ -104,14 +96,23 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (!isAboutFTLFragmentActive) {
-                        mTabLayout.setScrollPosition(0, 0, true);
+                    if (mViewPager.getCurrentItem() != 0) {
                         mViewPager.setCurrentItem(0, true);
+                        return true;
+                    } else if (backPressedCount == 0) {
+                        Utils.showToastMessage(getActivity(), getString(R.string.message_app_exit));
+                        backPressedCount++;
+                        final Runnable r = new Runnable() {
+                            public void run() {
+                                backPressedCount = 0;
+                            }
+                        };
+                        android.os.Handler handler = new android.os.Handler();
+                        handler.postDelayed(r, 4000);
                         return true;
                     } else {
                         return false;
                     }
-
                 } else {
                     return false;
                 }

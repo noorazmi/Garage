@@ -2,6 +2,7 @@ package com.arsalan.garage.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -82,8 +83,15 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         AlwakalatAgencyDescriptionTabViewPagerAdapter seasonsFragmentStatePagerAdapter = new AlwakalatAgencyDescriptionTabViewPagerAdapter(getActivity(), getChildFragmentManager(), mShowroomCarVo);
         mViewpagerDescription.setAdapter(seasonsFragmentStatePagerAdapter);
         mTablayoutDescription.setupWithViewPager(mViewpagerDescription);
-        mViewpagerDescription.setCurrentItem(3);
+        new Handler().postAtTime(new Runnable() {
+            @Override
+            public void run() {
+                mViewpagerDescription.setCurrentItem(3, false);
+                //mTablayoutDescription.getTabAt(3).select();
+            }
+        }, 500);
     }
+
 
     private void performGET(){
         HTTPRequest httpRequest = new HTTPRequest();
@@ -101,17 +109,13 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
                 mShowroomCarVo = (ShowroomCarVo) httpResponse.getValueObject();
                 setPagerAdapter();
                 setDecriptionPagerAdapter();
-                //setValuesInUI(mItemDescriptionVO);
-                //setAdapter();
-
-                //Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
             }
         });
         loaderHandler.loadData();
     }
 
 
-    GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
+    private GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
 
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {

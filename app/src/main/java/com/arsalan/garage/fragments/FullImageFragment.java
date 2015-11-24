@@ -72,4 +72,15 @@ public class FullImageFragment extends Fragment {
         });
         loaderHandler.loadData();
     }
+
+//    @Override
+//    public void onResume() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                getActivity().getActionBar().hide();
+//            }
+//        }, 2000);
+//        super.onResume();
+//    }
 }
