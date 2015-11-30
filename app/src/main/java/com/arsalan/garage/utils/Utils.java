@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -232,7 +233,9 @@ public class Utils {
         return bitmap;
     }
 
-    /** Swipable snack bar*/
+    /**
+     * Swipable snack bar
+     */
     public static void showSnackBar(final View rootLayout, String message) {
 
         //View rootLayout;
@@ -257,7 +260,9 @@ public class Utils {
 
     }
 
-    /** Non Swipable snackbar*/
+    /**
+     * Non Swipable snackbar
+     */
     public static void showSnackBar(final Activity activity, String message) {
 
         View rootLayout;
@@ -279,5 +284,9 @@ public class Utils {
 
         snackbar.show();
 
+    }
+
+    public static String getUDID(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
     }
 }

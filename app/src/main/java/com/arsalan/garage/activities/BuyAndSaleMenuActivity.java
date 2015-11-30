@@ -1,6 +1,5 @@
 package com.arsalan.garage.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +8,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.fragments.BuyAndSaleMenuFragment;
 import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
@@ -21,7 +21,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ForRentActivity  extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
+public class BuyAndSaleMenuActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
 
     private FragmentManager mFragmentManager;
 
@@ -47,7 +47,7 @@ public class ForRentActivity  extends BaseActivity implements LevelOneMenuActivi
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
-        LevelOneMenuActivityFragment fragment = new LevelOneMenuActivityFragment();
+        BuyAndSaleMenuFragment fragment = new BuyAndSaleMenuFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 

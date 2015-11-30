@@ -103,7 +103,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/edittext_title"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/edit_text_border"
@@ -197,7 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Post Ad"
-            android:id="@+id/button"
+            android:id="@+id/button_post_add"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"/>

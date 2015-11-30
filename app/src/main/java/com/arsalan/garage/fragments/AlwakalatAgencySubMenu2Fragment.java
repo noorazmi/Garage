@@ -89,36 +89,8 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
                 if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     homeMenuItem = mHomeMenuItemArrayList.get(position);
                 }
-
                 Bundle bundle = new Bundle();
-
-//                switch (position) {
-//                    case 0:
-//                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-//                       // bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-//                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
-//                        Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-//                        intent.putExtras(bundle);
-//                        getActivity().startActivity(intent);
-//                        break;
-//                    case 1:
-//                        break;
-//                    default:
-//                        break;
-//                }
-
-
                 Intent intent = new Intent(getActivity(), AlwakalatAgencyDescriptionActivity.class);
-//                if(position == 0){
-//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc0);
-//                }else if(position == 1){
-//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc1);
-//                }else if(position == 2){
-//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc2);
-//                }else if(position == 3){
-//                    intent.putExtra(AppConstants.IMAGE_URL, R.drawable.gmc3);
-//                }
-
                 HouseDisplayVo.CarModel carModel = mHouseDisplayVo.getResults().get(position);
                 intent.putExtra(AppConstants.EXTRA_CAR_ID, carModel.getShowroom_car_id());
                 getActivity().startActivity(intent);
@@ -151,7 +123,6 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mHouseDisplayVo = (HouseDisplayVo) httpResponse.getValueObject();
-                //setValuesInUI(mItemDescriptionVO);
                 setAdapter();
 
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
@@ -168,17 +139,6 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         recyclerViewAdapter = new AlwakalatAgencySubMenu2Adapter(carModelArrayList);
         mRecyclerView.setAdapter(recyclerViewAdapter);
     }
-
-//    private ArrayList<HomeMenuItem> getMenuItems() {
-//
-//        ArrayList<HomeMenuItem> mHomeMenuItemArrayList = new ArrayList<>();
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc0, "كراجات"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc1, "المساعده على الطريق"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc2, "السكراب"));
-//        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gmc3, "تكسي"));
-//        return mHomeMenuItemArrayList;
-//    }
-
 }
 
 

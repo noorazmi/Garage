@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.arsalan.garage.fragments.ZoomImageFragment;
-import com.arsalan.garage.vo.ShowroomCarVo;
+import com.arsalan.garage.models.ImageInfo;
 
 import java.util.ArrayList;
 
@@ -20,9 +20,9 @@ public class ZoomImageViewPagerAdapter extends FragmentPagerAdapter {
 
     private static final String TAG = "ZoomImageViewPagerAdapter";
     private FragmentManager mFragmentManager;
-    private ArrayList<ShowroomCarVo.CarImage> mCarImageArrayList;
+    private ArrayList<ImageInfo> mCarImageArrayList;
 
-    public ZoomImageViewPagerAdapter(FragmentManager fm, ArrayList<ShowroomCarVo.CarImage> carImageArrayList) {
+    public ZoomImageViewPagerAdapter(FragmentManager fm, ArrayList<ImageInfo> carImageArrayList) {
         super(fm);
         this.mFragmentManager = fm;
         this.mCarImageArrayList = carImageArrayList;

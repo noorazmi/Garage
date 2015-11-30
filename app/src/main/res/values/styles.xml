@@ -46,6 +46,7 @@
     <style name="TextViewStyle.SemiBold.English" parent="TextViewStyle">
         <item name="fontName">@string/font_calibre_semibold</item>
     </style>
+
     <style name="TextViewStyle.Bold.English" parent="TextViewStyle">
         <item name="fontName">@string/font_calibre_bold</item>
     </style>
@@ -101,6 +102,7 @@
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="CustomTab" parent="Widget.Design.TabLayout">
@@ -113,7 +115,6 @@
         <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
         <!--<item name="tabSelectedTextColor">@android:color/holo_red_light</item>-->
     </style>
-
 
 
     <!--Refer following link to know more about TabLayout customization-->
@@ -134,6 +135,14 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/grey_dark</item>
         <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="add_image_relative_layout">
+        <item name="android:layout_marginLeft">@dimen/add_image_padding</item>
+        <item name="android:layout_marginTop">@dimen/add_image_padding</item>
+        <item name="android:layout_marginRight">@dimen/add_image_padding</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@color/grey_light</item>
     </style>
 
 

@@ -1,5 +1,7 @@
 package com.arsalan.garage.vo;
 
+import com.arsalan.garage.models.ImageInfo;
+
 import java.util.ArrayList;
 
 import networking.models.ValueObject;
@@ -35,7 +37,7 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
         private String description;
         private String contact;
         private String working_hours;
-        private ArrayList<CarImage> images;
+        private ArrayList<ImageInfo> images;
 
         public String getShowroom_car_id() {
             return showroom_car_id;
@@ -125,33 +127,41 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
             this.working_hours = working_hours;
         }
 
-        public ArrayList<CarImage> getImages() {
+//        public ArrayList<CarImage> getImages() {
+//            return images;
+//        }
+//
+//        public void setImages(ArrayList<CarImage> images) {
+//            this.images = images;
+//        }
+
+        public ArrayList<ImageInfo> getImages() {
             return images;
         }
 
-        public void setImages(ArrayList<CarImage> images) {
+        public void setImages(ArrayList<ImageInfo> images) {
             this.images = images;
         }
     }
 
-    public static class CarImage {
-        private String photo_id;
-        private String photo_name;
-
-        public String getPhoto_id() {
-            return photo_id;
-        }
-
-        public void setPhoto_id(String photo_id) {
-            this.photo_id = photo_id;
-        }
-
-        public String getPhoto_name() {
-            return photo_name;
-        }
-
-        public void setPhoto_name(String photo_name) {
-            this.photo_name = photo_name;
-        }
-    }
+//    public static class CarImage {
+//        private String photo_id;
+//        private String photo_name;
+//
+//        public String getPhoto_id() {
+//            return photo_id;
+//        }
+//
+//        public void setPhoto_id(String photo_id) {
+//            this.photo_id = photo_id;
+//        }
+//
+//        public String getPhoto_name() {
+//            return photo_name;
+//        }
+//
+//        public void setPhoto_name(String photo_name) {
+//            this.photo_name = photo_name;
+//        }
+//    }
 }

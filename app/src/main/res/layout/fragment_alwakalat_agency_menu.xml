@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arsalan.garage.fragments.AlwakalatAgencyMenuFragment"
-    tools:showIn="@layout/activity_alwakalat_agency_menu">
+    tools:context="com.arsalan.garage.fragments.AlwakalatAgencyMenuFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

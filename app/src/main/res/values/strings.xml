@@ -91,8 +91,6 @@
     <string name="message_app_exit">Press again to close the app</string>
 
 
-
-
     <string name="taxi"> تكسي </string>
     <string name="movable_wash">  غسيل متنقل </string>
     <string name="tintingcar">    حمايه وتظليل     </string>
@@ -128,14 +126,19 @@
     <string name="for_more_information_please_call"> لمعرفة المزيد يرجى الإتصال </string>
 
 
-
-    <string-array name="car_category">
+    <string-array name="car_category_title">
         <item>امريكي</item>
         <item>اوروبي</item>
         <item>اسيوي</item>
     </string-array>
 
-    <string-array name="car_sub_category_american">
+    <string-array name="car_category_code">
+        <item>american</item>
+        <item>european</item>
+        <item>asian</item>
+    </string-array>
+
+    <string-array name="car_sub_category_american_title">
         <item>كاديلاك</item>
         <item>دودج / كلايزلر</item>
         <item>شيفروليه</item>
@@ -144,11 +147,22 @@
         <item>همر</item>
         <item>جيب</item>
     </string-array>
-    <string-array name="car_sub_category_european">
+
+    <string-array name="car_sub_category_american_code">
+         <item>cadillac</item> 
+        <item>dodge-chrysler</item>
+         <item>chevrolet</item> 
+        <item>gmc</item> 
+        <item>ford-lincoln</item>
+         <item>hummer</item> 
+        <item>jeep</item> 
+    </string-array>
+
+
+    <string-array name="car_sub_category_european_title">
         <item>بيجو / ستروين</item>
         <item>سكودا</item>
         <item>ميني</item>
-        <item> بيجو / ستروين </item>
         <item>اودي</item>
         <item>بورش</item>
         <item>جاغوار</item>
@@ -157,8 +171,22 @@
         <item>بي ام دبليو</item>
         <item>مرسيدس</item>
     </string-array>
+    <string-array name="car_sub_category_european_code">
+         <item>peugeot-citroen</item> 
+        <item>skoda</item> 
+        <item>mini</item>
+         <item>audi</item> 
+        <item>porche</item> 
+        <item>jaguar</item> 
+        <item>volves-wagan</item>
+         
+        <item>range-rover</item>
+         <item>bmw</item> 
+        <item>mercedes</item>
+        <item>other</item> 
+    </string-array>
 
-    <string-array name="car_sub_category_asian">
+    <string-array name="car_sub_category_asian_title">
         <item>سوبارو</item>
         <item>ايسوزو</item>
         <item>مازدا</item>
@@ -172,5 +200,23 @@
         <item>نيسان</item>
         <item>تويوتا</item>
     </string-array>
+    <string-array name="car_sub_category_asian_code">
+        <item>subaru</item>
+        <item>isuzu</item>
+        <item>mazda</item>
+        <item>suzuki</item>
+        <item>mitsubishi</item>
+        <item>kia</item>
+        <item>kyundai</item>
+        <item>honda</item>
+        <item>infiniti</item>
+        <item>lexus</item>
+        <item>nissan</item>
+        <item>toyota</item>
+    </string-array>
+    <string name="title_activity_buy_and_sale_sub_menu">BuyAndSaleSubMenuActivity</string>
+    <string name="title_activity_buy_and_sale_list">BuyAndSaleListActivity</string>
+    <string name="title_activity_buy_and_sale_description">BuyAndSaleDescriptionActivity</string>
+    <string name="add_image">Add Image</string>
 
 </resources>

@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.adapters.HomeFragmentStatePagerAdapter;
-import com.arsalan.garage.utils.Utils;
 
 public class HomeFragment extends Fragment {
 
@@ -23,7 +22,6 @@ public class HomeFragment extends Fragment {
     private boolean isAboutFTLFragmentActive = true;
     private int[] mPageTitles = {R.string.home, R.string.post_add, R.string.setting};
     private TextView[] mTabTextViews;
-    private int backPressedCount = 0;
 
     public HomeFragment() {
     }
@@ -91,7 +89,6 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
         getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -99,23 +96,9 @@ public class HomeFragment extends Fragment {
                     if (mViewPager.getCurrentItem() != 0) {
                         mViewPager.setCurrentItem(0, true);
                         return true;
-                    } else if (backPressedCount == 0) {
-                        Utils.showToastMessage(getActivity(), getString(R.string.message_app_exit));
-                        backPressedCount++;
-                        final Runnable r = new Runnable() {
-                            public void run() {
-                                backPressedCount = 0;
-                            }
-                        };
-                        android.os.Handler handler = new android.os.Handler();
-                        handler.postDelayed(r, 4000);
-                        return true;
-                    } else {
-                        return false;
                     }
-                } else {
-                    return false;
                 }
+                return false;
             }
         });
     }

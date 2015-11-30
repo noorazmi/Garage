@@ -42,8 +42,8 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
         HouseDisplayVo.CarModel model = mHomeMenuItemArrayList.get(position);
         holder.title.setText(model.getModel());
         ImageLoader imageLoader = ImageLoader.getInstance();
-        holder.imgView.getLayoutParams().width = 400;
-        holder.imgView.getLayoutParams().height = 243;
+        holder.imgView.getLayoutParams().width = 500;
+        holder.imgView.getLayoutParams().height = 304;
 
         RelativeLayout.LayoutParams layoutParams =(RelativeLayout.LayoutParams)holder.imgView.getLayoutParams();
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);

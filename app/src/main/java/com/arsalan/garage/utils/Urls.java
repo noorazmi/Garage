@@ -11,6 +11,7 @@ package com.arsalan.garage.utils;
 public interface Urls {
 
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
+    String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
 
     //American
     String CADILLAC =  "http://kuwaitgarage.com/api/scrape/american/cadillac";
@@ -121,6 +122,8 @@ public interface Urls {
 
     String  SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
 
+    String FORSALE_BASE = "http://kuwaitgarage.com/api/foresale/";
+    String FORSALE_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/foresalead/";
 
 
 }

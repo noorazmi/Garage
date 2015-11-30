@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.models.ImageInfo;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.ShowroomCarVo;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -24,7 +24,7 @@ public class ImageHolderFragment extends Fragment {
 
     private String  mCarImageUrl;
 
-    public static ImageHolderFragment newInstance(ShowroomCarVo.CarImage carImage) {
+    public static ImageHolderFragment newInstance(ImageInfo carImage) {
         ImageHolderFragment fragment = new ImageHolderFragment();
         Bundle args = new Bundle();
         args.putString(AppConstants.EXTRA_IMAGE_URL, carImage.getPhoto_name());

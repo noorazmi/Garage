@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.arsalan.garage" >
+<manifest package="com.arsalan.garage"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.STORAGE"/>
 
     <application
         android:name=".GarageApp"
@@ -16,105 +16,120 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/karaji"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CategorySaleListActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.CategoryDescriptionActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.HelpOnRoadActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ScrapMainMenuActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.TaxiActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.ForRentActivity"
+            android:name=".activities.BuyAndSaleMenuActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.KhidmatShamlaActivity"
             android:label="@string/title_activity_scrap"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ScrapSubMenuActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.ImageViewerActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activities.AlwakalatAgencyMenuActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.AlwakalatAgencySubMenu1Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.CategorySaleStaticListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.KarajatMenuActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.KarajatSubMenu1Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.AlwakalatAgencyDescriptionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.AlwakalatAgencySubMenu2Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".activities.CameraGalleryActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
         <activity
             android:name=".activities.FullImageActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".activities.BuyAndSaleSubMenuActivity"
+            android:label="@string/title_activity_buy_and_sale_sub_menu"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".activities.BuyAndSaleListActivity"
+            android:label="@string/title_activity_buy_and_sale_list"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".activities.BuyAndSaleDescriptionActivity"
+            android:label="@string/title_activity_buy_and_sale_description"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

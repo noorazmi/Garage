@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.adapters.ZoomImageViewPagerAdapter;
+import com.arsalan.garage.models.ImageInfo;
 import com.arsalan.garage.utils.AppConstants;
-import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.ShowroomCarVo;
 
@@ -48,7 +48,7 @@ public class FullImageFragment extends Fragment {
     }
 
     private void setPagerAdapter() {
-        ArrayList<ShowroomCarVo.CarImage> carImageArrayList = mShowroomCarVo.getResults().getImages();
+        ArrayList<ImageInfo> carImageArrayList = mShowroomCarVo.getResults().getImages();
         ZoomImageViewPagerAdapter adapter = new ZoomImageViewPagerAdapter(getFragmentManager(), carImageArrayList);
         mViewPagerCarImages.setAdapter(adapter);
         mViewPagerCarImages.setCurrentItem(getArguments().getInt(AppConstants.EXTRA_INDEX));
@@ -56,9 +56,10 @@ public class FullImageFragment extends Fragment {
 
     private void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
-        httpRequest.setShowProgressDialog(false);
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
-        httpRequest.setUrl(Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID));
+        httpRequest.setShowProgressDialog(true);
+        //Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + getArguments().getString(AppConstants.EXTRA_IMAGE_URL));
+        httpRequest.setUrl(getArguments().getString(AppConstants.EXTRA_IMAGE_URL));
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(ShowroomCarVo.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

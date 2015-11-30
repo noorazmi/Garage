@@ -139,6 +139,7 @@ public interface AppConstants {
     String EXTRA_DESCRIPTION = "description";
     String EXTRA_WORKING_HOURS = "working_hours";
     String EXTRA_IMAGE_URL = "image_url";
+    String EXTRA_FORSALE_ID = "forsale_id";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";
@@ -149,5 +150,57 @@ public interface AppConstants {
     String EXTRA_IS_CAMERA_LAYOUT = "oldlayout";
     String EXTRA_CAMERAPIC_STATUS = "cameraPic";
     //String EXTRA_IMAGE_PATH = "imagePath";
+
+    String DEVICE_PHONE = "device_phone";
+    String MAKE_REGION = "make_region";
+    String MAKE = "make";
+    String TITLE = "title";
+    String PHONE = "phone";
+    String PRICE = "price";
+    //String DESCRIPTION = "description";
+
+    //String CADILLAC="cadillac"; String DODGE_CHRYSLER="dodge-chrysler"; String CHEVROLET="chevrolet"; String GMC="gmc"; String FORD_LINCOLN="ford-lincoln"; String HUMMER="hummer"; String JEEP="jeep";String PEUGEOT_CITROEN="peugeot-citroen";String SKODA="skoda";String MINI="mini";String RENAULT="renault";
+    // String AUDI="audi";String PORCHE="porche";String JAGUAR="jaguar";
+    // String VOLVES_WAGAN="volves-wagan";String RANGE_ROVER="range-rover";String BMW="bmw";
+    // String MERCEDES="mercedes";String OTHER="other";String SUBARU="subaru";String ISUZU="isuzu";String MAZDA="mazda";String SUZUKI="suzuki";
+    // String MITSUBISHI="mitsubishi";String KIA="kia";String HYUNDAI="hyundai";String HONDA="honda";String INFINITI="infiniti";
+    // String LEXUS="lexus";String NISSAN="nissan";String TOYOTA="TOYOTA";
+
+    String AMERICAN = "american";
+    String EUROPEAN = "european";
+    String ASIAN = "asian";
+
+    String CADILLAC="cadillac";
+    String CHEVROLET = "chevrolet";
+    String DODGE_CHRYSLER = "dodge-chrysler";
+    String GMC="gmc";
+    String FORDL_INCOLN = "ford-lincoln";
+    String HUMMER = "hummer";
+    String JEEP="jeep";
+    String PEUGEOT_CITROEN = "peugeot_citroen";
+    String SKODA="skoda";
+    String MINI="mini";
+    String RENAULT="renault";
+    String AUDI="audi";
+    String PORCHE="porche";
+    String JAGUAR="jaguar";
+    String VOLVES_WAGAN="volves-wagan";
+    String RANGE_ROVER="range-rover";
+    String BMW="bmw";
+    String MERCEDES="mercedes";
+    String OTHER="other";
+    String SUBARU="subaru";
+    String ISUZU="isuzu";
+    String MAZDA="mazda";
+    String SUZUKI="suzuki";
+    String MITSUBISHI="mitsubishi";
+    String KIA="kia";
+    String HYUNDAI="hyundai";
+    String HONDA="honda";
+    String INFINITI="infiniti";
+    String LEXUS="lexus";
+    String NISSAN="nissan";
+    String TOYOTA="TOYOTA";
+
 
 }

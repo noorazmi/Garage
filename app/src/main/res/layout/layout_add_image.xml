@@ -1,0 +1,39 @@
+<RelativeLayout
+    android:id="@+id/relative_layout_ye"
+    style="@style/add_image_relative_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageview_add_ye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_images"/>
+
+    <TextView
+        android:id="@+id/textview_add_ye_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_add_ye"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/add_image"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <ImageButton
+        android:id="@+id/imagebutton_ye_left_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/ic_more_margint_right"
+        android:layout_marginTop="@dimen/ic_more_margint_top"
+        android:background="@drawable/ic_more"/>
+</RelativeLayout>
+
