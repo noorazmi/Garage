@@ -26,8 +26,6 @@
     <dimen name="gr_car_info_text_width">85dp</dimen>
     <dimen name="gr_desc_right_margin">10dp</dimen>
     <dimen name="add_image_padding">8dp</dimen>
-    <dimen name="ic_more_margint_top">10dp</dimen>
-    <dimen name="ic_more_margint_right">10dp</dimen>
-
-
+    <dimen name="app_add_image_button_width">100dp</dimen>
+    <dimen name="app_add_image_button_height">120dp</dimen>
 </resources>

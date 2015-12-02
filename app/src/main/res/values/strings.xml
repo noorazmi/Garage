@@ -218,5 +218,6 @@
     <string name="title_activity_buy_and_sale_list">BuyAndSaleListActivity</string>
     <string name="title_activity_buy_and_sale_description">BuyAndSaleDescriptionActivity</string>
     <string name="add_image">Add Image</string>
+    <string name="ad_limit_message">You can post maximum two advertisements per day</string>
 
 </resources>

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -41,7 +42,6 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PostAdTabFragment extends Fragment implements View.OnClickListener {
 
@@ -50,8 +50,8 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private Spinner mSpinnerSubCategory;
     private static final int CHOOSE_PHOTO = 1000;
     private String mProfileImagePath = "";
-    private int mCurrentImageSelection = 0;
-    private List<String> imagePaths;
+    private int mCurrentImageSelection = -1;
+    private String[] mImagePaths;
     private EditText mEditTextTitle;
     private EditText mEditTextMobile;
     private EditText mEditTextPrice;
@@ -63,6 +63,13 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private ArrayList<SpinnerItem> mMakeEuropeanArrayList;
     private ArrayList<SpinnerItem> mMakeAsianArrayList;
     private ProgressDialog mProgressDialog;
+    private LinearLayout mLinearLayoutAddViewContainer;
+    private View mButtonFirstImage;
+    private View mButtonSecondImage;
+    private View mButtonThirdImage;
+    private View mButtonFourthImage;
+    private View mButtonFifthImage;
+    private int MAX_ADV = 5;
 
 
     public PostAdTabFragment() {
@@ -72,12 +79,14 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mImagePaths = new String[MAX_ADV];
         mMakeAmericanArrayList = getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_post_ad_tab, container, false);
+        mLinearLayoutAddViewContainer = (LinearLayout) rootView.findViewById(R.id.linear_layout_add_view_container);
         mSpinnerCategory = (Spinner) rootView.findViewById(R.id.spinner_category);
         mSpinnerSubCategory = (Spinner) rootView.findViewById(R.id.spinner_sub_category);
         rootView.findViewById(R.id.button_post_add).setOnClickListener(this);
@@ -85,12 +94,19 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mEditTextMobile = (EditText)rootView.findViewById(R.id.edittext_mobile_no);
         mEditTextPrice = (EditText)rootView.findViewById(R.id.edittext_price);
         mEditTextDescription = (EditText)rootView.findViewById(R.id.edittext_description);
-        imagePaths = new ArrayList<>();
+        mButtonFirstImage = rootView.findViewById(R.id.button_first_img);
+        mButtonSecondImage = rootView.findViewById(R.id.button_second_img);
+        mButtonThirdImage = rootView.findViewById(R.id.button_third_img);
+        mButtonFourthImage = rootView.findViewById(R.id.button_fourth_img);
+        mButtonFifthImage = rootView.findViewById(R.id.button_fifth_img);
+
+        mButtonFirstImage.setOnClickListener(this);
+        mButtonSecondImage.setOnClickListener(this);
+        mButtonThirdImage.setOnClickListener(this);
+        mButtonFourthImage.setOnClickListener(this);
+        mButtonFifthImage.setOnClickListener(this);
         setCategoryAdapter();
         setSubCategoryAdapter(getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code));
-        rootView.findViewById(R.id.imageview_photo1).setOnClickListener(this);
-        rootView.findViewById(R.id.imageview_photo2).setOnClickListener(this);
-        rootView.findViewById(R.id.imageview_photo3).setOnClickListener(this);
         return rootView;
     }
 
@@ -159,7 +175,6 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -178,23 +193,30 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imageview_photo1:
+            case R.id.button_first_img:
                 mCurrentImageSelection = 1;
                 openPhotoOptions();
                 break;
-            case R.id.imageview_photo2:
+            case R.id.button_second_img:
                 mCurrentImageSelection = 2;
                 openPhotoOptions();
                 break;
-            case R.id.imageview_photo3:
+            case R.id.button_third_img:
                 mCurrentImageSelection = 3;
+                openPhotoOptions();
+                break;
+            case R.id.button_fourth_img:
+                mCurrentImageSelection = 4;
+                openPhotoOptions();
+                break;
+            case R.id.button_fifth_img:
+                mCurrentImageSelection = 5;
                 openPhotoOptions();
                 break;
             case R.id.button_post_add:
                 mProgressDialog = new ProgressDialog(getActivity());
                 mProgressDialog.show();
                 new LongOperation().execute();
-
                 break;
             default:
                 break;
@@ -213,23 +235,30 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             case CHOOSE_PHOTO:
                 if (resultCode == Activity.RESULT_OK) {
                     mProfileImagePath = data.getStringExtra(AppConstants.EXTRA_IMAGE_PATH);
-                    imagePaths.add(mProfileImagePath);
+                    mImagePaths[mCurrentImageSelection-1] = mProfileImagePath;
                     if (mProfileImagePath != null) {
                         Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
                         switch (mCurrentImageSelection) {
                             case 1:
-                                ((ImageView) getView().findViewById(R.id.imageview_photo1)).setImageBitmap(bitmap);
+                                ((ImageView) mButtonFirstImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
                                 break;
                             case 2:
-                                ((ImageView) getView().findViewById(R.id.imageview_photo2)).setImageBitmap(bitmap);
+                                ((ImageView) mButtonSecondImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
                                 break;
                             case 3:
-                                ((ImageView) getView().findViewById(R.id.imageview_photo3)).setImageBitmap(bitmap);
+                                ((ImageView) mButtonThirdImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
+                                break;
+                            case 4:
+                                ((ImageView) mButtonFourthImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
+                                break;
+                            case 5:
+                                ((ImageView) mButtonFifthImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
                                 break;
                             default:
                                 break;
                         }
-
+                        setAddImageTexVisibility(mCurrentImageSelection, View.GONE);
+                        setRemoveImageIconVisibility(mCurrentImageSelection, View.VISIBLE);
                     } else {
                         Utils.showToastMessage(getActivity(), "Please choose another image.");
                     }
@@ -239,11 +268,54 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    private void setAddImageTexVisibility(int imageIndex, int visibility){
+        switch (imageIndex) {
+            case 1:
+                mButtonFirstImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
+                break;
+            case 2:
+                mButtonSecondImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
+                break;
+            case 3:
+                mButtonThirdImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
+                break;
+            case 4:
+                mButtonFourthImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
+                break;
+            case 5:
+                mButtonFifthImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void setRemoveImageIconVisibility(int imageIndex, int visibility){
+        switch (imageIndex) {
+            case 1:
+                mButtonFirstImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
+                break;
+            case 2:
+                mButtonSecondImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
+                break;
+            case 3:
+                mButtonThirdImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
+                break;
+            case 4:
+                mButtonFourthImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
+                break;
+            case 5:
+                mButtonFifthImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     private class LongOperation extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-
             doFileUpload();
             return null;
         }
@@ -258,9 +330,12 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
     private void doFileUpload() {
 
-        File file1 = new File(imagePaths.get(0));
-        File file2 = new File(imagePaths.get(1));
-        File file3 = new File(imagePaths.get(2));
+        //File file1 = new File(mImagePaths[0]);
+        //File file2 = new File(mImagePaths[1]);
+        //File file3 = new File(mImagePaths[2]);
+        //File file4 = new File(mImagePaths[3]);
+        //File file5 = new File(mImagePaths[4]);
+
         String urlString = Urls.FORESALE_UPLOAD;
         HttpEntity resEntity = null;
         try {
@@ -273,13 +348,21 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             HttpPost post = new HttpPost(urlString);
 
             post.setParams(httpParams);
-            FileBody bin1 = new FileBody(file1);
-            FileBody bin2 = new FileBody(file2);
-            FileBody bin3 = new FileBody(file3);
             MultipartEntity reqEntity = new MultipartEntity();
-            reqEntity.addPart("image1", bin1);
-            reqEntity.addPart("image2", bin2);
-            reqEntity.addPart("image3", bin3);
+
+            for (int i = 0; i < 5 ; i++) {
+                if(mImagePaths[i] != null){
+                    reqEntity.addPart("image"+(i+1), new FileBody(new File(mImagePaths[i])));
+                }
+            }
+
+            //FileBody bin1 = new FileBody(file1);
+            //FileBody bin2 = new FileBody(file2);
+            //FileBody bin3 = new FileBody(file3);
+            //reqEntity.addPart("image1", bin1);
+            //reqEntity.addPart("image2", bin2);
+            //reqEntity.addPart("image3", bin3);
+
             reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(getActivity())));
             reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
             reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
@@ -308,4 +391,5 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             Log.e("Debug", "error: " + ex.getMessage(), ex);
         }
     }
+
 }
