@@ -67,14 +67,18 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
+            <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
             <Spinner
                 android:id="@+id/spinner_category"
+                style="@android:style/Widget.Holo.Light.Spinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+            <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
             <Spinner
                 android:id="@+id/spinner_sub_category"
+                style="@android:style/Widget.Holo.Light.Spinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"

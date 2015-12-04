@@ -21,7 +21,8 @@ import android.widget.Toast;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CameraGalleryActivity;
-import com.arsalan.garage.adapters.SpinnerAdapter;
+import com.arsalan.garage.adapters.CustomSpinnerAdapter;
+import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
@@ -112,8 +113,12 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
     private void setCategoryAdapter() {
         mMakeRegionArrayList = getSpinnerArrayList(R.array.car_category_title, R.array.car_category_code);
-        SpinnerAdapter categorySpinnerAdapter = new SpinnerAdapter(getActivity(), mMakeRegionArrayList);
-        mSpinnerCategory.setAdapter(categorySpinnerAdapter);
+
+
+
+        CustomSpinnerAdapter categorySpinnerAdapter = new CustomSpinnerAdapter(getActivity(), mMakeRegionArrayList);
+        NothingSelectedSpinnerAdapter nothingSelectedSpinnerAdapter = new NothingSelectedSpinnerAdapter(categorySpinnerAdapter, R.layout.layout_spinner_item_eng, R.layout.layout_spinner_item_eng, getActivity(), getString(R.string.select_region));
+        mSpinnerCategory.setAdapter(nothingSelectedSpinnerAdapter);
         mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -151,7 +156,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setSubCategoryAdapter(ArrayList<SpinnerItem> spinnerArrayList) {
-        SpinnerAdapter categorySpinnerAdapter = new SpinnerAdapter(getActivity(), spinnerArrayList);
+        CustomSpinnerAdapter categorySpinnerAdapter = new CustomSpinnerAdapter(getActivity(), spinnerArrayList);
         mSpinnerSubCategory.setAdapter(categorySpinnerAdapter);
         mSpinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -168,6 +173,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         spinnerItem = mMakeAsianArrayList.get(position);
                     break;
                     default:
+                        spinnerItem = mMakeAmericanArrayList.get(position);
                         break;
                 }
                 mMake = spinnerItem.getCode();

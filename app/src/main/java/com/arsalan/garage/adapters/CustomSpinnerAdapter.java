@@ -19,11 +19,11 @@ import java.util.ArrayList;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class SpinnerAdapter extends BaseAdapter {
+public class CustomSpinnerAdapter extends BaseAdapter {
     private ArrayList<SpinnerItem> mSpinnerItems;
     private LayoutInflater mLayoutInflater;
 
-    public SpinnerAdapter(Context context, ArrayList<SpinnerItem> spinnerItems) {
+    public CustomSpinnerAdapter(Context context, ArrayList<SpinnerItem> spinnerItems) {
         this.mSpinnerItems = spinnerItems;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
