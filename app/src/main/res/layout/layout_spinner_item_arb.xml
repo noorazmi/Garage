@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.arsalan.garage.uicomponents.CustomTextViewArabic
+    style="@style/TextViewStyle.Regular.Arabic"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/app_spinner_item_height"
+    android:gravity="center|bottom"
+    android:text="@string/transmission"
+    android:textColor="@android:color/black"/>

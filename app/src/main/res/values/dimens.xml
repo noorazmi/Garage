@@ -28,4 +28,6 @@
     <dimen name="add_image_padding">8dp</dimen>
     <dimen name="app_add_image_button_width">100dp</dimen>
     <dimen name="app_add_image_button_height">120dp</dimen>
+    <dimen name="app_spinner_item_height">40dp</dimen>
+
 </resources>

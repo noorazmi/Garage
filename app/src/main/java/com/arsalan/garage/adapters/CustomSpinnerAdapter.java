@@ -46,7 +46,7 @@ public class CustomSpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView = (TextView) mLayoutInflater.inflate(R.layout.layout_spinner_item, parent, false);
+        TextView textView = (TextView) mLayoutInflater.inflate(R.layout.layout_spinner_item_arb, parent, false);
         SpinnerItem spinnerItem = (SpinnerItem) getItem(position);
         textView.setText(spinnerItem.getTitle());
         return textView;

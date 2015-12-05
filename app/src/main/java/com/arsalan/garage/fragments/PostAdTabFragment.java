@@ -113,15 +113,15 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
     private void setCategoryAdapter() {
         mMakeRegionArrayList = getSpinnerArrayList(R.array.car_category_title, R.array.car_category_code);
-
-
-
         CustomSpinnerAdapter categorySpinnerAdapter = new CustomSpinnerAdapter(getActivity(), mMakeRegionArrayList);
-        NothingSelectedSpinnerAdapter nothingSelectedSpinnerAdapter = new NothingSelectedSpinnerAdapter(categorySpinnerAdapter, R.layout.layout_spinner_item_eng, R.layout.layout_spinner_item_eng, getActivity(), getString(R.string.select_region));
+        NothingSelectedSpinnerAdapter nothingSelectedSpinnerAdapter = new NothingSelectedSpinnerAdapter(categorySpinnerAdapter, R.layout.layout_spinner_hint, R.layout.layout_spinner_dropdown_hint, getActivity(), getString(R.string.select_region));
         mSpinnerCategory.setAdapter(nothingSelectedSpinnerAdapter);
         mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position > 0){
+                    position = position-1;
+                }
                 SpinnerItem spinnerItem = mMakeRegionArrayList.get(position);
                 mMakeRegion = spinnerItem.getCode();
                 switch (mMakeRegion) {
@@ -156,11 +156,17 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setSubCategoryAdapter(ArrayList<SpinnerItem> spinnerArrayList) {
+
+
         CustomSpinnerAdapter categorySpinnerAdapter = new CustomSpinnerAdapter(getActivity(), spinnerArrayList);
-        mSpinnerSubCategory.setAdapter(categorySpinnerAdapter);
+        NothingSelectedSpinnerAdapter nothingSelectedSpinnerAdapter = new NothingSelectedSpinnerAdapter(categorySpinnerAdapter, R.layout.layout_spinner_hint, R.layout.layout_spinner_dropdown_hint, getActivity(), getString(R.string.select_model));
+        mSpinnerSubCategory.setAdapter(nothingSelectedSpinnerAdapter);
         mSpinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position > 0){
+                    position = position-1;
+                }
                 SpinnerItem spinnerItem = null;
                 switch (mMakeRegion){
                     case AppConstants.AMERICAN:
