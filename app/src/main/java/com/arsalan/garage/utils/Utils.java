@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -12,8 +13,10 @@ import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -181,8 +184,29 @@ public class Utils {
         ImageLoader.getInstance().displayImage(imageUrl, imageView, options, imageLoadingListener);
     }
 
+    public static boolean isNetworkAvailable() {
+        ConnectivityManager connMgr = (ConnectivityManager) GarageApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+        try {
+            if (connMgr != null) {
+                if (connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED
+                        || connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTING) {
+                    return true;
+                } else if (connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED
+                        || connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTING) {
+                    return true;
+                } else
+                    return false;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
     public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) GarageApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
         try {
             if (connMgr != null) {
                 if (connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED
@@ -233,57 +257,118 @@ public class Utils {
         return bitmap;
     }
 
+//    /**
+//     * Swipable snack bar
+//     */
+//    public static void showSnackBar(final View rootLayout, String message) {
+//
+//        //View rootLayout;
+//        //rootLayout = activity.findViewById(android.R.id.content);
+//        //rootLayout = view.findViewById(R.id.root_layout);
+//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
+//        //snackbar.setAction("Settings", new View.OnClickListener() {
+//        //    @Override
+//        //    public void onClick(View v) {
+//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
+//        //    }
+//        //});
+//        View snackBarView = snackbar.getView();
+//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
+//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+//        // tv.setTextColor(Color.WHITE);
+//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
+//        // params.gravity = Gravity.CENTER;
+//        // snackBarView.setLayoutParams(params);
+//
+//        snackbar.show();
+//
+//    }
+
+//    /**
+//     * Non Swipable snackbar
+//     */
+//    public static void showSnackBar(final Activity activity, String message) {
+//
+//        View rootLayout;
+//        rootLayout = activity.findViewById(android.R.id.content);
+//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
+//        snackbar.setActionTextColor(Color.WHITE);
+//        //snackbar.setAction("Settings", new View.OnClickListener() {
+//        //    @Override
+//        //    public void onClick(View v) {
+//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
+//        //    }
+//        //});
+//        View snackBarView = snackbar.getView();
+//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
+//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+//        // tv.setTextColor(Color.WHITE);
+//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
+//        // params.gravity = Gravity.CENTER;
+//        // snackBarView.setLayoutParams(params);
+//
+//        snackbar.show();
+//
+//    }
+
+//    /**
+//     * Non Swipable snackbar
+//     */
+//    public static void showSnackBar(final Activity activity, String message) {
+//
+//        View rootLayout;
+//        rootLayout = activity.findViewById(android.R.id.content);
+//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
+//        snackbar.setActionTextColor(Color.WHITE);
+//        //snackbar.setAction("Settings", new View.OnClickListener() {
+//        //    @Override
+//        //    public void onClick(View v) {
+//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
+//        //    }
+//        //});
+//        View snackBarView = snackbar.getView();
+//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
+//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+//        // tv.setTextColor(Color.WHITE);
+//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
+//        // params.gravity = Gravity.CENTER;
+//        // snackBarView.setLayoutParams(params);
+//
+//        snackbar.show();
+//
+//    }
+
+
     /**
-     * Swipable snack bar
+     * Non Swipable snackbar.
+     * @param activity Activity reference.
+     * @param message
      */
-    public static void showSnackBar(final View rootLayout, String message) {
 
-        //View rootLayout;
-        //rootLayout = activity.findViewById(android.R.id.content);
-        //rootLayout = view.findViewById(R.id.root_layout);
-        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-        //snackbar.setAction("Settings", new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
-        //    }
-        //});
-        View snackBarView = snackbar.getView();
-        snackBarView.setBackgroundResource(R.color.black_dark);
-        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-        // tv.setTextColor(Color.WHITE);
-        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
-        // params.gravity = Gravity.CENTER;
-        // snackBarView.setLayoutParams(params);
-
-        snackbar.show();
-
+    public static void showSnackBar(final Activity activity, String message) {
+        View rootLayout = activity.findViewById(android.R.id.content);
+        showSnackBar(rootLayout, message);
     }
 
     /**
-     * Non Swipable snackbar
+     *  Display Snack bar
+     * @param holderView If holderView is CoordinatorLayout the snackBar will be swipable otherwise will be non swipable
+     * @param message
      */
-    public static void showSnackBar(final Activity activity, String message) {
-
-        View rootLayout;
-        rootLayout = activity.findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-        //snackbar.setAction("Settings", new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
-        //    }
-        //});
-        View snackBarView = snackbar.getView();
-        snackBarView.setBackgroundResource(R.color.black_dark);
-        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-        // tv.setTextColor(Color.WHITE);
-        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
-        // params.gravity = Gravity.CENTER;
-        // snackBarView.setLayoutParams(params);
-
+    public static void showSnackBar(View holderView, String message) {
+        final Snackbar snackbar = Snackbar.make(holderView, message, Snackbar.LENGTH_LONG);
+        snackbar.setActionTextColor(Color.WHITE);
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(GarageApp.getInstance().getResources().getColor(R.color.app_bright_blue));
+        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.setAction("Close", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                snackbar.dismiss();
+            }
+        });
         snackbar.show();
-
     }
 
     public static String getUDID(Context context) {

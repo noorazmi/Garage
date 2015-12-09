@@ -137,4 +137,23 @@
         <item name="textAllCaps">true</item>
     </style>
 
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        //Hint color and Label Color in False State
+        <item name="android:textColorHint">@color/grey</item>
+
+        //Label color in True State And Bar Color False And True State
+        <item name="colorAccent">@color/toolbar_gradient_end</item>
+        //Will be effective only if we don't set "background" attr of the edit text
+        <item name="colorControlNormal">@color/grey_dim</item>
+
+        //Active cursor color and title color. Cursor and title color will be same during typing
+        <item name="colorControlActivated">@color/material_blue_grey_800</item>
+    </style>
+
+    <style name="ProgressBarStyle" parent="android:Widget.Holo.ProgressBar.Large">
+        <item name="android:progressBarStyle">?android:attr/progressBarStyle</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_spin</item>
+    </style>
+
 </resources>

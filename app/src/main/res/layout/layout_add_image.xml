@@ -37,7 +37,7 @@
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_cross"
         android:layout_gravity="right|top"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
 </FrameLayout>
 

@@ -5,11 +5,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CameraGalleryActivity;
@@ -57,13 +59,14 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private EditText mEditTextMobile;
     private EditText mEditTextPrice;
     private EditText mEditTextDescription;
-    private String mMakeRegion = AppConstants.AMERICAN;
+    //private String mMakeRegion = AppConstants.AMERICAN;
+    private String mMakeRegion;
     private String mMake;
     private ArrayList<SpinnerItem> mMakeRegionArrayList;
     private ArrayList<SpinnerItem> mMakeAmericanArrayList;
     private ArrayList<SpinnerItem> mMakeEuropeanArrayList;
     private ArrayList<SpinnerItem> mMakeAsianArrayList;
-    private ProgressDialog mProgressDialog;
+    //private ProgressDialog mProgressDialog;
     private LinearLayout mLinearLayoutAddViewContainer;
     private View mButtonFirstImage;
     private View mButtonSecondImage;
@@ -71,6 +74,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private View mButtonFourthImage;
     private View mButtonFifthImage;
     private int MAX_ADV = 5;
+    private int mImagesAdded = 0;
+    private ProgressDialog mProgressDialog;
+    //private CustomProgressDialog mCustomProgressDialog;
 
 
     public PostAdTabFragment() {
@@ -82,6 +88,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         mImagePaths = new String[MAX_ADV];
         mMakeAmericanArrayList = getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code);
+        //mCustomProgressDialog = new CustomProgressDialog(getActivity());
+        //mCustomProgressDialog.setCancelable(true);
+        //mCustomProgressDialog.setCanceledOnTouchOutside(false);
     }
 
     @Override
@@ -106,6 +115,8 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mButtonThirdImage.setOnClickListener(this);
         mButtonFourthImage.setOnClickListener(this);
         mButtonFifthImage.setOnClickListener(this);
+        setRemoveImageIconTags();
+        registerRemoveImageListeners();
         setCategoryAdapter();
         setSubCategoryAdapter(getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code));
         return rootView;
@@ -119,6 +130,11 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    mMakeRegion = null;
+                    return;
+                }
+
                 if(position > 0){
                     position = position-1;
                 }
@@ -164,20 +180,25 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mSpinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position > 0){
-                    position = position-1;
+                if (position == 0) {
+                    mMake = null;
+                    return;
+                }
+
+                if (position > 0) {
+                    position = position - 1;
                 }
                 SpinnerItem spinnerItem = null;
-                switch (mMakeRegion){
+                switch (mMakeRegion) {
                     case AppConstants.AMERICAN:
                         spinnerItem = mMakeAmericanArrayList.get(position);
-                    break;
+                        break;
                     case AppConstants.EUROPEAN:
                         spinnerItem = mMakeEuropeanArrayList.get(position);
-                    break;
+                        break;
                     case AppConstants.ASIAN:
                         spinnerItem = mMakeAsianArrayList.get(position);
-                    break;
+                        break;
                     default:
                         spinnerItem = mMakeAmericanArrayList.get(position);
                         break;
@@ -187,6 +208,22 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        mSpinnerSubCategory.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        if(mMakeRegion == null){
+                            showSnackBar(getString(R.string.please_select_region_first));
+                            return true;
+                        }
+                        break;
+                }
+                return false;
             }
         });
     }
@@ -226,8 +263,23 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                 openPhotoOptions();
                 break;
             case R.id.button_post_add:
+                if(!Utils.isNetworkAvailable()){
+                    showSnackBar(getString(R.string.no_internet_connection));
+                    return;
+                }
+                if( mImagesAdded == 0){
+                    showSnackBar(getString(R.string.there_is_no_image_to_post));
+                    return;
+                }
+
+                if(TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())){
+                    showSnackBar(getString(R.string.all_fields_are_compulsory));
+                    return;
+                }
                 mProgressDialog = new ProgressDialog(getActivity());
+                mProgressDialog.setCancelable(false);
                 mProgressDialog.show();
+                //mCustomProgressDialog.show();
                 new LongOperation().execute();
                 break;
             default:
@@ -250,9 +302,11 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                     mImagePaths[mCurrentImageSelection-1] = mProfileImagePath;
                     if (mProfileImagePath != null) {
                         Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
+                        mImagesAdded++;
                         switch (mCurrentImageSelection) {
                             case 1:
                                 ((ImageView) mButtonFirstImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
+
                                 break;
                             case 2:
                                 ((ImageView) mButtonSecondImage.findViewById(R.id.imageview_ad)).setImageBitmap(bitmap);
@@ -324,6 +378,89 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    private void setRemoveImageIconTags(){
+        mButtonFirstImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_ONE);
+        mButtonSecondImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_TWO);
+        mButtonThirdImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_THREE);
+        mButtonFourthImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_FOUR);
+        mButtonFifthImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_FIVE);
+    }
+    private void registerRemoveImageListeners(){
+        mButtonFirstImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
+        mButtonSecondImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
+        mButtonThirdImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
+        mButtonFourthImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
+        mButtonFifthImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
+    }
+
+    private View.OnClickListener mRemoveImageClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            removeImage((String)v.getTag());
+        }
+    };
+
+    private void removeImage(String tag){
+        mImagesAdded--;
+        switch (tag){
+            case AppConstants.REMOVE_IMAGE_ONE:
+                ((ImageView) mButtonFirstImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
+                setRemoveImageIconVisibility(1, View.GONE);
+                setAddImageTexVisibility(1, View.VISIBLE);
+                mImagePaths[0] = null;
+                break;
+            case AppConstants.REMOVE_IMAGE_TWO:
+                ((ImageView) mButtonSecondImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
+                setRemoveImageIconVisibility(2, View.GONE);
+                setAddImageTexVisibility(2, View.VISIBLE);
+                mImagePaths[1] = null;
+                break;
+            case AppConstants.REMOVE_IMAGE_THREE:
+                ((ImageView) mButtonThirdImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
+                setRemoveImageIconVisibility(3, View.GONE);
+                setAddImageTexVisibility(3, View.VISIBLE);
+                mImagePaths[2] = null;
+                break;
+            case AppConstants.REMOVE_IMAGE_FOUR:
+                ((ImageView) mButtonFourthImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
+                setRemoveImageIconVisibility(4, View.GONE);
+                setAddImageTexVisibility(4, View.VISIBLE);
+                mImagePaths[3] = null;
+                break;
+            case AppConstants.REMOVE_IMAGE_FIVE:
+                ((ImageView) mButtonFifthImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
+                setRemoveImageIconVisibility(5, View.GONE);
+                setAddImageTexVisibility(5, View.VISIBLE);
+                mImagePaths[4] = null;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void removeAllImages(){
+        removeImage(AppConstants.REMOVE_IMAGE_ONE);
+        removeImage(AppConstants.REMOVE_IMAGE_TWO);
+        removeImage(AppConstants.REMOVE_IMAGE_THREE);
+        removeImage(AppConstants.REMOVE_IMAGE_FOUR);
+        removeImage(AppConstants.REMOVE_IMAGE_FIVE);
+    }
+
+    private void resetEditTexts(){
+        mEditTextTitle.setText("");
+        mEditTextMobile.setText("");
+        mEditTextPrice.setText("");
+        mEditTextDescription.setText("");
+    }
+
+    private void resetAllFields() {
+        removeAllImages();
+        resetEditTexts();
+        mMake =  null;
+        mMakeRegion = null;
+        setCategoryAdapter();
+        setSubCategoryAdapter(getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code));
+    }
 
     private class LongOperation extends AsyncTask<Void, Void, Void> {
         @Override
@@ -335,6 +472,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         @Override
         protected void onPostExecute(Void aVoid) {
             mProgressDialog.dismiss();
+            //mCustomProgressDialog.hide();
             super.onPostExecute(aVoid);
         }
     }
@@ -391,8 +529,11 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
-                            Logger.d(TAG, "n Response from server : n " + response_str);
-                            Toast.makeText(getActivity(), "Server response:" + response_str, Toast.LENGTH_LONG).show();
+                            Logger.d(TAG, "Response from server : " + response_str);
+                            //Toast.makeText(getActivity(), "Server response:" + response_str, Toast.LENGTH_LONG).show();
+                            //showSnackBar(getString(R.string.ad_successfully_posted));
+                            showSnackBar(response_str);
+                            resetAllFields();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -402,6 +543,10 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         } catch (Exception ex) {
             Log.e("Debug", "error: " + ex.getMessage(), ex);
         }
+    }
+
+    private void showSnackBar(String message){
+        Utils.showSnackBar(getActivity().findViewById(R.id.coordinator_layout), message);
     }
 
 }

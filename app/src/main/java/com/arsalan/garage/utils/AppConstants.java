@@ -172,20 +172,24 @@ public interface AppConstants {
 
     String CADILLAC="cadillac";
     String CHEVROLET = "chevrolet";
-    String DODGE_CHRYSLER = "dodge-chrysler";
+    //String DODGE_CHRYSLER = "dodge-chrysler";
+    String DODGE_CHRYSLER = "dodgechrysler";
     String GMC="gmc";
-    String FORDL_INCOLN = "ford-lincoln";
+    //String FORDL_INCOLN = "ford-lincoln";
+    String FORDL_INCOLN = "fordlincoln";
     String HUMMER = "hummer";
     String JEEP="jeep";
-    String PEUGEOT_CITROEN = "peugeot_citroen";
+    String PEUGEOT_CITROEN = "peugeotcitroen";
     String SKODA="skoda";
     String MINI="mini";
     String RENAULT="renault";
     String AUDI="audi";
     String PORCHE="porche";
     String JAGUAR="jaguar";
-    String VOLVES_WAGAN="volves-wagan";
-    String RANGE_ROVER="range-rover";
+    //String VOLVES_WAGAN="volves-wagan";
+    String VOLVES_WAGAN="volveswagan";
+    //String RANGE_ROVER="range-rover";
+    String RANGE_ROVER="rangerover";
     String BMW="bmw";
     String MERCEDES="mercedes";
     String OTHER="other";
@@ -201,6 +205,13 @@ public interface AppConstants {
     String LEXUS="lexus";
     String NISSAN="nissan";
     String TOYOTA="TOYOTA";
+
+
+    String REMOVE_IMAGE_ONE = "remove_image_one";
+    String REMOVE_IMAGE_TWO = "remove_image_two";
+    String REMOVE_IMAGE_THREE = "remove_image_three";
+    String REMOVE_IMAGE_FOUR = "remove_image_four";
+    String REMOVE_IMAGE_FIVE = "remove_image_five";
 
 
 }

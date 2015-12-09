@@ -97,7 +97,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
             }
         }));
 
-        if(Utils.isNetworkAvailable(getActivity())){
+        if(Utils.isNetworkAvailable()){
             performGET();
         }else {
             Utils.showSnackBar(rootView.findViewById(R.id.root_layout), getString(R.string.no_network_connection));

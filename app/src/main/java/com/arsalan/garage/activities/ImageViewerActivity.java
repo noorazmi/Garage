@@ -30,7 +30,7 @@ public class ImageViewerActivity extends BaseActivity {
 
         linkViewsId();
         if (getIntent().hasExtra(AppConstants.EXTRA_IMAGE_PATH)) {
-            if (Utils.isNetworkAvailable(this)) {
+            if (Utils.isNetworkAvailable()) {
                 showImage(getIntent().getStringExtra(AppConstants.EXTRA_IMAGE_PATH));
             } else {
                 Utils.showToastMessage(this, getResources().getString(R.string.no_internet_connection));

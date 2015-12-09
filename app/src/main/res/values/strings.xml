@@ -83,7 +83,7 @@
     <string name="car_delivery">سيارة الولادة</string>
 
     <string name="category_sale">CATEGORY SALE</string>
-    <string name="description">DESCRIPTION</string>
+    <string name="description">Description</string>
     <string name="title_activity_scrap_sub_menu">ScrapSubMenuActivity</string>
     <string name="label_take_photo">Take a photo</string>
     <string name="label_camera_roll">Select from camera roll</string>
@@ -101,7 +101,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_out_of_memory"><![CDATA[<string name=\"error_out_of_memory\">We are unable to process this image</string>]]></string>
     <string name="msg_5xx"><![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
-    <string name="no_internet_connection"><![CDATA[<string name=\"no_internet_connection\">No Network connectivity. Check your internet connection</string>]]></string>
+    <string name="no_internet_connection">No network connectivity</string>
     <string name="agencies">الوكالات</string>
     <string name="title_activity_alwakalat_agency_menu">AlwakalatAgencyMenuActivity</string>
     <string name="title_activity_alwakalat_agency_sub_menu">AlwakalatAgencySubMenuActivity</string>
@@ -221,5 +221,9 @@
     <string name="ad_limit_message">You can post maximum two advertisements per day</string>
     <string name="select_region">Select region</string>
     <string name="select_model">Select Model</string>
+    <string name="there_is_no_image_to_post">There is no image to post</string>
+    <string name="all_fields_are_compulsory">All fields are compulsory</string>
+    <string name="ad_successfully_posted">Congratulations! Ad successfully posted.</string>
+    <string name="please_select_region_first">Please select region first</string>
 
 </resources>
