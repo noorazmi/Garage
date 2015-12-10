@@ -1,6 +1,7 @@
 package networking.listeners;
 
-import android.support.v4.content.Loader;
+
+import android.content.Loader;
 
 import networking.models.HTTPModel;
 

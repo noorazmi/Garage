@@ -83,7 +83,8 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="app_bright_red">#F00032</color>
     <color name="app_dark_blue">#1E0F46</color>
-
+    <color name="white_color_transparent_30">#4Dffffff</color>
+    <color name="app_secondary_teal">#19B9AF</color>
 
 
 </resources>

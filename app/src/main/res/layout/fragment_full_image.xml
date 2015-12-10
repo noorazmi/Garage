@@ -1,16 +1,23 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arsalan.garage.fragments.FullImageFragment"
-    tools:showIn="@layout/activity_full_image"
-    android:background="@color/gr_white">
+    android:background="@android:color/white">
 
-    <android.support.v4.view.ViewPager
+    <com.arsalan.garage.uicomponents.ProductGalleryViewPager
         android:id="@+id/viewpager_car_images"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+    </com.arsalan.garage.uicomponents.ProductGalleryViewPager>
 
+    <Gallery
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white_color_transparent_30"
+        android:spacing="4dp"/>
 
 </RelativeLayout>

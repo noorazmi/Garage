@@ -42,4 +42,5 @@ dependencies {
     compile 'org.apache.httpcomponents:httpmime:4.0.1'
     compile 'org.apache.james:apache-mime4j:0.6'
     compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:support-v13:22.2.1'
 }

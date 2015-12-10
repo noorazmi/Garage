@@ -3,7 +3,7 @@ package com.arsalan.garage.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;

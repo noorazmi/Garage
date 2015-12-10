@@ -1,6 +1,7 @@
 package networking.loader;
 
-import android.support.v4.content.AsyncTaskLoader;
+
+import android.content.AsyncTaskLoader;
 
 import networking.HttpConstants;
 import networking.HttpUtils;

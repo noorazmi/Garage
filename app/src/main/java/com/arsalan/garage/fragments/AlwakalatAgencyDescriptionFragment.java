@@ -1,11 +1,11 @@
 package com.arsalan.garage.fragments;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -81,7 +81,7 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         mViewPagerCarImages.setAdapter(adapter);
     }
     private void setDecriptionPagerAdapter(){
-        AlwakalatAgencyDescriptionTabViewPagerAdapter seasonsFragmentStatePagerAdapter = new AlwakalatAgencyDescriptionTabViewPagerAdapter(getActivity(), getChildFragmentManager(), mShowroomCarVo);
+        AlwakalatAgencyDescriptionTabViewPagerAdapter seasonsFragmentStatePagerAdapter = new AlwakalatAgencyDescriptionTabViewPagerAdapter(getActivity(), getFragmentManager(), mShowroomCarVo);
         mViewpagerDescription.setAdapter(seasonsFragmentStatePagerAdapter);
         mTablayoutDescription.setupWithViewPager(mViewpagerDescription);
         new Handler().postAtTime(new Runnable() {

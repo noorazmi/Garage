@@ -1,8 +1,8 @@
 package networking.loader;
 
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 
 import networking.HttpConstants;
 import networking.Logger;
@@ -33,6 +33,8 @@ public class HttpLoaderCallbacks<M> implements LoaderManager.LoaderCallbacks<HTT
         HttpAsyncTaskLoader httpAsyncTaskLoader = new HttpAsyncTaskLoader(httpRequest);
         return httpAsyncTaskLoader;
     }
+
+
 
     @Override
     public void onLoadFinished(Loader<HTTPModel> loader, HTTPModel data) {

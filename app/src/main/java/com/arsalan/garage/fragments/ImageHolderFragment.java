@@ -1,8 +1,8 @@
 package com.arsalan.garage.fragments;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +24,10 @@ public class ImageHolderFragment extends Fragment {
 
     private String  mCarImageUrl;
 
-    public static ImageHolderFragment newInstance(ImageInfo carImage) {
+    public static ImageHolderFragment newInstance(ImageInfo imageInfo) {
         ImageHolderFragment fragment = new ImageHolderFragment();
         Bundle args = new Bundle();
-        args.putString(AppConstants.EXTRA_IMAGE_URL, carImage.getPhoto_name());
+        args.putString(AppConstants.EXTRA_IMAGE_URL, imageInfo.getPhoto_name());
         fragment.setArguments(args);
         return fragment;
     }

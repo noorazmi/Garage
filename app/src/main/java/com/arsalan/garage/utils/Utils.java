@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -257,87 +259,10 @@ public class Utils {
         return bitmap;
     }
 
-//    /**
-//     * Swipable snack bar
-//     */
-//    public static void showSnackBar(final View rootLayout, String message) {
-//
-//        //View rootLayout;
-//        //rootLayout = activity.findViewById(android.R.id.content);
-//        //rootLayout = view.findViewById(R.id.root_layout);
-//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-//        //snackbar.setAction("Settings", new View.OnClickListener() {
-//        //    @Override
-//        //    public void onClick(View v) {
-//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
-//        //    }
-//        //});
-//        View snackBarView = snackbar.getView();
-//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
-//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//        // tv.setTextColor(Color.WHITE);
-//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
-//        // params.gravity = Gravity.CENTER;
-//        // snackBarView.setLayoutParams(params);
-//
-//        snackbar.show();
-//
-//    }
-
-//    /**
-//     * Non Swipable snackbar
-//     */
-//    public static void showSnackBar(final Activity activity, String message) {
-//
-//        View rootLayout;
-//        rootLayout = activity.findViewById(android.R.id.content);
-//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-//        snackbar.setActionTextColor(Color.WHITE);
-//        //snackbar.setAction("Settings", new View.OnClickListener() {
-//        //    @Override
-//        //    public void onClick(View v) {
-//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
-//        //    }
-//        //});
-//        View snackBarView = snackbar.getView();
-//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
-//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//        // tv.setTextColor(Color.WHITE);
-//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
-//        // params.gravity = Gravity.CENTER;
-//        // snackBarView.setLayoutParams(params);
-//
-//        snackbar.show();
-//
-//    }
-
-//    /**
-//     * Non Swipable snackbar
-//     */
-//    public static void showSnackBar(final Activity activity, String message) {
-//
-//        View rootLayout;
-//        rootLayout = activity.findViewById(android.R.id.content);
-//        Snackbar snackbar = Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-//        snackbar.setActionTextColor(Color.WHITE);
-//        //snackbar.setAction("Settings", new View.OnClickListener() {
-//        //    @Override
-//        //    public void onClick(View v) {
-//        //        Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show();
-//        //    }
-//        //});
-//        View snackBarView = snackbar.getView();
-//        snackBarView.setBackgroundResource(R.color.app_bright_blue);
-//        // TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//        // tv.setTextColor(Color.WHITE);
-//        // FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackBarView.getLayoutParams();
-//        // params.gravity = Gravity.CENTER;
-//        // snackBarView.setLayoutParams(params);
-//
-//        snackbar.show();
-//
-//    }
-
+    public static int convertDpToPixels(Context activity, int dp) {
+        float density = activity.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
 
     /**
      * Non Swipable snackbar.
@@ -373,5 +298,12 @@ public class Utils {
 
     public static String getUDID(Context context) {
         return Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
+    }
+
+    public static Point getDisplayPoint(Context context) {
+        Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size;
     }
 }

@@ -1,12 +1,12 @@
 package networking.loader;
 
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Loader;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 
 import networking.HttpConstants;
 import networking.dialogs.DialogHandler;
@@ -25,14 +25,14 @@ public class LoaderHandler {
     // We will use this as loader id. Increase it by 1 every time you are going to create a new loader.
     private static int loaderId = -1;
     private static final String TAG = "LoaderHandler";
-    private FragmentActivity mFragmentActivity;
+    private Activity mFragmentActivity;
     private HTTPRequest mHttpRequest;
     private OnLoadCompleteListener mOnLoadCompleteListener = null;
     private LoaderManager mLoaderManager;
     private DialogHandler mDialogHandler;
     private static Context sContext;
     private static boolean  loggerEnabled = false;
-    public LoaderHandler(FragmentActivity fragmentActivity, HTTPRequest httpRequest, LoaderManager loaderManager) {
+    public LoaderHandler(Activity fragmentActivity, HTTPRequest httpRequest, LoaderManager loaderManager) {
         this.mFragmentActivity = fragmentActivity;
         this.mHttpRequest = httpRequest;
         this.mLoaderManager = loaderManager;
@@ -73,8 +73,8 @@ public class LoaderHandler {
      * @param httpRequest
      * @return
      */
-    public static LoaderHandler newInstance(FragmentActivity fragmentActivity, HTTPRequest httpRequest) {
-        return new LoaderHandler(fragmentActivity, httpRequest, fragmentActivity.getSupportLoaderManager());
+    public static LoaderHandler newInstance(Activity fragmentActivity, HTTPRequest httpRequest) {
+        return new LoaderHandler(fragmentActivity, httpRequest, fragmentActivity.getLoaderManager());
     }
 
     /**

@@ -114,7 +114,6 @@
         </activity>
         <activity
             android:name=".activities.FullImageActivity"
-            android:screenOrientation="landscape"
             android:theme="@style/AppTheme">
         </activity>
         <activity
