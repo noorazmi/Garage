@@ -50,8 +50,6 @@ public class ZoomImageHolderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final PhotoView photoView = (PhotoView) inflater.inflate(R.layout.fragment_zoom_image_holder, container, false);
-        mAttacher = new PhotoViewAttacher(photoView);
-        mAttacher.setOnPhotoTapListener(new PhotoTapListener());
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.loadImage(mProductImageUrl, new ImageLoadingListener() {
             @Override
@@ -66,6 +64,8 @@ public class ZoomImageHolderFragment extends Fragment {
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 if (loadedImage != null) {
                     photoView.setImageBitmap(loadedImage);
+                    mAttacher = new PhotoViewAttacher(photoView);
+                    mAttacher.setOnPhotoTapListener(new PhotoTapListener());
                 }
             }
 

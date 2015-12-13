@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.Gallery;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.ViewSwitcher;
 
 import com.arsalan.garage.R;
@@ -37,8 +37,8 @@ import networking.models.HTTPResponse;
 
 
 public class ProductGalleryFragment extends Fragment implements AdapterView.OnItemSelectedListener, ViewSwitcher.ViewFactory {
-    Gallery mGallery;
-    ProductGalleryViewPager mViewPagerGallery;
+    private Gallery mGallery;
+    private ProductGalleryViewPager mViewPagerGallery;
     private String TAG = ProductGalleryFragment.class.getSimpleName();
     private boolean isFirstTime = true;
     private boolean mIsTopBottomViewHidden = false;
@@ -90,10 +90,11 @@ public class ProductGalleryFragment extends Fragment implements AdapterView.OnIt
         }
         if (carImageArrayList.size() > 1) {
             mGallery.setAdapter(new GalleryImageAdapter(getActivity(), carImageArrayList));
+            mGallery.setVisibility(View.VISIBLE);
         } else {
             mGallery.setVisibility(View.GONE);
         }
-        mGallery.setSelection(getArguments().getInt(AppConstants.EXTRA_INDEX));
+        //mGallery.setSelection(getArguments().getInt(AppConstants.EXTRA_INDEX));
         GalleryPagerAdapter galleryPagerAdapter = new GalleryPagerAdapter(carImageArrayList, getFragmentManager());
         mViewPagerGallery.setOffscreenPageLimit(10);
         mViewPagerGallery.setAdapter(galleryPagerAdapter);
@@ -169,15 +170,15 @@ public class ProductGalleryFragment extends Fragment implements AdapterView.OnIt
     }
 
     private void hideViews() {
-        //header.animate().translationY(-header.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+        getActivity().findViewById(R.id.toolbar).animate().translationY(-getActivity().findViewById(R.id.toolbar).getHeight()).setInterpolator(new AccelerateInterpolator(2));
 
-        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mGallery.getLayoutParams();
+        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mGallery.getLayoutParams();
         int fabBottomMargin = lp.bottomMargin;
         mGallery.animate().translationY(mGallery.getHeight() + fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();
     }
 
     private void showViews() {
-        //header.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+        getActivity().findViewById(R.id.toolbar).animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
         mGallery.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
     }
 

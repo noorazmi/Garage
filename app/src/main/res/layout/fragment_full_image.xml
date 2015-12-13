@@ -1,23 +1,30 @@
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <!--<include-->
+        <!--android:id="@+id/toolbar"-->
+        <!--layout="@layout/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="@dimen/toolbar_padding"-->
+        <!--android:layout_gravity="top"-->
+        <!--/>-->
+
     <com.arsalan.garage.uicomponents.ProductGalleryViewPager
         android:id="@+id/viewpager_car_images"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.arsalan.garage.uicomponents.ProductGalleryViewPager>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
 
     <Gallery
         android:id="@+id/gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white_color_transparent_30"
-        android:spacing="4dp"/>
+        android:background="@color/transparent_black_30"
+        android:spacing="4dp"
+        android:layout_gravity="bottom"/>
 
-</RelativeLayout>
+</FrameLayout>
