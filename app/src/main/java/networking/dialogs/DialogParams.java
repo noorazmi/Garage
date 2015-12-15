@@ -8,10 +8,10 @@ import android.content.DialogInterface;
  */
 public class DialogParams {
     private String message = "";
-    private boolean cancellable = false;
+    private boolean cancellable = true;
     private boolean indeterminate = true;
     private boolean canceledOnTouchOutside = false;
-    private DialogInterface.OnCancelListener onCancelListener = null;
+    private DialogInterface.OnCancelListener onCancelListener;
     private ProgressDialog progressDialog = null;
 
     public String getMessage() {

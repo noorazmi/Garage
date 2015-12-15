@@ -99,6 +99,4 @@ public class HttpAsyncTaskLoader extends AsyncTaskLoader<HTTPModel> {
         super.deliverResult(data);
 
     }
-
-
 }

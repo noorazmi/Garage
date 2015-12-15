@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import networking.dialogs.DialogParams;
+
 /**
  * Created by rajendra on 17/9/14.
  */
@@ -14,7 +16,8 @@ public class HTTPRequest implements Parcelable {
     private String requestType;
     private String jsonPayload;
     private String valueObjectFullyQualifiedName;
-    private boolean showProgressDialog = true;
+    private boolean showProgressDialog = false;
+    private DialogParams dialogParams;
 
     public HTTPRequest() {
     }
@@ -58,11 +61,22 @@ public class HTTPRequest implements Parcelable {
     public void setValueObjectFullyQualifiedName(String valueObjectFullyQualifiedName) {
         this.valueObjectFullyQualifiedName = valueObjectFullyQualifiedName;
     }
+
     public boolean isShowProgressDialog() {
         return showProgressDialog;
     }
+
     public void setShowProgressDialog(boolean showProgressDialog) {
         this.showProgressDialog = showProgressDialog;
+    }
+
+    public void setShowProgressDialog(boolean showProgressDialog, DialogParams dialogParams) {
+        this.showProgressDialog = showProgressDialog;
+        this.dialogParams = dialogParams;
+    }
+
+    public DialogParams getDialogParams() {
+        return dialogParams;
     }
 
     @Override
@@ -76,9 +90,8 @@ public class HTTPRequest implements Parcelable {
         dest.writeBundle(paramBundle);
         dest.writeString(requestType);
         dest.writeString(jsonPayload);
-        dest.writeByte((byte) (showProgressDialog ? 1: 0));
+        dest.writeByte((byte) (showProgressDialog ? 1 : 0));
     }
-
 
 
     public static final Creator<HTTPRequest> CREATOR = new Creator<HTTPRequest>() {
