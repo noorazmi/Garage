@@ -10,10 +10,8 @@ package com.arsalan.garage.utils;
  */
 public interface AppConstants {
 
+    int REQUEST_ITEM_COUNT = 25;
     int DIVIDER_ITEM_WIDTH = 5;
-
-    int LAYOUT_LIST = 0;
-    int LAYOUT_GRID = 1;
 
     String URL = "url";
 

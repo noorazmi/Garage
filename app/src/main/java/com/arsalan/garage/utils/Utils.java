@@ -135,7 +135,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, "بيجو / ستروين"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car11, "رينو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
         return menuItemsArrayLis;
     }
 

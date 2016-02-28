@@ -116,11 +116,56 @@ public interface Urls {
     String TINTINGCAR = "http://kuwaitgarage.com/api/tintingcar";
 
 
-    String  HOUSE_DISPLAY_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/house-display";
-    String  HOUSE_DISPLAY_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/house-display";
-    String  HOUSE_DISPLAY_ACURA = "http://kuwaitgarage.com/api/showroom/acura/house-display";
+    String HOUSE_DISPLAY_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/house-display";
+    String HOUSE_DISPLAY_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/house-display";
+    String HOUSE_DISPLAY_ACURA = "http://kuwaitgarage.com/api/showroom/acura/house-display";
+    String HOUSE_DISPLAY_BAIC = "http://kuwaitgarage.com/api/showroom/baic/house-display";
+    String HOUSE_DISPLAY_CHANGAN = "http://kuwaitgarage.com/api/showroom/changan/house-display";
+    String HOUSE_DISPLAY_CHRYSLER = "http://kuwaitgarage.com/api/showroom/chrysler/house-display";
+    String HOUSE_DISPLAY_CITROEN = "http://kuwaitgarage.com/api/showroom/citroen/house-display";
+    String HOUSE_DISPLAY_DFM = "http://kuwaitgarage.com/api/showroom/dfm/house-display";
+    String HOUSE_DISPLAY_DODGE = "http://kuwaitgarage.com/api/showroom/dodge/house-display";
+    String HOUSE_DISPLAY_FIAT = "http://kuwaitgarage.com/api/showroom/fiat/house-display";
+    String HOUSE_DISPLAY_GAC = "http://kuwaitgarage.com/api/showroom/gac/house-display";
+    String HOUSE_DISPLAY_MG = "http://kuwaitgarage.com/api/showroom/mg/house-display";
+    String HOUSE_DISPLAY_RAM = "http://kuwaitgarage.com/api/showroom/ram/house-display";
 
     String  SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
+
+
+    String SHOWROOM_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac";
+    String SHOWROOM_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo";
+    String SHOWROOM_ACURA = "http://kuwaitgarage.com/api/showroom/acura";
+    String SHOWROOM_BAIC = "http://kuwaitgarage.com/api/showroom/baic";
+    String SHOWROOM_CHANGAN = "http://kuwaitgarage.com/api/showroom/changan";
+    String SHOWROOM_CHRYSLER = "http://kuwaitgarage.com/api/showroom/chrysler";
+    String SHOWROOM_CITROEN = "http://kuwaitgarage.com/api/showroom/citroen";
+    String SHOWROOM_DFM = "http://kuwaitgarage.com/api/showroom/dfm";
+    String SHOWROOM_DODGE = "http://kuwaitgarage.com/api/showroom/dodge";
+    String SHOWROOM_FIAT = "http://kuwaitgarage.com/api/showroom/fiat";
+    String SHOWROOM_GAC = "http://kuwaitgarage.com/api/showroom/gac";
+    String SHOWROOM_MG = "http://kuwaitgarage.com/api/showroom/mg";
+    String SHOWROOM_RAM = "http://kuwaitgarage.com/api/showroom/ram";
+    String SHOWROOM_JEEP = "http://kuwaitgarage.com/api/showroom/jeep";
+    String SHOWROOM_VOLKSWAGEN = "http://kuwaitgarage.com/api/showroom/volkswagen";
+    String SHOWROOM_PEUGEOT = "http://kuwaitgarage.com/api/showroom/peugeot";
+
+    String SHOWROOM_TOYOTA = "http://kuwaitgarage.com/api/showroom/toyota";
+    String SHOWROOM_GEELY = "http://kuwaitgarage.com/api/showroom/geely";
+    String SHOWROOM_MAZDA = "http://kuwaitgarage.com/api/showroom/mazda";
+    String SHOWROOM_HONDA = "http://kuwaitgarage.com/api/showroom/honda";
+    String SHOWROOM_RENAULT = "http://kuwaitgarage.com/api/showroom/renault";
+
+
+
+
+    //Maintenace Apis
+
+    String MAINTENANCE_CENTER_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/maintenance-center";
+    String MAINTENANCE_CENTER_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/maintenance-center";
+    String MAINTENANCE_CENTER_ACURA = "http://kuwaitgarage.com/api/showroom/acura/maintenance-center";
+    String MAINTENANCE_CENTER_BAIC = "http://kuwaitgarage.com/api/showroom/baic/house-display";
+
 
     String FORSALE_BASE = "http://kuwaitgarage.com/api/foresale/";
     String FORSALE_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/foresalead/";

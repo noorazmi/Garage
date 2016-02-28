@@ -13,14 +13,13 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.AlwakalatAgencyDescriptionActivity;
+import com.arsalan.garage.activities.AlwakalatAgencySubMenu2Activity;
 import com.arsalan.garage.adapters.AlwakalatAgencySubMenu2Adapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
-import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
-import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.HouseDisplayVo;
 
@@ -37,15 +36,10 @@ import networking.models.HTTPResponse;
 public class AlwakalatAgencySubMenu2Fragment extends Fragment {
 
 
-    private static final String TAG = "PlaceholderFragment";
-    /*Number of columns in the grid view*/
+    private static final String TAG = "AlwakalatSubMenu2Fragm";
     private static final int NUM_OF_COLUMNS = 2;
-    /*Total number of items in the RecyclerView*/
-    //private ArrayList<DataModel> mDataModels;
-    private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
     private RecyclerView mRecyclerView;
     private AlwakalatAgencySubMenu2Adapter recyclerViewAdapter;
-    private int addItemCount = 0;
     private HouseDisplayVo mHouseDisplayVo;
 
 
@@ -59,39 +53,25 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.fragment_alwakalat_agency_menu, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-
-
         RecyclerView.LayoutManager layoutManager = null;
-
         layoutManager = new GridLayoutManager(getActivity(), NUM_OF_COLUMNS);
-
         mRecyclerView.setLayoutManager(layoutManager);
-        //mDataModels = getDataModelList();
-
-        //recyclerViewAdapter = new RecyclerViewAdapter(getMenuItems());
-
         /*Third party ItemDecoration found from https://gist.github.com/alexfu/0f464fc3742f134ccd1e*/
         /// RecyclerView.ItemDecoration verticalDivider  = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
         RecyclerView.ItemDecoration horizontalDivider = new DividerItemDecoration(AppConstants.DIVIDER_ITEM_WIDTH);
         mRecyclerView.addItemDecoration(horizontalDivider);
         //mRecyclerView.addItemDecoration(verticalDivider);
-
-        // this is the default;
-        // this call is actually only necessary with custom ItemAnimators
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        //mRecyclerView.setAdapter(recyclerViewAdapter);
-
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                HomeMenuItem homeMenuItem = null;
-                if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
-                    homeMenuItem = mHomeMenuItemArrayList.get(position);
+                HouseDisplayVo.CarModel carModel = mHouseDisplayVo.getResults().get(position);
+                if(carModel.getHasChild().equals("1")){
+                    ((AlwakalatAgencySubMenu2Activity)getActivity()).setMenuHolderFragment(carModel.getModel(), getArguments().getString(AppConstants.EXTRA_URL)+"/"+carModel.getShowroom_car_id());
+                    return;
                 }
                 Bundle bundle = new Bundle();
                 Intent intent = new Intent(getActivity(), AlwakalatAgencyDescriptionActivity.class);
-                HouseDisplayVo.CarModel carModel = mHouseDisplayVo.getResults().get(position);
                 intent.putExtra(AppConstants.EXTRA_CAR_ID, carModel.getShowroom_car_id());
                 getActivity().startActivity(intent);
             }
@@ -113,7 +93,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
         //Bundle bundle = getArguments();
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.URL_ITEM_DESCRIPTION_BASE + getArguments().getString(AppConstants.ID)));
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + getArguments().getString(AppConstants.EXTRA_URL));
         httpRequest.setUrl(getArguments().getString(AppConstants.EXTRA_URL));
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(HouseDisplayVo.class.getName());

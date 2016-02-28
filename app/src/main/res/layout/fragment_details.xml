@@ -20,13 +20,13 @@
             <com.arsalan.garage.uicomponents.CustomTextViewArabic
                 android:id="@+id/textview_year_title"
                 style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/year"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/description_title"/>
 
             <include
                 android:id="@+id/textview_colon"
@@ -37,17 +37,18 @@
                 android:layout_toLeftOf="@+id/textview_year_title"
                 android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
 
-            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_year"
-                style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/year"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_toLeftOf="@+id/textview_colon"
-                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+                android:layout_marginRight="@dimen/gr_desc_right_margin"
+                android:gravity="center_vertical|right"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -63,12 +64,13 @@
             <com.arsalan.garage.uicomponents.CustomTextViewArabic
                 android:id="@+id/textview_engine_title"
                 style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/engine"
                 android:textColor="@android:color/black"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/description_title"/>
 
             <include
                 android:id="@+id/textview_colon"
@@ -79,17 +81,18 @@
                 android:layout_toLeftOf="@+id/textview_engine_title"
                 android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
 
-            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_engine"
-                style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/engine"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_toLeftOf="@+id/textview_colon"
-                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+                android:layout_marginRight="@dimen/gr_desc_right_margin"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -105,13 +108,13 @@
             <com.arsalan.garage.uicomponents.CustomTextViewArabic
                 android:id="@+id/textview_transmission_title"
                 style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/transmission"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/description_title"/>
 
             <include
                 android:id="@+id/textview_colon"
@@ -122,17 +125,18 @@
                 android:layout_toLeftOf="@+id/textview_transmission_title"
                 android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
 
-            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_transmission"
-                style="@style/TextViewStyle.Regular.Arabic"
+                style="@style/TextViewStyle.Regular.English"
                 android:layout_width="@dimen/gr_car_info_text_width"
                 android:layout_height="wrap_content"
                 android:text="@string/transmission"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_toLeftOf="@+id/textview_colon"
-                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+                android:layout_marginRight="@dimen/gr_desc_right_margin"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -148,12 +152,13 @@
             <com.arsalan.garage.uicomponents.CustomTextViewArabic
                 android:id="@+id/textview_wheel_drive_title"
                 style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wheel_drive"
                 android:textColor="@android:color/black"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/description_title"/>
 
             <include
                 android:id="@+id/textview_colon"
@@ -164,17 +169,18 @@
                 android:layout_toLeftOf="@+id/textview_wheel_drive_title"
                 android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
 
-            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_wheel_drive"
-                style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wheel_drive"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_toLeftOf="@+id/textview_colon"
-                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+                android:layout_marginRight="@dimen/gr_desc_right_margin"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -190,13 +196,13 @@
             <com.arsalan.garage.uicomponents.CustomTextViewArabic
                 android:id="@+id/textview_price_title"
                 style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/price_arb"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/description_title"/>
 
             <include
                 android:id="@+id/textview_colon"
@@ -207,17 +213,18 @@
                 android:layout_toLeftOf="@+id/textview_price_title"
                 android:layout_marginRight="@dimen/gr_semi_colon_right_margin"/>
 
-            <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_price"
-                style="@style/TextViewStyle.Regular.Arabic"
-                android:layout_width="@dimen/gr_car_info_text_width"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/price_arb"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:layout_toLeftOf="@+id/textview_colon"
-                android:layout_marginRight="@dimen/gr_desc_right_margin"/>
+                android:layout_marginRight="@dimen/gr_desc_right_margin"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 

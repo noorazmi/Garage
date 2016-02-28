@@ -6,7 +6,6 @@
     android:background="@android:color/white"
     android:gravity="right"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context="com.arsalan.garage.fragments.DetailsFragment">
 
 
@@ -15,82 +14,89 @@
         style="@style/TextViewStyle.Regular.English"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Point1"
+        android:text="@string/app_warranty_message"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="right"/>
 
-    <View
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_divider"
-        android:background="@color/grey_dim"/>
+        android:background="@drawable/divider"
+        android:layout_marginTop="8dp"/>
 
-    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_description2"
-        style="@style/TextViewStyle.Regular.English"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/list_divider"
-        android:text="Point2"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/list_divider"
-        android:background="@color/grey_dim"/>
 
-    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_description3"
-        style="@style/TextViewStyle.Regular.English"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Point3"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
+    <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
+        <!--android:id="@+id/textview_description2"-->
+        <!--style="@style/TextViewStyle.Regular.English"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/list_divider"-->
+        <!--android:text="Point2"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@android:color/black"/>-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/list_divider"
-        android:background="@color/grey_dim"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/list_divider"-->
+        <!--android:background="@color/grey_dim"/>-->
 
-    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_description4"
-        style="@style/TextViewStyle.Regular.English"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Point4"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
+    <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
+        <!--android:id="@+id/textview_description3"-->
+        <!--style="@style/TextViewStyle.Regular.English"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Point3"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@android:color/black"/>-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/list_divider"
-        android:background="@color/grey_dim"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/list_divider"-->
+        <!--android:background="@color/grey_dim"/>-->
 
-    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_description5"
-        style="@style/TextViewStyle.Regular.English"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Point5"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
+    <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
+        <!--android:id="@+id/textview_description4"-->
+        <!--style="@style/TextViewStyle.Regular.English"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Point4"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@android:color/black"/>-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/list_divider"
-        android:background="@color/grey_dim"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/list_divider"-->
+        <!--android:background="@color/grey_dim"/>-->
 
-    <com.arsalan.garage.uicomponents.CustomTextViewArabic
-        android:id="@+id/textview_description6"
-        style="@style/TextViewStyle.Regular.Arabic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text=" لمعرفة المزيد يرجى الإتصال"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black"/>
+    <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
+        <!--android:id="@+id/textview_description5"-->
+        <!--style="@style/TextViewStyle.Regular.English"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Point5"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@android:color/black"/>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/list_divider"-->
+        <!--android:background="@color/grey_dim"/>-->
+
+    <!--<com.arsalan.garage.uicomponents.CustomTextViewArabic-->
+        <!--android:id="@+id/textview_description6"-->
+        <!--style="@style/TextViewStyle.Regular.Arabic"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text=" لمعرفة المزيد يرجى الإتصال"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@android:color/black"/>-->
 </LinearLayout>

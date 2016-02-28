@@ -1,10 +1,11 @@
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.arsalan.garage.fragments.ContactFragment"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
         android:id="@+id/textview_phone_number"
@@ -13,8 +14,15 @@
         android:layout_height="wrap_content"
         android:text="4498765432"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/phone_number"
-        android:layout_gravity="center"/>
+        android:textColor="#000000"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right|top"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider"
+        android:background="@drawable/divider"
+        android:layout_marginTop="8dp"/>
 
 
-</FrameLayout>
+</LinearLayout>

@@ -20,6 +20,7 @@ public class CategorySaleListActivity extends BaseActivity {
     private FragmentManager mFragmentManager;
     private String TAG = "CategorySaleListActivity";
     private Toolbar mToolbar;
+    private TextView textViewItemCount;
 
 
     @Override
@@ -46,14 +47,15 @@ public class CategorySaleListActivity extends BaseActivity {
 
 
     public void setNoOfItemsInTooBar(int itemCount) {
-        TextView textViewTitle = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_item_count, null);
-        textViewTitle.setText(String.valueOf(itemCount + " Items"));
-        mToolbar.addView(textViewTitle, new ActionBar.LayoutParams(
-                ActionBar.LayoutParams.WRAP_CONTENT,
-                ActionBar.LayoutParams.MATCH_PARENT,
-                Gravity.RIGHT
-        ));
+        if (textViewItemCount == null) {
+            textViewItemCount = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_item_count, null);
+            mToolbar.addView(textViewItemCount, new ActionBar.LayoutParams(
+                    ActionBar.LayoutParams.WRAP_CONTENT,
+                    ActionBar.LayoutParams.MATCH_PARENT,
+                    Gravity.RIGHT
+            ));
+        }
+        textViewItemCount.setText(String.valueOf(itemCount + " Items"));
     }
-
 
 }

@@ -45,6 +45,7 @@ public class ImageHolderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_image_holder, container, false);
+        rootView.setBackgroundColor(getResources().getColor(android.R.color.black));
         ImageView imageView = (ImageView)rootView.findViewById(R.id.imageview_car);
         ImageLoader imageLoader = ImageLoader.getInstance();
         if(!TextUtils.isEmpty(mCarImageUrl)){

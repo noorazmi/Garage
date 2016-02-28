@@ -46,6 +46,7 @@ public class HouseDisplayVo extends BaseVO implements ValueObject {
         private String contact;
         private String working_hours;
         private String image;
+        private String hasChild;
 
         public String getShowroom_car_id() {
             return showroom_car_id;
@@ -141,6 +142,10 @@ public class HouseDisplayVo extends BaseVO implements ValueObject {
 
         public void setImage(String image) {
             this.image = image;
+        }
+
+        public String getHasChild() {
+            return hasChild;
         }
     }
 

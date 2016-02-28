@@ -117,10 +117,10 @@
     <string name="msg_select_file">Select file to upload</string>
     <string name="no_network_connection">Internet connection in not available.</string>
     <string name="details">المواصفات</string>
-    <string name="year">السنه</string>
+    <string name="year">الموديل</string>
     <string name="engine">المحرك</string>
     <string name="transmission">ناقل الحركه</string>
-    <string name="wheel_drive">دفع العجلات</string>
+    <string name="wheel_drive"> نظام الدفع </string>
     <string name="price_arb">السعر</string>
     <string name="dot">•</string>
     <string name="for_more_information_please_call"> لمعرفة المزيد يرجى الإتصال </string>
@@ -225,5 +225,6 @@
     <string name="all_fields_are_compulsory">All fields are compulsory</string>
     <string name="ad_successfully_posted">Congratulations! Ad successfully posted.</string>
     <string name="please_select_region_first">Please select region first</string>
+    <string name="app_warranty_message">We will provide you with the warranty policy for each company</string>
 
 </resources>

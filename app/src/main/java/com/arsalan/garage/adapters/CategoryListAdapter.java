@@ -1,6 +1,5 @@
 package com.arsalan.garage.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
@@ -25,18 +25,13 @@ import java.util.ArrayList;
  */
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ListItemViewHolder> {
 
-    private Context mContext;
-    //private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
     private ArrayList<AmericanCarsVO.Result> mHomeMenuItemArrayList;
-    private AmericanCarsVO americanCarsVO;
     private String mScrapType;
     private String mDescriptionLanguage;
 
 
-    //public CategoryListAdapter(ArrayList<HomeMenuItem> mHomeMenuItemArrayList, Context context) {
-    public CategoryListAdapter(AmericanCarsVO americanCarsVO, Context context, String scrapType, String descriptionLanguage) {
+    public CategoryListAdapter(AmericanCarsVO americanCarsVO, String scrapType, String descriptionLanguage) {
         this.mHomeMenuItemArrayList = (ArrayList<AmericanCarsVO.Result>) americanCarsVO.getResults();
-        this.mContext = context;
         this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
 
@@ -61,11 +56,11 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         //holder.title.setText(model.getDescription());
         holder.phoneNumbet.setText(model.getPhone());
         if(mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)){
-            holder.title.setText(mContext.getString(R.string.car_delivery));
+            holder.title.setText(GarageApp.getInstance().getString(R.string.car_delivery));
             holder.phoneNumbet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Utils.initCall(model.getPhone(), mContext);
+                    Utils.initCall(model.getPhone(), GarageApp.getInstance());
                 }
             });
         }else{

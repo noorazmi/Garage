@@ -19,24 +19,27 @@
             android:id="@+id/scroll_view_container">
         </LinearLayout>
 
-        <com.arsalan.garage.uicomponents.CustomTextViewArabic
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
             android:id="@+id/textview_year_title"
-            style="@style/TextViewStyle.Regular.Arabic"
+            style="@style/TextViewStyle.Bold.English"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="@string/for_more_information_please_call"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/black"
             android:textStyle="bold"
+            android:textSize="22sp"
             android:layout_centerVertical="true"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:layout_marginBottom="7dp"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/list_divider"
             android:background="@drawable/divider"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
 
     </LinearLayout>
 
