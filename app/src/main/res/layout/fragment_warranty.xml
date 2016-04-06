@@ -10,7 +10,7 @@
 
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_description1"
+        android:id="@+id/textview_warranty"
         style="@style/TextViewStyle.Regular.English"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

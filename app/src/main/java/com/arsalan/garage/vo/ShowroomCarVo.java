@@ -25,6 +25,8 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
         this.results = results;
     }
 
+
+
     public static class Result{
         private String showroom_car_id;
         private String make;
@@ -37,6 +39,7 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
         private String description;
         private String contact;
         private String working_hours;
+        private String warranty;
         private ArrayList<ImageInfo> images;
 
         public String getShowroom_car_id() {
@@ -121,6 +124,10 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
 
         public String getWorking_hours() {
             return working_hours;
+        }
+
+        public String getWarranty() {
+            return warranty;
         }
 
         public void setWorking_hours(String working_hours) {

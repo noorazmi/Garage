@@ -138,6 +138,7 @@ public interface AppConstants {
     String EXTRA_WORKING_HOURS = "working_hours";
     String EXTRA_IMAGE_URL = "image_url";
     String EXTRA_FORSALE_ID = "forsale_id";
+    String EXTRA_WARRANTY = "warranty";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";

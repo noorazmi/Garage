@@ -95,10 +95,10 @@ public class KarajatMenuFragment extends Fragment {
         mHomeMenuItemArrayList = new ArrayList<>();
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
         // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الفحيحيل"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الفحيحيل"));
 
         return mHomeMenuItemArrayList;
     }

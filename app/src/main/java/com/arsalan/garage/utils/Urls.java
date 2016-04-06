@@ -156,6 +156,10 @@ public interface Urls {
     String SHOWROOM_HONDA = "http://kuwaitgarage.com/api/showroom/honda";
     String SHOWROOM_RENAULT = "http://kuwaitgarage.com/api/showroom/renault";
 
+    String SHOWROOM_MITSUBISHI = "http://kuwaitgarage.com/api/showroom/mitsubishi";
+    String SHOWROOM_INFINITI = "http://kuwaitgarage.com/api/showroom/infiniti";
+    String SHOWROOM_CHEVOLATE = "http://kuwaitgarage.com/api/showroom/chevolate";
+
 
 
 

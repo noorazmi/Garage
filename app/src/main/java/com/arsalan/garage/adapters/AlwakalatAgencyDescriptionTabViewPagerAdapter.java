@@ -47,15 +47,14 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
             case POSITION_CONTACT_US:
                 fragment = new ContactFragment();
                 bundle.putString(AppConstants.EXTRA_CONTACT, mShowroomCarVo.getResults().getContact());
-                fragment.setArguments(bundle);
                 break;
             case POSITION_WARRANTY:
                 fragment = new WarrantyFragment();
+                bundle.putString(AppConstants.EXTRA_WARRANTY, mShowroomCarVo.getResults().getWarranty());
                 break;
             case POSITION_FEATURES:
                 fragment = new FeaturesFragment();
                 bundle.putString(AppConstants.EXTRA_DESCRIPTION, mShowroomCarVo.getResults().getDescription());
-                fragment.setArguments(bundle);
                 break;
             case POSITION_DETAILS:
                 fragment = new DetailsFragment();
@@ -64,11 +63,11 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
                 bundle.putString(AppConstants.EXTRA_TRANSMISSION, mShowroomCarVo.getResults().getTransmission());
                 bundle.putString(AppConstants.EXTRA_PAYMENT, mShowroomCarVo.getResults().getPayment());
                 bundle.putString(AppConstants.EXTRA_PRICE, mShowroomCarVo.getResults().getPrice());
-                fragment.setArguments(bundle);
                 break;
             default:
                 break;
         }
+        fragment.setArguments(bundle);
         return fragment;
     }
 

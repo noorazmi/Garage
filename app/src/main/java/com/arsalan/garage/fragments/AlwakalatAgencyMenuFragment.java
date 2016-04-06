@@ -121,15 +121,15 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mazda, "مازدا" , null, Urls.SHOWROOM_MAZDA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.honda, "هوندا" , null, Urls.SHOWROOM_HONDA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, "رنولت" , null, Urls.SHOWROOM_RENAULT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ford, "فورد"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي", null,Urls.SHOWROOM_MITSUBISHI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, "انفينتي", null, Urls.SHOWROOM_INFINITI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه", null, Urls.SHOWROOM_CHEVOLATE));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ford, "فورد"));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, "رينو"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, "انفينتي"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.lincoln, "لنكلن"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.srt_hemi, "سرت إمي"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.lincoln, "لنكلن"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.srt_hemi, "سرت إمي"));
         return mHomeMenuItemArrayList;
     }
 
