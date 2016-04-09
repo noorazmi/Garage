@@ -19,7 +19,6 @@ import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
-import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
@@ -100,6 +99,43 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك", null, AppConstants.CADILLAC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.acura, "اكورا", null, AppConstants.ACURA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volvo, "فولفو", null, AppConstants.VOLVO));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.baic, "بايك", null, AppConstants.BAIC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.changan, "شانجان", null, AppConstants.CHANGAN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chrysler, "كرايسلر", null,  AppConstants.CHRYSLER));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.citroen, "سيتروين", null, AppConstants.CITROEN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dfm, "دي اف ام", null, AppConstants.DFM));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dodge, "دودج", null, AppConstants.DODGE));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.fiat, "فيات", null, AppConstants.FIAT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gac_motor, "جي اي سي", null, AppConstants.GAC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mg, "ام جي" , null, AppConstants.MG));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ram, "رام", null, AppConstants.RAM));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.jeep7, "جيب", null,  AppConstants.JEEP));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volkswagen4, "فولكس", null, AppConstants.VOLKSWAGEN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.peugeot, "بيجو", null, AppConstants.PEUGEOT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.toyota, "تويوتا", null, AppConstants.TOYOTA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.geely, "قيلي" , null, AppConstants.GEELY));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mazda, "مازدا" , null, AppConstants.MAZDA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.honda, "هوندا" , null, AppConstants.HONDA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, "رنولت" , null, AppConstants.RENAULT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي", null,AppConstants.MITSUBISHI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, "انفينتي", null, AppConstants.INFINITI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه", null, AppConstants.CHEVOLATE));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ford, "فورد"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, "رينو"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.lincoln, "لنكلن"));
+        //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.srt_hemi, "سرت إمي"));
+        return mHomeMenuItemArrayList;
+    }
+
+
+    /*private ArrayList<HomeMenuItem> getMenuItems() {
+
+        mHomeMenuItemArrayList = new ArrayList<>();
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك", null, Urls.SHOWROOM_CADILLAC));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.acura, "اكورا", null, Urls.SHOWROOM_ACURA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volvo, "فولفو", null, Urls.SHOWROOM_VOLVO));
@@ -131,7 +167,7 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.lincoln, "لنكلن"));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.srt_hemi, "سرت إمي"));
         return mHomeMenuItemArrayList;
-    }
+    }*/
 
     /*private ArrayList<HomeMenuItem> getMenuItems() {
 

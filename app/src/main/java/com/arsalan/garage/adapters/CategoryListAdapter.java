@@ -56,7 +56,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         //holder.title.setText(model.getDescription());
         holder.phoneNumbet.setText(model.getPhone());
         if(mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)){
-            holder.title.setText(GarageApp.getInstance().getString(R.string.car_delivery));
+            holder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
             holder.phoneNumbet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

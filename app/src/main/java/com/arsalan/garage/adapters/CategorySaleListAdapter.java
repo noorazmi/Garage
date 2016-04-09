@@ -70,7 +70,7 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
             //holder.title.setText(model.getDescription());
             ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
             if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
-                listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.car_delivery));
+                listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
             /*listItemViewHolder.phoneNumbet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

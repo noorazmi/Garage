@@ -85,6 +85,10 @@ public class HomeTabFragment extends Fragment {
                 if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
                     HomeMenuItem homeMenuItem = mHomeMenuItemArrayList.get(position);
                     Intent intent = null;
+                    String menuType = homeMenuItem.getMenuType();
+                    if(menuType == null){
+                        return;
+                    }
                     if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KARAJAT)) {
                         intent = new Intent(getActivity(), KarajatMenuActivity.class);
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD)) {

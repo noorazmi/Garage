@@ -122,6 +122,9 @@ public interface AppConstants {
 
     String EXTRA_TITLE = "title";
     String EXTRA_URL = "url";
+    String EXTRA_SERVICE_TYPE = "SERVICE_TYPE";
+    String SERVICE_TYPE_SERVICE_CENTER = "SERVICE_TYPE_SERVICE_CENTER";
+    String EXTRA_SERVICE_TYPE_SPARE_PARTS = "EXTRA_SERVICE_TYPE_SPARE_PARTS";
     String EXTRA_CONTACT = "contact";
     String EXTRA_IMAGE_PATH = "imagePath";
     String EXTRA_CAR_ID = "car_id";
@@ -203,7 +206,7 @@ public interface AppConstants {
     String INFINITI="infiniti";
     String LEXUS="lexus";
     String NISSAN="nissan";
-    String TOYOTA="TOYOTA";
+    String TOYOTA="toyota";
 
 
     String REMOVE_IMAGE_ONE = "remove_image_one";
@@ -211,6 +214,45 @@ public interface AppConstants {
     String REMOVE_IMAGE_THREE = "remove_image_three";
     String REMOVE_IMAGE_FOUR = "remove_image_four";
     String REMOVE_IMAGE_FIVE = "remove_image_five";
+
+    //String CADILLAC = "cadillac";
+    String VOLVO = "volvo";
+    String ACURA = "acura";
+    String BAIC = "baic";
+    String CHANGAN = "changan";
+    String CHRYSLER = "chrysler";
+    String CITROEN = "citroen";
+    String DFM = "dfm";
+    String DODGE = "dodge";
+    String FIAT = "fiat";
+    String GAC = "gac";
+    String MG = "mg";
+    String RAM = "ram";
+    //String JEEP = "jeep";
+    String VOLKSWAGEN = "volkswagen";
+    String PEUGEOT = "peugeot";
+
+    //String TOYOTA = "toyota";
+    String GEELY = "geely";
+    //String MAZDA = "mazda";
+    //String HONDA = "honda";
+    //String RENAULT = "renault";
+
+    //String MITSUBISHI = "mitsubishi";
+    //String INFINITI = "infiniti";
+    String CHEVOLATE = "chevolate";
+
+
+
+    //String TOYOTA = "toyota";
+    //String INFINITI = "infiniti";
+    //String MITSUBISHI = "mitsubishi";
+    //String HONDA = "honda";
+    //String VOLKSWAGEN = "volkswagen";
+
+    String MAINTENANCE_CENTERS = "Maintenance Centers";
+    String SPARE_PARTS = "Spare Parts";
+
 
 
 }

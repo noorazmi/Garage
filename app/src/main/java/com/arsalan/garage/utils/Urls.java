@@ -131,8 +131,7 @@ public interface Urls {
     String HOUSE_DISPLAY_RAM = "http://kuwaitgarage.com/api/showroom/ram/house-display";
 
     String  SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
-
-
+    String SHOWROOM_BASE_URL = "http://kuwaitgarage.com/api/showroom/";
     String SHOWROOM_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac";
     String SHOWROOM_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo";
     String SHOWROOM_ACURA = "http://kuwaitgarage.com/api/showroom/acura";
@@ -149,22 +148,29 @@ public interface Urls {
     String SHOWROOM_JEEP = "http://kuwaitgarage.com/api/showroom/jeep";
     String SHOWROOM_VOLKSWAGEN = "http://kuwaitgarage.com/api/showroom/volkswagen";
     String SHOWROOM_PEUGEOT = "http://kuwaitgarage.com/api/showroom/peugeot";
-
     String SHOWROOM_TOYOTA = "http://kuwaitgarage.com/api/showroom/toyota";
     String SHOWROOM_GEELY = "http://kuwaitgarage.com/api/showroom/geely";
     String SHOWROOM_MAZDA = "http://kuwaitgarage.com/api/showroom/mazda";
     String SHOWROOM_HONDA = "http://kuwaitgarage.com/api/showroom/honda";
     String SHOWROOM_RENAULT = "http://kuwaitgarage.com/api/showroom/renault";
-
     String SHOWROOM_MITSUBISHI = "http://kuwaitgarage.com/api/showroom/mitsubishi";
     String SHOWROOM_INFINITI = "http://kuwaitgarage.com/api/showroom/infiniti";
     String SHOWROOM_CHEVOLATE = "http://kuwaitgarage.com/api/showroom/chevolate";
 
 
 
+    String SPAREPARTS_TOYOTA = "http://kuwaitgarage.com/api/spareparts/toyota";
+    String SPAREPARTS_INFINITI = "http://kuwaitgarage.com/api/spareparts/infiniti";
+    String SPAREPARTS_MITSUBISHI = "http://kuwaitgarage.com/api/spareparts/mitsubishi";
+    String SPAREPARTS_HONDA = "http://kuwaitgarage.com/api/spareparts/honda";
+    String SPAREPARTS_VOLKSWAGEN = "http://kuwaitgarage.com/api/spareparts/volkswagen";
+
+
+
 
     //Maintenace Apis
 
+    String SPAREPARTS_BASE_URL =  "http://kuwaitgarage.com/api/spareparts/";
     String MAINTENANCE_CENTER_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/maintenance-center";
     String MAINTENANCE_CENTER_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/maintenance-center";
     String MAINTENANCE_CENTER_ACURA = "http://kuwaitgarage.com/api/showroom/acura/maintenance-center";

@@ -99,7 +99,7 @@ public class ScrapMainMenuFragment extends Fragment {
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_DELIVERY);
                         bundle.putString(AppConstants.SCRAP_DELIVERY_SUB_TYPE, AppConstants.SCRAP_DELIVERY_SUB_TYPE_NONE);
                         bundle.putString(AppConstants.URL, Urls.DELIVERY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.delivery));
+                        bundle.putString(AppConstants.EXTRA_TITLE, "توصيل قطع");
                         intent = new Intent(getActivity(), CategorySaleListActivity.class);
 
                     }
