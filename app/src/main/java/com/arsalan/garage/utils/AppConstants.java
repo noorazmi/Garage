@@ -40,6 +40,7 @@ public interface AppConstants {
     String MENU_ITEM_TYPE_TINTINGCAR = "menu_item_type_tintingcar";
     String MENU_ITEM_TYPE_TECHNICAL_INSPECTION = "menu_item_type_technical_inspection";
     String MENU_ITEM_TYPE_KHIDMAT_SHAMLA = "menu_item_type_khidmat_shamla";
+    String MENU_ITEM_TYPE_MARINE = "menu_item_type_marine";
 
     String MENU_ITEM_TYPE_TAREEQALABDALI =  "menu_item_type_tareeqalabdali";
     String MENU_ITEM_TYPE_TAREEQALKABAD =  "menu_item_type_tareeqalkabad";
@@ -122,9 +123,11 @@ public interface AppConstants {
 
     String EXTRA_TITLE = "title";
     String EXTRA_URL = "url";
+    String EXTRA_COMPANY_NAME = "company_name";
     String EXTRA_SERVICE_TYPE = "SERVICE_TYPE";
     String SERVICE_TYPE_SERVICE_CENTER = "SERVICE_TYPE_SERVICE_CENTER";
     String EXTRA_SERVICE_TYPE_SPARE_PARTS = "EXTRA_SERVICE_TYPE_SPARE_PARTS";
+    String EXTRA_SERVICE_TYPE_CENTERS = "EXTRA_SERVICE_TYPE_CENTERS";
     String EXTRA_CONTACT = "contact";
     String EXTRA_IMAGE_PATH = "imagePath";
     String EXTRA_CAR_ID = "car_id";

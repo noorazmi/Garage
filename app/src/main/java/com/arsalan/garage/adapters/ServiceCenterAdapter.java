@@ -19,40 +19,39 @@ import java.util.ArrayList;
 
 /**
  * <p/>
- * Created by: Noor  Alam on 08/04/16.<br/>
+ * Created by: Noor  Alam on 09/04/16.<br/>
  * Email id: noor.alam@tothenew.com<br/>
  * Skype id: mfsi_noora
  * <p/>
  */
-public class SparePartsAdapter extends RecyclerView.Adapter<SparePartsAdapter.ListItemViewHolder> {
+public class ServiceCenterAdapter extends RecyclerView.Adapter<ServiceCenterAdapter.ListItemViewHolder> {
 
     private final Context mContext;
     private ArrayList<SparePartsVo.SparePart> mSparePartArrayList;
 
-    public SparePartsAdapter(ArrayList<SparePartsVo.SparePart> sparePartArrayList, Context context) {
+    public ServiceCenterAdapter(ArrayList<SparePartsVo.SparePart> sparePartArrayList, Context context) {
         this.mSparePartArrayList = sparePartArrayList;
         this.mContext = context;
     }
 
     @Override
-    public SparePartsAdapter.ListItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_spare_part, parent, false);
+    public ServiceCenterAdapter.ListItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_service_center, parent, false);
         return new ListItemViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(SparePartsAdapter.ListItemViewHolder holder, int position) {
+    public void onBindViewHolder(ServiceCenterAdapter.ListItemViewHolder holder, int position) {
         final SparePartsVo.SparePart model = mSparePartArrayList.get(position);
         holder.textViewAddress.setText(model.getAddress());
 
+        holder.textViewPhone.setText(model.getPhone());
         if(!TextUtils.isEmpty(model.getWorking_time())){
             holder.textViewTimings.setVisibility(View.VISIBLE);
             holder.textViewTimings.setText(model.getWorking_time());
         }else {
             holder.textViewTimings.setVisibility(View.GONE);
         }
-
-        holder.textViewPhone.setText(model.getPhone());
         holder.textViewPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,18 +112,6 @@ public class SparePartsAdapter extends RecyclerView.Adapter<SparePartsAdapter.Li
             public void onClick(DialogInterface dialog, int which) {
                 String strName = arrayAdapter.getItem(which);
                 Utils.initCall(strName, mContext);
-                /*AlertDialog.Builder builderInner = new AlertDialog.Builder(mContext);
-                builderInner.setMessage(strName);
-                builderInner.setTitle("Your Selected Item is");
-                builderInner.setPositiveButton("Ok",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,int which) {
-                                //dialog.dismiss();
-                                Utils.initCall(model.getPhone(), mContext);
-                            }
-                        });
-                builderInner.show();*/
             }
         });
         builderSingle.show();

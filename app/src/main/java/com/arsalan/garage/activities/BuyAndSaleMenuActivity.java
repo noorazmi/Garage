@@ -35,7 +35,7 @@ public class BuyAndSaleMenuActivity extends BaseActivity implements LevelOneMenu
         //getSupportActionBar().setTitle(getResources().getString(R.string.karajat));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.karajat), true, Gravity.CENTER);
+        setToolbar(toolbar, getResources().getString(R.string.bai_ul_shara), true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

@@ -1,6 +1,5 @@
 package com.arsalan.garage.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.AlwakalatServiceCentersActivity;
 import com.arsalan.garage.activities.AlwakalatSparePartsActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -24,32 +22,27 @@ import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class AlwakalatCarServiceFragment extends Fragment {
+public class MarineFragment extends Fragment {
 
 
-    private static final String TAG = "AlwakalatCarServiceFragment";
+    private static final String TAG = "MarineFragment";
     /*Number of columns in the grid view*/
     private static final int NUM_OF_COLUMNS = 2;
     /*Total number of items in the RecyclerView*/
     //private ArrayList<DataModel> mDataModels;
-    private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
+    private ArrayList<HomeMenuItem> mMarineItemArrayList;
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
-    private int addItemCount = 0;
 
 
-    public AlwakalatCarServiceFragment() {
-    }
+    public MarineFragment() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Must be set in order to capture menu item click events. If you don't set it, it will not show the menu items set in the Activity holding this fragment.
         setHasOptionsMenu(true);
-        View rootView = inflater.inflate(R.layout.fragment_alwakalat_car, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_marine, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
 
 
@@ -78,35 +71,34 @@ public class AlwakalatCarServiceFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 HomeMenuItem homeMenuItem = null;
-                if (mHomeMenuItemArrayList != null && !mHomeMenuItemArrayList.isEmpty()) {
-                    homeMenuItem = mHomeMenuItemArrayList.get(position);
+                if (mMarineItemArrayList != null && !mMarineItemArrayList.isEmpty()) {
+                    homeMenuItem = mMarineItemArrayList.get(position);
                 }
 
                 Bundle bundle = new Bundle();
-                Intent intent = null;
 
                 switch (position) {
                     case 0:
                         //bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                        bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-                        bundle.putString(AppConstants.EXTRA_URL, Urls.SERVICE_CENTERS_BASE_URL+getArguments().getString(AppConstants.EXTRA_URL));
-                        bundle.putString(AppConstants.EXTRA_SERVICE_TYPE, AppConstants.EXTRA_SERVICE_TYPE_CENTERS);
+                        //bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        //bundle.putString(AppConstants.EXTRA_URL, getArguments().getString(AppConstants.EXTRA_URL));
+                        //bundle.putString(AppConstants.EXTRA_SERVICE_TYPE, AppConstants.SERVICE_TYPE_SERVICE_CENTER);
                         //bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
                         //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-                        intent = new Intent(getActivity(), AlwakalatServiceCentersActivity.class);
-                        intent.putExtras(bundle);
-                        getActivity().startActivity(intent);
+                        //Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu2Activity.class);
+                        //intent.putExtras(bundle);
+                        //getActivity().startActivity(intent);
                         break;
                     case 1:
-                        //bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
+                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
                         bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
                         bundle.putString(AppConstants.EXTRA_URL, Urls.SPAREPARTS_BASE_URL+getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_SERVICE_TYPE, AppConstants.EXTRA_SERVICE_TYPE_SPARE_PARTS);
-                        //bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
+                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
                         //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-                        intent = new Intent(getActivity(), AlwakalatSparePartsActivity.class);
+                        Intent intent = new Intent(getActivity(), AlwakalatSparePartsActivity.class);
                         intent.putExtras(bundle);
-                        getActivity().startActivity(intent);
+                        //getActivity().startActivity(intent);
 
                         break;
                     default:
@@ -123,30 +115,12 @@ public class AlwakalatCarServiceFragment extends Fragment {
 
     private ArrayList<HomeMenuItem> getMenuItems() {
 
-        mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, "مراكز الخدمة"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage9, "قطع الغيار"));
-        return mHomeMenuItemArrayList;
+        mMarineItemArrayList = new ArrayList<>();
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, "فيبر وحداده"));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, "ميكانيك وكهرباء"));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , "مراكز بحرية"));
+        return mMarineItemArrayList;
     }
 
 }
 
-
-
-
-
-        /*extends Fragment {
-
-
-    public AlwakalatCarServiceFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alwakalat_car, container, false);
-    }
-
-}*/

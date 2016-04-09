@@ -18,6 +18,7 @@ import com.arsalan.garage.activities.BuyAndSaleMenuActivity;
 import com.arsalan.garage.activities.HelpOnRoadActivity;
 import com.arsalan.garage.activities.KarajatMenuActivity;
 import com.arsalan.garage.activities.KhidmatShamlaActivity;
+import com.arsalan.garage.activities.MarineActivity;
 import com.arsalan.garage.activities.ScrapMainMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -154,7 +155,12 @@ public class HomeTabFragment extends Fragment {
                         intent = new Intent(getActivity(), KhidmatShamlaActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
-                    } else {
+                    }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_MARINE)){
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.marine));
+                        intent = new Intent(getActivity(), MarineActivity.class);
+                        intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
+                    }else {
                         return;
                         //intent = new Intent(getActivity(), LevelOneMenuActivity.class);
                     }
@@ -189,8 +195,8 @@ public class HomeTabFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل", AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل", AppConstants.MENU_ITEM_TYPE_TINTINGCAR));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, " خدمات شامله" , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.sspeedtrail, "السرعه والاداء العالي"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, "مارين"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.sspeedtrail, "الاداء العالي"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, "مارين", AppConstants.MENU_ITEM_TYPE_MARINE));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, "فحص فني", AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.autoservice, "الوكالات"));
         return mHomeMenuItemArrayList;

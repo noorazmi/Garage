@@ -85,6 +85,7 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
                         bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
                         bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
                         bundle.putString(AppConstants.EXTRA_URL, Urls.SHOWROOM_BASE_URL +getArguments().getString(AppConstants.EXTRA_URL));
+                        bundle.putString(AppConstants.EXTRA_COMPANY_NAME, getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
                         //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
                         Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu2Activity.class);
@@ -118,8 +119,8 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "الصيانة و القطع"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, "مركز الصيانه"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carshowroom, getString(R.string.almarij)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice , "الصيانة و القطع"));
         return mHomeMenuItemArrayList;
     }
 

@@ -130,7 +130,7 @@ public interface Urls {
     String HOUSE_DISPLAY_MG = "http://kuwaitgarage.com/api/showroom/mg/house-display";
     String HOUSE_DISPLAY_RAM = "http://kuwaitgarage.com/api/showroom/ram/house-display";
 
-    String  SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
+    String SHOWROOM_CAR = "http://kuwaitgarage.com/api/showroomcar/";//add car id at the end
     String SHOWROOM_BASE_URL = "http://kuwaitgarage.com/api/showroom/";
     String SHOWROOM_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac";
     String SHOWROOM_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo";
@@ -158,19 +158,68 @@ public interface Urls {
     String SHOWROOM_CHEVOLATE = "http://kuwaitgarage.com/api/showroom/chevolate";
 
 
-
+    String SPAREPARTS_BASE_URL =  "http://kuwaitgarage.com/api/spareparts/";
     String SPAREPARTS_TOYOTA = "http://kuwaitgarage.com/api/spareparts/toyota";
     String SPAREPARTS_INFINITI = "http://kuwaitgarage.com/api/spareparts/infiniti";
     String SPAREPARTS_MITSUBISHI = "http://kuwaitgarage.com/api/spareparts/mitsubishi";
     String SPAREPARTS_HONDA = "http://kuwaitgarage.com/api/spareparts/honda";
     String SPAREPARTS_VOLKSWAGEN = "http://kuwaitgarage.com/api/spareparts/volkswagen";
+    String SPAREPARTS_ACURA = "http://kuwaitgarage.com/api/spareparts/acura";
+    String SPAREPARTS_BAIC = "http://kuwaitgarage.com/api/spareparts/baic";
+    String SPAREPARTS_CADILLAC = "http://kuwaitgarage.com/api/spareparts/cadillac";
+    String SPAREPARTS_CHANGAN = "http://kuwaitgarage.com/api/spareparts/changan";
+    String SPAREPARTS_CHRYSLER = "http://kuwaitgarage.com/api/spareparts/chrysler";
+    String SPAREPARTS_CITROEN = "http://kuwaitgarage.com/api/spareparts/citroen";
+    String SPAREPARTS_DFM = "http://kuwaitgarage.com/api/spareparts/dfm";
+    String SPAREPARTS_DODGE = "http://kuwaitgarage.com/api/spareparts/dodge";
+    String SPAREPARTS_FIAT = "http://kuwaitgarage.com/api/spareparts/fiat";
+    String SPAREPARTS_GAC = "http://kuwaitgarage.com/api/spareparts/gac";
+    String SPAREPARTS_JEEP = "http://kuwaitgarage.com/api/spareparts/jeep";
+    String SPAREPARTS_MG = "http://kuwaitgarage.com/api/spareparts/mg";
+    String SPAREPARTS_RAM = "http://kuwaitgarage.com/api/spareparts/ram";
+    String SPAREPARTS_VOLVO = "http://kuwaitgarage.com/api/spareparts/volvo";
+    String SPAREPARTS_GEELY = "http://kuwaitgarage.com/api/spareparts/geely";
+    String SPAREPARTS_MAZDA = "http://kuwaitgarage.com/api/spareparts/mazda";
+    String SPAREPARTS_PEUGEOT = "http://kuwaitgarage.com/api/spareparts/peugeot";
+    String SPAREPARTS_RENAULT = "http://kuwaitgarage.com/api/spareparts/renault";
+
+
+    /*Service Center Apis*/
+    String SERVICE_CENTERS_BASE_URL = "http://kuwaitgarage.com/api/servicecenters/";
+    String SERVICE_CENTERS_VOLKSWAGEN = "http://kuwaitgarage.com/api/servicecenters/volkswagen";
+    String SERVICE_CENTERS_HONDA = "http://kuwaitgarage.com/api/servicecenters/honda";
+    String SERVICE_CENTERS_INFINITI = "http://kuwaitgarage.com/api/servicecenters/infiniti";
+    String SERVICE_CENTERS_MITSUBISHI = "http://kuwaitgarage.com/api/servicecenters/mitsubishi";
+    String SERVICE_CENTERS_TOYOTA = "http://kuwaitgarage.com/api/servicecenters/toyota";
+    String SERVICE_CENTERS_ACURA = "http://kuwaitgarage.com/api/servicecenters/acura";
+    String SERVICE_CENTERS_BAIC = "http://kuwaitgarage.com/api/servicecenters/baic";
+    String SERVICE_CENTERS_CADILLAC = "http://kuwaitgarage.com/api/servicecenters/cadillac";
+    String SERVICE_CENTERS_CHANGAN = "http://kuwaitgarage.com/api/servicecenters/changan";
+    String SERVICE_CENTERS_CHRYSLER = "http://kuwaitgarage.com/api/servicecenters/chrysler";
+    String SERVICE_CENTERS_CITROEN = "http://kuwaitgarage.com/api/servicecenters/citroen";
+    String SERVICE_CENTERS_DFM = "http://kuwaitgarage.com/api/servicecenters/dfm";
+    String SERVICE_CENTERS_DODGE = "http://kuwaitgarage.com/api/servicecenters/dodge";
+    String SERVICE_CENTERS_FIAT = "http://kuwaitgarage.com/api/servicecenters/fiat";
+    String SERVICE_CENTERS_GAC = "http://kuwaitgarage.com/api/servicecenters/gac";
+    String SERVICE_CENTERS_JEEP = "http://kuwaitgarage.com/api/servicecenters/jeep";
+    String SERVICE_CENTERS_MG = "http://kuwaitgarage.com/api/servicecenters/mg";
+    String SERVICE_CENTERS_RAM = "http://kuwaitgarage.com/api/servicecenters/ram";
+    String SERVICE_CENTERS_VOLVO = "http://kuwaitgarage.com/api/servicecenters/volvo";
+    String SERVICE_CENTERS_GEELY = "http://kuwaitgarage.com/api/servicecenters/geely";
+    String SERVICE_CENTERS_MAZDA = "http://kuwaitgarage.com/api/servicecenters/mazda";
+    String SERVICE_CENTERS_PEUGEOT = "http://kuwaitgarage.com/api/servicecenters/peugeot";
+    String SERVICE_CENTERS_RENAULT = "http://kuwaitgarage.com/api/servicecenters/renault";
+
+    /*Detail of these APIs can be fetched by :
+    http://kuwaitgarage.com/api/servicecenter/<service_center_id>
+    e.g http://kuwaitgarage.com/api/servicecenter/33 */
+
 
 
 
 
     //Maintenace Apis
 
-    String SPAREPARTS_BASE_URL =  "http://kuwaitgarage.com/api/spareparts/";
     String MAINTENANCE_CENTER_CADILLAC = "http://kuwaitgarage.com/api/showroom/cadillac/maintenance-center";
     String MAINTENANCE_CENTER_VOLVO = "http://kuwaitgarage.com/api/showroom/volvo/maintenance-center";
     String MAINTENANCE_CENTER_ACURA = "http://kuwaitgarage.com/api/showroom/acura/maintenance-center";

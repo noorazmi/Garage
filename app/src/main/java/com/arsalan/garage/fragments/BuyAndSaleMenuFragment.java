@@ -53,7 +53,7 @@ public class BuyAndSaleMenuFragment extends Fragment {
     }
 
     private void initMenuItems() {
-        mMenuItemsArrayList = Utils.getScrapScreenMenuItems();
+        mMenuItemsArrayList = Utils.getBuyAndSaleScreenMenuItems();
     }
 
 

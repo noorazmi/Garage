@@ -1,5 +1,6 @@
 package com.arsalan.garage.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -31,10 +32,12 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
     private ArrayList<AmericanCarsVO.Result> mHomeMenuItemArrayList;
     private String mScrapType;
     private String mDescriptionLanguage;
+    private Context mContext;
 
 
-    public CategorySaleListAdapter(RecyclerView recyclerView, List<AmericanCarsVO.Result> mCarList, String scrapType, String descriptionLanguage) {
+    public CategorySaleListAdapter(Context context, RecyclerView recyclerView, List<AmericanCarsVO.Result> mCarList, String scrapType, String descriptionLanguage) {
         super(recyclerView);
+        this.mContext = context;
         this.mHomeMenuItemArrayList = (ArrayList<AmericanCarsVO.Result>) mCarList;
         this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
@@ -84,14 +87,15 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
 
 
             ImageLoader imageLoader = ImageLoader.getInstance();
-            imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
-
-
+            if(model.getDescription().contains("wash") || model.getDescription().contains("shower") || model.getDescription().contains("clean")){
+                listItemViewHolder.imgView.setImageResource(R.drawable.carwash_center);
+                listItemViewHolder.imgView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            }else {
+                imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
+            }
         }else{
             showProgressBar(holder);
         }
-
-
     }
 
     @Override

@@ -19,15 +19,16 @@ public class AlwakalatAgencySubMenu2Activity extends BaseActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setToolbar(toolbar, getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);
-        setMenuHolderFragment(getIntent().getStringExtra(AppConstants.EXTRA_TITLE), getIntent().getStringExtra(AppConstants.EXTRA_URL));
+        setMenuHolderFragment(getIntent().getStringExtra(AppConstants.EXTRA_TITLE), getIntent().getStringExtra(AppConstants.EXTRA_URL), getIntent().getStringExtra(AppConstants.EXTRA_COMPANY_NAME));
     }
 
-    public void setMenuHolderFragment(String title, String url) {
+    public void setMenuHolderFragment(String title, String url, String companyName) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.EXTRA_TITLE, title);
         bundle.putString(AppConstants.EXTRA_URL, url);
+        bundle.putString(AppConstants.EXTRA_COMPANY_NAME, companyName);
         AlwakalatAgencySubMenu2Fragment fragment = new AlwakalatAgencySubMenu2Fragment();
         fragment.setArguments(bundle);
         fragmentTransaction.add(R.id.framelayout_container, fragment).addToBackStack("").commit();

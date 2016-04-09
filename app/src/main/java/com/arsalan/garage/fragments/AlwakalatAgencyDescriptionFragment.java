@@ -97,9 +97,11 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
     private void performGET(){
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        //Bundle bundle = getArguments();
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
-        httpRequest.setUrl(Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID));
+        String baseUrl = Urls.SHOWROOM_CAR;
+        String carId = getArguments().getString(AppConstants.EXTRA_CAR_ID);
+        String fullUrl = Urls.SHOWROOM_CAR + carId;
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + fullUrl);
+        httpRequest.setUrl(fullUrl);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(ShowroomCarVo.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

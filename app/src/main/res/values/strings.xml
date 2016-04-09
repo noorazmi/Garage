@@ -39,6 +39,8 @@
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
     <string name="label_add_photo">Add Poster</string>
+    <string name="bai_ul_shara">  بيع و شرا  </string>
+    <string name="almarij"> المعرض  </string>
 
 
     <!--American Car Brands-->
@@ -227,5 +229,6 @@
     <string name="ad_successfully_posted">Congratulations! Ad successfully posted.</string>
     <string name="please_select_region_first">Please select region first</string>
     <string name="app_warranty_message">We will provide you with the warranty policy for each company</string>
+    <string name="marine">مارين</string>
 
 </resources>

@@ -77,7 +77,7 @@ public class CategorySaleListFragment extends Fragment {
 
         //mCategoryListAdapter = new CategoryListAdapter(americanCarsVO, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
         mCarList = new ArrayList<>(0);
-        mCategoryListAdapter = new CategorySaleListAdapter(mRecyclerView, mCarList, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+        mCategoryListAdapter = new CategorySaleListAdapter(getActivity(), mRecyclerView, mCarList, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
 
 
         RecyclerView.ItemDecoration verticalDivider = new DividerItemDecoration(1);
@@ -164,7 +164,10 @@ public class CategorySaleListFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mAmericanCarsVO = (AmericanCarsVO) httpResponse.getValueObject();
-                if(mAmericanCarsVO == null){
+                if(mAmericanCarsVO == null ){
+                    return;
+                }
+                if(mAmericanCarsVO.getResults() == null){
                     return;
                 }
                 //((CategorySaleListActivity) getActivity()).setNoOfItemsInTooBar(mAmericanCarsVO.getResults().size());
@@ -190,6 +193,12 @@ public class CategorySaleListFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mAmericanCarsVO = (AmericanCarsVO) httpResponse.getValueObject();
+                if(mAmericanCarsVO == null ){
+                    return;
+                }
+                if(mAmericanCarsVO.getResults() == null){
+                    return;
+                }
                 ((CategorySaleListActivity) getActivity()).setNoOfItemsInTooBar(mAmericanCarsVO.getResults().size());
             }
         });

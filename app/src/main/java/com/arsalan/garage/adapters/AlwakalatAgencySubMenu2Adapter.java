@@ -1,5 +1,6 @@
 package com.arsalan.garage.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,8 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.HouseDisplayVo;
+import com.bumptech.glide.Glide;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -26,9 +27,11 @@ import java.util.ArrayList;
 public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<AlwakalatAgencySubMenu2Adapter.ListItemViewHolder> {
 
     private ArrayList<HouseDisplayVo.CarModel> mHomeMenuItemArrayList;
+    private Context mContext;
 
-    public AlwakalatAgencySubMenu2Adapter(ArrayList<HouseDisplayVo.CarModel> mHomeMenuItemArrayList) {
+    public AlwakalatAgencySubMenu2Adapter(Context context, ArrayList<HouseDisplayVo.CarModel> mHomeMenuItemArrayList) {
         this.mHomeMenuItemArrayList = mHomeMenuItemArrayList;
+        this.mContext = context;
     }
 
     @Override
@@ -50,7 +53,11 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
         holder.imgView.setLayoutParams(layoutParams);
 
         if(!TextUtils.isEmpty(model.getImage())){
-            imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
+            //imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
+            Glide.with(mContext)
+                    .load(model.getImage()).placeholder(R.mipmap.ic_launcher)
+                    .override(200, 280)
+                    .into(holder.imgView);
         }
     }
 

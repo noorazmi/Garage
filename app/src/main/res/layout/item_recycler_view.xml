@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/autoservice"
+        android:src="@mipmap/ic_launcher"
         />
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish

@@ -12,14 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.AlwakalatSparePartsActivity;
 import com.arsalan.garage.adapters.SparePartsAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
-import com.arsalan.garage.vo.SparePartsVo;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.SparePartsVo;
 
 import java.util.ArrayList;
 
@@ -116,7 +117,8 @@ public class AlwakalatSparePartsFragment extends Fragment {
             return;
         }
         ArrayList<SparePartsVo.SparePart> sparePartsArrayList = mSparePartsModelVo.getResults();
-        recyclerViewAdapter = new SparePartsAdapter(sparePartsArrayList);
+        ((AlwakalatSparePartsActivity)getActivity()).setNoOfItemsInTooBar(sparePartsArrayList.size());
+        recyclerViewAdapter = new SparePartsAdapter(sparePartsArrayList, getActivity());
         mRecyclerView.setAdapter(recyclerViewAdapter);
     }
 }
