@@ -56,7 +56,7 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
             //imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
             Glide.with(mContext)
                     .load(model.getImage()).placeholder(R.mipmap.ic_launcher)
-                    .override(200, 280)
+                    .override(500, 304)
                     .into(holder.imgView);
         }
     }

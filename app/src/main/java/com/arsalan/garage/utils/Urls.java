@@ -182,6 +182,7 @@ public interface Urls {
     String SPAREPARTS_MAZDA = "http://kuwaitgarage.com/api/spareparts/mazda";
     String SPAREPARTS_PEUGEOT = "http://kuwaitgarage.com/api/spareparts/peugeot";
     String SPAREPARTS_RENAULT = "http://kuwaitgarage.com/api/spareparts/renault";
+    String SPAREPARTS_CHEVOLATE = "http://kuwaitgarage.com/api/spareparts/chevolate";
 
 
     /*Service Center Apis*/
@@ -209,6 +210,7 @@ public interface Urls {
     String SERVICE_CENTERS_MAZDA = "http://kuwaitgarage.com/api/servicecenters/mazda";
     String SERVICE_CENTERS_PEUGEOT = "http://kuwaitgarage.com/api/servicecenters/peugeot";
     String SERVICE_CENTERS_RENAULT = "http://kuwaitgarage.com/api/servicecenters/renault";
+    String SERVICE_CENTERS_CHEVOLATE = "http://kuwaitgarage.com/api/servicecenters/chevolate";
 
     /*Detail of these APIs can be fetched by :
     http://kuwaitgarage.com/api/servicecenter/<service_center_id>
