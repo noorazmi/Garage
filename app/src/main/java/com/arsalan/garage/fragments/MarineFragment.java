@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.AlwakalatSparePartsActivity;
+import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -76,34 +76,28 @@ public class MarineFragment extends Fragment {
                 }
 
                 Bundle bundle = new Bundle();
+                bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MARINE);
+                Intent intent = new Intent(getActivity(), CategorySaleListActivity.class);
 
                 switch (position) {
                     case 0:
-                        //bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                        //bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-                        //bundle.putString(AppConstants.EXTRA_URL, getArguments().getString(AppConstants.EXTRA_URL));
-                        //bundle.putString(AppConstants.EXTRA_SERVICE_TYPE, AppConstants.SERVICE_TYPE_SERVICE_CENTER);
-                        //bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
-                        //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-                        //Intent intent = new Intent(getActivity(), AlwakalatAgencySubMenu2Activity.class);
-                        //intent.putExtras(bundle);
-                        //getActivity().startActivity(intent);
+                        bundle.putString(AppConstants.URL, Urls.MARINE_FIBERGLASS_AND_SMITHY);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_yard));
                         break;
                     case 1:
-                        bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                        bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
-                        bundle.putString(AppConstants.EXTRA_URL, Urls.SPAREPARTS_BASE_URL+getArguments().getString(AppConstants.EXTRA_URL));
-                        bundle.putString(AppConstants.EXTRA_SERVICE_TYPE, AppConstants.EXTRA_SERVICE_TYPE_SPARE_PARTS);
-                        bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
-                        //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
-                        Intent intent = new Intent(getActivity(), AlwakalatSparePartsActivity.class);
-                        intent.putExtras(bundle);
-                        //getActivity().startActivity(intent);
-
+                        bundle.putString(AppConstants.URL, Urls.MARINE_MOBILE_MECHANICS_ELECTRICITY);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.repair_man));
+                        break;
+                    case 2:
+                        bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
                         break;
                     default:
                         break;
                 }
+
+                intent.putExtras(bundle);
+                getActivity().startActivity(intent);
             }
         }));
 
@@ -116,9 +110,9 @@ public class MarineFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mMarineItemArrayList = new ArrayList<>();
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, "فيبر وحداده"));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, "ميكانيك وكهرباء"));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , "مراكز بحرية"));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, getString(R.string.ship_yard)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, getString(R.string.repair_man)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , getString(R.string.ship_military)));
         return mMarineItemArrayList;
     }
 

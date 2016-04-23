@@ -230,5 +230,8 @@
     <string name="please_select_region_first">Please select region first</string>
     <string name="app_warranty_message">We will provide you with the warranty policy for each company</string>
     <string name="marine">مارين</string>
+    <string name="ship_yard"> فيبر وحداده </string>
+    <string name="repair_man"> ميكانيك وكهرباء </string>
+    <string name="ship_military"> مراكز بحرية </string>
 
 </resources>

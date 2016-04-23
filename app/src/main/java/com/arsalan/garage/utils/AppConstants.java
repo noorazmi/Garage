@@ -22,6 +22,7 @@ public interface AppConstants {
     String SCREEN_ROAD_HELP = "screen_type_help";
     String SCREEN_SCRAP = "screen_type_scrap";
     String SCREEN_TYPE_TAXI = "screen_type_taxi";
+    String SCREEN_TYPE_MARINE = "screen_type_marine";
     String SCREEN_TYPE_AGENCIES = "screen_type_agencies";
     String SCREEN_TYPE_MOVABLE_WASH = "screen_type_movable_wash";
     String SCREEN_TYPE_TECHNICAL_INSPECTION = "screen_type_technical_inspection";

@@ -232,4 +232,10 @@ public interface Urls {
     String FORSALE_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/foresalead/";
 
 
+    //Marine APIs
+    String MARINE_MOBILE_MECHANICS_ELECTRICITY = "http://kuwaitgarage.com/api/marine/mobilemechanicselectricity";
+    String MARINE_FREELY_CENTERS = "http://kuwaitgarage.com/api/marine/freelycenters";
+    String MARINE_FIBERGLASS_AND_SMITHY = "http://kuwaitgarage.com/api/marine/fiberglassandsmithy";
+
+
 }
