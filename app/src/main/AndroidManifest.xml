@@ -144,13 +144,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".activities.MarineActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.MarineActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".activities.AlwakalatServiceCentersActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.AlwakalatServiceCentersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".activities.MarineUserActivity">
+        </activity>
+        <activity android:name=".activities.MarineUserDescriptionActivity">
+        </activity>
+        <activity android:name=".activities.MarineUserListActivity">
         </activity>
     </application>
 

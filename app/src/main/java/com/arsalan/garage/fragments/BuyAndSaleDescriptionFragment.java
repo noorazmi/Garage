@@ -156,6 +156,7 @@ public class BuyAndSaleDescriptionFragment extends Fragment {
     private void openFullImageActivity(){
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
         intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.FORSALE_DESCRIPTION_BASE + getArguments().getString(AppConstants.EXTRA_FORSALE_ID));
+        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_MARINE_SHOWROOM);
         intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerCarImages.getCurrentItem());
         startActivity(intent);
     }

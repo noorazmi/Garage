@@ -1,5 +1,6 @@
 package com.arsalan.garage.fragments;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,8 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.CategorySaleListActivity;
-import com.arsalan.garage.activities.MarineUserActivity;
+import com.arsalan.garage.activities.MarineUserListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -23,10 +23,13 @@ import com.arsalan.garage.utils.Urls;
 
 import java.util.ArrayList;
 
-public class MarineFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class MarineUserFragment extends Fragment {
 
 
-    private static final String TAG = "MarineFragment";
+    private static final String TAG = "MarineUserFragment";
     /*Number of columns in the grid view*/
     private static final int NUM_OF_COLUMNS = 2;
     /*Total number of items in the RecyclerView*/
@@ -36,14 +39,14 @@ public class MarineFragment extends Fragment {
     private RecyclerViewAdapter recyclerViewAdapter;
 
 
-    public MarineFragment() {}
+    public MarineUserFragment() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Must be set in order to capture menu item click events. If you don't set it, it will not show the menu items set in the Activity holding this fragment.
         setHasOptionsMenu(true);
-        View rootView = inflater.inflate(R.layout.fragment_marine, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_marine_user, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
 
 
@@ -78,34 +81,26 @@ public class MarineFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MARINE);
-                Intent intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                Intent intent = new Intent(getActivity(), MarineUserListActivity.class);
 
                 switch (position) {
                     case 0:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_FIBERGLASS_AND_SMITHY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_yard));
+                        bundle.putString(AppConstants.URL, Urls.MARINEUSER_BOATS);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.qawarib));
                         break;
                     case 1:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_MOBILE_MECHANICS_ELECTRICITY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.repair_man));
+                        bundle.putString(AppConstants.URL, Urls.MARINEUSER_JETSKI);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.jet_ski));
                         break;
                     case 2:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
-                        break;
-                    case 3:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
-                        break;
-                    case 4:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
-                        intent = new Intent(getActivity(), MarineUserActivity.class);
+                        bundle.putString(AppConstants.URL, Urls.MARINEUSER_MARINE_EQUIPMENT);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.madat_waqta_ghayar));
                         break;
                     default:
                         break;
                 }
 
+                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
                 intent.putExtras(bundle);
                 getActivity().startActivity(intent);
             }
@@ -120,11 +115,10 @@ public class MarineFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mMarineItemArrayList = new ArrayList<>();
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, getString(R.string.ship_yard)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, getString(R.string.repair_man)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , getString(R.string.ship_military)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.fishermen , getString(R.string.ship_military)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.marine_in_hand , getString(R.string.ship_military)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.large_boat, getString(R.string.qawarib)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.jetski, getString(R.string.jet_ski)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.boat_vint_ship_engine , getString(R.string.madat_waqta_ghayar)));
+
         return mMarineItemArrayList;
     }
 

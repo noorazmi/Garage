@@ -66,6 +66,8 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private ArrayList<SpinnerItem> mMakeAmericanArrayList;
     private ArrayList<SpinnerItem> mMakeEuropeanArrayList;
     private ArrayList<SpinnerItem> mMakeAsianArrayList;
+    private ArrayList<SpinnerItem> mMakeScrapArrayList;
+    private ArrayList<SpinnerItem> mMakeMarineArrayList;
     //private ProgressDialog mProgressDialog;
     private LinearLayout mLinearLayoutAddViewContainer;
     private View mButtonFirstImage;
@@ -159,6 +161,18 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         }
                         setSubCategoryAdapter(mMakeAsianArrayList);
                         break;
+                    case AppConstants.SCRAP:
+                        if(mMakeScrapArrayList == null){
+                            mMakeScrapArrayList = getSpinnerArrayList(R.array.car_sub_category_scrap_title, R.array.car_sub_category_scrap_code);
+                        }
+                        setSubCategoryAdapter(mMakeScrapArrayList);
+                        break;
+                    case AppConstants.MARINE:
+                        if(mMakeMarineArrayList == null){
+                            mMakeMarineArrayList = getSpinnerArrayList(R.array.car_sub_category_marine_title, R.array.car_sub_category_marine_code);
+                        }
+                        setSubCategoryAdapter(mMakeMarineArrayList);
+                        break;
                     default:
                         break;
                 }
@@ -198,6 +212,12 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         break;
                     case AppConstants.ASIAN:
                         spinnerItem = mMakeAsianArrayList.get(position);
+                        break;
+                    case AppConstants.SCRAP:
+                        spinnerItem = mMakeScrapArrayList.get(position);
+                        break;
+                    case AppConstants.MARINE:
+                        spinnerItem = mMakeMarineArrayList.get(position);
                         break;
                     default:
                         spinnerItem = mMakeAmericanArrayList.get(position);

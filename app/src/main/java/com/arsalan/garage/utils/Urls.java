@@ -238,4 +238,14 @@ public interface Urls {
     String MARINE_FIBERGLASS_AND_SMITHY = "http://kuwaitgarage.com/api/marine/fiberglassandsmithy";
 
 
+    String MARINEUSER_BASE_URL = "http://kuwaitgarage.com/api/marineuser/";
+    String MARINEUSER_BOATS = "http://kuwaitgarage.com/api/marineuser/boats";
+    String MARINEUSER_JETSKI = "http://kuwaitgarage.com/api/marineuser/jetski";
+    String MARINEUSER_MARINE_EQUIPMENT = "http://kuwaitgarage.com/api/marineuser/marineequipment";
+    String MARINE_USER_DETAILS = "http://kuwaitgarage.com/api/marineuserdetail/";
+
+
+
+
+
 }

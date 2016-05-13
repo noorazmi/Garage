@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gr_white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:id="@+id/framelayout_viewpager_container">
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewpager_car_images"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/pager_indicator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="25dp"
+            android:visibility="visible"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textview_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wait..."
+        android:layout_below="@+id/framelayout_viewpager_container"
+        android:gravity="right"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="30dp"/>
+
+    <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+        android:id="@+id/textview_phone"
+        style="@style/TextViewStyle.Regular.English"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right|center_vertical"
+        android:text="Wait..."
+        android:textColor="@color/phone_number"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="right|center_vertical"
+        android:drawableRight="@drawable/ic_phone_small"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/textview_type"
+        android:paddingRight="20dp"/>
+</RelativeLayout>

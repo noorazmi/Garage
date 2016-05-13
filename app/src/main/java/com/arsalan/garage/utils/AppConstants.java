@@ -146,6 +146,9 @@ public interface AppConstants {
     String EXTRA_IMAGE_URL = "image_url";
     String EXTRA_FORSALE_ID = "forsale_id";
     String EXTRA_WARRANTY = "warranty";
+    String EXTRA_GALLERY_FOR = "extra_gallery_for";
+    String EXTRA_GALLERY_FOR_MARINE_USER = "extra_gallery_for_marine_user";
+    String EXTRA_GALLERY_FOR_MARINE_SHOWROOM = "extra_gallery_for_showroom";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";
@@ -175,6 +178,8 @@ public interface AppConstants {
     String AMERICAN = "american";
     String EUROPEAN = "european";
     String ASIAN = "asian";
+    String SCRAP = "scrap";
+    String MARINE = "marine";
 
     String CADILLAC="cadillac";
     String CHEVROLET = "chevrolet";

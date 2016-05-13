@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -215,8 +216,15 @@ public class HttpUtils {
      * @return ValueObject after populating it with data obtained from json string
      */
     public static ValueObject getModelFromJsonString(String response, Class valueObjectClass) {
-        Gson gson = new GsonBuilder().create();
-        ValueObject valueObject = (ValueObject) gson.fromJson(response, valueObjectClass);
+
+        ValueObject valueObject = null;
+        try {
+            Gson gson = new GsonBuilder().create();
+            valueObject = (ValueObject) gson.fromJson(response, valueObjectClass);
+        }catch (JsonSyntaxException e){
+            e.printStackTrace();
+        }
+
         return valueObject;
     }
 

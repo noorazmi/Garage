@@ -71,6 +71,7 @@
     <string name="car_brand_nissan">نيسان</string>
     <string name="car_brand_lexus">لكزس</string>
     <string name="car_brand_sheri">شيري</string>
+    <string name="car_brand_other">آخر</string>
     <string name="car_brand_subaru">سوبارو</string>
     <string name="car_brand_isuza">ايسوزو</string>
     <string name="car_brand_mazda">مازدا</string>
@@ -133,17 +134,21 @@
         <item>امريكي</item>
         <item>اوروبي</item>
         <item>اسيوي</item>
+        <item> السكراب </item>
+        <item> مارين </item>
     </string-array>
 
     <string-array name="car_category_code">
         <item>american</item>
         <item>european</item>
         <item>asian</item>
+        <item>scrap</item>
+        <item>marine</item>
     </string-array>
 
     <string-array name="car_sub_category_american_title">
         <item>كاديلاك</item>
-        <item>دودج / كلايزلر</item>
+        <item> دودج </item>
         <item>شيفروليه</item>
         <item>جمس</item>
         <item>فورد /لنكون</item>
@@ -217,6 +222,30 @@
         <item>nissan</item>
         <item>toyota</item>
     </string-array>
+
+    <string-array name="car_sub_category_scrap_title">
+        <item>امريكي</item>
+        <item>اوروبي</item>
+        <item>اسيوي</item>
+    </string-array>
+
+    <string-array name="car_sub_category_scrap_code">
+        <item>american</item>
+        <item>european</item>
+        <item>asian</item>
+    </string-array>
+
+    <string-array name="car_sub_category_marine_title">
+        <item> معدات وقطع غيار </item>
+        <item> جت سكي </item>
+    </string-array>
+
+    <string-array name="car_sub_category_marine_code">
+        <item>boat_vint_ship_engine</item>
+        <item>jetski</item>
+    </string-array>
+
+
     <string name="title_activity_buy_and_sale_sub_menu">BuyAndSaleSubMenuActivity</string>
     <string name="title_activity_buy_and_sale_list">BuyAndSaleListActivity</string>
     <string name="title_activity_buy_and_sale_description">BuyAndSaleDescriptionActivity</string>
@@ -233,5 +262,8 @@
     <string name="ship_yard"> فيبر وحداده </string>
     <string name="repair_man"> ميكانيك وكهرباء </string>
     <string name="ship_military"> مراكز بحرية </string>
+    <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
+    <string name="qawarib">قوارب</string>
+    <string name="jet_ski">جت سكي</string>
 
 </resources>

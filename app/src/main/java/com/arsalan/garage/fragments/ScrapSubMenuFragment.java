@@ -105,6 +105,10 @@ public class ScrapSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
                             bundle.putString(AppConstants.URL, Urls.JEEP);
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_jeep));
+                        }else if(position == 7){
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
+                            bundle.putString(AppConstants.URL, Urls.JEEP);
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
                         }
                     }else if(scrapeType.equals(AppConstants.SCRAP_EUROPEAN)){
                         if(position == 0){
@@ -151,6 +155,10 @@ public class ScrapSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RENAULT);
                             bundle.putString(AppConstants.URL, Urls.RENAULT);
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_renault));
+                        }else if(position == 11){
+                            bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RENAULT);
+                            bundle.putString(AppConstants.URL, Urls.RENAULT);
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
                         }
                     }else if(scrapeType.equals(AppConstants.SCRAP_ASIAN)){
                         if(position == 0){
@@ -205,10 +213,14 @@ public class ScrapSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_SHERI);
                             bundle.putString(AppConstants.URL, Urls.MERCEDES);
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_sheri));
+                        }else if(position == 13){
+                            bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_SHERI);
+                            bundle.putString(AppConstants.URL, Urls.MERCEDES);
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_sheri));
                         }else if(scrapeType.equals(AppConstants.SCRAP_DELIVERY)){
                             bundle.putString(AppConstants.SCRAP_DELIVERY_SUB_TYPE, AppConstants.SCRAP_DELIVERY_SUB_TYPE_NONE);
                             bundle.putString(AppConstants.URL, Urls.DELIVERY);
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_sheri));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
                         }else {
                             return;
                         }
