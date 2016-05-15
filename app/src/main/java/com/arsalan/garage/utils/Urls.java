@@ -244,6 +244,18 @@ public interface Urls {
     String MARINEUSER_MARINE_EQUIPMENT = "http://kuwaitgarage.com/api/marineuser/marineequipment";
     String MARINE_USER_DETAILS = "http://kuwaitgarage.com/api/marineuserdetail/";
 
+    String ACCESSORIESUSER_AMERICAN = "http://kuwaitgarage.com/api/accessoriesuser/american";
+    String ACCESSORIESUSER_EUROPEAN = "http://kuwaitgarage.com/api/accessoriesuser/european";
+    String ACCESSORIESUSER_ASIAN = "http://kuwaitgarage.com/api/accessoriesuser/asian";
+    String ACCESSORIESUSERDETAIL_BASE = "http://kuwaitgarage.com/api/accessoriesuserdetail/";
+
+    String SCRAPUSER_AMERICAN = "http://kuwaitgarage.com/api/scrapuser/american";
+    String SCRAPUSER_EUROPEAN = "http://kuwaitgarage.com/api/scrapuser/european";
+    String SCRAPUSER_ASIAN = "http://kuwaitgarage.com/api/scrapuser/asian";
+    String SCRAPUSERDETAIL_BASE = "http://kuwaitgarage.com/api/scrapuserdetail/";
+
+
+
 
 
 

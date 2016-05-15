@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.AccessoriesMenuActivity;
 import com.arsalan.garage.activities.BuyAndSaleSubMenuActivity;
-import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -103,8 +103,8 @@ public class BuyAndSaleMenuFragment extends Fragment {
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_DELIVERY);
                         bundle.putString(AppConstants.SCRAP_DELIVERY_SUB_TYPE, AppConstants.SCRAP_DELIVERY_SUB_TYPE_NONE);
                         bundle.putString(AppConstants.URL, Urls.DELIVERY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.delivery));
-                        intent = new Intent(getActivity(), CategorySaleListActivity.class);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.accessories));
+                        intent = new Intent(getActivity(), AccessoriesMenuActivity.class);
 
                     }
 

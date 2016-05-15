@@ -64,6 +64,7 @@ public interface AppConstants {
     String SCRAP_EUROPEAN = "scrap_type_awarby";
     String SCRAP_ASIAN = "scrap_type_asibi";
     String SCRAP_DELIVERY = "scrap_type_delivery";
+    String SCRAP_CRASHED_CAR = "scrap_crashed_car";
 
     String SCRAP_AMERICA_SUB_TYPE = "scrap_america_sub_type";
     String SCRAP_AMERICA_SUB_TYPE_CADILLAC = "scrap_america_sub_type_cadillac";
@@ -148,6 +149,7 @@ public interface AppConstants {
     String EXTRA_WARRANTY = "warranty";
     String EXTRA_GALLERY_FOR = "extra_gallery_for";
     String EXTRA_GALLERY_FOR_MARINE_USER = "extra_gallery_for_marine_user";
+    String EXTRA_GALLERY_FOR_SCRAP_USER = "extra_gallery_for_scrap_user";
     String EXTRA_GALLERY_FOR_MARINE_SHOWROOM = "extra_gallery_for_showroom";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";

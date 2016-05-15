@@ -128,6 +128,9 @@
     <string name="price_arb">السعر</string>
     <string name="dot">•</string>
     <string name="for_more_information_please_call"> لمعرفة المزيد يرجى الإتصال </string>
+    <string name="american"> امريكي </string>
+    <string name="asian"> اسيوي </string>
+    <string name="european"> اوروبي </string>
 
 
     <string-array name="car_category_title">
@@ -265,5 +268,6 @@
     <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
     <string name="qawarib">قوارب</string>
     <string name="jet_ski">جت سكي</string>
+    <string name="accessories">قطع غيار واكسسوارات</string>
 
 </resources>

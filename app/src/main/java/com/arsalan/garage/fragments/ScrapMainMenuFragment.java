@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
+import com.arsalan.garage.activities.ScrapUserMenuActivity;
 import com.arsalan.garage.activities.ScrapSubMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -101,7 +102,8 @@ public class ScrapMainMenuFragment extends Fragment {
                         bundle.putString(AppConstants.URL, Urls.DELIVERY);
                         bundle.putString(AppConstants.EXTRA_TITLE, "توصيل قطع");
                         intent = new Intent(getActivity(), CategorySaleListActivity.class);
-
+                    }else if(position == 4){
+                        intent = new Intent(getActivity(), ScrapUserMenuActivity.class);
                     }
 
                     intent.putExtras(bundle);

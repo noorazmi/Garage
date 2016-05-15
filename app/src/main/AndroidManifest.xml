@@ -160,6 +160,18 @@
         </activity>
         <activity android:name=".activities.MarineUserListActivity">
         </activity>
+        <activity android:name=".activities.ScrapUserMenuActivity">
+        </activity>
+        <activity android:name=".activities.AccessoriesUserListActivity">
+        </activity>
+        <activity android:name=".activities.AccessoriesUserDetailsActivity">
+        </activity>
+        <activity android:name=".activities.AccessoriesMenuActivity">
+        </activity>
+        <activity android:name=".activities.ScrapUserListActivity">
+        </activity>
+        <activity android:name=".activities.ScrapUserDetailsActivity">
+        </activity>
     </application>
 
 </manifest>

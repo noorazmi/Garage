@@ -1,11 +1,9 @@
 package com.arsalan.garage.fragments;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,17 +15,17 @@ import android.widget.Toast;
 
 import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.MarineUserDescriptionActivity;
-import com.arsalan.garage.activities.MarineUserListActivity;
+import com.arsalan.garage.activities.AccessoriesUserDetailsActivity;
+import com.arsalan.garage.activities.AccessoriesUserListActivity;
+import com.arsalan.garage.adapters.AccessoriesUserListAdapter;
 import com.arsalan.garage.adapters.CustomRecyclerViewAdapter;
-import com.arsalan.garage.adapters.MarineUserListAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.MarineUserListData;
+import com.arsalan.garage.vo.AccessoriesUserListData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,21 +38,25 @@ import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
 
 /**
- * A simple {@link Fragment} subclass.
+ * <p/>
+ * Created by: Noor  Alam on 14/05/16.<br/>
+ * Email id: noor.alam@tothenew.com<br/>
+ * Skype id: mfsi_noora
+ * <p/>
  */
-public class MarineUserListFragment extends android.app.Fragment {
+public class AccessoriesUserListFragment extends android.app.Fragment {
 
-    private static final String TAG = "MarineUserListFragment";
+    private static final String TAG = "AccessoriesUserListFrag";
     private RecyclerView mRecyclerView;
-    private MarineUserListAdapter mCategoryListAdapter;
-    private MarineUserListData mMarineUserData;
-    private List<MarineUserListData.MarineUserItem> marineUserItems;
+    private AccessoriesUserListAdapter mCategoryListAdapter;
+    private AccessoriesUserListData mMarineUserData;
+    private List<AccessoriesUserListData.AccessoriesUserItem> mAccessoriesUserItems;
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
 
 
-    public MarineUserListFragment() {
+    public AccessoriesUserListFragment() {
     }
 
     @Override
@@ -79,8 +81,8 @@ public class MarineUserListFragment extends android.app.Fragment {
         //mDataModels = getDataModelList();
 
         //mCategoryListAdapter = new CategoryListAdapter(americanCarsVO, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
-        marineUserItems = new ArrayList<>(0);
-        mCategoryListAdapter = new MarineUserListAdapter(getActivity(), mRecyclerView, marineUserItems, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+        mAccessoriesUserItems = new ArrayList<>(0);
+        mCategoryListAdapter = new AccessoriesUserListAdapter(getActivity(), mRecyclerView, mAccessoriesUserItems, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
 
 
         RecyclerView.ItemDecoration verticalDivider = new DividerItemDecoration(1);
@@ -89,7 +91,7 @@ public class MarineUserListFragment extends android.app.Fragment {
         mCategoryListAdapter.setOnPullUpListener(new CustomRecyclerViewAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mCategoryListAdapter.setDownloadingProgress(true, marineUserItems);
+                mCategoryListAdapter.setDownloadingProgress(true, mAccessoriesUserItems);
                 if (keepLoading) {
                     performGET();
                 }
@@ -107,13 +109,13 @@ public class MarineUserListFragment extends android.app.Fragment {
             @Override
             public void onClick(View view, int position) {
 
-                Intent intent = new Intent(getActivity(), MarineUserDescriptionActivity.class);
+                Intent intent = new Intent(getActivity(), AccessoriesUserDetailsActivity.class);
                 Bundle bundle = new Bundle();
-                MarineUserListData.MarineUserItem result = mMarineUserData.getResults().get(position);
+                AccessoriesUserListData.AccessoriesUserItem result = mMarineUserData.getResults().get(position);
                 bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
                 bundle.putString(AppConstants.IMAGE_URL, result.getImage());
                 bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
-                bundle.putString(AppConstants.ID, result.getMarine_id());
+                bundle.putString(AppConstants.ID, result.getAccessories_id());
                 bundle.putString(AppConstants.URL, getArguments().getString(AppConstants.URL));
                 bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
                 bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
@@ -124,9 +126,9 @@ public class MarineUserListFragment extends android.app.Fragment {
 
     }
 
-    private void showData(List<MarineUserListData.MarineUserItem> carList) {
-        mCategoryListAdapter.setDownloadingProgress(false, marineUserItems);
-        marineUserItems.addAll(carList);
+    private void showData(List<AccessoriesUserListData.AccessoriesUserItem> accessoriesUserItems) {
+        mCategoryListAdapter.setDownloadingProgress(false, mAccessoriesUserItems);
+        mAccessoriesUserItems.addAll(accessoriesUserItems);
         mCategoryListAdapter.notifyDataSetChanged();
         mCategoryListAdapter.setLoaded();
     }
@@ -157,13 +159,13 @@ public class MarineUserListFragment extends android.app.Fragment {
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
         httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(MarineUserListData.class.getName());
+        httpRequest.setValueObjectFullyQualifiedName(AccessoriesUserListData.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
         loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mMarineUserData = (MarineUserListData) httpResponse.getValueObject();
+                mMarineUserData = (AccessoriesUserListData) httpResponse.getValueObject();
                 if (mMarineUserData == null) {
                     return;
                 }
@@ -186,6 +188,6 @@ public class MarineUserListFragment extends android.app.Fragment {
     }
 
     private void setTotalCount() {
-        ((MarineUserListActivity) getActivity()).setNoOfItemsInTooBar(mMarineUserData.getResults().size());
+            ((AccessoriesUserListActivity) getActivity()).setNoOfItemsInTooBar(mMarineUserData.getResults().size());
     }
 }

@@ -76,6 +76,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
         return menuItemsArrayLis;
     }
 
@@ -85,7 +86,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
-        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.accessories, "قطع غيار واكسسوارات"));
         return menuItemsArrayLis;
     }
 
@@ -127,7 +128,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.fordlinc5, "فورد /لنكون"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, "همر"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, "جيب"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
         return menuItemsArrayLis;
     }
 
@@ -147,7 +148,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
         return menuItemsArrayLis;
     }
 
@@ -168,7 +169,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.great, "جريت ويل"));

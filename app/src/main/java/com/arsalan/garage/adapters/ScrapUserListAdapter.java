@@ -9,36 +9,33 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.AmericanCarsVO;
+import com.arsalan.garage.vo.ScrapUserListData;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * <p/>
- * Created by: Noor  Alam on 11/02/16.<br/>
+ * Created by: Noor  Alam on 14/05/16.<br/>
  * Email id: noor.alam@tothenew.com<br/>
  * Skype id: mfsi_noora
  * <p/>
  */
+public class ScrapUserListAdapter extends CustomRecyclerViewAdapter {
 
-public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
-
-    private ArrayList<AmericanCarsVO.Result> mHomeMenuItemArrayList;
+    List<ScrapUserListData.ScrapUserListItem> mScrapUserListItems;
     private String mScrapType;
     private String mDescriptionLanguage;
     private Context mContext;
 
 
-    public CategorySaleListAdapter(Context context, RecyclerView recyclerView, List<AmericanCarsVO.Result> mCarList, String scrapType, String descriptionLanguage) {
+    public ScrapUserListAdapter(Context context, RecyclerView recyclerView, List<ScrapUserListData.ScrapUserListItem> scrapUserListItems, String scrapType, String descriptionLanguage) {
         super(recyclerView);
         this.mContext = context;
-        this.mHomeMenuItemArrayList = (ArrayList<AmericanCarsVO.Result>) mCarList;
+        this.mScrapUserListItems = scrapUserListItems;
         this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
     }
@@ -68,31 +65,13 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
 
         if (!isProgerssViewHolder(holder)) {
             //In case of multiple/single view type put your code logic here...
-            final AmericanCarsVO.Result model = mHomeMenuItemArrayList.get(position);
+            final ScrapUserListData.ScrapUserListItem model = mScrapUserListItems.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
             //holder.title.setText(model.getDescription());
-            ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
-            if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
-                listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
-            /*listItemViewHolder.phoneNumber.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Utils.initCall(model.getPhone(), GarageApp.getInstance());
-                }
-            });*/
-            } else {
-                ((ListItemViewHolder) holder).title.setText(model.getDescription());
-                //((CustomViewHolder)listItemViewHolder).setOnClickListener(null);
-            }
-
-
+            ((ListItemViewHolder) holder).phoneNumber.setText(model.getPhone());
+            ((ListItemViewHolder) holder).title.setText(model.getDescription());
             ImageLoader imageLoader = ImageLoader.getInstance();
-            if(model.getDescription().contains("wash") || model.getDescription().contains("shower") || model.getDescription().contains("clean")){
-                listItemViewHolder.imgView.setImageResource(R.drawable.carwash_center);
-                listItemViewHolder.imgView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            }else {
-                imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
-            }
+            imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
         }else{
             showProgressBar(holder);
         }
@@ -104,12 +83,12 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
         // whatever integer you are going to return as per your logic instead of
         // that return getViewType(THE_VALUE_TO_BE_RETURN);
         //if you are using single view type use follows:
-        return getViewType(mHomeMenuItemArrayList, position);
+        return getViewType(mScrapUserListItems, position);
     }
 
     @Override
     public int getItemCount() {
-        return mHomeMenuItemArrayList.size();
+        return mScrapUserListItems.size();
     }
 
 
@@ -117,13 +96,13 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
 
         ImageView imgView;
         TextView title;
-        TextView phoneNumbet;
+        TextView phoneNumber;
 
         public ListItemViewHolder(View itemView) {
             super(itemView);
             imgView = (ImageView) itemView.findViewById(R.id.imageview_icon);
             title = (TextView) itemView.findViewById(R.id.textview_title);
-            phoneNumbet = (TextView) itemView.findViewById(R.id.textview_phone_number);
+            phoneNumber = (TextView) itemView.findViewById(R.id.textview_phone_number);
         }
     }
 }

@@ -73,7 +73,7 @@ public class MarineUserListAdapter extends CustomRecyclerViewAdapter {
             ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
             if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
                 listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
-            /*listItemViewHolder.phoneNumbet.setOnClickListener(new View.OnClickListener() {
+            /*listItemViewHolder.phoneNumber.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Utils.initCall(model.getPhone(), GarageApp.getInstance());
