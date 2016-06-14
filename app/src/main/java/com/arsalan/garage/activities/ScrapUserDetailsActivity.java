@@ -31,7 +31,6 @@ public class ScrapUserDetailsActivity extends BaseActivity {
 
 
     private void setLevelOneMenuFragment(){
-        FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Fragment fragment = new ScrapUserDetailsFragment();

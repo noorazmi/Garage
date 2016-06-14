@@ -45,7 +45,7 @@
 
     <!--American Car Brands-->
     <string name="car_brand_cadillac">كاديلاك</string>
-    <string name="car_brand_dodgenchrysler">اوربي</string>
+    <string name="dodge"> دودج </string>
     <string name="car_brand_chevrolet">شيفروليه</string>
     <string name="car_brand_gmc">جمس</string>
     <string name="car_brand_fordnlincoln">فورد /لنكون</string>
@@ -71,7 +71,7 @@
     <string name="car_brand_nissan">نيسان</string>
     <string name="car_brand_lexus">لكزس</string>
     <string name="car_brand_sheri">شيري</string>
-    <string name="car_brand_other">آخر</string>
+    <string name="car_brand_other"> آخرون </string>
     <string name="car_brand_subaru">سوبارو</string>
     <string name="car_brand_isuza">ايسوزو</string>
     <string name="car_brand_mazda">مازدا</string>
@@ -265,9 +265,19 @@
     <string name="ship_yard"> فيبر وحداده </string>
     <string name="repair_man"> ميكانيك وكهرباء </string>
     <string name="ship_military"> مراكز بحرية </string>
+    <string name="fishing_ship"> نزهه وصيد </string>
     <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
     <string name="qawarib">قوارب</string>
     <string name="jet_ski">جت سكي</string>
     <string name="accessories">قطع غيار واكسسوارات</string>
+    <string name="search">Search</string>
+    <string name="alkaswarat">اكسسوارات</string>
+    <string name="ford">فورد</string>
+    <string name="lincoln">لنكون</string>
+    <string name="chrysler">كلايزلر</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="select_sharing_option">Select sharing option</string>
 
 </resources>

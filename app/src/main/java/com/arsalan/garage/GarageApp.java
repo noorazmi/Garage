@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
+import com.arsalan.garage.utils.Utils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -23,6 +24,8 @@ import networking.loader.LoaderHandler;
 public class GarageApp extends Application {
 
     private static GarageApp sGarageApp = null;
+    public static String DEVICE_UUID_WITH_SLASH = "/5678C7C4-439B-404D-8892-4FDABB86770A%200x00007fdc995cceb0";
+    public static String DEVICE_UUID = "5678C7C4-439B-404D-8892-4FDABB86770A%200x00007fdc995cceb0";
 
     public static final GarageApp getInstance(){
         return sGarageApp;
@@ -39,7 +42,13 @@ public class GarageApp extends Application {
 //        }
         initImageLoader(this);
         initLoaderHandler(this);
+        initDeviceUUID();
 
+    }
+
+    private void initDeviceUUID(){
+        DEVICE_UUID_WITH_SLASH = "/"+ Utils.getUDID(this);
+        DEVICE_UUID = Utils.getUDID(this);
     }
 
     private void initImageLoader(Context applicationContext) {

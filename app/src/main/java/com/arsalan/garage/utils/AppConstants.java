@@ -13,7 +13,7 @@ public interface AppConstants {
     int REQUEST_ITEM_COUNT = 25;
     int DIVIDER_ITEM_WIDTH = 5;
 
-    String URL = "url";
+    String URL= "url";
 
     int NUM_OF_COLUMNS = 3;
 
@@ -72,6 +72,7 @@ public interface AppConstants {
     String SCRAP_AMERICA_SUB_TYPE_CHEVROLET = "scrap_america_sub_type_chevrolet";
     String SCRAP_AMERICA_SUB_TYPE_GMC = "scrap_america_sub_type_gmc";
     String SCRAP_AMERICA_SUB_TYPE_FORDNLINCOLN = "scrap_america_sub_type_fordnlincoln";
+    String SCRAP_AMERICA_SUB_TYPE_LINCOLN = "scrap_america_sub_type_lincoln";
     String SCRAP_AMERICA_SUB_TYPE_HUMMER = "scrap_america_sub_type_hummer";
     String SCRAP_AMERICA_SUB_TYPE_JEEP = "scrap_america_sub_type_jeep";
 
@@ -163,8 +164,10 @@ public interface AppConstants {
     //String EXTRA_IMAGE_PATH = "imagePath";
 
     String DEVICE_PHONE = "device_phone";
+    String UUID = "uuid";
     String MAKE_REGION = "make_region";
     String MAKE = "make";
+    String MODEL = "model";
     String TITLE = "title";
     String PHONE = "phone";
     String PRICE = "price";
@@ -189,7 +192,8 @@ public interface AppConstants {
     String DODGE_CHRYSLER = "dodgechrysler";
     String GMC="gmc";
     //String FORDL_INCOLN = "ford-lincoln";
-    String FORDL_INCOLN = "fordlincoln";
+    String FORD = "ford";
+    String LINCOLN = "lincoln";
     String HUMMER = "hummer";
     String JEEP="jeep";
     String PEUGEOT_CITROEN = "peugeotcitroen";
@@ -265,5 +269,7 @@ public interface AppConstants {
     String SPARE_PARTS = "Spare Parts";
 
 
-
+    String MESSAGE = "message";
+    String SUCCESS = "success";
+    java.lang.String STATUS = "status";
 }

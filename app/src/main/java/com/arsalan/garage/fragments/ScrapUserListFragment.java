@@ -54,6 +54,7 @@ public class ScrapUserListFragment extends android.app.Fragment {
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
+    private int mTotalItemCount;
 
 
     public ScrapUserListFragment() {
@@ -63,13 +64,29 @@ public class ScrapUserListFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_marine_user_list, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        return rootView;
+    }
+
+    private void initVariables(){
+        mCategoryListAdapter = null;
+        mMarineUserData = null;
+        mAccessoriesUserItems = null;
+        pageNumber = 0;
+        isFirstTime = true;
+        keepLoading = true;
+        mTotalItemCount = 0;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         if (Utils.isNetworkAvailable(getActivity())) {
+            initVariables();
             performGET();
         } else {
             Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
         }
         setAdapter();
-        return rootView;
     }
 
     private void setAdapter() {
@@ -91,8 +108,8 @@ public class ScrapUserListFragment extends android.app.Fragment {
         mCategoryListAdapter.setOnPullUpListener(new CustomRecyclerViewAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mCategoryListAdapter.setDownloadingProgress(true, mAccessoriesUserItems);
                 if (keepLoading) {
+                    mCategoryListAdapter.setDownloadingProgress(true, mAccessoriesUserItems);
                     performGET();
                 }
             }
@@ -156,8 +173,11 @@ public class ScrapUserListFragment extends android.app.Fragment {
         }
 
         Bundle bundle = getArguments();
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
-        httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT);
+        String url = bundle.getString(AppConstants.URL) + GarageApp.DEVICE_UUID_WITH_SLASH;
+        String pageLimitUrl = url + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT;
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + pageLimitUrl);
+        httpRequest.setUrl(pageLimitUrl);
+        //httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(ScrapUserListData.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
@@ -166,19 +186,21 @@ public class ScrapUserListFragment extends android.app.Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mMarineUserData = (ScrapUserListData) httpResponse.getValueObject();
-                if (mMarineUserData == null) {
+                if (mMarineUserData == null || mMarineUserData.getResults() == null) {
                     return;
-                }
-                if (mMarineUserData.getResults() == null) {
-                    return;
-                }
-                showData(mMarineUserData.getResults());
-                if (isFirstTime) {
-                    setTotalCount();
-                    isFirstTime = false;
                 }
 
-                if (mMarineUserData.getResults().size() == 0) {
+                showData(mMarineUserData.getResults());
+
+                if (mMarineUserData.getData_count() != null && isFirstTime) {
+                    mTotalItemCount = Integer.valueOf(mMarineUserData.getData_count());
+                    setTotalCount();
+                    isFirstTime = false;
+                }else {
+                    Utils.showSnackBar(getActivity(), mMarineUserData.getMessage());
+                }
+
+                if (mAccessoriesUserItems.size() >= mTotalItemCount) {
                     keepLoading = false;
                 }
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
@@ -188,6 +210,6 @@ public class ScrapUserListFragment extends android.app.Fragment {
     }
 
     private void setTotalCount() {
-        ((ScrapUserListActivity) getActivity()).setNoOfItemsInTooBar(mMarineUserData.getResults().size());
+        ((ScrapUserListActivity) getActivity()).setNoOfItemsInTooBar(mTotalItemCount);
     }
 }

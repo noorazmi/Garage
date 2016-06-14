@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.HomeMenuItem;
+import com.arsalan.garage.models.ShareOptionItem;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
@@ -76,7 +77,7 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "يع و شرا  "));
         return menuItemsArrayLis;
     }
 
@@ -132,6 +133,24 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
+    public static ArrayList<HomeMenuItem> geBuyAndSaleAmericaMenuItems() {
+
+        ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
+
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, "دودج"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, "جمس"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ford, " فورد "));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lincoln, " لنكون "));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, "همر"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, "جيب"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chrysler, "كلايزلر"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.american, "آخرون"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.american, "آخر"));
+        return menuItemsArrayLis;
+    }
+
 
     public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems() {
 
@@ -148,7 +167,26 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
-        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        return menuItemsArrayLis;
+    }
+
+    public static ArrayList<HomeMenuItem> getBuyAndSaleEuropeanMenuItems() {
+
+        ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
+
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercedesbenz1, "مرسيدس"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.bmw2, "بي ام دبليو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.land_rover3, "رنج روفر"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.volkswagen4, "فولكس"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jaguarlogo5, "جاغوار"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, "بورش"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, "اودي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, "بيجو / ستروين"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.europian, "آخرون"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.europian, "آخر"));
         return menuItemsArrayLis;
     }
 
@@ -169,7 +207,32 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
-        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخر"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.great, "جريت ويل"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ssangyong, "سانج يونج"));
+        return menuItemsArrayLis;
+    }
+
+    public static ArrayList<HomeMenuItem> getBuyAndSaleAsianMenuItems() {
+
+        ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
+
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.toyota, "تويوتا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name, "لكزس"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, "انفينتي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, "هوندا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, "هيونداي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, "كيا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخرون"));
+        //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخر"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.great, "جريت ويل"));
@@ -311,7 +374,7 @@ public class Utils {
     }
 
     public static String getUDID(Context context) {
-        return Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);
+        return Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID)+2;
     }
 
     public static Point getDisplayPoint(Context context) {
@@ -320,4 +383,14 @@ public class Utils {
         display.getSize(size);
         return size;
     }
+
+    public static ArrayList<ShareOptionItem> getShareOptions(){
+        ArrayList<ShareOptionItem> shareOptions = new ArrayList<>(3);
+        shareOptions.add(new ShareOptionItem(R.string.facebook, R.drawable.facebook));
+        shareOptions.add(new ShareOptionItem(R.string.twitter, R.drawable.twitter));
+        shareOptions.add(new ShareOptionItem(R.string.whatsapp, R.drawable.whatsapp));
+
+        return shareOptions;
+    }
+
 }

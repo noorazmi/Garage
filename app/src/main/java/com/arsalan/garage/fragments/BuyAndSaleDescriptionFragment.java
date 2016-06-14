@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.BuyAndSaleDescPagerAdapter;
 import com.arsalan.garage.activities.FullImageActivity;
@@ -94,8 +95,9 @@ public class BuyAndSaleDescriptionFragment extends Fragment {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
         //Bundle bundle = getArguments();
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.FORSALE_DESCRIPTION_BASE + getArguments().getString(AppConstants.EXTRA_FORSALE_ID)));
-        httpRequest.setUrl(Urls.FORSALE_DESCRIPTION_BASE + getArguments().getString(AppConstants.EXTRA_FORSALE_ID));
+        String url = Urls.FORSALE_DESCRIPTION_BASE + getArguments().getString(AppConstants.EXTRA_FORSALE_ID) + GarageApp.DEVICE_UUID_WITH_SLASH;
+        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + url);
+        httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(BuyAndSaleDescVo.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

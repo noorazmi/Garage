@@ -32,5 +32,14 @@
     <dimen name="app_padding_left_right_post">15dp</dimen>
     <dimen name="description_title">23sp</dimen>
 
+    <!-- Font sizes -->
+    <dimen name="font_size_very_extra_small">8sp</dimen>
+    <dimen name="font_size_extra_small">10sp</dimen>
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="font_size_normal">14sp</dimen>
+    <dimen name="font_size_extra_normal">16sp</dimen>
+    <dimen name="font_size_large">18sp</dimen>
+    <dimen name="font_size_extra_large">20sp</dimen>
+
 
 </resources>

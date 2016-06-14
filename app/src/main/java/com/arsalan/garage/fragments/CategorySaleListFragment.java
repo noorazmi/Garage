@@ -9,10 +9,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.arsalan.garage.GarageApp;
@@ -46,9 +50,12 @@ public class CategorySaleListFragment extends Fragment {
     private CategorySaleListAdapter mCategoryListAdapter;
     private AmericanCarsVO mAmericanCarsVO;
     private List<AmericanCarsVO.Result> mCarList;
+    private List<AmericanCarsVO.Result> dummyItems;
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
+    private EditText editTextSearch;
+    private ImageView imageViewSearchLogo;
 
 
     public CategorySaleListFragment() {
@@ -57,6 +64,16 @@ public class CategorySaleListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_category_sale_list, container, false);
+        editTextSearch = (EditText)rootView.findViewById(R.id.edittext_search);
+        imageViewSearchLogo = (ImageView)rootView.findViewById(R.id.imageview_search_logo);
+        imageViewSearchLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editTextSearch.getText().toString().length() > 0){
+                    editTextSearch.getText().clear();
+                }
+            }
+        });
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         if (Utils.isNetworkAvailable(getActivity())) {
             performGET();
@@ -66,6 +83,7 @@ public class CategorySaleListFragment extends Fragment {
         setAdapter();
         return rootView;
     }
+
 
     private void setAdapter() {
 
@@ -77,6 +95,7 @@ public class CategorySaleListFragment extends Fragment {
 
         //mCategoryListAdapter = new CategoryListAdapter(americanCarsVO, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
         mCarList = new ArrayList<>(0);
+        dummyItems = new ArrayList<>(0);
         mCategoryListAdapter = new CategorySaleListAdapter(getActivity(), mRecyclerView, mCarList, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
 
 
@@ -123,9 +142,59 @@ public class CategorySaleListFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setSearch();
+    }
+
+    private void setSearch(){
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                List<AmericanCarsVO.Result> filteredModelList = filter(dummyItems, s.toString());
+                mCategoryListAdapter.animateTo(filteredModelList);
+                if(s.toString().length() > 0){
+                    imageViewSearchLogo.setImageResource(R.drawable.ic_cross_blue);
+                }else {
+                    imageViewSearchLogo.setImageResource(R.drawable.ic_search_hover);
+                }
+                mRecyclerView.scrollToPosition(0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private List<AmericanCarsVO.Result> filter(List<AmericanCarsVO.Result> models, String query) {
+        query = query.toLowerCase();
+
+        final List<AmericanCarsVO.Result> filteredModelList = new ArrayList<>();
+        for (AmericanCarsVO.Result model : models) {
+            final String text = model.getDescription();
+            //final String text = model.getPhone();
+            if (text.contains(query)) {
+                filteredModelList.add(model);
+            }
+        }
+        return filteredModelList;
+    }
+
+
+
     private void showData(List<AmericanCarsVO.Result> carList){
         mCategoryListAdapter.setDownloadingProgress(false,mCarList);
         mCarList.addAll(carList);
+        dummyItems.addAll(carList);
         mCategoryListAdapter.notifyDataSetChanged();
         mCategoryListAdapter.setLoaded();
     }

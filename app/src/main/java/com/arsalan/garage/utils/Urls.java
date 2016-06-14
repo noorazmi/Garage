@@ -12,6 +12,7 @@ public interface Urls {
 
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
     String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
+    String SCRAP_UPLOAD = "http://kuwaitgarage.com/api/scrap";
 
     //American
     String CADILLAC =  "http://kuwaitgarage.com/api/scrape/american/cadillac";
@@ -247,6 +248,7 @@ public interface Urls {
     String ACCESSORIESUSER_AMERICAN = "http://kuwaitgarage.com/api/accessoriesuser/american";
     String ACCESSORIESUSER_EUROPEAN = "http://kuwaitgarage.com/api/accessoriesuser/european";
     String ACCESSORIESUSER_ASIAN = "http://kuwaitgarage.com/api/accessoriesuser/asian";
+    String ACCESSORIESUSER_OTHER = "http://kuwaitgarage.com/api/accessoriesuser/accessories";
     String ACCESSORIESUSERDETAIL_BASE = "http://kuwaitgarage.com/api/accessoriesuserdetail/";
 
     String SCRAPUSER_AMERICAN = "http://kuwaitgarage.com/api/scrapuser/american";
@@ -255,8 +257,8 @@ public interface Urls {
     String SCRAPUSERDETAIL_BASE = "http://kuwaitgarage.com/api/scrapuserdetail/";
 
 
-
-
+    /* Scrap delete */
+    String SCRAP_DELETE = "http://kuwaitgarage.com/api/scrap/delete";
 
 
 

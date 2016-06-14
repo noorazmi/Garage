@@ -29,7 +29,7 @@ import java.util.List;
 
 public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
 
-    private ArrayList<AmericanCarsVO.Result> mHomeMenuItemArrayList;
+    private List<AmericanCarsVO.Result> mHomeMenuItemArrayList;
     private String mScrapType;
     private String mDescriptionLanguage;
     private Context mContext;
@@ -125,5 +125,57 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
             title = (TextView) itemView.findViewById(R.id.textview_title);
             phoneNumbet = (TextView) itemView.findViewById(R.id.textview_phone_number);
         }
+    }
+
+
+    public void animateTo(List<AmericanCarsVO.Result> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+
+    private void applyAndAnimateRemovals(List<AmericanCarsVO.Result> newModels) {
+        for (int i = mHomeMenuItemArrayList.size() - 1; i >= 0; i--) {
+            final AmericanCarsVO.Result model = mHomeMenuItemArrayList.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+
+    private void applyAndAnimateAdditions(List<AmericanCarsVO.Result> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final AmericanCarsVO.Result model = newModels.get(i);
+            if (!mHomeMenuItemArrayList.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+
+    private void applyAndAnimateMovedItems(List<AmericanCarsVO.Result> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final AmericanCarsVO.Result model = newModels.get(toPosition);
+            final int fromPosition = mHomeMenuItemArrayList.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
+    }
+
+    public AmericanCarsVO.Result removeItem(int position) {
+        final AmericanCarsVO.Result model = mHomeMenuItemArrayList.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+
+    public void addItem(int position, AmericanCarsVO.Result model) {
+        mHomeMenuItemArrayList.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final AmericanCarsVO.Result model = mHomeMenuItemArrayList.remove(fromPosition);
+        mHomeMenuItemArrayList.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
     }
 }

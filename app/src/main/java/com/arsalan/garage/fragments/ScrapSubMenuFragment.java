@@ -84,7 +84,7 @@ public class ScrapSubMenuFragment extends Fragment {
                         }else if(position == 1){
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_DODGENCHRYSLER);
                             bundle.putString(AppConstants.URL, Urls.DODGENCHRYSLER);
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_dodgenchrysler));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.dodge));
                         }else if(position == 2){
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_CHEVROLET);
                             bundle.putString(AppConstants.URL, Urls.CHEVROLET);

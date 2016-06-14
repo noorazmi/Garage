@@ -33,7 +33,7 @@ public class AccessoriesMenuFragment extends Fragment {
 
 
     private static final String TAG = "CrashedCarMenuFragment";
-    private static final int NUM_OF_COLUMNS = 3;
+    private static final int NUM_OF_COLUMNS = 2;
     private ArrayList<HomeMenuItem> mMarineItemArrayList;
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
@@ -89,6 +89,10 @@ public class AccessoriesMenuFragment extends Fragment {
                         bundle.putString(AppConstants.URL, Urls.ACCESSORIESUSER_ASIAN);
                         bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.asian));
                         break;
+                    case 3:
+                        bundle.putString(AppConstants.URL, Urls.ACCESSORIESUSER_OTHER);
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.alkaswarat));
+                        break;
                     default:
                         break;
                 }
@@ -111,6 +115,8 @@ public class AccessoriesMenuFragment extends Fragment {
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.american, getString(R.string.american)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.europian, getString(R.string.european)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.asian, getString(R.string.asian)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.accessories, getString(R.string.alkaswarat)));
+
         return mMarineItemArrayList;
     }
 

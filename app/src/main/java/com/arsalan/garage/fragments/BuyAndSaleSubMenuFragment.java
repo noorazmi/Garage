@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.BuyAndSaleListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
@@ -92,7 +93,7 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_DODGENCHRYSLER);
                             //bundle.putString(AppConstants.URL, Urls.DODGENCHRYSLER);
                             make = AppConstants.DODGE_CHRYSLER;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_dodgenchrysler));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.dodge));
                         } else if (position == 2) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_CHEVROLET);
                             //bundle.putString(AppConstants.URL, Urls.CHEVROLET);
@@ -106,18 +107,33 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                         } else if (position == 4) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_FORDNLINCOLN);
                             //bundle.putString(AppConstants.URL, Urls.FORDNLINCOLN);
-                            make = AppConstants.FORDL_INCOLN;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_fordnlincoln));
+                            make = AppConstants.FORD;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ford));
                         } else if (position == 5) {
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_LINCOLN);
+                            //bundle.putString(AppConstants.URL, Urls.FORDNLINCOLN);
+                            make = AppConstants.LINCOLN;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.lincoln));
+                        } else if (position == 6) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_HUMMER);
                             //bundle.putString(AppConstants.URL, Urls.HUMMER);
                             make = AppConstants.HUMMER;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_hummer));
-                        } else if (position == 6) {
+                        } else if (position == 7) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
                             //bundle.putString(AppConstants.URL, Urls.JEEP);
                             make = AppConstants.JEEP;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_jeep));
+                        }else if (position == 8) {
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
+                            //bundle.putString(AppConstants.URL, Urls.JEEP);
+                            make = AppConstants.CHRYSLER;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.chrysler));
+                        }else if (position == 9) {
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
+                            //bundle.putString(AppConstants.URL, Urls.JEEP);
+                            make = AppConstants.OTHER;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
                         }
                     } else if (scrapeType.equals(AppConstants.SCRAP_EUROPEAN)) {
                         makeRegion = AppConstants.EUROPEAN;
@@ -175,6 +191,11 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                             //bundle.putString(AppConstants.URL, Urls.RENAULT);
                             make = AppConstants.RENAULT;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_renault));
+                        }else if (position == 11) {
+                            bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RENAULT);
+                            //bundle.putString(AppConstants.URL, Urls.RENAULT);
+                            make = AppConstants.OTHER;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
                         }
                     } else if (scrapeType.equals(AppConstants.SCRAP_ASIAN)) {
                         makeRegion = AppConstants.ASIAN;
@@ -238,7 +259,12 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                             //bundle.putString(AppConstants.URL, Urls.SUBARU);
                             make = AppConstants.SUBARU;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_subaru));
-                        } else if (position == 12) {
+                        }else if (position == 12) {
+                            bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_SUBARU);
+                            //bundle.putString(AppConstants.URL, Urls.SUBARU);
+                            make = AppConstants.OTHER;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_other));
+                        } else if (position == 13) {
                             bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_SHERI);
                             //bundle.putString(AppConstants.URL, Urls.MERCEDES);
                             make = AppConstants.MERCEDES;
@@ -254,7 +280,7 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                     }
 
                     Intent intent = new Intent(getActivity(), BuyAndSaleListActivity.class);
-                    bundle.putString(AppConstants.URL, Urls.FORSALE_BASE + makeRegion + "/" + make);
+                    bundle.putString(AppConstants.URL, Urls.FORSALE_BASE + makeRegion + "/" + make + GarageApp.DEVICE_UUID_WITH_SLASH);
                     intent.putExtras(bundle);
                     getActivity().startActivity(intent);
                 }
@@ -268,11 +294,11 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
     private void initMenuItems() {
 
         if (scrapeType.equals(AppConstants.SCRAP_AMERICA)) {
-            mMenuItemsArrayList = Utils.getScrapAmericaMenuItems();
+            mMenuItemsArrayList = Utils.geBuyAndSaleAmericaMenuItems();
         } else if (scrapeType.equals(AppConstants.SCRAP_EUROPEAN)) {
-            mMenuItemsArrayList = Utils.getScrapEuropeanMenuItems();
+            mMenuItemsArrayList = Utils.getBuyAndSaleEuropeanMenuItems();
         } else if (scrapeType.equals(AppConstants.SCRAP_ASIAN)) {
-            mMenuItemsArrayList = Utils.getScrapAsianMenuItems();
+            mMenuItemsArrayList = Utils.getBuyAndSaleAsianMenuItems();
         } else if (scrapeType.equals(AppConstants.SCRAP_DELIVERY)) {
             mMenuItemsArrayList = Utils.getScrapTawsilKataMenuItems();
         }

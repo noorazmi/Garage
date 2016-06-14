@@ -20,7 +20,7 @@ public class MarineUserActivity extends BaseActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         Bundle bundle = getIntent().getExtras();
-        setToolbar(mToolbar, getString(R.string.marine), true, Gravity.CENTER);
+        setToolbar(mToolbar, getString(R.string.bai_ul_shara), true, Gravity.CENTER);
         setMenuHolderFragment();
     }
 

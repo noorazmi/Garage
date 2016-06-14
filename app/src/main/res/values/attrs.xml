@@ -5,4 +5,8 @@
         <attr name="fontName" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomEditText">
+        <attr name="EditFontName" format="string" />
+    </declare-styleable>
+
 </resources>

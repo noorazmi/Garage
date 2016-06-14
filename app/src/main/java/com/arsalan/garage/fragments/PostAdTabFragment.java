@@ -507,6 +507,10 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         //File file5 = new File(mImagePaths[4]);
 
         String urlString = Urls.FORESALE_UPLOAD;
+        if(mMakeRegion.equals(AppConstants.SCRAP)){
+            urlString = Urls.SCRAP_UPLOAD;
+        }
+
         HttpEntity resEntity = null;
         try {
 
@@ -534,8 +538,14 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             //reqEntity.addPart("image3", bin3);
 
             reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(getActivity())));
-            reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
+            reqEntity.addPart(AppConstants.UUID, new StringBody(Utils.getUDID(getActivity())));
+            if(urlString.equals(Urls.SCRAP_UPLOAD)){
+                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
+            }else {
+                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
+            }
             reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
+            reqEntity.addPart(AppConstants.MODEL, new StringBody(mMake));
             reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));

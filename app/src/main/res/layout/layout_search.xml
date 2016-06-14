@@ -1,0 +1,27 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_white"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <com.arsalan.garage.uicomponents.CustomEditText
+        android:id="@+id/edittext_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/abc_search_hint"
+        android:singleLine="true"
+        android:textSize="@dimen/font_size_normal"/>
+
+    <ImageView
+        android:id="@+id/imageview_search_logo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_search_hover"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_gravity="right|center_vertical"
+        android:scaleType="centerInside"/>
+
+</FrameLayout>

@@ -95,11 +95,11 @@ public class MarineFragment extends Fragment {
                         break;
                     case 3:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.fishing_ship));
                         break;
                     case 4:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.bai_ul_shara));
                         intent = new Intent(getActivity(), MarineUserActivity.class);
                         break;
                     default:
@@ -123,8 +123,8 @@ public class MarineFragment extends Fragment {
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, getString(R.string.ship_yard)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, getString(R.string.repair_man)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , getString(R.string.ship_military)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.fishermen , getString(R.string.ship_military)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.marine_in_hand , getString(R.string.ship_military)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.fishermen , getString(R.string.fishing_ship)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.marine_in_hand , getString(R.string.bai_ul_shara)));
         return mMarineItemArrayList;
     }
 
