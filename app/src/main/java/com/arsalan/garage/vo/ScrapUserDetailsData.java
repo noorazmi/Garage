@@ -22,20 +22,27 @@ public class ScrapUserDetailsData extends BaseVO implements ValueObject {
     }
 
     public static class ScrapUserDetails{
-        private String marine_id;
+        private String scrap_id;
         private String make_region_name;
+        private String model;
         private String title;
         private String phone;
         private String price;
         private String description;
+        private String post_date;
         private ArrayList<ImageInfo> images;
+        private int is_owner;
 
-        public String getMarine_id() {
-            return marine_id;
+        public String getScrap_id() {
+            return scrap_id;
         }
 
         public String getMake_region_name() {
             return make_region_name;
+        }
+
+        public String getModel() {
+            return model;
         }
 
         public String getTitle() {
@@ -54,8 +61,16 @@ public class ScrapUserDetailsData extends BaseVO implements ValueObject {
             return description;
         }
 
+        public String getPost_date() {
+            return post_date;
+        }
+
         public ArrayList<ImageInfo> getImages() {
             return images;
+        }
+
+        public int getIs_owner() {
+            return is_owner;
         }
     }
 

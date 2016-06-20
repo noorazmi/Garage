@@ -279,5 +279,6 @@
     <string name="twitter">Twitter</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="select_sharing_option">Select sharing option</string>
+    <string name="package_name">com.arsalan.garage</string>
 
 </resources>

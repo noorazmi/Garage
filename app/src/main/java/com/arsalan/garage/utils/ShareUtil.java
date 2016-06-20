@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
@@ -24,22 +25,25 @@ import java.util.List;
  */
 public class ShareUtil {
 
+    private static final String WHATSAPP = "WhatsApp";
+    private static final String FACEBOOK = "Facebook";
+    private static final String TWITTER = "Twitter";
 
-    public static void shareOnFacebook() {
-
+    public static void shareOnFacebook(Context context, String text ,String imageUrl) {
+        shareImageWithText(context, text , imageUrl, FACEBOOK);
     }
 
-    public static void shareOnTwitter() {
-
+    public static void shareOnTwitter(Context context, String text ,String imageUrl) {
+        shareImageWithText(context, text , imageUrl, TWITTER);
     }
 
     public static void shareOnWhatsApp(Context context, String text ,String imageUrl) {
-        shareImageWithText(context, text , imageUrl);
+        shareImageWithText(context, text , imageUrl, WHATSAPP);
     }
 
 
 
-    public static void shareImageWithText(Context context, final String shareContent, String shareUri) {
+    public static void shareImageWithText(Context context, final String shareContent, String shareUri, final String shareMedia) {
 
         class ShareTask extends AsyncTask<String, Void, File> {
             private final Context context;
@@ -85,7 +89,20 @@ public class ShareUtil {
                 intent.putExtra(Intent.EXTRA_TEXT, shareContent);
                 intent.putExtra(Intent.EXTRA_STREAM, result);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                context.startActivity(Intent.createChooser(intent, "Share Image"));
+                if(shareMedia.equals(WHATSAPP)){
+                    intent.setPackage("com.whatsapp");
+                }else if(shareMedia.equals(FACEBOOK)){
+                    intent.setPackage("com.facebook.katana");
+                }else if(shareMedia.equals(TWITTER)){
+                    intent.setPackage("com.twitter.android");
+                }
+                //context.startActivity(Intent.createChooser(intent, "Share Image"));
+                try {
+                    context.startActivity(intent);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(context, shareMedia + " is not installed on your device. Please install it and try again.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         }
         new ShareTask(context).execute(shareUri);

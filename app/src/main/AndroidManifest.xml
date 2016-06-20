@@ -2,12 +2,14 @@
 <manifest package="com.arsalan.garage"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.STORAGE"/>
 
     <application
@@ -171,6 +173,19 @@
         <activity android:name=".activities.ScrapUserListActivity">
         </activity>
         <activity android:name=".activities.ScrapUserDetailsActivity">
+        </activity>
+
+        <provider
+            android:name=".utils.ImageFileProvider"
+            android:authorities="com.arsalan.garage"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <activity android:name=".activities.EditPostActivity">
         </activity>
     </application>
 

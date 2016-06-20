@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.EditPostActivity;
 import com.arsalan.garage.activities.FullImageActivity;
 import com.arsalan.garage.adapters.AlwakalatAgencyDescriptionCarsViewPagerAdapter;
 import com.arsalan.garage.adapters.ShareListAdapter;
@@ -61,7 +62,7 @@ public class ScrapUserDetailsFragment extends Fragment {
     private int mCurrentCarIndex = 0;
     private TextView mTextviewDescription;
     private TextView mTextviewPhone;
-    private AlertDialog mAlertDialog;
+    private AlertDialog mShareOptionsAlertDialog;
 
     public ScrapUserDetailsFragment() {
     }
@@ -121,6 +122,7 @@ public class ScrapUserDetailsFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mScrapUserDetailsData = (ScrapUserDetailsData) httpResponse.getValueObject();
+                getActivity().invalidateOptionsMenu();
                 setPagerAdapter();
                 setDescription();
             }
@@ -132,6 +134,10 @@ public class ScrapUserDetailsFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_share, menu);
+        if(mScrapUserDetailsData != null && mScrapUserDetailsData.getResults().getIs_owner() == 1){
+           menu.findItem(R.id.menu_item_delete).setVisible(true);
+           menu.findItem(R.id.menu_item_edit).setVisible(true);
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -145,6 +151,30 @@ public class ScrapUserDetailsFragment extends Fragment {
                 deleteItem();
                 break;
             case R.id.menu_item_edit:
+                Intent intent = new Intent(getActivity(), EditPostActivity.class);
+                ScrapUserDetailsData.ScrapUserDetails scrapUserDetails = mScrapUserDetailsData.getResults();
+                /*id                     (mandatory) =  is eqaul to theforsale_id
+                uuid                 (mandatory) = device UUID
+                model              ( Optional ) = put this if you wanted to update
+                title                  ( Optional ) = put this if you wanted to update
+                phone              ( Optional ) = put this if you wanted to update
+                price                ( Optional ) = put this if you wanted to update
+                description       ( Optional ) = put this if you wanted to update
+
+                image1       ( Optional ) = put this if you wanted to update
+                image2       ( Optional ) = put this if you wanted to update
+                image3       ( Optional ) = put this if you wanted to update
+                .
+                .
+                .
+                image10       ( Optional ) = put this if you wanted to update*/
+                intent.putExtra(AppConstants.ID, scrapUserDetails.getScrap_id());
+                intent.putExtra(AppConstants.MODEL, scrapUserDetails.getModel());
+                intent.putExtra(AppConstants.TITLE, scrapUserDetails.getTitle());
+                intent.putExtra(AppConstants.PHONE, scrapUserDetails.getPhone());
+                intent.putExtra(AppConstants.PRICE, scrapUserDetails.getPrice());
+                intent.putExtra(AppConstants.DESCRIPTION, scrapUserDetails.getDescription());
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -203,14 +233,13 @@ public class ScrapUserDetailsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 ShareOptionItem shareOptionItem  = (ShareOptionItem) shareListAdapter.getItem(position);
+                mShareOptionsAlertDialog.dismiss();
                 switch (position){
                     case 0://facebook
-
-                        ShareUtil.shareOnFacebook();
-
+                        ShareUtil.shareOnFacebook(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
                         break;
                     case 1://twitter
-                        ShareUtil.shareOnTwitter();
+                        ShareUtil.shareOnTwitter(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
                         break;
                     case 2://whatsapp
                         ShareUtil.shareOnWhatsApp(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
@@ -223,10 +252,10 @@ public class ScrapUserDetailsFragment extends Fragment {
         });
         builder.setView(mBankListView);
         builder.setTitle(getActivity().getString(R.string.select_sharing_option));
-        AlertDialog dialog = builder.create();
+        mShareOptionsAlertDialog = builder.create();
         CustomDialogHelper customDialogHelper = new CustomDialogHelper(getActivity());
-        dialog.show();
-        customDialogHelper.changeDialog(dialog);
+        mShareOptionsAlertDialog.show();
+        customDialogHelper.changeDialog(mShareOptionsAlertDialog);
     }
 
     private void setDescription(){

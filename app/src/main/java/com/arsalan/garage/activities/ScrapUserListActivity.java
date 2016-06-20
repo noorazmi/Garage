@@ -41,7 +41,6 @@ public class ScrapUserListActivity extends BaseActivity {
         Log.e(TAG, " bundle URL:" + bundle.getString(AppConstants.URL));
         listFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, listFragment).commit();
-
     }
 
 
