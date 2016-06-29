@@ -24,8 +24,8 @@ import networking.loader.LoaderHandler;
 public class GarageApp extends Application {
 
     private static GarageApp sGarageApp = null;
-    public static String DEVICE_UUID_WITH_SLASH = "/5678C7C4-439B-404D-8892-4FDABB86770A%200x00007fdc995cceb0";
-    public static String DEVICE_UUID = "5678C7C4-439B-404D-8892-4FDABB86770A%200x00007fdc995cceb0";
+    public static String DEVICE_UUID_WITH_SLASH;
+    public static String DEVICE_UUID;
 
     public static final GarageApp getInstance(){
         return sGarageApp;

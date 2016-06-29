@@ -13,6 +13,8 @@ public interface Urls {
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
     String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
     String SCRAP_UPLOAD = "http://kuwaitgarage.com/api/scrap";
+    String MARINE_UPLOAD = "http://kuwaitgarage.com/api/marine";
+
 
     //American
     String CADILLAC =  "http://kuwaitgarage.com/api/scrape/american/cadillac";

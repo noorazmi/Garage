@@ -29,6 +29,8 @@ public class MarineUserDetailsData extends BaseVO implements ValueObject {
         private String price;
         private String description;
         private ArrayList<ImageInfo> images;
+        private int is_owner;
+        private String model;
 
         public String getMarine_id() {
             return marine_id;
@@ -56,6 +58,14 @@ public class MarineUserDetailsData extends BaseVO implements ValueObject {
 
         public ArrayList<ImageInfo> getImages() {
             return images;
+        }
+
+        public int getIs_owner() {
+            return is_owner;
+        }
+
+        public String getModel() {
+            return model;
         }
     }
 

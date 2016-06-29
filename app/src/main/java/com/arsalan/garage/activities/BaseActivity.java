@@ -1,9 +1,6 @@
 package com.arsalan.garage.activities;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -49,13 +46,25 @@ public abstract class BaseActivity extends AppCompatActivity {
             setTitle(title);
         }
 
-    public void setToolbar(Toolbar toolbar, CharSequence title, boolean displayHomeAsUpEnabled, int gravity) {
+    public void setToolbar(Toolbar toolbar, String title, boolean displayHomeAsUpEnabled, int gravity) {
         setToolbar(toolbar, displayHomeAsUpEnabled);
         setCustomTitle(title, toolbar ,gravity);
     }
 
-    private void setCustomTitle(CharSequence title, Toolbar toolbar, int gravity){
+    public void setCustomTitle(String title, Toolbar toolbar, int gravity){
         TextView textViewTitle = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_title, null);
+        textViewTitle.setText(title);
+        toolbar.addView(textViewTitle, new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.CENTER
+        ));
+
+    }
+
+    public void setCustomTitleEnglish(String title, Toolbar toolbar){
+        setToolbar(toolbar, true);
+        TextView textViewTitle = (TextView) getLayoutInflater().inflate(R.layout.textview_toolbar_title_english, null);
         textViewTitle.setText(title);
         toolbar.addView(textViewTitle, new ActionBar.LayoutParams(
                 ActionBar.LayoutParams.WRAP_CONTENT,

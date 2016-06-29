@@ -239,13 +239,15 @@
     </string-array>
 
     <string-array name="car_sub_category_marine_title">
-        <item> معدات وقطع غيار </item>
+        <item> قوارب </item>
         <item> جت سكي </item>
+        <item> معدات وقطع غيار </item>
     </string-array>
 
     <string-array name="car_sub_category_marine_code">
-        <item>boat_vint_ship_engine</item>
-        <item>jetski</item>
+        <item>boats</item>
+        <item>jet ski</item>
+        <item>Marine Equipment</item>
     </string-array>
 
 

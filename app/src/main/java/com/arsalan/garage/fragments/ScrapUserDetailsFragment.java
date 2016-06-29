@@ -153,27 +153,21 @@ public class ScrapUserDetailsFragment extends Fragment {
             case R.id.menu_item_edit:
                 Intent intent = new Intent(getActivity(), EditPostActivity.class);
                 ScrapUserDetailsData.ScrapUserDetails scrapUserDetails = mScrapUserDetailsData.getResults();
-                /*id                     (mandatory) =  is eqaul to theforsale_id
-                uuid                 (mandatory) = device UUID
-                model              ( Optional ) = put this if you wanted to update
-                title                  ( Optional ) = put this if you wanted to update
-                phone              ( Optional ) = put this if you wanted to update
-                price                ( Optional ) = put this if you wanted to update
-                description       ( Optional ) = put this if you wanted to update
-
-                image1       ( Optional ) = put this if you wanted to update
-                image2       ( Optional ) = put this if you wanted to update
-                image3       ( Optional ) = put this if you wanted to update
-                .
-                .
-                .
-                image10       ( Optional ) = put this if you wanted to update*/
                 intent.putExtra(AppConstants.ID, scrapUserDetails.getScrap_id());
                 intent.putExtra(AppConstants.MODEL, scrapUserDetails.getModel());
                 intent.putExtra(AppConstants.TITLE, scrapUserDetails.getTitle());
                 intent.putExtra(AppConstants.PHONE, scrapUserDetails.getPhone());
                 intent.putExtra(AppConstants.PRICE, scrapUserDetails.getPrice());
                 intent.putExtra(AppConstants.DESCRIPTION, scrapUserDetails.getDescription());
+                intent.putExtra(AppConstants.CATEGORY, AppConstants.SCRAP);
+                intent.putExtra(AppConstants.SUB_CATEGORY, scrapUserDetails.getMake_region_name());
+
+                ArrayList<ImageInfo> carImageArrayList = mScrapUserDetailsData.getResults().getImages();
+                ArrayList<String> imageUrls = new ArrayList<>(carImageArrayList.size());
+                for (ImageInfo imageInfo : carImageArrayList) {
+                    imageUrls.add(imageInfo.getPhoto_name());
+                }
+                intent.putStringArrayListExtra(AppConstants.IMAGE_LIST, imageUrls);
                 startActivity(intent);
                 break;
             default:

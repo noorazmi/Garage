@@ -5,287 +5,232 @@
     android:layout_height="match_parent"
     android:background="@color/grey_white_smoke">
 
-    <ScrollView
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/grey_light">
 
-        <LinearLayout
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/toolbar_padding"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
 
-            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-                android:id="@+id/textview_offer1"
-                style="@style/TextViewStyle.SemiBold.English"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:text="@string/ad_limit_message"
-                android:textColor="@color/material_blue_grey_800"
-                android:textSize="15dp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
+
+                <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                    android:id="@+id/textview_offer1"
+                    style="@style/TextViewStyle.SemiBold.English"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/ad_limit_message"
+                    android:textColor="@color/material_blue_grey_800"
+                    android:textSize="15dp"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_add_view_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp">
+
+                        <include
+                            android:id="@+id/button_first_img"
+                            layout="@layout/layout_add_image"/>
+
+                        <include
+                            android:id="@+id/button_second_img"
+                            layout="@layout/layout_add_image"/>
+
+                        <include
+                            android:id="@+id/button_third_img"
+                            layout="@layout/layout_add_image"/>
+
+                        <include
+                            android:id="@+id/button_fourth_img"
+                            layout="@layout/layout_add_image"/>
+
+                        <include
+                            android:id="@+id/button_fifth_img"
+                            layout="@layout/layout_add_image"/>
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
 
                 <LinearLayout
-                    android:id="@+id/linear_layout_add_view_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="3dp"
-                    android:paddingRight="3dp">
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp">
 
-                    <include
-                        android:id="@+id/button_first_img"
-                        layout="@layout/layout_add_image"/>
+                    <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
+                    <Spinner
+                        android:id="@+id/spinner_category"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
 
-                    <include
-                        android:id="@+id/button_second_img"
-                        layout="@layout/layout_add_image"/>
+                    <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
+                    <Spinner
+                        android:id="@+id/spinner_sub_category"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"/>
 
-                    <include
-                        android:id="@+id/button_third_img"
-                        layout="@layout/layout_add_image"/>
-
-                    <include
-                        android:id="@+id/button_fourth_img"
-                        layout="@layout/layout_add_image"/>
-
-                    <include
-                        android:id="@+id/button_fifth_img"
-                        layout="@layout/layout_add_image"/>
                 </LinearLayout>
 
-            </HorizontalScrollView>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp">
-
-                <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
-                <Spinner
-                    android:id="@+id/spinner_category"
-                    style="@android:style/Widget.Holo.Light.Spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-                <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
-                <Spinner
-                    android:id="@+id/spinner_sub_category"
-                    style="@android:style/Widget.Holo.Light.Spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
-
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--android:id="@+id/textview_phone_number"-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/title"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                />
-
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextLabel">
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/app_padding_left_right_post"
+                    android:paddingRight="@dimen/app_padding_left_right_post">
+                    />
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edittext_title"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_border"
-                        android:hint="@string/title"
-                        android:inputType="text"/>
+                        android:theme="@style/TextLabel">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edittext_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="@string/title"
+                            android:inputType="text"/>
 
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_title"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
+                    </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
+                </LinearLayout>
 
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/mobile_no"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
-
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_mobile_no"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextLabel">
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/app_padding_left_right_post"
+                    android:paddingRight="@dimen/app_padding_left_right_post">
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edittext_mobile_no"
+
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_border"
-                        android:hint="@string/mobile_no"
-                        android:inputType="text"/>
+                        android:theme="@style/TextLabel">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edittext_mobile_no"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="@string/mobile_no"
+                            android:inputType="text"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
-
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/price"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
-
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_price"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
-
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextLabel">
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/app_padding_left_right_post"
+                    android:paddingRight="@dimen/app_padding_left_right_post">
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edittext_price"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_border"
-                        android:hint="@string/price"
-                        android:inputType="text"/>
+                        android:theme="@style/TextLabel">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edittext_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="@string/price"
+                            android:inputType="text"/>
 
-            </LinearLayout>
+                    </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
+                </LinearLayout>
 
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="Description"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
-
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_description"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
-
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextLabel">
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/app_padding_left_right_post"
+                    android:paddingRight="@dimen/app_padding_left_right_post">
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edittext_description"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_border"
-                        android:hint="@string/description"
-                        android:inputType="text"/>
+                        android:theme="@style/TextLabel">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edittext_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="@string/description"
+                            android:inputType="text"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
 
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_post_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/green_selector"
+                    android:text="Post Ad"/>
             </LinearLayout>
+        </ScrollView>
 
-            <Button
-                android:id="@+id/button_post_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Post Ad"
-                android:background="@drawable/green_selector"/>
-        </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
+
+
 </android.support.design.widget.CoordinatorLayout>

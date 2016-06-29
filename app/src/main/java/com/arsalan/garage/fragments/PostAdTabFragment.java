@@ -42,6 +42,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -500,22 +501,19 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
     private void doFileUpload() {
 
-        //File file1 = new File(mImagePaths[0]);
-        //File file2 = new File(mImagePaths[1]);
-        //File file3 = new File(mImagePaths[2]);
-        //File file4 = new File(mImagePaths[3]);
-        //File file5 = new File(mImagePaths[4]);
-
         String urlString = Urls.FORESALE_UPLOAD;
         if(mMakeRegion.equals(AppConstants.SCRAP)){
             urlString = Urls.SCRAP_UPLOAD;
+        }
+
+        if(mMakeRegion.equals(AppConstants.MARINE)){
+            urlString = Urls.MARINE_UPLOAD;
         }
 
         HttpEntity resEntity = null;
         try {
 
             HttpParams httpParams = new BasicHttpParams();
-            //httpParams.setParameter(AppConstants.DEVICE_PHONE, "32415263");
 
             HttpClient client = new DefaultHttpClient(httpParams);
 
@@ -530,12 +528,6 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                 }
             }
 
-            //FileBody bin1 = new FileBody(file1);
-            //FileBody bin2 = new FileBody(file2);
-            //FileBody bin3 = new FileBody(file3);
-            //reqEntity.addPart("image1", bin1);
-            //reqEntity.addPart("image2", bin2);
-            //reqEntity.addPart("image3", bin3);
 
             reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(getActivity())));
             reqEntity.addPart(AppConstants.UUID, new StringBody(Utils.getUDID(getActivity())));
@@ -551,19 +543,23 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
             reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
             post.setEntity(reqEntity);
+            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mMake);
+
             HttpResponse response = client.execute(post);
             resEntity = response.getEntity();
             final String response_str = EntityUtils.toString(resEntity);
+            JSONObject jsonObject = new JSONObject(response_str);
+            final String status = jsonObject.getString("status");
             if (resEntity != null) {
                 Log.i("RESPONSE", response_str);
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         try {
                             Logger.d(TAG, "Response from server : " + response_str);
-                            //Toast.makeText(getActivity(), "Server response:" + response_str, Toast.LENGTH_LONG).show();
-                            //showSnackBar(getString(R.string.ad_successfully_posted));
                             showSnackBar(response_str);
-                            resetAllFields();
+                            if(status.equals("success")){
+                                resetAllFields();
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

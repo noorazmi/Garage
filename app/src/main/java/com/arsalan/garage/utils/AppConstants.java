@@ -230,6 +230,13 @@ public interface AppConstants {
     String REMOVE_IMAGE_FOUR = "remove_image_four";
     String REMOVE_IMAGE_FIVE = "remove_image_five";
 
+
+    String IMAGE_ONE = "image_one";
+    String IMAGE_TWO = "image_two";
+    String IMAGE_THREE = "image_three";
+    String IMAGE_FOUR = "image_four";
+    String IMAGE_FIVE = "image_five";
+
     //String CADILLAC = "cadillac";
     String VOLVO = "volvo";
     String ACURA = "acura";
@@ -272,4 +279,7 @@ public interface AppConstants {
     String MESSAGE = "message";
     String SUCCESS = "success";
     java.lang.String STATUS = "status";
+    String IMAGE_LIST = "image_list";
+    String CATEGORY = "category";
+    String SUB_CATEGORY = "sub_category";
 }
