@@ -1,4 +1,6 @@
-package com.arsalan.garage.vo;
+package com.arsalan.garage.models;
+
+import com.arsalan.garage.vo.BaseVO;
 
 import java.util.ArrayList;
 
@@ -6,34 +8,29 @@ import networking.models.ValueObject;
 
 /**
  * <p/>
- * Created by: Noor  Alam on 14/05/16.<br/>
+ * Created by: Noor  Alam on 04/07/16.<br/>
  * Email id: noor.alam@tothenew.com<br/>
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AccessoriesUserListData extends BaseVO implements ValueObject {
+public class AccessoriesUserDetailsData extends BaseVO implements ValueObject {
 
-    private String data_count;
-    private ArrayList<AccessoriesUserItem> results;
+    private AccessoriesUserDetails results;
 
-    public String getData_count() {
-        return data_count;
-    }
-
-    public ArrayList<AccessoriesUserItem> getResults() {
+    public AccessoriesUserDetails getResults() {
         return results;
     }
 
-    public static class AccessoriesUserItem {
+    public static class AccessoriesUserDetails{
         private String accessories_id;
         private String make_region_name;
         private String title;
-        private String post_date;
         private String phone;
         private String price;
         private String description;
-        private String image;
-
+        private ArrayList<ImageInfo> images;
+        private int is_owner;
+        private String model;
 
         public String getAccessories_id() {
             return accessories_id;
@@ -59,12 +56,17 @@ public class AccessoriesUserListData extends BaseVO implements ValueObject {
             return description;
         }
 
-        public String getImage() {
-            return image;
+        public ArrayList<ImageInfo> getImages() {
+            return images;
         }
 
-        public String getPost_date() {
-            return post_date;
+        public int getIs_owner() {
+            return is_owner;
+        }
+
+        public String getModel() {
+            return model;
         }
     }
+
 }

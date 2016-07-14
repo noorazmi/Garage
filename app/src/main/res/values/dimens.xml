@@ -40,6 +40,7 @@
     <dimen name="font_size_extra_normal">16sp</dimen>
     <dimen name="font_size_large">18sp</dimen>
     <dimen name="font_size_extra_large">20sp</dimen>
+    <dimen name="error_message_right_margin">5dp</dimen>
 
 
 </resources>

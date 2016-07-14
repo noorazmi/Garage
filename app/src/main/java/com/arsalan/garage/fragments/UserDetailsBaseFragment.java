@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,22 +15,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.EditPostActivity;
-import com.arsalan.garage.activities.FullImageActivity;
 import com.arsalan.garage.adapters.AlwakalatAgencyDescriptionCarsViewPagerAdapter;
 import com.arsalan.garage.adapters.ShareListAdapter;
-import com.arsalan.garage.models.AccessoriesUserDetailsData;
 import com.arsalan.garage.models.ImageInfo;
 import com.arsalan.garage.models.ShareOptionItem;
+import com.arsalan.garage.models.UserDetailsBase;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.CustomDialogHelper;
-import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.ShareUtil;
-import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
 import org.json.JSONException;
@@ -45,34 +42,37 @@ import networking.loader.LoaderHandler;
 import networking.models.HTTPModel;
 import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
+import networking.models.ValueObject;
 
 /**
  * <p/>
- * Created by: Noor  Alam on 14/05/16.<br/>
+ * Created by: Noor  Alam on 14/07/16.<br/>
  * Email id: noor.alam@tothenew.com<br/>
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AccessoriesUserDescriptionFragment extends Fragment {
+public abstract class UserDetailsBaseFragment extends Fragment{
 
-    private ViewPager mViewPagerCarImages;
-    private String TAG = "AccessoriesUserDescriptionFra";
-    private AccessoriesUserDetailsData mAccessoriesUserDetailsData;
-    private GestureDetector mGestureDetector;
-    private TextView mTextviewDescription;
-    private TextView mTextviewPhone;
-    private AlertDialog mShareOptionsAlertDialog;
-    private String mShareImage;
-    private String mShareText;
-
-    public AccessoriesUserDescriptionFragment() {
-    }
+    protected ViewPager mViewPagerCarImages;
+    protected GestureDetector mGestureDetector;
+    protected int mCurrentCarIndex = 0;
+    protected TextView mTextviewDescription;
+    protected TextView mTextviewPhone;
+    protected AlertDialog mShareOptionsAlertDialog;
+    protected String mShareImage;
+    protected String mShareText;
+    protected TextView mTextViewPrice;
+    protected TextView mTextViewModel;
+    protected TextView mTextViewTitle;
+    protected ImageView mImageViewEmail;
+    protected UserDetailsBase mUserDetailsBase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+
 
     @Nullable
     @Override
@@ -81,6 +81,10 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
         mViewPagerCarImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone = (TextView) rootView.findViewById(R.id.textview_phone);
+        mTextViewModel = (TextView) rootView.findViewById(R.id.textview_model);
+        mTextViewPrice = (TextView) rootView.findViewById(R.id.textview_price);
+        mTextViewTitle = (TextView) rootView.findViewById(R.id.textview_title);
+        mImageViewEmail = (ImageView) rootView.findViewById(R.id.imageview_email);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
         mViewPagerCarImages.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -88,19 +92,49 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
                 return false;
             }
         });
-        if(Utils.isNetworkAvailable(getActivity())){
+        if (Utils.isNetworkAvailable(getActivity())) {
             performGET();
-        }else {
+        } else {
             Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
         }
         return rootView;
     }
 
+    protected void setDescription(final UserDetailsBase userDetailsBase) {
+        mShareText = userDetailsBase.getDescription();
+        mTextviewDescription.setText(mShareText);
+        mTextViewTitle.setText(userDetailsBase.getTitle());
+        mTextViewPrice.setText(userDetailsBase.getPrice());
+        mTextViewModel.setText(userDetailsBase.getModel());
+        mTextviewPhone.setText(userDetailsBase.getPhone());
+        mTextviewPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.initCall(mTextviewPhone.getText().toString(), getActivity());
+            }
+        });
+
+        mImageViewEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareUtil.shareOnGmail(getActivity(), mShareText, userDetailsBase.getImages().get(0).getPhoto_name());
+            }
+        });
+    }
+
+    protected GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            openFullImageActivity();
+            return super.onSingleTapConfirmed(e);
+        }
+    };
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_share, menu);
-        if(mAccessoriesUserDetailsData != null && mAccessoriesUserDetailsData.getResults().getIs_owner() == 1){
+        if (mUserDetailsBase != null && mUserDetailsBase.getIs_owner() == 1) {
             menu.findItem(R.id.menu_item_delete).setVisible(true);
             menu.findItem(R.id.menu_item_edit).setVisible(true);
         }
@@ -118,17 +152,16 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
                 break;
             case R.id.menu_item_edit:
                 Intent intent = new Intent(getActivity(), EditPostActivity.class);
-                AccessoriesUserDetailsData.AccessoriesUserDetails accessoriesUserDetails = mAccessoriesUserDetailsData.getResults();
-                intent.putExtra(AppConstants.ID, accessoriesUserDetails.getAccessories_id());
-                intent.putExtra(AppConstants.MODEL, accessoriesUserDetails.getModel());
-                intent.putExtra(AppConstants.TITLE, accessoriesUserDetails.getTitle());
-                intent.putExtra(AppConstants.PHONE, accessoriesUserDetails.getPhone());
-                intent.putExtra(AppConstants.PRICE, accessoriesUserDetails.getPrice());
-                intent.putExtra(AppConstants.DESCRIPTION, accessoriesUserDetails.getDescription());
-                intent.putExtra(AppConstants.CATEGORY, AppConstants.ACCESSORIES);
-                intent.putExtra(AppConstants.SUB_CATEGORY, accessoriesUserDetails.getMake_region_name());
+                intent.putExtra(AppConstants.ID, getItemId());
+                intent.putExtra(AppConstants.MODEL, mUserDetailsBase.getModel());
+                intent.putExtra(AppConstants.TITLE, mUserDetailsBase.getTitle());
+                intent.putExtra(AppConstants.PHONE, mUserDetailsBase.getPhone());
+                intent.putExtra(AppConstants.PRICE, mUserDetailsBase.getPrice());
+                intent.putExtra(AppConstants.DESCRIPTION, mUserDetailsBase.getDescription());
+                intent.putExtra(AppConstants.CATEGORY, getCategory());
+                intent.putExtra(AppConstants.SUB_CATEGORY, mUserDetailsBase.getMake_region_name());
 
-                ArrayList<ImageInfo> carImageArrayList = mAccessoriesUserDetailsData.getResults().getImages();
+                ArrayList<ImageInfo> carImageArrayList = mUserDetailsBase.getImages();
                 ArrayList<String> imageUrls = new ArrayList<>(carImageArrayList.size());
                 for (ImageInfo imageInfo : carImageArrayList) {
                     imageUrls.add(imageInfo.getPhoto_name());
@@ -143,7 +176,7 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
         return false;
     }
 
-    private void showShareOptions() {
+    protected void showShareOptions() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         ListView mBankListView = new ListView(getActivity());
 
@@ -152,9 +185,9 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
         mBankListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                ShareOptionItem shareOptionItem  = (ShareOptionItem) shareListAdapter.getItem(position);
+                ShareOptionItem shareOptionItem = (ShareOptionItem) shareListAdapter.getItem(position);
                 mShareOptionsAlertDialog.dismiss();
-                switch (position){
+                switch (position) {
                     case 0://facebook
                         ShareUtil.shareOnFacebook(getActivity(), mShareText, mShareImage);
                         break;
@@ -178,13 +211,11 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
         customDialogHelper.changeDialog(mShareOptionsAlertDialog);
     }
 
-    private void deleteItem(){
+    private void deleteItem() {
 
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        String carId = getArguments().getString(AppConstants.ID);
-        String fullUrl = Urls.ACCESSORIES_DELETE + "?device_phone="+ PrefUtility.getAccessToken() +"&delete_id="+ carId;
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + fullUrl);
+        String fullUrl = getDeleteUrl();
         httpRequest.setUrl(fullUrl);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
         httpRequest.setJSONPayload("{}");
@@ -199,7 +230,7 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
                     final String message = jsonObj.optString(AppConstants.MESSAGE);
                     final String status = jsonObj.optString(AppConstants.STATUS);
                     Utils.showSnackBar(getActivity(), message);
-                    if(status.equals(AppConstants.SUCCESS)){
+                    if (status.equals(AppConstants.SUCCESS)) {
                         mViewPagerCarImages.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -217,12 +248,10 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
 
     }
 
-
-
-    private void setPagerAdapter() {
+    protected void setPagerAdapter() {
         ArrayList<ImageInfo> carImageArrayList = null;
-        if(mAccessoriesUserDetailsData != null){
-            carImageArrayList = mAccessoriesUserDetailsData.getResults().getImages();
+        if (mUserDetailsBase != null) {
+            carImageArrayList = mUserDetailsBase.getImages();
             mShareImage = carImageArrayList.get(0).getPhoto_name();
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
             mViewPagerCarImages.setAdapter(adapter);
@@ -230,62 +259,32 @@ public class AccessoriesUserDescriptionFragment extends Fragment {
 
     }
 
-
-    private void performGET(){
+    protected void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        //String baseUrl = getArguments().getString(AppConstants.URL)+"/";
-        String carId = getArguments().getString(AppConstants.ID);
-        String fullUrl = Urls.ACCESSORIESUSERDETAIL_BASE + carId + "/" + PrefUtility.getAccessToken();
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + fullUrl);
+        String fullUrl = getDetailsDownloadUrl();
         httpRequest.setUrl(fullUrl);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(AccessoriesUserDetailsData.class.getName());
+        httpRequest.setValueObjectFullyQualifiedName(getValueObjectFullyQualifiedName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
         loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mAccessoriesUserDetailsData = (AccessoriesUserDetailsData) httpResponse.getValueObject();
+                setDetails(httpResponse.getValueObject());
                 getActivity().invalidateOptionsMenu();
-                setPagerAdapter();
-                setDescription();
             }
         });
         loaderHandler.loadData();
     }
 
-    private void setDescription(){
 
-        if(mAccessoriesUserDetailsData == null || mAccessoriesUserDetailsData.getResults() == null){
-           return;
-        }
-        mShareText = mAccessoriesUserDetailsData.getResults().getDescription();
-        mTextviewDescription.setText(mShareText);
-        mTextviewPhone.setText(mAccessoriesUserDetailsData.getResults().getPhone());
-        mTextviewPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utils.initCall(mTextviewPhone.getText().toString(), getActivity());
-            }
-        });
-    }
+    abstract protected void openFullImageActivity();
+    abstract protected String getCategory();
+    abstract protected String getItemId();
+    abstract protected String getDeleteUrl();
+    abstract protected String getDetailsDownloadUrl();
+    abstract protected void setDetails(ValueObject valueObject);
+    abstract protected String getValueObjectFullyQualifiedName();
 
-    private GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
-
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            openFullImageActivity();
-            return super.onSingleTapConfirmed(e);
-        }
-    };
-
-
-    private void openFullImageActivity(){
-        Intent intent = new Intent(getActivity(), FullImageActivity.class);
-        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.ACCESSORIES_USER_DETAILS+ getArguments().getString(AppConstants.ID));
-        //intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_ACCESSORIES_USER);
-        intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerCarImages.getCurrentItem());
-        startActivity(intent);
-    }
 }

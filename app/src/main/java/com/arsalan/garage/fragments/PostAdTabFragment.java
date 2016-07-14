@@ -23,11 +23,13 @@ import android.widget.Spinner;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CameraGalleryActivity;
+import com.arsalan.garage.activities.LoginActivity;
 import com.arsalan.garage.adapters.CustomSpinnerAdapter;
 import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
@@ -69,6 +71,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private ArrayList<SpinnerItem> mMakeAsianArrayList;
     private ArrayList<SpinnerItem> mMakeScrapArrayList;
     private ArrayList<SpinnerItem> mMakeMarineArrayList;
+    private ArrayList<SpinnerItem> mAccessoriesMarineArrayList;
     //private ProgressDialog mProgressDialog;
     private LinearLayout mLinearLayoutAddViewContainer;
     private View mButtonFirstImage;
@@ -174,6 +177,12 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         }
                         setSubCategoryAdapter(mMakeMarineArrayList);
                         break;
+                    case AppConstants.ACCESSORIES:
+                        if(mAccessoriesMarineArrayList == null){
+                            mAccessoriesMarineArrayList = getSpinnerArrayList(R.array.car_sub_category_accessories_title, R.array.car_sub_category_accessories_code);
+                        }
+                        setSubCategoryAdapter(mAccessoriesMarineArrayList);
+                        break;
                     default:
                         break;
                 }
@@ -219,6 +228,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         break;
                     case AppConstants.MARINE:
                         spinnerItem = mMakeMarineArrayList.get(position);
+                        break;
+                    case AppConstants.ACCESSORIES:
+                        spinnerItem = mAccessoriesMarineArrayList.get(position);
                         break;
                     default:
                         spinnerItem = mMakeAmericanArrayList.get(position);
@@ -288,6 +300,13 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                     showSnackBar(getString(R.string.no_internet_connection));
                     return;
                 }
+
+                if(!PrefUtility.isLoggedIn()){
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    return;
+                }
+
                 if( mImagesAdded == 0){
                     showSnackBar(getString(R.string.there_is_no_image_to_post));
                     return;
@@ -510,6 +529,10 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             urlString = Urls.MARINE_UPLOAD;
         }
 
+        if(mMakeRegion.equals(AppConstants.ACCESSORIES)){
+            urlString = Urls.ACCESSORIES_UPLOAD;
+        }
+
         HttpEntity resEntity = null;
         try {
 
@@ -529,9 +552,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             }
 
 
-            reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(getActivity())));
-            reqEntity.addPart(AppConstants.UUID, new StringBody(Utils.getUDID(getActivity())));
-            if(urlString.equals(Urls.SCRAP_UPLOAD)){
+            reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(PrefUtility.getAccessToken()));
+            reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
+            if(urlString.equals(Urls.SCRAP_UPLOAD) || urlString.equals(Urls.MARINE_UPLOAD)){
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
             }else {
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));

@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,6 +32,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <p/>
@@ -410,4 +413,21 @@ public class Utils {
         }
     }
 
+
+    /**
+     * Verify email Id
+     *
+     * @param email
+     * @return
+     */
+    public static boolean isValidEmail(String email) {
+        if (TextUtils.isEmpty(email)) {
+            return false;
+        }
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 }

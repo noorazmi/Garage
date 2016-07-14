@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
@@ -66,33 +65,14 @@ public class MarineUserListAdapter extends CustomRecyclerViewAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if (!isProgerssViewHolder(holder)) {
-            //In case of multiple/single view type put your code logic here...
             final MarineUserListData.MarineUserItem model = mHomeMenuItemArrayList.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
-            //holder.title.setText(model.getDescription());
-            ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
-            if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
-                listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
-            /*listItemViewHolder.phoneNumber.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Utils.initCall(model.getPhone(), GarageApp.getInstance());
-                }
-            });*/
-            } else {
-                ((ListItemViewHolder) holder).title.setText(model.getDescription());
-                //((CustomViewHolder)listItemViewHolder).setOnClickListener(null);
-            }
-
-
+            ((ListItemViewHolder) holder).date.setText(model.getPost_date());
+            ((ListItemViewHolder) holder).title.setText(model.getTitle());
+            ((ListItemViewHolder) holder).phoneNumber.setText(model.getDescription());
             ImageLoader imageLoader = ImageLoader.getInstance();
-            if(model.getDescription().contains("wash") || model.getDescription().contains("shower") || model.getDescription().contains("clean")){
-                listItemViewHolder.imgView.setImageResource(R.drawable.carwash_center);
-                listItemViewHolder.imgView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            }else {
-                imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
-            }
-        }else{
+            imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
+        } else {
             showProgressBar(holder);
         }
     }
@@ -115,14 +95,16 @@ public class MarineUserListAdapter extends CustomRecyclerViewAdapter {
     public class ListItemViewHolder extends CustomViewHolder {
 
         ImageView imgView;
+        TextView date;
         TextView title;
-        TextView phoneNumbet;
+        TextView phoneNumber;
 
         public ListItemViewHolder(View itemView) {
             super(itemView);
             imgView = (ImageView) itemView.findViewById(R.id.imageview_icon);
+            date = (TextView) itemView.findViewById(R.id.textview_date);
             title = (TextView) itemView.findViewById(R.id.textview_title);
-            phoneNumbet = (TextView) itemView.findViewById(R.id.textview_phone_number);
+            phoneNumber = (TextView) itemView.findViewById(R.id.textview_phone_number);
         }
     }
 }

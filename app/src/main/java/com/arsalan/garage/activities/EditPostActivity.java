@@ -70,6 +70,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
     private ArrayList<SpinnerItem> mMakeAsianArrayList;
     private ArrayList<SpinnerItem> mMakeScrapArrayList;
     private ArrayList<SpinnerItem> mMakeMarineArrayList;
+    private ArrayList<SpinnerItem> mMakeAccessoriesArrayList;
     //private ProgressDialog mProgressDialog;
     private LinearLayout mLinearLayoutAddViewContainer;
     private View mButtonFirstImage;
@@ -170,6 +171,9 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
             case AppConstants.MARINE:
                 mSpinnerCategory.setSelection(5);
                 break;
+            case AppConstants.ACCESSORIES:
+                mSpinnerCategory.setSelection(6);
+                break;
         }
     }
 
@@ -262,6 +266,12 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
                         }
                         setSubCategoryAdapter(mMakeMarineArrayList);
                         break;
+                    case AppConstants.ACCESSORIES:
+                        if (mMakeAccessoriesArrayList == null) {
+                            mMakeAccessoriesArrayList = getSpinnerArrayList(R.array.car_sub_category_accessories_title, R.array.car_sub_category_accessories_code);
+                        }
+                        setSubCategoryAdapter(mMakeAccessoriesArrayList);
+                        break;
                     default:
                         break;
                 }
@@ -309,6 +319,9 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
                         break;
                     case AppConstants.MARINE:
                         spinnerItem = mMakeMarineArrayList.get(position);
+                        break;
+                    case AppConstants.ACCESSORIES:
+                        spinnerItem = mMakeAccessoriesArrayList.get(position);
                         break;
                     default:
                         spinnerItem = mMakeAmericanArrayList.get(position);

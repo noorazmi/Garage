@@ -2,14 +2,20 @@ package com.arsalan.garage;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
-import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.PrefUtility;
+import com.arsalan.garage.volleytask.VolleyController;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
+import java.util.Map;
 
 import networking.loader.LoaderHandler;
 
@@ -27,7 +33,7 @@ public class GarageApp extends Application {
     public static String DEVICE_UUID_WITH_SLASH;
     public static String DEVICE_UUID;
 
-    public static final GarageApp getInstance(){
+    public static final GarageApp getInstance() {
         return sGarageApp;
     }
 
@@ -40,15 +46,21 @@ public class GarageApp extends Application {
 //            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
 //            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
 //        }
+        initVolleyController();
         initImageLoader(this);
         initLoaderHandler(this);
         initDeviceUUID();
 
     }
 
-    private void initDeviceUUID(){
-        DEVICE_UUID_WITH_SLASH = "/"+ Utils.getUDID(this);
-        DEVICE_UUID = Utils.getUDID(this);
+    private void initDeviceUUID() {
+        DEVICE_UUID_WITH_SLASH = "/ylkwlTo1IB0FPoRC1Djmx0U6llaU6a";
+        DEVICE_UUID = "ylkwlTo1IB0FPoRC1Djmx0U6llaU6a";
+    }
+
+
+    private void initVolleyController(){
+        VolleyController.initVolleyRequestQueueAndImageLoader(this);
     }
 
     private void initImageLoader(Context applicationContext) {
@@ -67,7 +79,7 @@ public class GarageApp extends Application {
         ImageLoader.getInstance().init(config.build());
     }
 
-    private void initLoaderHandler(Context applicationContext){
+    private void initLoaderHandler(Context applicationContext) {
         //Must be called to make the handler work.
         LoaderHandler.setContext(applicationContext);
         if (FlavorConstants.BUILD_TYPE == AppConstants.BUILD_TYPE_DEVELOPMENT) {
@@ -82,4 +94,59 @@ public class GarageApp extends Application {
 //        super.attachBaseContext(base);
 //        MultiDex.install(base);
 //    }
+
+    /**
+     * Adds session cookie to headers if exists.
+     *
+     * @param headers
+     */
+    public final void addSessionCookie(Map<String, String> headers) {
+        String sessionId = PrefUtility.getPreferences().getString(AppConstants.SESSION_COOKIE, "");
+        if (sessionId.length() > 0) {
+            StringBuilder builder = new StringBuilder();
+            builder.append("=");
+            builder.append(sessionId);
+            if (headers.containsKey(AppConstants.COOKIE_KEY)) {
+                builder.append("; ");
+                builder.append(headers.get(AppConstants.COOKIE_KEY));
+            }
+            if (PrefUtility.isLoggedIn()) {
+                Logger.printLog("Access Token " + PrefUtility.getAccessToken());
+                headers.put("X-Auth-Token", PrefUtility.getAccessToken());
+            }
+            headers.put(AppConstants.COOKIE_KEY, sessionId);
+        }
+    }
+
+    /**
+     * Clear session cookie from headers if exists.
+     */
+    public final void clearSessionCookies() {
+        String sessionId = PrefUtility.getPreferences().getString(AppConstants.SESSION_COOKIE, "");
+        if (sessionId.length() > 0) {
+            SharedPreferences.Editor prefEditor = PrefUtility.getPreferences().edit();
+            prefEditor.clear();
+            prefEditor.commit();
+        }
+    }
+
+
+    /**
+     * Checks the response headers for session cookie and saves it
+     * if it finds it.
+     *
+     * @param headers Response Headers.
+     */
+    public final void checkSessionCookie(Map<String, String> headers) {
+        if (headers.containsKey(AppConstants.SET_COOKIE_KEY)
+                && headers.get(AppConstants.SET_COOKIE_KEY).startsWith(AppConstants.SESSION_COOKIE)) {
+            String cookie = headers.get(AppConstants.SET_COOKIE_KEY);
+            Log.e("My tag", "In Check Cookies : " + cookie);
+            if (cookie.length() > 0) {
+                SharedPreferences.Editor prefEditor = PrefUtility.getEditor();
+                prefEditor.putString(AppConstants.SESSION_COOKIE, cookie);
+                prefEditor.commit();
+            }
+        }
+    }
 }

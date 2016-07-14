@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_text_border"
                         android:hint="@string/mobile_no"
-                        android:inputType="text"/>
+                        android:inputType="phone"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -223,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_text_border"
                         android:hint="@string/price"
-                        android:inputType="text"/>
+                        android:inputType="numberDecimal"/>
 
                 </android.support.design.widget.TextInputLayout>
 

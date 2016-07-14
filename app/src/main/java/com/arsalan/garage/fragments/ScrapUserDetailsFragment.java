@@ -16,10 +16,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.EditPostActivity;
 import com.arsalan.garage.activities.FullImageActivity;
@@ -29,6 +29,7 @@ import com.arsalan.garage.models.ImageInfo;
 import com.arsalan.garage.models.ShareOptionItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.CustomDialogHelper;
+import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
@@ -63,6 +64,12 @@ public class ScrapUserDetailsFragment extends Fragment {
     private TextView mTextviewDescription;
     private TextView mTextviewPhone;
     private AlertDialog mShareOptionsAlertDialog;
+    private String mShareImage;
+    private String mShareText;
+    private TextView mTextViewPrice;
+    private TextView mTextViewModel;
+    private TextView mTextViewTitle;
+    private ImageView mImageViewEmail;
 
     public ScrapUserDetailsFragment() {
     }
@@ -78,8 +85,12 @@ public class ScrapUserDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_marine_user_description, container, false);
         mViewPagerCarImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
-        mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_type);
+        mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone = (TextView) rootView.findViewById(R.id.textview_phone);
+        mTextViewModel = (TextView) rootView.findViewById(R.id.textview_model);
+        mTextViewPrice = (TextView) rootView.findViewById(R.id.textview_price);
+        mTextViewTitle = (TextView) rootView.findViewById(R.id.textview_title);
+        mImageViewEmail = (ImageView) rootView.findViewById(R.id.imageview_email);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
         mViewPagerCarImages.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -99,6 +110,7 @@ public class ScrapUserDetailsFragment extends Fragment {
         ArrayList<ImageInfo> carImageArrayList = null;
         if(mScrapUserDetailsData != null){
             carImageArrayList = mScrapUserDetailsData.getResults().getImages();
+            mShareImage = carImageArrayList.get(0).getPhoto_name();
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
             mViewPagerCarImages.setAdapter(adapter);
         }
@@ -111,7 +123,7 @@ public class ScrapUserDetailsFragment extends Fragment {
         httpRequest.setShowProgressDialog(true);
         //String baseUrl = getArguments().getString(AppConstants.URL)+"/";
         String carId = getArguments().getString(AppConstants.ID);
-        String fullUrl = Urls.SCRAPUSERDETAIL_BASE + carId + GarageApp.DEVICE_UUID_WITH_SLASH;
+        String fullUrl = Urls.SCRAPUSERDETAIL_BASE + carId + "/" + PrefUtility.getAccessToken();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + fullUrl);
         httpRequest.setUrl(fullUrl);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
@@ -183,7 +195,7 @@ public class ScrapUserDetailsFragment extends Fragment {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
         String carId = getArguments().getString(AppConstants.ID);
-        String fullUrl = Urls.SCRAP_DELETE + "?device_phone="+GarageApp.DEVICE_UUID +"&delete_id="+ carId;
+        String fullUrl = Urls.SCRAP_DELETE + "?device_phone="+ PrefUtility.getAccessToken() +"&delete_id="+ carId;
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + fullUrl);
         httpRequest.setUrl(fullUrl);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
@@ -230,13 +242,13 @@ public class ScrapUserDetailsFragment extends Fragment {
                 mShareOptionsAlertDialog.dismiss();
                 switch (position){
                     case 0://facebook
-                        ShareUtil.shareOnFacebook(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
+                        ShareUtil.shareOnFacebook(getActivity(), mShareText, mShareImage);
                         break;
                     case 1://twitter
-                        ShareUtil.shareOnTwitter(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
+                        ShareUtil.shareOnTwitter(getActivity(), mShareText, mShareImage);
                         break;
                     case 2://whatsapp
-                        ShareUtil.shareOnWhatsApp(getActivity(), "Sharing View whatapp", "http://cloud.americanswan.com/image/upload/if_pg_gt_1,q_60/if_else,q_80/f_auto,fl_lossy,w_380,h_507/PROD/IMG/PRODUCT/161ASMTFSHBG15-BKWH%20(1)");
+                        ShareUtil.shareOnWhatsApp(getActivity(), mShareText, mShareImage);
                         break;
                     default:
                         break;
@@ -253,7 +265,8 @@ public class ScrapUserDetailsFragment extends Fragment {
     }
 
     private void setDescription(){
-        mTextviewDescription.setText(mScrapUserDetailsData.getResults().getDescription());
+        mShareText = mScrapUserDetailsData.getResults().getDescription();
+        mTextviewDescription.setText(mShareText);
         mTextviewPhone.setText(mScrapUserDetailsData.getResults().getPhone());
         mTextviewPhone.setOnClickListener(new View.OnClickListener() {
             @Override

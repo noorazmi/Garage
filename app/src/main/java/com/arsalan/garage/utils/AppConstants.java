@@ -150,6 +150,7 @@ public interface AppConstants {
     String EXTRA_WARRANTY = "warranty";
     String EXTRA_GALLERY_FOR = "extra_gallery_for";
     String EXTRA_GALLERY_FOR_MARINE_USER = "extra_gallery_for_marine_user";
+    String EXTRA_GALLERY_FOR_ACCESSORIES_USER = "extra_gallery_for_accessories_user";
     String EXTRA_GALLERY_FOR_SCRAP_USER = "extra_gallery_for_scrap_user";
     String EXTRA_GALLERY_FOR_MARINE_SHOWROOM = "extra_gallery_for_showroom";
 
@@ -185,6 +186,7 @@ public interface AppConstants {
     String ASIAN = "asian";
     String SCRAP = "scrap";
     String MARINE = "marine";
+    String ACCESSORIES = "accessories";
 
     String CADILLAC="cadillac";
     String CHEVROLET = "chevrolet";
@@ -282,4 +284,14 @@ public interface AppConstants {
     String IMAGE_LIST = "image_list";
     String CATEGORY = "category";
     String SUB_CATEGORY = "sub_category";
+    public static final String CALLED_FROM = "calledFrom";
+    String EMAIL = "email";
+    String CALLED_BY_POST_ADD = "called_by_post_add";
+    public static final String SET_COOKIE_KEY = "Set-Cookie";
+    public static final String COOKIE_KEY = "Cookie";
+    public static final String SESSION_COOKIE = "gsession";
+    public static final String ACCESS_TOKEN = "access_token";
+    public static final String TOKEN = "token";
+    String PASSWORD = "password";
+    String CONFIRM_PASSWORD = "confirm_password";
 }

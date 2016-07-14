@@ -32,6 +32,7 @@ public class MarineUserListData extends BaseVO implements ValueObject {
         private String price;
         private String description;
         private String image;
+        private String post_date;
 
         public String getMarine_id() {
             return marine_id;
@@ -59,6 +60,10 @@ public class MarineUserListData extends BaseVO implements ValueObject {
 
         public String getImage() {
             return image;
+        }
+
+        public String getPost_date() {
+            return post_date;
         }
     }
 }

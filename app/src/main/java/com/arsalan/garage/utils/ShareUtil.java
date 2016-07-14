@@ -28,6 +28,7 @@ public class ShareUtil {
     private static final String WHATSAPP = "WhatsApp";
     private static final String FACEBOOK = "Facebook";
     private static final String TWITTER = "Twitter";
+    private static final String GMAIL = "Gmail";
 
     public static void shareOnFacebook(Context context, String text ,String imageUrl) {
         shareImageWithText(context, text , imageUrl, FACEBOOK);
@@ -39,6 +40,10 @@ public class ShareUtil {
 
     public static void shareOnWhatsApp(Context context, String text ,String imageUrl) {
         shareImageWithText(context, text , imageUrl, WHATSAPP);
+    }
+
+    public static void shareOnGmail(Context context, String text ,String imageUrl){
+        shareImageWithText(context, text , imageUrl, GMAIL);
     }
 
 
@@ -95,8 +100,10 @@ public class ShareUtil {
                     intent.setPackage("com.facebook.katana");
                 }else if(shareMedia.equals(TWITTER)){
                     intent.setPackage("com.twitter.android");
+                }else if(shareMedia.equals(GMAIL)){
+                    setGmailClassNameToIntent(context, intent);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Garage: Check It Out!!!");
                 }
-                //context.startActivity(Intent.createChooser(intent, "Share Image"));
                 try {
                     context.startActivity(intent);
                 } catch (android.content.ActivityNotFoundException ex) {
@@ -106,6 +113,20 @@ public class ShareUtil {
             }
         }
         new ShareTask(context).execute(shareUri);
+    }
+
+    private static void setGmailClassNameToIntent(Context context, Intent intent){
+        final PackageManager pm = context.getPackageManager();
+        final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);
+        ResolveInfo best = null;
+        for(final ResolveInfo info : matches){
+            if (info.activityInfo.packageName.endsWith(".gm") || info.activityInfo.name.toLowerCase().contains("gmail")){
+                best = info;
+            }
+        }
+        if (best != null) {
+            intent.setClassName(best.activityInfo.packageName, best.activityInfo.name);
+        }
     }
 
 

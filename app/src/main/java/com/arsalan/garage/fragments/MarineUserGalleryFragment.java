@@ -2,7 +2,6 @@ package com.arsalan.garage.fragments;
 
 import android.util.Log;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.vo.MarineUserDetailsData;
 
@@ -28,8 +27,8 @@ public class MarineUserGalleryFragment extends BaseGalleryFragment {
     void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL) + GarageApp.DEVICE_UUID_WITH_SLASH;
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + url) ;
+        String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
+        Log.e(TAG, " ******^^^^^^^^^imageUrl URL:" + url) ;
         httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(MarineUserDetailsData.class.getName());

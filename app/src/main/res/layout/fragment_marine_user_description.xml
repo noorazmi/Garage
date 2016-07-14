@@ -6,53 +6,125 @@
     android:background="@color/gr_white">
 
     <FrameLayout
+        android:id="@+id/framelayout_viewpager_container"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:id="@+id/framelayout_viewpager_container">
+        android:layout_height="260dp">
 
         <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_car_images"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/viewpager_car_images"
             android:layout_gravity="center"/>
 
         <LinearLayout
             android:id="@+id/pager_indicator_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:background="@android:color/transparent"
             android:gravity="bottom|center"
             android:orientation="horizontal"
-            android:layout_marginBottom="25dp"
             android:visibility="visible"/>
     </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/relative_layout_price_container"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/framelayout_viewpager_container"
+        android:layout_marginTop="15dp">
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/textview_price"
+            style="@style/TextViewStyle.Regular.English"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="19356"
+            android:textColor="@color/phone_number"
+            android:textSize="20sp"/>
+
+        <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            android:id="@+id/textview_price_text"
+            style="@style/TextViewStyle.Regular.Arabic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/textview_price"
+            android:text="@string/price_arb"
+            android:textColor="@color/phone_number"
+            android:textSize="20sp"/>
+
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/textview_model"
+            style="@style/TextViewStyle.Regular.English"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="19356"
+            android:textColor="@color/phone_number"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/phone_number"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textview_type"
+        android:id="@+id/textview_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Wait..."
-        android:layout_below="@+id/framelayout_viewpager_container"
+        android:layout_below="@+id/relative_layout_price_container"
+        android:layout_marginTop="30dp"
         android:gravity="right"
-        android:paddingRight="15dp"
         android:paddingLeft="15dp"
-        android:layout_marginTop="30dp"/>
+        android:paddingRight="15dp"
+        android:text="Wait..."/>
+
+
+    <TextView
+        android:id="@+id/textview_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_title"
+        android:layout_marginTop="30dp"
+        android:gravity="right"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Wait..."/>
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
         android:id="@+id/textview_phone"
         style="@style/TextViewStyle.Regular.English"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textview_description"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@drawable/ic_phone_small"
+        android:drawablePadding="10dp"
+        android:gravity="left|center_vertical"
+        android:paddingRight="20dp"
         android:text="Wait..."
         android:textColor="@color/phone_number"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="25dp"
-        android:layout_gravity="right|center_vertical"
-        android:drawableRight="@drawable/ic_phone_small"
-        android:drawablePadding="10dp"
-        android:layout_below="@+id/textview_type"
-        android:paddingRight="20dp"/>
+        android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/imageview_email"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/textview_phone"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textview_phone"
+        android:src="@drawable/message"/>
+
+
 </RelativeLayout>

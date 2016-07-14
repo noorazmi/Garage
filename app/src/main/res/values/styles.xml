@@ -10,7 +10,9 @@
         <item name="android:splitMotionEvents">false</item>
     </style>
 
-    <style name="AppTheme" parent="AppBaseTheme"></style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 
 
     <style name="ToolBarTheme" parent="Theme.AppCompat">
@@ -154,6 +156,10 @@
     <style name="ProgressBarStyle" parent="android:Widget.Holo.ProgressBar.Large">
         <item name="android:progressBarStyle">?android:attr/progressBarStyle</item>
         <item name="android:indeterminateDrawable">@drawable/progress_spin</item>
+    </style>
+
+    <style name="Theme.NoPreviewWindow" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
 </resources>

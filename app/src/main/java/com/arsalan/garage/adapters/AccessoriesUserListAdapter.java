@@ -68,8 +68,9 @@ public class AccessoriesUserListAdapter extends CustomRecyclerViewAdapter {
             final AccessoriesUserListData.AccessoriesUserItem model = mAccessoriesUserItems.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
             //holder.title.setText(model.getDescription());
-            ((ListItemViewHolder) holder).phoneNumber.setText(model.getPhone());
-            ((ListItemViewHolder) holder).title.setText(model.getDescription());
+            ((ListItemViewHolder) holder).date.setText(model.getPost_date());
+            ((ListItemViewHolder) holder).title.setText(model.getTitle());
+            ((ListItemViewHolder) holder).phoneNumber.setText(model.getDescription());
             ImageLoader imageLoader = ImageLoader.getInstance();
             imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
         }else{
@@ -95,12 +96,14 @@ public class AccessoriesUserListAdapter extends CustomRecyclerViewAdapter {
     public class ListItemViewHolder extends CustomViewHolder {
 
         ImageView imgView;
+        TextView date;
         TextView title;
         TextView phoneNumber;
 
         public ListItemViewHolder(View itemView) {
             super(itemView);
             imgView = (ImageView) itemView.findViewById(R.id.imageview_icon);
+            date = (TextView) itemView.findViewById(R.id.textview_date);
             title = (TextView) itemView.findViewById(R.id.textview_title);
             phoneNumber = (TextView) itemView.findViewById(R.id.textview_phone_number);
         }

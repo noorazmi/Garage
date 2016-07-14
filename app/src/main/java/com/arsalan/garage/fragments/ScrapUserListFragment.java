@@ -24,6 +24,7 @@ import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.ScrapUserListData;
 
@@ -174,7 +175,7 @@ public class ScrapUserListFragment extends android.app.Fragment {
         }
 
         Bundle bundle = getArguments();
-        String url = bundle.getString(AppConstants.URL) + GarageApp.DEVICE_UUID_WITH_SLASH;
+        String url = bundle.getString(AppConstants.URL) + "/" + PrefUtility.getAccessToken();
         String pageLimitUrl = url + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT;
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + pageLimitUrl);
         httpRequest.setUrl(pageLimitUrl);

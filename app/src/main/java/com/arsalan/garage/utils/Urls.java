@@ -10,10 +10,18 @@ package com.arsalan.garage.utils;
  */
 public interface Urls {
 
+    /* Post upload urls */
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
     String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
     String SCRAP_UPLOAD = "http://kuwaitgarage.com/api/scrap";
     String MARINE_UPLOAD = "http://kuwaitgarage.com/api/marine";
+    String ACCESSORIES_UPLOAD = "http://kuwaitgarage.com/api/accessories";
+
+    /* Delete Urls */
+    String SCRAP_DELETE = "http://kuwaitgarage.com/api/scrap/delete";
+    String ACCESSORIES_DELETE = "http://kuwaitgarage.com/api/accessories/delete";
+    String MARINE_DELETE = "http://kuwaitgarage.com/api/marine/delete";
+
 
 
     //American
@@ -246,6 +254,7 @@ public interface Urls {
     String MARINEUSER_JETSKI = "http://kuwaitgarage.com/api/marineuser/jetski";
     String MARINEUSER_MARINE_EQUIPMENT = "http://kuwaitgarage.com/api/marineuser/marineequipment";
     String MARINE_USER_DETAILS = "http://kuwaitgarage.com/api/marineuserdetail/";
+    String ACCESSORIES_USER_DETAILS = "http://kuwaitgarage.com/api/accessoriesuserdetail/";
 
     String ACCESSORIESUSER_AMERICAN = "http://kuwaitgarage.com/api/accessoriesuser/american";
     String ACCESSORIESUSER_EUROPEAN = "http://kuwaitgarage.com/api/accessoriesuser/european";
@@ -259,9 +268,7 @@ public interface Urls {
     String SCRAPUSERDETAIL_BASE = "http://kuwaitgarage.com/api/scrapuserdetail/";
 
 
-    /* Scrap delete */
-    String SCRAP_DELETE = "http://kuwaitgarage.com/api/scrap/delete";
-
-
-
+    String LOGIN = "http://kuwaitgarage.com/api/login";
+    String RESET_PASSWORD = "http://kuwaitgarage.com/api/reset-password";
+    String REGISTER_USER = "http://kuwaitgarage.com/api/register";
 }

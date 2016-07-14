@@ -20,10 +20,26 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageview_icon"
         android:id="@+id/relativeLayout"
-        android:layout_marginLeft="20dp">
+        android:layout_centerVertical="true" android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+    android:layout_toRightOf="@+id/imageview_icon">
+
+        <com.arsalan.garage.uicomponents.CustomTextViewArabic
+            style="@style/TextViewStyle.Regular.Arabic"
+            android:id="@+id/textview_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="left"
+            android:text="السرعه والاداء العالي"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingRight="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+        />
 
         <com.arsalan.garage.uicomponents.CustomTextViewArabic
             style="@style/TextViewStyle.Regular.Arabic"
@@ -37,7 +53,9 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:paddingRight="8dp"
-            />
+            android:layout_below="@+id/textview_date"
+        android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +65,9 @@
             android:id="@+id/textview_phone_number"
             android:layout_below="@+id/textview_title"
             android:layout_marginTop="15dp"
-            android:textColor="#0000ff"/>
+            android:textColor="#000000"
+            android:layout_alignParentRight="true"
+        android:paddingRight="8dp"/>
 
     </RelativeLayout>
 
