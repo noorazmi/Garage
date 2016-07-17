@@ -11,12 +11,12 @@ import com.arsalan.garage.vo.MarineUserDetailsData;
 
 import networking.models.ValueObject;
 
-public class MarineUserDescriptionFragment extends UserDetailsBaseFragment {
+public class MarineUserDedailsFragment extends UserDetailsBaseFragment {
 
     private String TAG = "MarineUserDescriptionFragment";
     private MarineUserDetailsData mMarineUserDetailsData;
 
-    public MarineUserDescriptionFragment() {
+    public MarineUserDedailsFragment() {
     }
 
 

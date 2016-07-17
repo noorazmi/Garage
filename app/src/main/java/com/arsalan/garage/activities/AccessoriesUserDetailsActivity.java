@@ -9,7 +9,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.AccessoriesUserDescriptionFragment;
+import com.arsalan.garage.fragments.AccessoriesUserDetailsFragment;
 import com.arsalan.garage.utils.AppConstants;
 
 public class AccessoriesUserDetailsActivity extends BaseActivity {
@@ -34,7 +34,7 @@ public class AccessoriesUserDetailsActivity extends BaseActivity {
         FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        Fragment fragment = new AccessoriesUserDescriptionFragment();
+        Fragment fragment = new AccessoriesUserDetailsFragment();
         fragment.setArguments(getIntent().getExtras());
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 

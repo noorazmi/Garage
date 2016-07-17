@@ -18,12 +18,12 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AccessoriesUserDescriptionFragment extends UserDetailsBaseFragment {
+public class AccessoriesUserDetailsFragment extends UserDetailsBaseFragment {
 
     private String TAG = "AccessoriesUserDescriptionFra";
     private AccessoriesUserDetailsData mAccessoriesUserDetailsData;
 
-    public AccessoriesUserDescriptionFragment() {
+    public AccessoriesUserDetailsFragment() {
     }
 
     @Override

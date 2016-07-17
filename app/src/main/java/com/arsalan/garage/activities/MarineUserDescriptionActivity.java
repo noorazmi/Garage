@@ -9,7 +9,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.MarineUserDescriptionFragment;
+import com.arsalan.garage.fragments.MarineUserDedailsFragment;
 import com.arsalan.garage.utils.AppConstants;
 
 public class MarineUserDescriptionActivity extends BaseActivity {
@@ -34,7 +34,7 @@ public class MarineUserDescriptionActivity extends BaseActivity {
         FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        Fragment fragment = new MarineUserDescriptionFragment();
+        Fragment fragment = new MarineUserDedailsFragment();
         fragment.setArguments(getIntent().getExtras());
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 
