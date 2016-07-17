@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.AlwakalatAgencyMenuActivity;
 import com.arsalan.garage.activities.CategorySaleListActivity;
-import com.arsalan.garage.activities.BuyAndSaleMenuActivity;
+import com.arsalan.garage.activities.ForSaleMenuActivity;
 import com.arsalan.garage.activities.HelpOnRoadActivity;
 import com.arsalan.garage.activities.KarajatMenuActivity;
 import com.arsalan.garage.activities.KhidmatShamlaActivity;
@@ -146,7 +146,7 @@ public class HomeTabFragment extends Fragment {
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_FOR_RENT)) {
                         Bundle bundle = new Bundle();
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
-                        intent = new Intent(getActivity(), BuyAndSaleMenuActivity.class);
+                        intent = new Intent(getActivity(), ForSaleMenuActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
 
                     } else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA)) {

@@ -7,10 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.BuyAndSaleDescriptionFragment;
+import com.arsalan.garage.fragments.ForSaleUserDetailsFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class BuyAndSaleDescriptionActivity extends BaseActivity {
+public class ForSaleDetailsActivity extends BaseActivity {
 
 
     @Override
@@ -26,10 +26,8 @@ public class BuyAndSaleDescriptionActivity extends BaseActivity {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
-        //bundle.putString(AppConstants.EXTRA_TITLE, getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-        //bundle.putInt(AppConstants.IMAGE_URL, getIntent().getIntExtra(AppConstants.IMAGE_URL, 0));
-        bundle.putString(AppConstants.EXTRA_FORSALE_ID, getIntent().getStringExtra(AppConstants.EXTRA_FORSALE_ID));
-        BuyAndSaleDescriptionFragment fragment = new BuyAndSaleDescriptionFragment();
+        bundle.putString(AppConstants.EXTRA_FORSALE_ID, getIntent().getStringExtra(AppConstants.ID));
+        ForSaleUserDetailsFragment fragment = new ForSaleUserDetailsFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
     }

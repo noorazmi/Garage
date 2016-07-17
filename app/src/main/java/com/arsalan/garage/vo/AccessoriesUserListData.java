@@ -11,60 +11,28 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AccessoriesUserListData extends BaseVO implements ValueObject {
+public class AccessoriesUserListData extends UserBaseData implements ValueObject {
 
-    private String data_count;
-    private ArrayList<AccessoriesUserItem> results;
+    private ArrayList<UserListItem> results;
 
-    public String getData_count() {
-        return data_count;
-    }
-
-    public ArrayList<AccessoriesUserItem> getResults() {
+    public ArrayList<UserListItem> getResults() {
         return results;
     }
 
-    public static class AccessoriesUserItem {
-        private String accessories_id;
-        private String make_region_name;
-        private String title;
-        private String post_date;
-        private String phone;
-        private String price;
-        private String description;
-        private String image;
+    public void setResults(ArrayList<UserListItem> results) {
+        this.results = results;
+    }
 
+    public static class AccessoriesUserItem extends UserListItem{
+        private String accessories_id;
 
         public String getAccessories_id() {
             return accessories_id;
         }
 
-        public String getMake_region_name() {
-            return make_region_name;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public String getPost_date() {
-            return post_date;
+        public void setAccessories_id(String accessories_id) {
+            this.accessories_id = accessories_id;
+            super.setId(accessories_id);
         }
     }
 }

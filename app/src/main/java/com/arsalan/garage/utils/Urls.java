@@ -20,6 +20,7 @@ public interface Urls {
     /* Delete Urls */
     String SCRAP_DELETE = "http://kuwaitgarage.com/api/scrap/delete";
     String ACCESSORIES_DELETE = "http://kuwaitgarage.com/api/accessories/delete";
+    String FORSALE_DELETE = "http://kuwaitgarage.com/api/foresale/delete";
     String MARINE_DELETE = "http://kuwaitgarage.com/api/marine/delete";
 
 
@@ -240,7 +241,7 @@ public interface Urls {
 
 
     String FORSALE_BASE = "http://kuwaitgarage.com/api/foresale/";
-    String FORSALE_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/foresalead/";
+    //String FOR_SALE_USER_DETAILS = "http://kuwaitgarage.com/api/foresalead/";
 
 
     //Marine APIs
@@ -254,7 +255,9 @@ public interface Urls {
     String MARINEUSER_JETSKI = "http://kuwaitgarage.com/api/marineuser/jetski";
     String MARINEUSER_MARINE_EQUIPMENT = "http://kuwaitgarage.com/api/marineuser/marineequipment";
     String MARINE_USER_DETAILS = "http://kuwaitgarage.com/api/marineuserdetail/";
+    String SCRAP_USER_DETAILS = "http://kuwaitgarage.com/api/scrapuserdetail/";
     String ACCESSORIES_USER_DETAILS = "http://kuwaitgarage.com/api/accessoriesuserdetail/";
+    String FOR_SALE_USER_DETAILS = "http://kuwaitgarage.com/api/foresalead/";
 
     String ACCESSORIESUSER_AMERICAN = "http://kuwaitgarage.com/api/accessoriesuser/american";
     String ACCESSORIESUSER_EUROPEAN = "http://kuwaitgarage.com/api/accessoriesuser/european";
@@ -265,7 +268,6 @@ public interface Urls {
     String SCRAPUSER_AMERICAN = "http://kuwaitgarage.com/api/scrapuser/american";
     String SCRAPUSER_EUROPEAN = "http://kuwaitgarage.com/api/scrapuser/european";
     String SCRAPUSER_ASIAN = "http://kuwaitgarage.com/api/scrapuser/asian";
-    String SCRAPUSERDETAIL_BASE = "http://kuwaitgarage.com/api/scrapuserdetail/";
 
 
     String LOGIN = "http://kuwaitgarage.com/api/login";

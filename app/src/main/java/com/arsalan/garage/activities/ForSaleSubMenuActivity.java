@@ -7,10 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.BuyAndSaleSubMenuFragment;
+import com.arsalan.garage.fragments.ForSaleSubMenuFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class BuyAndSaleSubMenuActivity extends BaseActivity {
+public class ForSaleSubMenuActivity extends BaseActivity {
 
     private String scrapeType;
     @Override
@@ -30,7 +30,7 @@ public class BuyAndSaleSubMenuActivity extends BaseActivity {
     private void setMenuHolderFragment() {
         FragmentManager mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        BuyAndSaleSubMenuFragment fragment = new BuyAndSaleSubMenuFragment();
+        ForSaleSubMenuFragment fragment = new ForSaleSubMenuFragment();
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 
     }

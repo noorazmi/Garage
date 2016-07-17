@@ -53,7 +53,7 @@ import networking.models.ValueObject;
  */
 public abstract class UserDetailsBaseFragment extends Fragment{
 
-    protected ViewPager mViewPagerCarImages;
+    protected ViewPager mViewPagerItemImages;
     protected GestureDetector mGestureDetector;
     protected int mCurrentCarIndex = 0;
     protected TextView mTextviewDescription;
@@ -77,8 +77,8 @@ public abstract class UserDetailsBaseFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_marine_user_description, container, false);
-        mViewPagerCarImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
+        View rootView = inflater.inflate(R.layout.fragment_user_description, container, false);
+        mViewPagerItemImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone = (TextView) rootView.findViewById(R.id.textview_phone);
         mTextViewModel = (TextView) rootView.findViewById(R.id.textview_model);
@@ -86,7 +86,7 @@ public abstract class UserDetailsBaseFragment extends Fragment{
         mTextViewTitle = (TextView) rootView.findViewById(R.id.textview_title);
         mImageViewEmail = (ImageView) rootView.findViewById(R.id.imageview_email);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
-        mViewPagerCarImages.setOnTouchListener(new View.OnTouchListener() {
+        mViewPagerItemImages.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 mGestureDetector.onTouchEvent(event);
                 return false;
@@ -117,7 +117,7 @@ public abstract class UserDetailsBaseFragment extends Fragment{
         mImageViewEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShareUtil.shareOnGmail(getActivity(), mShareText, userDetailsBase.getImages().get(0).getPhoto_name());
+                ShareUtil.shareOnGmail(getActivity(), mShareText, mShareImage);
             }
         });
     }
@@ -231,7 +231,7 @@ public abstract class UserDetailsBaseFragment extends Fragment{
                     final String status = jsonObj.optString(AppConstants.STATUS);
                     Utils.showSnackBar(getActivity(), message);
                     if (status.equals(AppConstants.SUCCESS)) {
-                        mViewPagerCarImages.postDelayed(new Runnable() {
+                        mViewPagerItemImages.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 getActivity().finish();
@@ -252,9 +252,11 @@ public abstract class UserDetailsBaseFragment extends Fragment{
         ArrayList<ImageInfo> carImageArrayList = null;
         if (mUserDetailsBase != null) {
             carImageArrayList = mUserDetailsBase.getImages();
-            mShareImage = carImageArrayList.get(0).getPhoto_name();
+            if(carImageArrayList.size() > 0){
+                mShareImage = carImageArrayList.get(0).getPhoto_name();
+            }
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
-            mViewPagerCarImages.setAdapter(adapter);
+            mViewPagerItemImages.setAdapter(adapter);
         }
 
     }

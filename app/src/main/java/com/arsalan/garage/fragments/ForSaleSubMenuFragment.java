@@ -11,15 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.BuyAndSaleListActivity;
+import com.arsalan.garage.activities.ForSaleListActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
+import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuyAndSaleSubMenuFragment extends Fragment {
+public class ForSaleSubMenuFragment extends Fragment {
 
     private String scrapeType;
     private ArrayList<HomeMenuItem> mMenuItemsArrayList;
@@ -36,7 +36,7 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
     private int mNumberOfColumns = 3;
     private RecyclerViewAdapter recyclerViewAdapter;
 
-    public BuyAndSaleSubMenuFragment() {
+    public ForSaleSubMenuFragment() {
     }
 
     @Override
@@ -279,8 +279,8 @@ public class BuyAndSaleSubMenuFragment extends Fragment {
                         }
                     }
 
-                    Intent intent = new Intent(getActivity(), BuyAndSaleListActivity.class);
-                    bundle.putString(AppConstants.URL, Urls.FORSALE_BASE + makeRegion + "/" + make + GarageApp.DEVICE_UUID_WITH_SLASH);
+                    Intent intent = new Intent(getActivity(), ForSaleListActivity.class);
+                    bundle.putString(AppConstants.URL, Urls.FORSALE_BASE + makeRegion + "/" + make + "/" + PrefUtility.getAccessToken());
                     intent.putExtras(bundle);
                     getActivity().startActivity(intent);
                 }

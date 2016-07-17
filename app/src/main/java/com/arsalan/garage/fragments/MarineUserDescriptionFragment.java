@@ -32,8 +32,7 @@ public class MarineUserDescriptionFragment extends UserDetailsBaseFragment {
 
     @Override
     protected String getDeleteUrl() {
-        String itemId = getArguments().getString(AppConstants.ID);
-        String deleteUrl = Urls.MARINE_DELETE + "?device_phone=" + PrefUtility.getAccessToken() + "&delete_id=" + itemId;
+        String deleteUrl = Urls.SCRAP_DELETE + "?device_phone=" + PrefUtility.getAccessToken() + "&delete_id=" + getItemId();
         Log.e(TAG, " ******^^^^^^^^^Delete URL:" + deleteUrl);
         return deleteUrl;
     }
@@ -64,7 +63,7 @@ public class MarineUserDescriptionFragment extends UserDetailsBaseFragment {
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
         intent.putExtra(AppConstants.EXTRA_IMAGE_URL, getDetailsDownloadUrl());
         intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_MARINE_USER);
-        intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerCarImages.getCurrentItem());
+        intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerItemImages.getCurrentItem());
         startActivity(intent);
     }
 }

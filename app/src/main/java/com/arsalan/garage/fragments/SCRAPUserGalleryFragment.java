@@ -2,7 +2,6 @@ package com.arsalan.garage.fragments;
 
 import android.util.Log;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.vo.ScrapUserDetailsData;
 
@@ -29,7 +28,7 @@ public class ScrapUserGalleryFragment extends BaseGalleryFragment {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
         //Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
-        String url =  getArguments().getString(AppConstants.EXTRA_IMAGE_URL) + GarageApp.DEVICE_UUID_WITH_SLASH;
+        String url =  getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + url);
         httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);

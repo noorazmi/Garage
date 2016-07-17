@@ -57,7 +57,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.BuyAndSaleMenuActivity"
+            android:name=".activities.ForSaleMenuActivity"
             android:label="@string/title_activity_scrap"
             android:screenOrientation="portrait">
         </activity>
@@ -119,19 +119,19 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".activities.BuyAndSaleSubMenuActivity"
+            android:name=".activities.ForSaleSubMenuActivity"
             android:label="@string/title_activity_buy_and_sale_sub_menu"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".activities.BuyAndSaleListActivity"
+            android:name=".activities.ForSaleListActivity"
             android:label="@string/title_activity_buy_and_sale_list"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".activities.BuyAndSaleDescriptionActivity"
+            android:name=".activities.ForSaleDetailsActivity"
             android:label="@string/title_activity_buy_and_sale_description"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">

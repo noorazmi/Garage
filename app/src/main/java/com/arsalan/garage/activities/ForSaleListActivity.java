@@ -11,10 +11,10 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.BuyAndSaleListFragment;
+import com.arsalan.garage.fragments.ForSaleListFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class BuyAndSaleListActivity extends BaseActivity {
+public class ForSaleListActivity extends BaseActivity {
 
     private CharSequence mTitle;
     private FragmentManager mFragmentManager;
@@ -36,7 +36,7 @@ public class BuyAndSaleListActivity extends BaseActivity {
     private void setCategorySaleListFragment() {
         mFragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        Fragment buyAndSaleListFragment = new BuyAndSaleListFragment();
+        Fragment buyAndSaleListFragment = new ForSaleListFragment();
         Bundle bundle = getIntent().getExtras();
         Log.e(TAG, " bundle URL:" + bundle.getString(AppConstants.URL));
         buyAndSaleListFragment.setArguments(bundle);

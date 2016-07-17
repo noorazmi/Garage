@@ -30,8 +30,6 @@ import networking.loader.LoaderHandler;
 public class GarageApp extends Application {
 
     private static GarageApp sGarageApp = null;
-    public static String DEVICE_UUID_WITH_SLASH;
-    public static String DEVICE_UUID;
 
     public static final GarageApp getInstance() {
         return sGarageApp;
@@ -49,13 +47,7 @@ public class GarageApp extends Application {
         initVolleyController();
         initImageLoader(this);
         initLoaderHandler(this);
-        initDeviceUUID();
 
-    }
-
-    private void initDeviceUUID() {
-        DEVICE_UUID_WITH_SLASH = "/ylkwlTo1IB0FPoRC1Djmx0U6llaU6a";
-        DEVICE_UUID = "ylkwlTo1IB0FPoRC1Djmx0U6llaU6a";
     }
 
 

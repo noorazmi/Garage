@@ -1,35 +1,33 @@
 package com.arsalan.garage.fragments;
 
+
+import android.app.Fragment;
 import android.content.Intent;
 import android.util.Log;
 
 import com.arsalan.garage.activities.FullImageActivity;
-import com.arsalan.garage.models.AccessoriesUserDetailsData;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
+import com.arsalan.garage.vo.ForSaleUserDetailsData;
 
 import networking.models.ValueObject;
 
 /**
- * <p/>
- * Created by: Noor  Alam on 14/05/16.<br/>
- * Email id: noor.alam@tothenew.com<br/>
- * Skype id: mfsi_noora
- * <p/>
+ * A simple {@link Fragment} subclass.
  */
-public class AccessoriesUserDescriptionFragment extends UserDetailsBaseFragment {
+public class ForSaleUserDetailsFragment extends UserDetailsBaseFragment {
 
-    private String TAG = "AccessoriesUserDescriptionFra";
-    private AccessoriesUserDetailsData mAccessoriesUserDetailsData;
+    private String TAG = "ForSaleUserDetailsFragment";
+    private ForSaleUserDetailsData mForSaleUserDetailsData;
 
-    public AccessoriesUserDescriptionFragment() {
+    public ForSaleUserDetailsFragment() {
     }
 
-    @Override
-    protected void openFullImageActivity() {
+    protected void openFullImageActivity(){
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
-        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.ACCESSORIES_USER_DETAILS + getArguments().getString(AppConstants.ID));
+        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.FOR_SALE_USER_DETAILS + getId());
+        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_MARINE_SHOWROOM);
         intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerItemImages.getCurrentItem());
         startActivity(intent);
     }
@@ -41,34 +39,36 @@ public class AccessoriesUserDescriptionFragment extends UserDetailsBaseFragment 
 
     @Override
     protected String getItemId() {
-        return mAccessoriesUserDetailsData.getResults().getAccessories_id();
+        return mForSaleUserDetailsData.getResults().getForsale_id();
     }
 
     @Override
     protected String getDeleteUrl() {
-        String deleteUrl = Urls.ACCESSORIES_DELETE + "?device_phone=" + PrefUtility.getAccessToken() + "&delete_id=" + getItemId();
+        String deleteUrl = Urls.FORSALE_DELETE + "?device_phone=" + PrefUtility.getAccessToken() + "&delete_id=" + getItemId();
         Log.e(TAG, " ******^^^^^^^^^Delete URL:" + deleteUrl);
         return deleteUrl;
     }
 
     @Override
     protected String getDetailsDownloadUrl() {
-        String itemId = getArguments().getString(AppConstants.ID);
-        String detailsDownloadUrl = Urls.ACCESSORIES_USER_DETAILS + itemId + "/" + PrefUtility.getAccessToken();
+        String itemId = getArguments().getString(AppConstants.EXTRA_FORSALE_ID);
+        String detailsDownloadUrl = Urls.FOR_SALE_USER_DETAILS + itemId + "/" + PrefUtility.getAccessToken();
         Log.e(TAG, " ******^^^^^^^^^DetailsDownload URL:" + detailsDownloadUrl);
         return detailsDownloadUrl;
     }
 
     @Override
     protected void setDetails(ValueObject valueObject) {
-        mAccessoriesUserDetailsData = (AccessoriesUserDetailsData) valueObject;
-        mUserDetailsBase = mAccessoriesUserDetailsData.getResults();
+        mForSaleUserDetailsData = (ForSaleUserDetailsData) valueObject;
+        mUserDetailsBase = mForSaleUserDetailsData.getResults();
         setPagerAdapter();
         setDescription(mUserDetailsBase);
     }
 
     @Override
     protected String getValueObjectFullyQualifiedName() {
-        return AccessoriesUserDetailsData.class.getName();
+        return ForSaleUserDetailsData.class.getName();
     }
+
+
 }

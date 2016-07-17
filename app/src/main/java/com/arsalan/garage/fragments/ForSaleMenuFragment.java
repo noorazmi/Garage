@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.AccessoriesMenuActivity;
-import com.arsalan.garage.activities.BuyAndSaleSubMenuActivity;
+import com.arsalan.garage.activities.ForSaleSubMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuyAndSaleMenuFragment extends Fragment {
+public class ForSaleMenuFragment extends Fragment {
 
 
 
@@ -41,7 +41,7 @@ public class BuyAndSaleMenuFragment extends Fragment {
     private String scrapType;
 
 
-    public BuyAndSaleMenuFragment() {  }
+    public ForSaleMenuFragment() {  }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,13 +91,13 @@ public class BuyAndSaleMenuFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     Intent intent = null;
                     if (position == 0) {
-                        intent = new Intent(getActivity(), BuyAndSaleSubMenuActivity.class);
+                        intent = new Intent(getActivity(), ForSaleSubMenuActivity.class);
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_AMERICA);
                     }else if(position == 1){
-                        intent = new Intent(getActivity(), BuyAndSaleSubMenuActivity.class);
+                        intent = new Intent(getActivity(), ForSaleSubMenuActivity.class);
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_EUROPEAN);
                     }else if(position == 2){
-                        intent = new Intent(getActivity(), BuyAndSaleSubMenuActivity.class);
+                        intent = new Intent(getActivity(), ForSaleSubMenuActivity.class);
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_ASIAN);
                     }else if(position == 3){
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_DELIVERY);

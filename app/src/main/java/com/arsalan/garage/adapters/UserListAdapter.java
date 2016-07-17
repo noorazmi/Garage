@@ -2,7 +2,6 @@ package com.arsalan.garage.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.AccessoriesUserListData;
+import com.arsalan.garage.vo.UserListItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -24,19 +22,17 @@ import java.util.List;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AccessoriesUserListAdapter extends CustomRecyclerViewAdapter {
+public class UserListAdapter extends CustomRecyclerViewAdapter {
 
-    List<AccessoriesUserListData.AccessoriesUserItem> mAccessoriesUserItems;
-    private String mScrapType;
+    private List<UserListItem> mAccessoriesUserItems;
     private String mDescriptionLanguage;
     private Context mContext;
 
 
-    public AccessoriesUserListAdapter(Context context, RecyclerView recyclerView, List<AccessoriesUserListData.AccessoriesUserItem> accessoriesUserItems, String scrapType, String descriptionLanguage) {
+    public UserListAdapter(Context context, RecyclerView recyclerView, List<UserListItem> accessoriesUserItems, String descriptionLanguage) {
         super(recyclerView);
         this.mContext = context;
         this.mAccessoriesUserItems = accessoriesUserItems;
-        this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
     }
 
@@ -47,11 +43,7 @@ public class AccessoriesUserListAdapter extends CustomRecyclerViewAdapter {
         if (isItemView(viewType)) {
             //In case of multiple/single view type put your code logic here...
             View itemView = null;
-            if (!TextUtils.isEmpty(mDescriptionLanguage) && mDescriptionLanguage.equals(AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH)) {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category_sale_english, parent, false);
-            } else {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category_sale, parent, false);
-            }
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category_sale_english, parent, false);
             viewHolder = new ListItemViewHolder(itemView);
 
         } else {
@@ -65,7 +57,7 @@ public class AccessoriesUserListAdapter extends CustomRecyclerViewAdapter {
 
         if (!isProgerssViewHolder(holder)) {
             //In case of multiple/single view type put your code logic here...
-            final AccessoriesUserListData.AccessoriesUserItem model = mAccessoriesUserItems.get(position);
+            final UserListItem model = mAccessoriesUserItems.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
             //holder.title.setText(model.getDescription());
             ((ListItemViewHolder) holder).date.setText(model.getPost_date());

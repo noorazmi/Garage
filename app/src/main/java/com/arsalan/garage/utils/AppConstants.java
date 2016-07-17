@@ -167,11 +167,15 @@ public interface AppConstants {
     String DEVICE_PHONE = "device_phone";
     String UUID = "uuid";
     String MAKE_REGION = "make_region";
+    String MAKE_REGION_NAME = "make_region_name";
     String MAKE = "make";
     String MODEL = "model";
     String TITLE = "title";
     String PHONE = "phone";
     String PRICE = "price";
+    String POST_DATE = "post_date";
+    String IMAGE = "image";
+    String IS_OWNER = "Is_owner";
     //String DESCRIPTION = "description";
 
     //String CADILLAC="cadillac"; String DODGE_CHRYSLER="dodge-chrysler"; String CHEVROLET="chevrolet"; String GMC="gmc"; String FORD_LINCOLN="ford-lincoln"; String HUMMER="hummer"; String JEEP="jeep";String PEUGEOT_CITROEN="peugeot-citroen";String SKODA="skoda";String MINI="mini";String RENAULT="renault";
@@ -294,4 +298,7 @@ public interface AppConstants {
     public static final String TOKEN = "token";
     String PASSWORD = "password";
     String CONFIRM_PASSWORD = "confirm_password";
+    String ACCESSORIES_ID = "accessories_id";
+    String RESULTS = "results";
+    String DATA_COUNT = "data_count";
 }

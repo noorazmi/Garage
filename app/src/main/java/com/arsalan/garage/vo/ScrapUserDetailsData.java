@@ -1,8 +1,6 @@
 package com.arsalan.garage.vo;
 
-import com.arsalan.garage.models.ImageInfo;
-
-import java.util.ArrayList;
+import com.arsalan.garage.models.UserDetailsBase;
 
 import networking.models.ValueObject;
 
@@ -21,57 +19,13 @@ public class ScrapUserDetailsData extends BaseVO implements ValueObject {
         return results;
     }
 
-    public static class ScrapUserDetails{
+    public static class ScrapUserDetails extends UserDetailsBase {
         private String scrap_id;
-        private String make_region_name;
-        private String model;
-        private String title;
-        private String phone;
-        private String price;
-        private String description;
-        private String post_date;
-        private ArrayList<ImageInfo> images;
-        private int is_owner;
 
         public String getScrap_id() {
             return scrap_id;
         }
 
-        public String getMake_region_name() {
-            return make_region_name;
-        }
-
-        public String getModel() {
-            return model;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public String getPost_date() {
-            return post_date;
-        }
-
-        public ArrayList<ImageInfo> getImages() {
-            return images;
-        }
-
-        public int getIs_owner() {
-            return is_owner;
-        }
     }
 
 }

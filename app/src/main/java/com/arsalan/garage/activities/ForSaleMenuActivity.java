@@ -8,7 +8,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.BuyAndSaleMenuFragment;
+import com.arsalan.garage.fragments.ForSaleMenuFragment;
 import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
@@ -21,7 +21,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class BuyAndSaleMenuActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
+public class ForSaleMenuActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
 
     private FragmentManager mFragmentManager;
 
@@ -47,7 +47,7 @@ public class BuyAndSaleMenuActivity extends BaseActivity implements LevelOneMenu
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_FOR_RENT);
-        BuyAndSaleMenuFragment fragment = new BuyAndSaleMenuFragment();
+        ForSaleMenuFragment fragment = new ForSaleMenuFragment();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
 

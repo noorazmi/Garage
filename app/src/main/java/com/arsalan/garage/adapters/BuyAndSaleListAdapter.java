@@ -12,7 +12,7 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.AmericanCarsVO;
-import com.arsalan.garage.vo.BuyAndSaleListItemVo;
+import com.arsalan.garage.vo.ForSaleUserListData;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -28,15 +28,15 @@ public class BuyAndSaleListAdapter extends RecyclerView.Adapter<BuyAndSaleListAd
 
     private Context mContext;
     //private ArrayList<HomeMenuItem> mHomeMenuItemArrayList;
-    private ArrayList<BuyAndSaleListItemVo.BuySaleItem> mHomeMenuItemArrayList;
+    private ArrayList<ForSaleUserListData.ForSaleItem> mHomeMenuItemArrayList;
     private AmericanCarsVO americanCarsVO;
     private String mScrapType;
     private String mDescriptionLanguage;
 
 
     //public CategoryListAdapter(ArrayList<HomeMenuItem> mHomeMenuItemArrayList, Context context) {
-    public BuyAndSaleListAdapter(BuyAndSaleListItemVo americanCarsVO, Context context, String scrapType, String descriptionLanguage) {
-        this.mHomeMenuItemArrayList = (ArrayList<BuyAndSaleListItemVo.BuySaleItem>) americanCarsVO.getResults();
+    public BuyAndSaleListAdapter(ForSaleUserListData americanCarsVO, Context context, String scrapType, String descriptionLanguage) {
+        //this.mHomeMenuItemArrayList = (ArrayList<ForSaleUserListData.ForSaleItem>) americanCarsVO.getResults();
         this.mContext = context;
         this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
@@ -59,7 +59,7 @@ public class BuyAndSaleListAdapter extends RecyclerView.Adapter<BuyAndSaleListAd
 
     @Override
     public void onBindViewHolder(BuyAndSaleListAdapter.ListItemViewHolder holder, int position) {
-        final BuyAndSaleListItemVo.BuySaleItem model = mHomeMenuItemArrayList.get(position);
+        final ForSaleUserListData.ForSaleItem model = mHomeMenuItemArrayList.get(position);
         //holder.title.setText(model.getDescription());
         holder.phoneNumbet.setText(model.getPhone());
         if(mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)){
