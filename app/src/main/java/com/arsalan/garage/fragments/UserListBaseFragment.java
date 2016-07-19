@@ -54,21 +54,37 @@ public abstract class UserListBaseFragment extends Fragment {
     protected int pageNumber = 0;
     protected boolean isFirstTime = true;
     protected boolean keepLoading = true;
-    protected UserListItem mUserListItem;
     protected ArrayList<UserListItem> mUserListItems;
+    protected int mTotalItemCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_marine_user_list, container, false);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        return rootView;
+    }
+
+    private void initVariables(){
+        mCategoryListAdapter = null;
+        mUserListItems = null;
+        pageNumber = 0;
+        isFirstTime = true;
+        keepLoading = true;
+        mTotalItemCount = 0;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         if (Utils.isNetworkAvailable(getActivity())) {
+            initVariables();
             performGET();
         } else {
             Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
         }
         setAdapter();
-        return rootView;
     }
+
 
     private void setAdapter() {
 
@@ -89,8 +105,8 @@ public abstract class UserListBaseFragment extends Fragment {
         mCategoryListAdapter.setOnPullUpListener(new CustomRecyclerViewAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mCategoryListAdapter.setDownloadingProgress(true, mUserListItems);
                 if (keepLoading) {
+                    mCategoryListAdapter.setDownloadingProgress(true, mUserListItems);
                     performGET();
                 }
             }
@@ -118,6 +134,7 @@ public abstract class UserListBaseFragment extends Fragment {
                 bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
                 bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
                 intent.putExtras(bundle);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 getActivity().startActivity(intent);
             }
         }));
@@ -179,7 +196,8 @@ public abstract class UserListBaseFragment extends Fragment {
         mUserListItems.addAll(userListItems);
         mCategoryListAdapter.notifyDataSetChanged();
         mCategoryListAdapter.setLoaded();
-        if (userListItems.size() == 0) {
+
+        if (mUserListItems.size() >= mTotalItemCount) {
             keepLoading = false;
         }
     }

@@ -23,7 +23,6 @@ public class ProductGalleryFragment extends BaseGalleryFragment{
     void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        //Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
         String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL) + "/" + PrefUtility.getAccessToken();
         Log.e(TAG, " ******^^^^^^^^^ImageUrl URL:" + url);
         httpRequest.setUrl(url);
@@ -35,7 +34,9 @@ public class ProductGalleryFragment extends BaseGalleryFragment{
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mShowroomCarVo = (ShowroomCarVo) httpResponse.getValueObject();
-                setPagerAdapter(mShowroomCarVo.getResults().getImages());
+                if(mShowroomCarVo != null && mShowroomCarVo.getResults() != null){
+                    setPagerAdapter(mShowroomCarVo.getResults().getImages());
+                }
             }
         });
         loaderHandler.loadData();

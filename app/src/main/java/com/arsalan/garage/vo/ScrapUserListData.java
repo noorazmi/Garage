@@ -11,57 +11,28 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ScrapUserListData extends BaseVO implements ValueObject {
+public class ScrapUserListData extends UserBaseData implements ValueObject {
 
-    private String data_count;
-    private ArrayList<ScrapUserListItem> results;
+    private ArrayList<UserListItem> results;
 
-    public String getData_count() {
-        return data_count;
-    }
-
-    public ArrayList<ScrapUserListItem> getResults() {
+    public ArrayList<UserListItem> getResults() {
         return results;
     }
 
-    public static class ScrapUserListItem {
+    public void setResults(ArrayList<UserListItem> results) {
+        this.results = results;
+    }
+
+    public static class ScrapUserListItem extends UserListItem {
         private String scrap_id;
-        private String make_region_name;
-        private String title;
-        private String phone;
-        private String price;
-        private String description;
-        private String image;
 
         public String getScrap_id() {
             return scrap_id;
         }
 
-        public String getMake_region_name() {
-            return make_region_name;
+        public void setScrap_id(String scrap_id) {
+            this.scrap_id = scrap_id;
+            setId(scrap_id);
         }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-
-
     }
 }

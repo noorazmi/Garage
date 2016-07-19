@@ -147,6 +147,7 @@ public interface AppConstants {
     String EXTRA_WORKING_HOURS = "working_hours";
     String EXTRA_IMAGE_URL = "image_url";
     String EXTRA_FORSALE_ID = "forsale_id";
+    String SCRAP_ID = "scrap_id";
     String EXTRA_WARRANTY = "warranty";
     String EXTRA_GALLERY_FOR = "extra_gallery_for";
     String EXTRA_GALLERY_FOR_MARINE_USER = "extra_gallery_for_marine_user";

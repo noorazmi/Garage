@@ -55,7 +55,6 @@ public abstract class UserDetailsBaseFragment extends Fragment{
 
     protected ViewPager mViewPagerItemImages;
     protected GestureDetector mGestureDetector;
-    protected int mCurrentCarIndex = 0;
     protected TextView mTextviewDescription;
     protected TextView mTextviewPhone;
     protected AlertDialog mShareOptionsAlertDialog;

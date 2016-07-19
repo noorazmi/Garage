@@ -21,7 +21,6 @@ import com.arsalan.garage.adapters.GalleryPagerAdapter;
 import com.arsalan.garage.models.ImageInfo;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.ShowroomCarVo;
 
 import java.util.ArrayList;
 
@@ -38,7 +37,6 @@ public abstract class BaseGalleryFragment extends Fragment implements AdapterVie
     private String TAG = ProductGalleryFragment.class.getSimpleName();
     private boolean isFirstTime = true;
     private boolean mIsTopBottomViewHidden = false;
-    private ShowroomCarVo mShowroomCarVo;
 
 
     public BaseGalleryFragment() {}
@@ -59,25 +57,6 @@ public abstract class BaseGalleryFragment extends Fragment implements AdapterVie
     }
 
     abstract void performGET();
-    /*public void performGET() {
-        HTTPRequest httpRequest = new HTTPRequest();
-        httpRequest.setShowProgressDialog(true);
-        //Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + getArguments().getString(AppConstants.EXTRA_IMAGE_URL));
-        httpRequest.setUrl(getArguments().getString(AppConstants.EXTRA_IMAGE_URL));
-        httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(ShowroomCarVo.class.getName());
-        LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
-        loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(HTTPModel httpModel) {
-                HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mShowroomCarVo = (ShowroomCarVo) httpResponse.getValueObject();
-                setPagerAdapter(mShowroomCarVo.getResults().getImages());
-            }
-        });
-        loaderHandler.loadData();
-    }*/
 
     protected void setPagerAdapter(ArrayList<ImageInfo> carImageArrayList) {
         if (getActivity() == null) {
