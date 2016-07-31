@@ -53,6 +53,7 @@ public class MarineUserListFragment extends android.app.Fragment {
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
+    private int mTotalItemCount;
 
 
     public MarineUserListFragment() {
@@ -90,8 +91,8 @@ public class MarineUserListFragment extends android.app.Fragment {
         mCategoryListAdapter.setOnPullUpListener(new CustomRecyclerViewAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                mCategoryListAdapter.setDownloadingProgress(true, marineUserItems);
                 if (keepLoading) {
+                    mCategoryListAdapter.setDownloadingProgress(true, marineUserItems);
                     performGET();
                 }
             }
@@ -130,6 +131,9 @@ public class MarineUserListFragment extends android.app.Fragment {
         marineUserItems.addAll(carList);
         mCategoryListAdapter.notifyDataSetChanged();
         mCategoryListAdapter.setLoaded();
+        if (marineUserItems.size() >= mTotalItemCount) {
+            keepLoading = false;
+        }
     }
 
     private void performGET() {
@@ -168,9 +172,13 @@ public class MarineUserListFragment extends android.app.Fragment {
                 mMarineUserData = (MarineUserListData) httpResponse.getValueObject();
                 if (mMarineUserData == null) {
                     return;
-                }
-                if (mMarineUserData.getResults() == null) {
+                }else if(mMarineUserData.getResults() == null){
                     return;
+                }
+                try{
+                    mTotalItemCount = Integer.parseInt(mMarineUserData.getData_count());
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
                 }
                 showData(mMarineUserData.getResults());
                 if (isFirstTime) {
@@ -178,9 +186,6 @@ public class MarineUserListFragment extends android.app.Fragment {
                     isFirstTime = false;
                 }
 
-                if (mMarineUserData.getResults().size() == 0) {
-                    keepLoading = false;
-                }
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
             }
         });
@@ -188,6 +193,6 @@ public class MarineUserListFragment extends android.app.Fragment {
     }
 
     private void setTotalCount() {
-        ((MarineUserListActivity) getActivity()).setNoOfItemsInTooBar(mMarineUserData.getResults().size());
+        ((MarineUserListActivity) getActivity()).setNoOfItemsInTooBar(mTotalItemCount);
     }
 }

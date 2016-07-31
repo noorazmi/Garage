@@ -154,6 +154,8 @@ public interface AppConstants {
     String EXTRA_GALLERY_FOR_ACCESSORIES_USER = "extra_gallery_for_accessories_user";
     String EXTRA_GALLERY_FOR_SCRAP_USER = "extra_gallery_for_scrap_user";
     String EXTRA_GALLERY_FOR_MARINE_SHOWROOM = "extra_gallery_for_showroom";
+    String EXTRA_GALLERY_FOR_SALE = "extra_gallery_for_sale";
+    String EXTRA_GALLERY_USER_GALLERY = "extra_gallery_user_gallery";
 
     String EXTRA_DESCRIPTION_LANGUAGE = "extra_description_language";
     String EXTRA_DESCRIPTION_LANGUAGE_ENGLISH = "extra_description_language_english";

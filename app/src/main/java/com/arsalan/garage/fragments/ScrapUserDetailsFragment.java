@@ -31,7 +31,8 @@ public class ScrapUserDetailsFragment extends UserDetailsBaseFragment {
     protected void openFullImageActivity() {
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
         intent.putExtra(AppConstants.EXTRA_IMAGE_URL, getDetailsDownloadUrl());
-        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_SCRAP_USER);
+        //intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_SCRAP_USER);
+        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_USER_GALLERY);
         intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerItemImages.getCurrentItem());
         startActivity(intent);
     }

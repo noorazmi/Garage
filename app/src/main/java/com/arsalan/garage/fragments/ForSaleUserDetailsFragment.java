@@ -26,8 +26,9 @@ public class ForSaleUserDetailsFragment extends UserDetailsBaseFragment {
 
     protected void openFullImageActivity(){
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
-        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.FOR_SALE_USER_DETAILS + getItemId());
-        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_MARINE_SHOWROOM);
+        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, getDetailsDownloadUrl());
+        //intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_SALE);
+        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_USER_GALLERY);
         intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerItemImages.getCurrentItem());
         startActivity(intent);
     }

@@ -50,12 +50,13 @@ public class CategorySaleListFragment extends Fragment {
     private CategorySaleListAdapter mCategoryListAdapter;
     private AmericanCarsVO mAmericanCarsVO;
     private List<AmericanCarsVO.Result> mCarList;
-    private List<AmericanCarsVO.Result> dummyItems;
+    //private List<AmericanCarsVO.Result> dummyItems;
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
     private EditText editTextSearch;
     private ImageView imageViewSearchLogo;
+    protected int mTotalItemCount;
 
 
     public CategorySaleListFragment() {
@@ -76,7 +77,7 @@ public class CategorySaleListFragment extends Fragment {
         });
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         if (Utils.isNetworkAvailable(getActivity())) {
-            performGET();
+            setTotalCount();
         } else {
             Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
         }
@@ -95,7 +96,7 @@ public class CategorySaleListFragment extends Fragment {
 
         //mCategoryListAdapter = new CategoryListAdapter(americanCarsVO, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
         mCarList = new ArrayList<>(0);
-        dummyItems = new ArrayList<>(0);
+        //dummyItems = new ArrayList<>(0);
         mCategoryListAdapter = new CategorySaleListAdapter(getActivity(), mRecyclerView, mCarList, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
 
 
@@ -106,8 +107,8 @@ public class CategorySaleListFragment extends Fragment {
         {
             @Override
             public void onLoadMore() {
-                mCategoryListAdapter.setDownloadingProgress(true,mCarList);
                 if(keepLoading){
+                    mCategoryListAdapter.setDownloadingProgress(true,mCarList);
                     performGET();
                 }
             }
@@ -128,7 +129,7 @@ public class CategorySaleListFragment extends Fragment {
                 }
                 Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
                 Bundle bundle = new Bundle();
-                AmericanCarsVO.Result result = mAmericanCarsVO.getResults().get(position);
+                AmericanCarsVO.Result result = mCarList.get(position);
                 bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
                 bundle.putString(AppConstants.IMAGE_URL, result.getImage());
                 bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
@@ -158,7 +159,7 @@ public class CategorySaleListFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                List<AmericanCarsVO.Result> filteredModelList = filter(dummyItems, s.toString());
+                List<AmericanCarsVO.Result> filteredModelList = filter(mCarList, s.toString());
                 mCategoryListAdapter.animateTo(filteredModelList);
                 if(s.toString().length() > 0){
                     imageViewSearchLogo.setImageResource(R.drawable.ic_cross_blue);
@@ -194,7 +195,9 @@ public class CategorySaleListFragment extends Fragment {
     private void showData(List<AmericanCarsVO.Result> carList){
         mCategoryListAdapter.setDownloadingProgress(false,mCarList);
         mCarList.addAll(carList);
-        dummyItems.addAll(carList);
+        if (mCarList.size() >= mTotalItemCount) {
+            keepLoading = false;
+        }
         mCategoryListAdapter.notifyDataSetChanged();
         mCategoryListAdapter.setLoaded();
     }
@@ -214,7 +217,6 @@ public class CategorySaleListFragment extends Fragment {
             alertDialog.show();
             return;
         }
-        setTotalCount();
 
         HTTPRequest httpRequest = new HTTPRequest();
         if(isFirstTime){
@@ -233,17 +235,7 @@ public class CategorySaleListFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mAmericanCarsVO = (AmericanCarsVO) httpResponse.getValueObject();
-                if(mAmericanCarsVO == null ){
-                    return;
-                }
-                if(mAmericanCarsVO.getResults() == null){
-                    return;
-                }
-                //((CategorySaleListActivity) getActivity()).setNoOfItemsInTooBar(mAmericanCarsVO.getResults().size());
                 showData(mAmericanCarsVO.getResults());
-                if(mAmericanCarsVO.getResults().size() == 0){
-                    keepLoading = false;
-                }
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
             }
         });
@@ -253,6 +245,7 @@ public class CategorySaleListFragment extends Fragment {
     private void setTotalCount(){
 
         HTTPRequest httpRequest = new HTTPRequest();
+        httpRequest.setShowProgressDialog(true);
         httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page=all");
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(AmericanCarsVO.class.getName());
@@ -262,13 +255,17 @@ public class CategorySaleListFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 mAmericanCarsVO = (AmericanCarsVO) httpResponse.getValueObject();
-                if(mAmericanCarsVO == null ){
+                if(mAmericanCarsVO == null){
+                    return;
+                }else if(mAmericanCarsVO.getResults() == null){
                     return;
                 }
-                if(mAmericanCarsVO.getResults() == null){
-                    return;
+
+                mTotalItemCount = mAmericanCarsVO.getData_count();
+                ((CategorySaleListActivity) getActivity()).setNoOfItemsInTooBar(mTotalItemCount);
+                if(mTotalItemCount >= 0){
+                    performGET();
                 }
-                ((CategorySaleListActivity) getActivity()).setNoOfItemsInTooBar(mAmericanCarsVO.getResults().size());
             }
         });
         loaderHandler.loadData();

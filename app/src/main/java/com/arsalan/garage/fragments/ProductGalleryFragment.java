@@ -4,7 +4,6 @@ package com.arsalan.garage.fragments;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
-import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.vo.ShowroomCarVo;
 
 import networking.HttpConstants;
@@ -23,7 +22,7 @@ public class ProductGalleryFragment extends BaseGalleryFragment{
     void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL) + "/" + PrefUtility.getAccessToken();
+        String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
         Log.e(TAG, " ******^^^^^^^^^ImageUrl URL:" + url);
         httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);

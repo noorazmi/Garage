@@ -29,8 +29,9 @@ public class AccessoriesUserDetailsFragment extends UserDetailsBaseFragment {
     @Override
     protected void openFullImageActivity() {
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
-        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, Urls.ACCESSORIES_USER_DETAILS + getArguments().getString(AppConstants.ID));
+        intent.putExtra(AppConstants.EXTRA_IMAGE_URL, getDetailsDownloadUrl());
         intent.putExtra(AppConstants.EXTRA_INDEX, mViewPagerItemImages.getCurrentItem());
+        intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_USER_GALLERY);
         startActivity(intent);
     }
 

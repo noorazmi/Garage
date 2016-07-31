@@ -1,6 +1,7 @@
 package com.arsalan.garage.vo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,16 +15,11 @@ import networking.models.ValueObject;
  * <p/>
  */
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class AmericanCarsVO extends BaseVO implements ValueObject {
 
 
     private Integer dataCount;
+    private Integer data_count;
     private List<Result> results = new ArrayList<Result>();
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -44,6 +40,10 @@ public class AmericanCarsVO extends BaseVO implements ValueObject {
 
     public void setResults(List<Result> results) {
         this.results = results;
+    }
+
+    public Integer getData_count() {
+        return data_count;
     }
 
     public static class Result {
@@ -89,5 +89,7 @@ public class AmericanCarsVO extends BaseVO implements ValueObject {
         public void setImage(String image) {
             this.image = image;
         }
+
+
     }
 }

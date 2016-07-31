@@ -30,6 +30,7 @@ import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.CustomDialogHelper;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Utils;
+import com.arsalan.garage.vo.BaseVO;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -228,16 +229,11 @@ public abstract class UserDetailsBaseFragment extends Fragment{
                     JSONObject jsonObj = new JSONObject(response);
                     final String message = jsonObj.optString(AppConstants.MESSAGE);
                     final String status = jsonObj.optString(AppConstants.STATUS);
-                    Utils.showSnackBar(getActivity(), message);
                     if (status.equals(AppConstants.SUCCESS)) {
-                        mViewPagerItemImages.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                getActivity().finish();
-                            }
-                        }, 2500);
+                        showFailMessage(message);
+                    }else {
+                        Utils.showSnackBar(getActivity(), message);
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -272,11 +268,28 @@ public abstract class UserDetailsBaseFragment extends Fragment{
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
+                if(httpResponse.getValueObject() == null){
+                    showFailMessage(getString(R.string.error_something_went_wrong));
+                    return;
+                }else if(((BaseVO)httpResponse.getValueObject()).getStatus().equals("fail")){
+                    showFailMessage(((BaseVO) httpResponse.getValueObject()).getMessage());
+                    return;
+                }
                 setDetails(httpResponse.getValueObject());
                 getActivity().invalidateOptionsMenu();
             }
         });
         loaderHandler.loadData();
+    }
+
+    private void showFailMessage(String message){
+        Utils.showSnackBar(getActivity(), message);
+        mViewPagerItemImages.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().finish();
+            }
+        }, 2000);
     }
 
 

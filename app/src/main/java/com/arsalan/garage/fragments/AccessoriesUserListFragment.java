@@ -63,7 +63,9 @@ public class AccessoriesUserListFragment extends UserListBaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (mAccessoriesUserListData == null || mAccessoriesUserListData.getResults() == null) {
+        if (mAccessoriesUserListData == null) {
+            return;
+        }else if(mAccessoriesUserListData.getResults() == null){
             return;
         }
         showData(mAccessoriesUserListData.getResults());

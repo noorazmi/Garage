@@ -67,7 +67,9 @@ public class ScrapUserListFragment extends UserListBaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (mScrapUserListData == null || mScrapUserListData.getResults() == null) {
+        if (mScrapUserListData == null) {
+            return;
+        }else if(mScrapUserListData.getResults() == null){
             return;
         }
         showData(mScrapUserListData.getResults());

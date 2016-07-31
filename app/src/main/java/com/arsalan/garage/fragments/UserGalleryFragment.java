@@ -3,7 +3,7 @@ package com.arsalan.garage.fragments;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
-import com.arsalan.garage.vo.ScrapUserDetailsData;
+import com.arsalan.garage.vo.UserDetailsData;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -14,32 +14,39 @@ import networking.models.HTTPResponse;
 
 /**
  * <p/>
- * Created by: Noor  Alam on 14/05/16.<br/>
+ * Created by: Noor  Alam on 01/08/16.<br/>
  * Email id: noor.alam@tothenew.com<br/>
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ScrapUserGalleryFragment extends BaseGalleryFragment {
+public class UserGalleryFragment extends BaseGalleryFragment {
 
-    private static final String TAG = "ScrapUserGalleryFrag";
-    private ScrapUserDetailsData mScrapUserDetailsData;
+    private static final String TAG = "UserGalleryFragment";
+    private UserDetailsData mUserDetailsData;
+
     @Override
     void performGET() {
         HTTPRequest httpRequest = new HTTPRequest();
         httpRequest.setShowProgressDialog(true);
-        //Log.e(TAG, " ******^^^^^^^^^bundle URL:" + (Urls.SHOWROOM_CAR + getArguments().getString(AppConstants.EXTRA_CAR_ID)));
-        String url =  getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
-        Log.e(TAG, " ******^^^^^^^^^bundle URL:" + url);
+        String url = getArguments().getString(AppConstants.EXTRA_IMAGE_URL);
+        ;
+        Log.e(TAG, " ******^^^^^^^^^imageUrl URL:" + url);
         httpRequest.setUrl(url);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(ScrapUserDetailsData.class.getName());
+        httpRequest.setValueObjectFullyQualifiedName(UserDetailsData.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
         loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mScrapUserDetailsData = (ScrapUserDetailsData) httpResponse.getValueObject();
-                setPagerAdapter(mScrapUserDetailsData.getResults().getImages());
+                mUserDetailsData = (UserDetailsData) httpResponse.getValueObject();
+                if (mUserDetailsData == null) {
+                    return;
+                }else if(mUserDetailsData.getResults() == null){
+                    return;
+                }
+
+                setPagerAdapter(mUserDetailsData.getResults().getImages());
             }
         });
         loaderHandler.loadData();

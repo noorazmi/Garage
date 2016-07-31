@@ -70,29 +70,17 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
             //In case of multiple/single view type put your code logic here...
             final AmericanCarsVO.Result model = mHomeMenuItemArrayList.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
+            listItemViewHolder.date.setVisibility(View.GONE);
             //holder.title.setText(model.getDescription());
             ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
             if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
                 listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
-            /*listItemViewHolder.phoneNumber.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Utils.initCall(model.getPhone(), GarageApp.getInstance());
-                }
-            });*/
             } else {
                 ((ListItemViewHolder) holder).title.setText(model.getDescription());
-                //((CustomViewHolder)listItemViewHolder).setOnClickListener(null);
             }
-
 
             ImageLoader imageLoader = ImageLoader.getInstance();
-            if(model.getDescription().contains("wash") || model.getDescription().contains("shower") || model.getDescription().contains("clean")){
-                listItemViewHolder.imgView.setImageResource(R.drawable.carwash_center);
-                listItemViewHolder.imgView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            }else {
-                imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
-            }
+            imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
         }else{
             showProgressBar(holder);
         }
@@ -118,12 +106,14 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
         ImageView imgView;
         TextView title;
         TextView phoneNumbet;
+        TextView date;
 
         public ListItemViewHolder(View itemView) {
             super(itemView);
             imgView = (ImageView) itemView.findViewById(R.id.imageview_icon);
             title = (TextView) itemView.findViewById(R.id.textview_title);
             phoneNumbet = (TextView) itemView.findViewById(R.id.textview_phone_number);
+            date = (TextView) itemView.findViewById(R.id.textview_date);
         }
     }
 

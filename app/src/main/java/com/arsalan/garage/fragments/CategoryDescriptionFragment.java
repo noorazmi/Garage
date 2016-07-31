@@ -64,11 +64,7 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_share:
-                // Not implemented here
                 return false;
-            //case R.id.fragment_menu_item:
-                // Do Fragment menu item stuff here
-              //  return true;
             default:
                 break;
         }
@@ -140,10 +136,6 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
             return;
         }
         mTextViewDescription.setText(valueObject.getResults().getDescription());
-
-
-        //mTextViewPhone.setText(content);
-
 
         if(TextUtils.isEmpty(valueObject.getResults().getPhone())){
             mTextViewPhone.setVisibility(View.GONE);
