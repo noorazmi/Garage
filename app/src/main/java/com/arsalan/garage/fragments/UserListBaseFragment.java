@@ -167,7 +167,7 @@ public abstract class UserListBaseFragment extends Fragment {
         //String url = bundle.getString(AppConstants.URL) + "/" + PrefUtility.getAccessToken();
         String url = getListDownloadUrl();
         Log.e("TAG", " ******^^^^^^^^^bundle URL:" + url);
-        httpRequest.setUrl(url + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT);
+        httpRequest.setUrl(url + "?page=" + (++pageNumber) + "&limit=" + AppConstants.REQUEST_ITEM_COUNT);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(getValueObjectFullyQualifiedName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

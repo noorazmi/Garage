@@ -37,7 +37,7 @@
         android:layout_marginTop="15dp"/>
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_phone"
+        android:id="@+id/textview_phone1"
         style="@style/TextViewStyle.Regular.English"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"

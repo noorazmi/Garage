@@ -1,20 +1,17 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/highlighted_text_material_light"
-    tools:context="com.fameliv.fragment.LeaderBoardFragment"
-    android:orientation="vertical"
-    >
-
-    <TextView
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Setting"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Login"/>
 
 </FrameLayout>

@@ -48,6 +48,8 @@
     <string name="dodge"> دودج </string>
     <string name="car_brand_chevrolet">شيفروليه</string>
     <string name="car_brand_gmc">جمس</string>
+    <string name="car_brand_ram">رام</string>
+    <string name="car_brand_mercury"> ميركوري </string>
     <string name="car_brand_fordnlincoln">فورد /لنكون</string>
     <string name="car_brand_hummer">همر</string>
     <string name="car_brand_jeep">جيب</string>
@@ -298,11 +300,14 @@
     <string name="whatsapp">WhatsApp</string>
     <string name="select_sharing_option">Select sharing option</string>
     <string name="package_name">com.arsalan.garage</string>
-    <string name="hint_email">EMAIL*</string>
+    <string name="hint_first_name">FIRST NAME*</string>
+    <string name="hint_last_name">LAST NAME*</string>
+    <string name="hint_phone">PHONE*</string>
+    <string name="hint_email">EMAIL</string>
     <string name="hint_password">PASSWORD*</string>
     <string name="hint_confirm_password">CONFIRM PASSWORD*</string>
     <string name="hint_mobile">MOBILE NUMBER*</string>
-    <string name="forgot_password">Forgot?</string>
+    <string name="forgot_password">Forgot Password?</string>
     <string name="forgot_password_message">Please enter your email address below. You will receive a link to reset your password.</string>
     <string name="forgot_password_hint">Enter your email address</string>
     <string name="resetPassword">Reset password</string>
@@ -314,8 +319,11 @@
     <string name="error_something_went_wrong">Something went wrong...</string>
     <string name="internet_error_msg">No internet connection</string>
     <string name="error_blank_password">Password can\'t be blank</string>
-    <string name="password_length">Min. 6 chars</string>
+    <string name="password_length">Min. 8 chars</string>
     <string name="blank_email">Email can\'t be blank</string>
+    <string name="blank_first_name">First name can\'t be blank</string>
+    <string name="blank_last_name">Last name can\'t be blank</string>
+    <string name="blank_phone"> Phone can\'t be blank</string>
     <string name="invalid_email">Invalid email</string>
     <string name="already_registered">ALREADY HAVE AN ACCOUNT? </string>
     <string name="register">Register</string>
@@ -325,6 +333,9 @@
     <string name="valid_mobile">Nice!</string>
     <string name="wrong_password">No special chars. allowed</string>
     <string name="password_does_not_match">Password and confirm password doesn\'t match</string>
+    <string name="phone_min_length">The phone must be at least 6 characters</string>
+    <string name="logout">Log Out</string>
+    <string name="login">Login</string>
 
 
 </resources>

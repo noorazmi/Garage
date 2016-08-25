@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gr_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <FrameLayout
+            android:id="@+id/framelayout_viewpager_container"
+            android:layout_width="match_parent"
+            android:layout_height="260dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_car_images"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/pager_indicator_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:background="@android:color/transparent"
+                android:gravity="bottom|center"
+                android:orientation="horizontal"
+                android:visibility="visible"/>
+        </FrameLayout>
+        <RelativeLayout
+            android:id="@+id/relative_layout_price_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/framelayout_viewpager_container"
+            android:layout_marginTop="15dp">
+
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                android:id="@+id/textview_model"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Wait..."
+                android:textColor="@color/phone_number"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/phone_number"/>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textview_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout_price_container"
+            android:layout_marginTop="30dp"
+            android:gravity="right"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" android:text="Wait..."/>
+
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/textview_phone1"
+            style="@style/TextViewStyle.Regular.English"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textview_description"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:drawableLeft="@drawable/ic_phone_small"
+            android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"
+            android:paddingRight="20dp"
+            android:text="Wait..."
+            android:textColor="@color/phone_number"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/textview_phone2"
+            style="@style/TextViewStyle.Regular.English"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textview_phone1"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@drawable/ic_phone_small"
+            android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"
+            android:paddingRight="20dp"
+            android:text="Wait..."
+            android:textColor="@color/phone_number"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/imageview_email"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/textview_phone1"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textview_phone1"
+            android:src="@drawable/message"/>
+    </RelativeLayout>
+
+</ScrollView>

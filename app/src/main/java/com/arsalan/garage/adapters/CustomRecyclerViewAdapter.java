@@ -11,9 +11,6 @@ import com.arsalan.garage.R;
 
 import java.util.List;
 
-/**
- * Created by Harish Sharma on 16/9/15.
- */
 public abstract class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_ITEM = 1;

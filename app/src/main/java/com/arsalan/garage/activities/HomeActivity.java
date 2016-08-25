@@ -1,6 +1,7 @@
 package com.arsalan.garage.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
@@ -59,4 +60,10 @@ public class HomeActivity extends BaseActivity {
                 handler.postDelayed(r, 4000);
             }
         }
+
+    public void addFragment(Fragment fragment){
+        mFragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.framelayout_container, fragment).addToBackStack(null).commit();
+    }
 }

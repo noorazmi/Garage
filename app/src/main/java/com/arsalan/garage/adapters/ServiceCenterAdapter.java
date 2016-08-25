@@ -82,7 +82,7 @@ public class ServiceCenterAdapter extends RecyclerView.Adapter<ServiceCenterAdap
             super(itemView);
             textViewAddress = (TextView) itemView.findViewById(R.id.textview_address);
             textViewTimings = (TextView) itemView.findViewById(R.id.textview_timing);
-            textViewPhone = (TextView) itemView.findViewById(R.id.textview_phone);
+            textViewPhone = (TextView) itemView.findViewById(R.id.textview_phone1);
         }
     }
 

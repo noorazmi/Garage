@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
+import com.arsalan.garage.activities.MarineBoatFishingActivity;
 import com.arsalan.garage.activities.MarineUserActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
@@ -94,8 +95,9 @@ public class MarineFragment extends Fragment {
                         bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
                         break;
                     case 3:
-                        bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
+                        bundle.putString(AppConstants.URL, Urls.MARINE_BOAT_FISHING_LIST);
                         bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.fishing_ship));
+                        intent = new Intent(getActivity(), MarineBoatFishingActivity.class);
                         break;
                     case 4:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);

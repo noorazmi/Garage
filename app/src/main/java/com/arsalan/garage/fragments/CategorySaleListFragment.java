@@ -50,7 +50,6 @@ public class CategorySaleListFragment extends Fragment {
     private CategorySaleListAdapter mCategoryListAdapter;
     private AmericanCarsVO mAmericanCarsVO;
     private List<AmericanCarsVO.Result> mCarList;
-    //private List<AmericanCarsVO.Result> dummyItems;
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
@@ -226,7 +225,7 @@ public class CategorySaleListFragment extends Fragment {
 
         Bundle bundle = getArguments();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
-        httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page="+(++pageNumber)+"?limit="+AppConstants.REQUEST_ITEM_COUNT);
+        httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page="+(++pageNumber)+"&limit="+AppConstants.REQUEST_ITEM_COUNT);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(AmericanCarsVO.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

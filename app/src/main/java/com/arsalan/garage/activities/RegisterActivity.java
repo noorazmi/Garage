@@ -3,7 +3,6 @@ package com.arsalan.garage.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -31,19 +30,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class RegisterActivity extends AppCompatActivity implements View.OnFocusChangeListener, View.OnClickListener{
-    CustomEditText editTextEmail;
-    CustomEditText editTextPassword;
-    CustomEditText editTextConfirmPassword;
-    TextView textViewLoginNow;
-    CustomTextViewEnglish textViewClose;
-    CustomButton btnRegister;
-    TextInputLayout inputLayoutEmail;
-    TextInputLayout inputLayoutPassword;
-    TextInputLayout inputLayoutConfirmPassword;
-    CustomTextViewEnglish passwordError;
-    ImageView showPassword;
-    ImageView showConfirmPassword;
+public class RegisterActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnClickListener{
+    private CustomEditText editTextEmail;
+    private CustomEditText editTextFirstName;
+    private CustomEditText editTextLastName;
+    private CustomEditText editTextPhone;
+    private CustomEditText editTextPassword;
+    private CustomEditText editTextConfirmPassword;
+    private TextView textViewLoginNow;
+    private ImageView textViewClose;
+    private CustomButton btnRegister;
+    private TextInputLayout inputLayoutFirstName;
+    private TextInputLayout inputLayoutLastName;
+    private TextInputLayout inputLayoutPhone;
+    private TextInputLayout inputLayoutEmail;
+    private TextInputLayout inputLayoutPassword;
+    private TextInputLayout inputLayoutConfirmPassword;
+    private CustomTextViewEnglish passwordError;
+    private ImageView showPassword;
+    private ImageView showConfirmPassword;
     private CustomProgressDialog progressDialog;
     private int passwordInputType;
     private String calledFrom = "";
@@ -58,19 +63,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
 
     private void init() {
 
-        editTextEmail = (CustomEditText) findViewById(R.id.edittext_email);
+        editTextEmail = (CustomEditText) findViewById(R.id.edittext_phone);
+        editTextFirstName = (CustomEditText) findViewById(R.id.edittext_first_name);
+        editTextLastName = (CustomEditText) findViewById(R.id.edittext_last_name);
+        editTextPhone = (CustomEditText) findViewById(R.id.edittext_phone);
         editTextPassword = (CustomEditText) findViewById(R.id.edittext_password);
         editTextConfirmPassword = (CustomEditText) findViewById(R.id.edittext_confirm_password);
         textViewLoginNow = (CustomTextViewEnglish) findViewById(R.id.edittext_login_now);
-        textViewClose = (CustomTextViewEnglish) findViewById(R.id.textview_close);
+        textViewClose = (ImageView) findViewById(R.id.textview_close);
         btnRegister = (CustomButton) findViewById(R.id.button_register);
-        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
+        inputLayoutFirstName = (TextInputLayout) findViewById(R.id.input_layout_first_name);
+        inputLayoutLastName = (TextInputLayout) findViewById(R.id.input_layout_last_name);
+        inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
+        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_phone);
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
         inputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.input_layout_confirm_password);
         showPassword = (ImageView) findViewById(R.id.imageview_show_assword);
         showConfirmPassword = (ImageView) findViewById(R.id.imageview_show_confirm_password);
-
-
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -82,6 +91,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
         progressDialog.setCanceledOnTouchOutside(false);
 
         editTextEmail.setOnFocusChangeListener(this);
+        editTextFirstName.setOnFocusChangeListener(this);
+        editTextLastName.setOnFocusChangeListener(this);
+        editTextPhone.setOnFocusChangeListener(this);
         editTextPassword.setOnFocusChangeListener(this);
 
         showPassword.setOnClickListener(this);
@@ -95,6 +107,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
     private JSONObject createRegisterUerJson() {
         JSONObject registerJSON = new JSONObject();
         try {
+            registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
+            registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());
+            registerJSON.put(AppConstants.PHONE, editTextPhone.getText().toString());
             registerJSON.put(AppConstants.EMAIL, editTextEmail.getText().toString());
             registerJSON.put(AppConstants.PASSWORD, editTextPassword.getText().toString());
             registerJSON.put(AppConstants.CONFIRM_PASSWORD, editTextConfirmPassword.getText().toString());
@@ -120,6 +135,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
     public void onFocusChange(View view, boolean hasFocus) {
         if (!hasFocus) {
             switch (view.getId()) {
+                case R.id.edittext_first_name:
+                    break;
+                case R.id.edittext_last_name:
+                    break;
+                case R.id.edittext_phone:
+                    break;
                 case R.id.edittext_email:
                     verifyEmailAddress();
                     break;
@@ -131,6 +152,40 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
             }
         }
     }
+
+    private boolean verifyFirstName() {
+        String firstName = editTextFirstName.getText().toString();
+        if (TextUtils.isEmpty(firstName.trim())) {
+            inputLayoutFirstName.setError(getString(R.string.blank_first_name));
+            return false;
+        } else {
+            inputLayoutFirstName.setError("");
+            return true;
+        }
+    }
+
+    private boolean verifyLastName() {
+        String firstName = editTextLastName.getText().toString();
+        if (TextUtils.isEmpty(firstName.trim())) {
+            inputLayoutLastName.setError(getString(R.string.blank_last_name));
+            return false;
+        } else {
+            inputLayoutLastName.setError("");
+            return true;
+        }
+    }
+
+    private boolean verifyPhone() {
+        String firstName = editTextPhone.getText().toString();
+        if (TextUtils.isEmpty(firstName.trim())) {
+            inputLayoutPhone.setError(getString(R.string.blank_phone));
+            return false;
+        } else {
+            inputLayoutPhone.setError("");
+            return true;
+        }
+    }
+
 
     private boolean verifyEmailAddress() {
         String email = editTextEmail.getText().toString();
@@ -151,7 +206,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
         if (TextUtils.isEmpty(pass.trim())) {
             inputLayoutPassword.setError(getString(R.string.error_blank_password));
             return false;
-        } else if (pass.trim().length() < 6) {
+        } else if (pass.trim().length() < 8) {
             inputLayoutPassword.setError(getString(R.string.password_length));
             return false;
         } else if (!pass.trim().matches("[A-Za-z0-9]*")) {
@@ -217,20 +272,43 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
 
     private void registerUser() {
         if (Utils.isNetworkAvailable()) {
-            if (verifyEmailAddress()  && verifyPassword() && verifyConfirmPassword()) {
+            boolean isAllFieldsProperlySet = true;
+            isAllFieldsProperlySet = verifyFirstName();
+            isAllFieldsProperlySet = verifyLastName();
+            isAllFieldsProperlySet = verifyPhone();
+            isAllFieldsProperlySet = verifyEmailAddress();
+            isAllFieldsProperlySet = verifyPassword();
+            isAllFieldsProperlySet = verifyConfirmPassword();
+
+            if (isAllFieldsProperlySet) {
                 JSONObject registerJSON = createRegisterUerJson();
                 progressDialog.show();
                 VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.REGISTER_USER, Request.Method.POST, new VolleyHttpListener() {
                     @Override
                     public void onResult(VolleyHttpResponse volleyHttpResponse) {
                         if (volleyHttpResponse.getResponseModel() instanceof StatusMessage) {
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
                             mStatusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
+                            if(mStatusMessage != null){
+                                if(mStatusMessage.getStatus().equalsIgnoreCase("fail")){
+                                    Utils.showSnackBar(RegisterActivity.this, mStatusMessage.getMessage());
+                                }else if(mStatusMessage.getStatus().equalsIgnoreCase("success")){
+                                    Utils.showToastMessage(RegisterActivity.this, mStatusMessage.getMessage());
+                                    finish();
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+
+                                }
+                            }
                         }
                     }
                     @Override
                     public void onError(VolleyError error) {
-                        if (progressDialog.isShowing())
+                        if (progressDialog.isShowing()){
                             progressDialog.dismiss();
+                        }
                         if (!Utils.isNetworkAvailable()) {
                             Utils.showSnackBar(RegisterActivity.this, getString(R.string.internet_error_msg));
                             return;
@@ -255,7 +333,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnFocusC
             editTextPassword.setInputType(passwordInputType);
         }
         editTextPassword.setSelection(editTextPassword.getText().length());
-
     }
 
 }

@@ -105,31 +105,41 @@ public class ForSaleSubMenuFragment extends Fragment {
                             make = AppConstants.GMC;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_gmc));
                         } else if (position == 4) {
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_MERCURY);
+                            //bundle.putString(AppConstants.URL, Urls.GMC);
+                            make = AppConstants.MERCURY;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_mercury));
+                        } else if (position == 5) {
+                            bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_RAM);
+                            //bundle.putString(AppConstants.URL, Urls.GMC);
+                            make = AppConstants.RAM;
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_ram));
+                        }else if (position == 6) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_FORDNLINCOLN);
                             //bundle.putString(AppConstants.URL, Urls.FORDNLINCOLN);
                             make = AppConstants.FORD;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ford));
-                        } else if (position == 5) {
+                        } else if (position == 7) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_LINCOLN);
                             //bundle.putString(AppConstants.URL, Urls.FORDNLINCOLN);
                             make = AppConstants.LINCOLN;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.lincoln));
-                        } else if (position == 6) {
+                        } else if (position == 8) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_HUMMER);
                             //bundle.putString(AppConstants.URL, Urls.HUMMER);
                             make = AppConstants.HUMMER;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_hummer));
-                        } else if (position == 7) {
+                        } else if (position == 9) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
                             //bundle.putString(AppConstants.URL, Urls.JEEP);
                             make = AppConstants.JEEP;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_jeep));
-                        }else if (position == 8) {
+                        }else if (position == 10) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
                             //bundle.putString(AppConstants.URL, Urls.JEEP);
                             make = AppConstants.CHRYSLER;
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.chrysler));
-                        }else if (position == 9) {
+                        }else if (position == 11) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_JEEP);
                             //bundle.putString(AppConstants.URL, Urls.JEEP);
                             make = AppConstants.OTHER;

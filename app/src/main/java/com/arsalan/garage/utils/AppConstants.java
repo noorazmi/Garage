@@ -10,7 +10,7 @@ package com.arsalan.garage.utils;
  */
 public interface AppConstants {
 
-    int REQUEST_ITEM_COUNT = 25;
+    int REQUEST_ITEM_COUNT = 20;
     int DIVIDER_ITEM_WIDTH = 5;
 
     String URL= "url";
@@ -71,6 +71,8 @@ public interface AppConstants {
     String SCRAP_AMERICA_SUB_TYPE_DODGENCHRYSLER = "scrap_america_sub_type_dodgenchrysler";
     String SCRAP_AMERICA_SUB_TYPE_CHEVROLET = "scrap_america_sub_type_chevrolet";
     String SCRAP_AMERICA_SUB_TYPE_GMC = "scrap_america_sub_type_gmc";
+    String SCRAP_AMERICA_SUB_TYPE_MERCURY = "scrap_america_sub_type_mercury";
+    String SCRAP_AMERICA_SUB_TYPE_RAM = "scrap_america_sub_type_ram";
     String SCRAP_AMERICA_SUB_TYPE_FORDNLINCOLN = "scrap_america_sub_type_fordnlincoln";
     String SCRAP_AMERICA_SUB_TYPE_LINCOLN = "scrap_america_sub_type_lincoln";
     String SCRAP_AMERICA_SUB_TYPE_HUMMER = "scrap_america_sub_type_hummer";
@@ -154,6 +156,8 @@ public interface AppConstants {
     String EXTRA_GALLERY_FOR_ACCESSORIES_USER = "extra_gallery_for_accessories_user";
     String EXTRA_GALLERY_FOR_SCRAP_USER = "extra_gallery_for_scrap_user";
     String EXTRA_GALLERY_FOR_MARINE_SHOWROOM = "extra_gallery_for_showroom";
+    String EXTRA_GALLERY_FOR_CAR_WASH = "extra_gallery_for_car_wash";
+    String EXTRA_GALLERY_FOR_MARINE_BOAT_FISHING = "extra_gallery_for_marine_boat_fishing";
     String EXTRA_GALLERY_FOR_SALE = "extra_gallery_for_sale";
     String EXTRA_GALLERY_USER_GALLERY = "extra_gallery_user_gallery";
 
@@ -174,7 +178,6 @@ public interface AppConstants {
     String MAKE = "make";
     String MODEL = "model";
     String TITLE = "title";
-    String PHONE = "phone";
     String PRICE = "price";
     String POST_DATE = "post_date";
     String IMAGE = "image";
@@ -200,6 +203,7 @@ public interface AppConstants {
     //String DODGE_CHRYSLER = "dodge-chrysler";
     String DODGE_CHRYSLER = "dodgechrysler";
     String GMC="gmc";
+    String MERCURY="mercury";
     //String FORDL_INCOLN = "ford-lincoln";
     String FORD = "ford";
     String LINCOLN = "lincoln";
@@ -287,12 +291,16 @@ public interface AppConstants {
 
     String MESSAGE = "message";
     String SUCCESS = "success";
+    String FAIL = "fail";
     java.lang.String STATUS = "status";
     String IMAGE_LIST = "image_list";
     String CATEGORY = "category";
     String SUB_CATEGORY = "sub_category";
     public static final String CALLED_FROM = "calledFrom";
     String EMAIL = "email";
+    String FIRST_NAME = "first_name";
+    String LAST_NAME = "last_name";
+    String PHONE = "phone";
     String CALLED_BY_POST_ADD = "called_by_post_add";
     public static final String SET_COOKIE_KEY = "Set-Cookie";
     public static final String COOKIE_KEY = "Cookie";

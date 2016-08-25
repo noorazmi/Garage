@@ -67,7 +67,8 @@ public interface Urls {
     String DELIVERY = "http://kuwaitgarage.com/api/scrape/delivery";
 
     String TAXI = "http://kuwaitgarage.com/api/taxi";
-    String MOVABLE_WASH = "http://kuwaitgarage.com/api/movablewash";
+    //String MOVABLE_WASH = "http://kuwaitgarage.com/api/movablewash";
+    String MOVABLE_WASH = "http://kuwaitgarage.com/api/carwashlist";
     String TECHNICAL_INSPECTION = "http://kuwaitgarage.com/api/technicalinspection";
 
     //Help On Road
@@ -248,6 +249,8 @@ public interface Urls {
     String MARINE_MOBILE_MECHANICS_ELECTRICITY = "http://kuwaitgarage.com/api/marine/mobilemechanicselectricity";
     String MARINE_FREELY_CENTERS = "http://kuwaitgarage.com/api/marine/freelycenters";
     String MARINE_FIBERGLASS_AND_SMITHY = "http://kuwaitgarage.com/api/marine/fiberglassandsmithy";
+    //String MARINE_BOAT_FISHING_LIST = "http://kuwaitgarage.com/api/marine/boatfishinglist";
+    String MARINE_BOAT_FISHING_LIST = "http://kuwaitgarage.com/api/boatfishinglist";
 
 
     String MARINEUSER_BASE_URL = "http://kuwaitgarage.com/api/marineuser/";

@@ -161,7 +161,7 @@ public class MarineUserListFragment extends android.app.Fragment {
         Bundle bundle = getArguments();
         String url = bundle.getString(AppConstants.URL)+ "/" + PrefUtility.getAccessToken();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + url);
-        httpRequest.setUrl(url + "?page=" + (++pageNumber) + "?limit=" + AppConstants.REQUEST_ITEM_COUNT);
+        httpRequest.setUrl(url + "?page=" + (++pageNumber) + "&limit=" + AppConstants.REQUEST_ITEM_COUNT);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(MarineUserListData.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

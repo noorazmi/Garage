@@ -146,6 +146,8 @@ public class Utils {
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, "دودج"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, "جمس"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercury, "ميركوري"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ram, "رام"));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ford, " فورد "));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lincoln, " لنكون "));
         menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, "همر"));

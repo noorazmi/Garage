@@ -101,7 +101,7 @@
         android:text="Wait..."/>
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-        android:id="@+id/textview_phone"
+        android:id="@+id/textview_phone1"
         style="@style/TextViewStyle.Regular.English"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -121,9 +121,9 @@
         android:id="@+id/imageview_email"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/textview_phone"
+        android:layout_alignBottom="@+id/textview_phone1"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/textview_phone"
+        android:layout_toRightOf="@+id/textview_phone1"
         android:src="@drawable/message"/>
 
 

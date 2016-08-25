@@ -1,5 +1,6 @@
 package com.arsalan.garage.activities;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -38,13 +39,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
-    EditText editEmail;
+    EditText editPhone;
     EditText editPassword;
     Button buttonLogin;
     TextView signUpNow;
-    TextView textViewSkip;
+    ImageView textViewSkip;
     CustomTextViewEnglish buttonForgotPassword;
-    TextInputLayout inputLayoutEmail;
+    TextInputLayout inputLayoutPhone;
     TextInputLayout inputLayoutPassword;
     ImageView showPassword;
     private CustomProgressDialog progressDialog;
@@ -63,12 +64,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private void init() {
         editPassword = (EditText) findViewById(R.id.edittext_password);
-        editEmail = (EditText) findViewById(R.id.edittext_email);
+        editPhone = (EditText) findViewById(R.id.edittext_phone);
         buttonLogin = (Button) findViewById(R.id.button_sign_in);
         signUpNow = (TextView) findViewById(R.id.textview_signup);
-        textViewSkip = (TextView) findViewById(R.id.textview_close);
+        textViewSkip = (ImageView) findViewById(R.id.textview_close);
         buttonForgotPassword = (CustomTextViewEnglish) findViewById(R.id.forgotPassword);
-        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
+        inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
         showPassword = (ImageView) findViewById(R.id.imageview_show_assword);
 
@@ -82,13 +83,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         forgotPasswordDialog = new Dialog(this);
         passwordInputType = editPassword.getInputType();
-        editEmail.setOnFocusChangeListener(this);
+        editPhone.setOnFocusChangeListener(this);
         textViewSkip.setOnClickListener(this);
         signUpNow.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
         showPassword.setOnClickListener(this);
         buttonForgotPassword.setOnClickListener(this);
-        editEmail.setOnFocusChangeListener(this);
+        editPhone.setOnFocusChangeListener(this);
         editPassword.setOnFocusChangeListener(this);
     }
 
@@ -108,11 +109,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
      */
 
     private void emailLogin() {
-        String email = editEmail.getText().toString();
+        String phone = editPhone.getText().toString();
         String pass = editPassword.getText().toString();
         try {
             JSONObject loginJson = new JSONObject();
-            loginJson.put("email", email.trim());
+            loginJson.put("phone", phone.trim());
             loginJson.put("password", pass.trim());
             loginJson.put("confirm_password", pass.trim());
             progressDialog.show();
@@ -120,20 +121,29 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 @Override
                 public void onResult(VolleyHttpResponse volleyHttpResponse) {
                     if (volleyHttpResponse.getResponseModel() instanceof UserInfo) {
+                        if (progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
                         mUserInfo = (UserInfo) volleyHttpResponse.getResponseModel();
-                        loginSuccess(mUserInfo);
+                        if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.SUCCESS)) {
+                            Utils.showToastMessage(LoginActivity.this, mUserInfo.getMessage());
+                            loginSuccess(mUserInfo);
+                        } else if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.FAIL)) {
+                            Utils.showSnackBar(LoginActivity.this, mUserInfo.getMessage());
+                        }
                     }
                 }
 
                 @Override
                 public void onError(VolleyError error) {
-                    if (progressDialog.isShowing())
+                    if (progressDialog.isShowing()){
                         progressDialog.dismiss();
-                    if (!Utils.isNetworkAvailable(LoginActivity.this)) {
-                        //TtnUtil.displaySnackBar(getString(R.string.internet_error_msg), snackbarlocation, LoginActivity.this);
+                    }
+                    if (!Utils.isNetworkAvailable()) {
+                        Utils.showSnackBar(LoginActivity.this, getString(R.string.internet_error_msg));
                         return;
                     }
-                    //TtnUtil.displaySnackBar(getString(R.string.invalid_user_password), snackbarlocation, LoginActivity.this);
+                    Utils.showSnackBar(LoginActivity.this, getString(R.string.error_something_went_wrong));
                 }
             });
             volleyHttpTask.setJsonPayload(loginJson);
@@ -160,18 +170,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         return true;
     }
 
-    private boolean validateEmail() {
-        String email = editEmail.getText().toString();
-        if (TextUtils.isEmpty(email.trim())) {
-            inputLayoutEmail.setError(getString(R.string.blank_email));
-            inputLayoutEmail.setErrorEnabled(true);
+    private boolean verifyPhone() {
+        String firstName = editPhone.getText().toString().trim();
+        if (TextUtils.isEmpty(firstName)) {
+            inputLayoutPhone.setError(getString(R.string.blank_phone));
             return false;
-        } else if (!Utils.isValidEmail(email.trim())) {
-            inputLayoutEmail.setError(getString(R.string.invalid_email));
-            inputLayoutEmail.setErrorEnabled(true);
+        } else if (firstName.length() < 6) {
+            inputLayoutPhone.setError(getString(R.string.phone_min_length));
             return false;
+        } else {
+            inputLayoutPhone.setError("");
+            return true;
         }
-        return true;
     }
 
 
@@ -200,7 +210,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private void login() {
         if (checkInternetConnection()) {
-            if (validateEmail() && validatePassword()) {
+            boolean isAllFieldsProperlySet = true;
+            isAllFieldsProperlySet = verifyPhone();
+            isAllFieldsProperlySet = validatePassword();
+
+            if (isAllFieldsProperlySet) {
                 emailLogin();
             }
         } else {
@@ -260,7 +274,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         @Override
                         public void onResult(VolleyHttpResponse volleyHttpResponse) {
                             StatusMessage statusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
-                            progressDialog.dismiss();
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
                             if (statusMessage.getStatus().equals(AppConstants.SUCCESS)) {
                                 Utils.showSnackBar(LoginActivity.this, getString(R.string.msg_password_sent));
                                 forgotPasswordDialog.dismiss();
@@ -272,8 +288,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
                         @Override
                         public void onError(VolleyError error) {
-                            if (progressDialog.isShowing())
+                            if (progressDialog.isShowing()){
                                 progressDialog.dismiss();
+                            }
                             if (!Utils.isNetworkAvailable()) {
                                 Utils.showSnackBar(LoginActivity.this, getString(R.string.internet_error_msg));
                                 return;
@@ -308,12 +325,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onFocusChange(View view, boolean hasFocus) {
         switch (view.getId()) {
-            case R.id.edittext_email:
+            case R.id.edittext_phone:
                 if (hasFocus) {
-                    inputLayoutEmail.setError("");
-                    inputLayoutEmail.setErrorEnabled(true);
+                    inputLayoutPhone.setError("");
+                    inputLayoutPhone.setErrorEnabled(true);
                 } else {
-                    validateEmail();
+                    verifyPhone();
                 }
                 break;
             case R.id.edittext_password:
@@ -335,15 +352,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         progressDialog.dismiss();
         if (mUserInfo.getStatus().equals(AppConstants.SUCCESS)) {
             PrefUtility.saveUsrInfo(mUserInfo);
+            Intent intent = getIntent();
+            setResult(Activity.RESULT_OK, intent);
             if (calledFrom.equals(AppConstants.CALLED_BY_POST_ADD)) {
                 finish();
             } else {
-                //TtnUtil.launchActivity(this, HomeActivity.class);
                 finish();
             }
         } else {
             Utils.showSnackBar(LoginActivity.this, mUserInfo.getMessage());
-
         }
     }
 }
