@@ -50,6 +50,7 @@ public class CategorySaleListFragment extends Fragment {
     private CategorySaleListAdapter mCategoryListAdapter;
     private AmericanCarsVO mAmericanCarsVO;
     private List<AmericanCarsVO.Result> mCarList;
+    protected ArrayList<AmericanCarsVO.Result> mCarListReserved;
     private int pageNumber = 0;
     private boolean isFirstTime = true;
     private boolean keepLoading = true;
@@ -71,6 +72,9 @@ public class CategorySaleListFragment extends Fragment {
             public void onClick(View v) {
                 if(editTextSearch.getText().toString().length() > 0){
                     editTextSearch.getText().clear();
+                    mCarList.clear();
+                    mCarList.addAll(mCarListReserved);
+                    mCategoryListAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -94,6 +98,7 @@ public class CategorySaleListFragment extends Fragment {
         //mDataModels = getDataModelList();
 
         //mCategoryListAdapter = new CategoryListAdapter(americanCarsVO, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+        mCarListReserved = new ArrayList<>(0);
         mCarList = new ArrayList<>(0);
         //dummyItems = new ArrayList<>(0);
         mCategoryListAdapter = new CategorySaleListAdapter(getActivity(), mRecyclerView, mCarList, getActivity().getIntent().getStringExtra(AppConstants.SCRAP_TYPE), getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
@@ -158,7 +163,7 @@ public class CategorySaleListFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                List<AmericanCarsVO.Result> filteredModelList = filter(mCarList, s.toString());
+                List<AmericanCarsVO.Result> filteredModelList = filter(mCarListReserved, s.toString());
                 mCategoryListAdapter.animateTo(filteredModelList);
                 if(s.toString().length() > 0){
                     imageViewSearchLogo.setImageResource(R.drawable.ic_cross_blue);
@@ -180,8 +185,8 @@ public class CategorySaleListFragment extends Fragment {
 
         final List<AmericanCarsVO.Result> filteredModelList = new ArrayList<>();
         for (AmericanCarsVO.Result model : models) {
-            final String text = model.getDescription();
-            //final String text = ""+model.getPhone();
+            //final String text = model.getDescription();
+            final String text = ""+model.getPhone();
             if (text.contains(query)) {
                 filteredModelList.add(model);
             }
@@ -194,7 +199,8 @@ public class CategorySaleListFragment extends Fragment {
     private void showData(List<AmericanCarsVO.Result> carList){
         mCategoryListAdapter.setDownloadingProgress(false,mCarList);
         mCarList.addAll(carList);
-        if (mCarList.size() >= mTotalItemCount) {
+        mCarListReserved.addAll(carList);
+        if (mCarListReserved.size() >= mTotalItemCount) {
             keepLoading = false;
         }
         mCategoryListAdapter.notifyDataSetChanged();
