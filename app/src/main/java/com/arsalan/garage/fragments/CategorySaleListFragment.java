@@ -181,7 +181,7 @@ public class CategorySaleListFragment extends Fragment {
         final List<AmericanCarsVO.Result> filteredModelList = new ArrayList<>();
         for (AmericanCarsVO.Result model : models) {
             final String text = model.getDescription();
-            //final String text = model.getPhone();
+            //final String text = ""+model.getPhone();
             if (text.contains(query)) {
                 filteredModelList.add(model);
             }
