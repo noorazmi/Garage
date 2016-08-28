@@ -18,6 +18,7 @@ import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -415,6 +417,45 @@ public class Utils {
         }
     }
 
+    /**
+     * This function used to display indicator on pager
+     *
+     * @param circleCount int
+     */
+    public static ArrayList<ImageView> getCircleIndicator(Context context, int circleCount, LinearLayout layout) {
+        if (context == null && circleCount > 0) {
+            return null;
+        }
+        ArrayList<ImageView> indicatorImage = new ArrayList<ImageView>();
+        indicatorImage.clear();
+
+        layout.removeAllViews();
+        for (int i = 0; i < circleCount; i++) {
+            ImageView img = new ImageView(context);
+            img.setId(i);
+            img.setImageResource(R.drawable.ic_pagination);
+            img.setPadding(2, 2, 2, 2);
+            indicatorImage.add(img);
+            layout.addView(img);
+        }
+        return indicatorImage;
+    }
+
+    /**
+     * This function used to switch indicator or  dots on pager
+     */
+    public static void setIndicator(int pagerIndex, List<ImageView> indicatorImage) {
+        if (pagerIndex < indicatorImage.size()) {
+            for (int i = 0; i < indicatorImage.size(); i++) {
+                ImageView circle = indicatorImage.get(i);
+                if (i == pagerIndex) {
+                    circle.setImageResource(R.drawable.ic_pagination_selected);
+                } else {
+                    circle.setImageResource(R.drawable.ic_pagination);
+                }
+            }
+        }
+    }
 
     /**
      * Verify email Id

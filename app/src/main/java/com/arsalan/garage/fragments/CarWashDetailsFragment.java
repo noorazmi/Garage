@@ -9,26 +9,18 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.FullImageActivity;
 import com.arsalan.garage.adapters.AlwakalatAgencyDescriptionCarsViewPagerAdapter;
-import com.arsalan.garage.adapters.ShareListAdapter;
 import com.arsalan.garage.models.ImageInfo;
-import com.arsalan.garage.models.ShareOptionItem;
 import com.arsalan.garage.utils.AppConstants;
-import com.arsalan.garage.utils.CustomDialogHelper;
-import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.CarWashDetailsVO;
@@ -39,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -65,16 +58,16 @@ public class CarWashDetailsFragment extends Fragment {
     protected TextView mTextviewPhone1;
     protected TextView mTextviewPhone2;
     protected AlertDialog mShareOptionsAlertDialog;
-    protected String mShareImage;
     protected String mShareText;
     protected TextView mTextViewModel;
-    protected ImageView mImageViewEmail;
     protected CarWashDetailsVO.Results mResults;
+    private List<ImageView> indicatorImage;
+    private LinearLayout indicatorLayout;
 
     public CarWashDetailsFragment() {
     }
 
-    protected void openFullImageActivity(){
+    protected void openFullImageActivity() {
         Intent intent = new Intent(getActivity(), FullImageActivity.class);
         intent.putExtra(AppConstants.EXTRA_IMAGE_URL, getDetailsDownloadUrl());
         intent.putExtra(AppConstants.EXTRA_GALLERY_FOR, AppConstants.EXTRA_GALLERY_FOR_CAR_WASH);
@@ -100,24 +93,17 @@ public class CarWashDetailsFragment extends Fragment {
         return ForSaleUserDetailsData.class.getName();
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_carwash_details, container, false);
+        indicatorLayout = (LinearLayout) rootView.findViewById(R.id.pager_indicator_layout);
         mViewPagerItemImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone1 = (TextView) rootView.findViewById(R.id.textview_phone1);
         mTextviewPhone1.setVisibility(View.VISIBLE);
         mTextviewPhone2 = (TextView) rootView.findViewById(R.id.textview_phone2);
         mTextViewModel = (TextView) rootView.findViewById(R.id.textview_model);
-        mImageViewEmail = (ImageView) rootView.findViewById(R.id.imageview_email);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
         mViewPagerItemImages.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -125,6 +111,26 @@ public class CarWashDetailsFragment extends Fragment {
                 return false;
             }
         });
+
+        mViewPagerItemImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (indicatorImage != null && indicatorImage.size() > 0) {
+                    position = position % indicatorImage.size();
+                    Utils.setIndicator(position, indicatorImage);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+
         if (Utils.isNetworkAvailable(getActivity())) {
             performGET();
         } else {
@@ -137,13 +143,13 @@ public class CarWashDetailsFragment extends Fragment {
         mShareText = userDetailsBase.getDescription();
         mTextViewModel.setText(userDetailsBase.getName());
         mTextviewDescription.setText(mShareText);
-        if(userDetailsBase.getPhone() != null){
+        if (userDetailsBase.getPhone() != null) {
             for (int i = 0; i < userDetailsBase.getPhone().size(); i++) {
-                if(i ==0){
+                if (i == 0) {
                     mTextviewPhone1.setText(userDetailsBase.getPhone().get(i));
                     mTextviewPhone1.setVisibility(View.VISIBLE);
                 }
-                if(i == 1){
+                if (i == 1) {
                     mTextviewPhone2.setText(userDetailsBase.getPhone().get(i));
                     mTextviewPhone2.setVisibility(View.VISIBLE);
                 }
@@ -162,15 +168,9 @@ public class CarWashDetailsFragment extends Fragment {
             }
         });
 
-        mImageViewEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShareUtil.shareOnGmail(getActivity(), mShareText, mShareImage);
-            }
-        });
     }
 
-    protected GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
+    protected GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
 
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
@@ -179,68 +179,20 @@ public class CarWashDetailsFragment extends Fragment {
         }
     };
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_share, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_share:
-                showShareOptions();
-                break;
-            default:
-                break;
-        }
-        return false;
-    }
-
-    protected void showShareOptions() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        ListView mBankListView = new ListView(getActivity());
-
-        final ShareListAdapter shareListAdapter = new ShareListAdapter(getActivity(), Utils.getShareOptions());
-        mBankListView.setAdapter(shareListAdapter);
-        mBankListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                ShareOptionItem shareOptionItem = (ShareOptionItem) shareListAdapter.getItem(position);
-                mShareOptionsAlertDialog.dismiss();
-                switch (position) {
-                    case 0://facebook
-                        ShareUtil.shareOnFacebook(getActivity(), mShareText, mShareImage);
-                        break;
-                    case 1://twitter
-                        ShareUtil.shareOnTwitter(getActivity(), mShareText, mShareImage);
-                        break;
-                    case 2://whatsapp
-                        ShareUtil.shareOnWhatsApp(getActivity(), mShareText, mShareImage);
-                        break;
-                    default:
-                        break;
-
-                }
-            }
-        });
-        builder.setView(mBankListView);
-        builder.setTitle(getActivity().getString(R.string.select_sharing_option));
-        mShareOptionsAlertDialog = builder.create();
-        CustomDialogHelper customDialogHelper = new CustomDialogHelper(getActivity());
-        mShareOptionsAlertDialog.show();
-        customDialogHelper.changeDialog(mShareOptionsAlertDialog);
-    }
 
     protected void setPagerAdapter() {
         ArrayList<ImageInfo> carImageArrayList = null;
         if (mResults != null) {
             carImageArrayList = (ArrayList<ImageInfo>) mResults.getImages();
-            if(carImageArrayList.size() > 0){
-                mShareImage = carImageArrayList.get(0).getPhoto_name();
-            }
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
             mViewPagerItemImages.setAdapter(adapter);
+            indicatorImage = Utils.getCircleIndicator(getActivity(), carImageArrayList.size(), indicatorLayout);
+            Utils.setIndicator(0, indicatorImage);
+            if (carImageArrayList.size() <= 1) {
+                indicatorLayout.setVisibility(View.INVISIBLE);
+            } else {
+                indicatorLayout.setVisibility(View.VISIBLE);
+            }
         }
 
     }
@@ -258,11 +210,11 @@ public class CarWashDetailsFragment extends Fragment {
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
                 String responseString = httpResponse.getResponseJSONString();
-                if(responseString == null || responseString.contains("fail")){
+                if (responseString == null || responseString.contains("fail")) {
                     showFailMessage(getString(R.string.error_something_went_wrong));
                     return;
                 }
-                mCarWashDetailsVO =  getCarWashDetailsVo(responseString);
+                mCarWashDetailsVO = getCarWashDetailsVo(responseString);
                 setDetails(mCarWashDetailsVO);
                 getActivity().invalidateOptionsMenu();
             }
@@ -270,7 +222,7 @@ public class CarWashDetailsFragment extends Fragment {
         loaderHandler.loadData();
     }
 
-    public static CarWashDetailsVO getCarWashDetailsVo(String jsonString){
+    public static CarWashDetailsVO getCarWashDetailsVo(String jsonString) {
         CarWashDetailsVO carWashDetailsVO = new CarWashDetailsVO();
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -310,7 +262,7 @@ public class CarWashDetailsFragment extends Fragment {
         return null;
     }
 
-    private void showFailMessage(String message){
+    private void showFailMessage(String message) {
         Utils.showSnackBar(getActivity(), message);
         mViewPagerItemImages.postDelayed(new Runnable() {
             @Override
@@ -319,8 +271,6 @@ public class CarWashDetailsFragment extends Fragment {
             }
         }, 2000);
     }
-
-
 
 
 }

@@ -2,12 +2,11 @@
     <string name="app_name">" كراجي"</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="setting">Contact Us</string>
     <string name="karaji">" كراجي"</string>
     <string name="home">Home</string>
     <string name="offer">Offer</string>
     <string name="post_add">PostAd</string>
-    <string name="setting">Setting</string>
     <string name="title_activity_level_one_menu">@string/karajat</string>
     <string name="title_activity_level_two_menu">@string/karajat</string>
 
@@ -319,6 +318,7 @@
     <string name="error_something_went_wrong">Something went wrong...</string>
     <string name="internet_error_msg">No internet connection</string>
     <string name="error_blank_password">Password can\'t be blank</string>
+    <string name="error_blank_confirm_password">Confirm password can\'t be blank</string>
     <string name="password_length">Min. 8 chars</string>
     <string name="blank_email">Email can\'t be blank</string>
     <string name="blank_first_name">First name can\'t be blank</string>

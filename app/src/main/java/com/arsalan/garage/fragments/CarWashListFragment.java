@@ -1,6 +1,5 @@
 package com.arsalan.garage.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,12 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.CarWashDetailsActivity;
 import com.arsalan.garage.activities.CarWashListActivity;
 import com.arsalan.garage.adapters.CarWashListAdapter1;
 import com.arsalan.garage.adapters.CustomRecyclerViewAdapter;
-import com.arsalan.garage.interfaces.ClickListener;
-import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
@@ -97,18 +93,18 @@ public class CarWashListFragment extends Fragment {
         mRecyclerView.addItemDecoration(horizontalDivider);
         //mRecyclerView.addItemDecoration(verticalDivider);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Intent intent = new Intent(getActivity(), CarWashDetailsActivity.class);
-                Bundle bundle = new Bundle();
-                CarWashVO.CarWash carWash = mCarWashVO.getResults().get(position);
-                bundle.putString(AppConstants.ID, carWash.getCar_wash_id());
-                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-                intent.putExtras(bundle);
-                getActivity().startActivity(intent);
-            }
-        }));
+//        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                Intent intent = new Intent(getActivity(), CarWashDetailsActivity.class);
+//                Bundle bundle = new Bundle();
+//                CarWashVO.CarWash carWash = mCarWashVO.getResults().get(position);
+//                bundle.putString(AppConstants.ID, carWash.getCar_wash_id());
+//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+//                intent.putExtras(bundle);
+//                getActivity().startActivity(intent);
+//            }
+//        }));
         mCarWashListItems = new ArrayList<>(0);
         setAdapter();
         if (Utils.isNetworkAvailable()) {

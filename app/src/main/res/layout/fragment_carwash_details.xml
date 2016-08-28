@@ -24,12 +24,12 @@
             <LinearLayout
                 android:id="@+id/pager_indicator_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
+                android:layout_height="43dp"
+                android:layout_marginBottom="6dp"
                 android:background="@android:color/transparent"
                 android:gravity="bottom|center"
                 android:orientation="horizontal"
-                android:visibility="visible"/>
+                android:visibility="visible" android:layout_gravity="center_horizontal|bottom"/>
         </FrameLayout>
         <RelativeLayout
             android:id="@+id/relative_layout_price_container"
@@ -73,12 +73,12 @@
             android:id="@+id/textview_phone1"
             style="@style/TextViewStyle.Regular.English"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/textview_description"
             android:layout_gravity="right|center_vertical"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="25dp"
-            android:drawableLeft="@drawable/ic_phone_small"
+            android:drawableLeft="@drawable/ic_phone_smaller"
             android:drawablePadding="10dp"
             android:gravity="left|center_vertical"
             android:paddingRight="20dp"
@@ -86,16 +86,17 @@
             android:textColor="@color/phone_number"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="gone"/>
+            android:visibility="invisible"/>
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
             android:id="@+id/textview_phone2"
             style="@style/TextViewStyle.Regular.English"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/textview_phone1"
             android:layout_gravity="right|center_vertical"
             android:layout_marginLeft="15dp"
-            android:drawableLeft="@drawable/ic_phone_small"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_phone_smaller"
             android:drawablePadding="10dp"
             android:gravity="left|center_vertical"
             android:paddingRight="20dp"
@@ -103,15 +104,7 @@
             android:textColor="@color/phone_number"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="gone"/>
-        <ImageView
-            android:id="@+id/imageview_email"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignBottom="@+id/textview_phone1"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/textview_phone1"
-            android:src="@drawable/message"/>
+            android:visibility="invisible"/>
     </RelativeLayout>
 
 </ScrollView>

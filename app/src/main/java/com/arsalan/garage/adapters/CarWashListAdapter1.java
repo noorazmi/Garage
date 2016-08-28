@@ -1,6 +1,8 @@
 package com.arsalan.garage.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.CarWashDetailsActivity;
+import com.arsalan.garage.activities.CarWashListActivity;
+import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.CarWashVO;
 import com.bumptech.glide.Glide;
 
@@ -22,7 +28,7 @@ import java.util.List;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class CarWashListAdapter1 extends CustomRecyclerViewAdapter {
+public class CarWashListAdapter1 extends CustomRecyclerViewAdapter implements View.OnClickListener {
 
     private List<CarWashVO.CarWash> mCarWashArrayList;
     private Context mContext;
@@ -52,26 +58,22 @@ public class CarWashListAdapter1 extends CustomRecyclerViewAdapter {
 
         if (!isProgerssViewHolder(holder)) {
             CarWashVO.CarWash model = mCarWashArrayList.get(position);
-            ((ListItemViewHolder)holder).title.setText(model.getName());
-            //ImageLoader imageLoader = ImageLoader.getInstance();
-            //holder.imgView.getLayoutParams().width = 500;
-            //holder.imgView.getLayoutParams().height = 304;
-
-            //RelativeLayout.LayoutParams layoutParams =(RelativeLayout.LayoutParams)holder.imgView.getLayoutParams();
-            //layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-            //holder.imgView.setLayoutParams(layoutParams);
-            if(model.getPhone()!= null && !TextUtils.isEmpty(model.getPhone()[0])){
-                ((ListItemViewHolder)holder).textViewPhone.setText(model.getPhone()[0]);
+            ((ListItemViewHolder) holder).title.setText(model.getName());
+            holder.itemView.setTag(R.id.textview_phone1, position);
+            holder.itemView.setOnClickListener(this);
+            if (model.getPhone() != null && !TextUtils.isEmpty(model.getPhone()[0])) {
+                ((ListItemViewHolder) holder).textViewPhone.setText(model.getPhone()[0]);
+                ((ListItemViewHolder) holder).textViewPhone.setTag(model.getPhone()[0]);
+                ((ListItemViewHolder) holder).textViewPhone.setOnClickListener(this);
             }
 
-            if(!TextUtils.isEmpty(model.getImage())){
-                //imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
+            if (!TextUtils.isEmpty(model.getImage())) {
                 Glide.with(mContext)
                         .load(model.getImage()).placeholder(R.mipmap.ic_launcher)
                         //.override(500, 304)
-                        .into(((ListItemViewHolder)holder).imgView);
+                        .into(((ListItemViewHolder) holder).imgView);
             }
-        }else{
+        } else {
             showProgressBar(holder);
         }
     }
@@ -88,6 +90,24 @@ public class CarWashListAdapter1 extends CustomRecyclerViewAdapter {
     @Override
     public int getItemCount() {
         return mCarWashArrayList.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.textview_phone1) {
+            String phoneNumber = v.getTag().toString();
+            Utils.initCall(phoneNumber, mContext);
+        } else {
+            int position = (int) v.getTag(R.id.textview_phone1);
+            Intent intent = new Intent(mContext, CarWashDetailsActivity.class);
+            Bundle bundle = new Bundle();
+            CarWashVO.CarWash carWash = mCarWashArrayList.get(position);
+            bundle.putString(AppConstants.ID, carWash.getCar_wash_id());
+            bundle.putString(AppConstants.EXTRA_TITLE, ((CarWashListActivity) mContext).getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
+        }
+
     }
 
 

@@ -63,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
 
     private void init() {
 
-        editTextEmail = (CustomEditText) findViewById(R.id.edittext_phone);
+        editTextEmail = (CustomEditText) findViewById(R.id.edittext_email);
         editTextFirstName = (CustomEditText) findViewById(R.id.edittext_first_name);
         editTextLastName = (CustomEditText) findViewById(R.id.edittext_last_name);
         editTextPhone = (CustomEditText) findViewById(R.id.edittext_phone);
@@ -75,7 +75,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
         inputLayoutFirstName = (TextInputLayout) findViewById(R.id.input_layout_first_name);
         inputLayoutLastName = (TextInputLayout) findViewById(R.id.input_layout_last_name);
         inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
-        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_phone);
+        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
         inputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.input_layout_confirm_password);
         showPassword = (ImageView) findViewById(R.id.imageview_show_assword);
@@ -110,7 +110,9 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
             registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
             registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());
             registerJSON.put(AppConstants.PHONE, editTextPhone.getText().toString());
-            registerJSON.put(AppConstants.EMAIL, editTextEmail.getText().toString());
+            if(!TextUtils.isEmpty(editTextEmail.getText().toString())){
+                registerJSON.put(AppConstants.EMAIL, editTextEmail.getText().toString());
+            }
             registerJSON.put(AppConstants.PASSWORD, editTextPassword.getText().toString());
             registerJSON.put(AppConstants.CONFIRM_PASSWORD, editTextConfirmPassword.getText().toString());
         } catch (JSONException e) {
@@ -190,8 +192,8 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
     private boolean verifyEmailAddress() {
         String email = editTextEmail.getText().toString();
         if (TextUtils.isEmpty(email.trim())) {
-            inputLayoutEmail.setError(getString(R.string.blank_email));
-            return false;
+            //inputLayoutEmail.setError(getString(R.string.blank_email));
+            return true;
         }else if (!Utils.isValidEmail(email.trim())) {
             inputLayoutEmail.setError(getString(R.string.invalid_email));
             return false;
@@ -222,7 +224,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
         String confirmPassword = editTextConfirmPassword.getText().toString();
         String password = editTextPassword.getText().toString();
         if (TextUtils.isEmpty(confirmPassword.trim())){
-            inputLayoutConfirmPassword.setError(getString(R.string.error_blank_mobile));
+            inputLayoutConfirmPassword.setError(getString(R.string.error_blank_confirm_password));
             return false;
         } else if(!password.equals(confirmPassword)) {
             inputLayoutConfirmPassword.setError(getString(R.string.password_does_not_match));

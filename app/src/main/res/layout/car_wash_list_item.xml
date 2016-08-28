@@ -38,7 +38,9 @@
             android:text="+719823749812348"
             android:textColor="@color/phone_number"
             android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:clickable="true"
+            android:tag="phone_number"/>
 
     </LinearLayout>
 
