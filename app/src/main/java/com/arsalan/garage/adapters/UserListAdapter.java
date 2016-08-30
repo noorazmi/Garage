@@ -22,18 +22,22 @@ import java.util.List;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class UserListAdapter extends CustomRecyclerViewAdapter {
+public class UserListAdapter extends CustomRecyclerViewAdapter implements View.OnClickListener{
 
     private List<UserListItem> mAccessoriesUserItems;
     private String mDescriptionLanguage;
     private Context mContext;
-
+    private OnUserListItemClickListener mOnUserListItemClickListener;
 
     public UserListAdapter(Context context, RecyclerView recyclerView, List<UserListItem> accessoriesUserItems, String descriptionLanguage) {
         super(recyclerView);
         this.mContext = context;
         this.mAccessoriesUserItems = accessoriesUserItems;
         this.mDescriptionLanguage = descriptionLanguage;
+    }
+
+    public void setOnUserListItemClickListener(OnUserListItemClickListener onUserListItemClickListener){
+        mOnUserListItemClickListener = onUserListItemClickListener;
     }
 
     @Override
@@ -59,10 +63,13 @@ public class UserListAdapter extends CustomRecyclerViewAdapter {
             //In case of multiple/single view type put your code logic here...
             final UserListItem model = mAccessoriesUserItems.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
-            //holder.title.setText(model.getDescription());
+            holder.itemView.setTag(R.id.textview_phone_number, position);
+            holder.itemView.setOnClickListener(this);
             ((ListItemViewHolder) holder).date.setText(model.getPost_date());
             ((ListItemViewHolder) holder).title.setText(model.getTitle());
             ((ListItemViewHolder) holder).phoneNumber.setText(model.getDescription());
+            ((ListItemViewHolder) holder).phoneNumber.setTag(R.id.textview_phone_number, position);
+            ((ListItemViewHolder) holder).phoneNumber.setOnClickListener(this);
             ImageLoader imageLoader = ImageLoader.getInstance();
             imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
         }else{
@@ -84,6 +91,21 @@ public class UserListAdapter extends CustomRecyclerViewAdapter {
         return mAccessoriesUserItems.size();
     }
 
+    @Override
+    public void onClick(View v) {
+
+        int position = (int) v.getTag(R.id.textview_phone_number);
+        if (v.getId() == R.id.textview_phone_number) {
+            if(mOnUserListItemClickListener != null){
+                mOnUserListItemClickListener.onUserListPhoneNumberClick(position);
+            }
+        } else {
+            if(mOnUserListItemClickListener != null){
+                mOnUserListItemClickListener.onUserListItemClick(position);
+            }
+        }
+    }
+
 
     public class ListItemViewHolder extends CustomViewHolder {
 
@@ -99,5 +121,10 @@ public class UserListAdapter extends CustomRecyclerViewAdapter {
             title = (TextView) itemView.findViewById(R.id.textview_title);
             phoneNumber = (TextView) itemView.findViewById(R.id.textview_phone_number);
         }
+    }
+
+    public interface OnUserListItemClickListener{
+        void onUserListPhoneNumberClick(int position);
+        void onUserListItemClick(int position);
     }
 }

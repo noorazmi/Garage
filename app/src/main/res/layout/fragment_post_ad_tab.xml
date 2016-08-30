@@ -1,4 +1,5 @@
 <android.support.design.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -7,7 +8,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/scroll_view_container">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -288,4 +291,34 @@
                 android:background="@drawable/green_selector"/>
         </LinearLayout>
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:id="@+id/relative_layout_login">
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Login"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"/>
+
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            style="@style/TextViewStyle.SemiBold.English"
+            android:id="@+id/textview_login_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please login for posting the advertisements."
+            android:layout_above="@+id/button_login"
+            android:layout_centerHorizontal="true"
+            android:textSize="15dp"/>
+
+    </RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>

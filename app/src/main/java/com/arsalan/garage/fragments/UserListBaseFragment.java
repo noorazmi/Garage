@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
-import com.arsalan.garage.adapters.UserListAdapter;
 import com.arsalan.garage.adapters.CustomRecyclerViewAdapter;
+import com.arsalan.garage.adapters.UserListAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.utils.AppConstants;
@@ -118,6 +118,32 @@ public abstract class UserListBaseFragment extends Fragment {
                 Toast.makeText(GarageApp.getInstance(), "hello " + position, Toast.LENGTH_SHORT).show();
             }
         });
+
+//        mCategoryListAdapter.setOnUserListItemClickListener(new UserListAdapter.OnUserListItemClickListener() {
+//            @Override
+//            public void onUserListPhoneNumberClick(int position) {
+//                UserListItem userListItem = mUserListItems.get(position);
+//                String phoneNumber = userListItem.getPhone();
+//                Utils.initCall(phoneNumber, getActivity());
+//            }
+//
+//            @Override
+//            public void onUserListItemClick(int position) {
+//                Intent intent = new Intent(getActivity(), getDetailsActivityClass());
+//                Bundle bundle = new Bundle();
+//                UserListItem userListItem = mUserListItems.get(position);
+//                bundle.putString(AppConstants.DESCRIPTION, userListItem.getDescription());
+//                bundle.putString(AppConstants.IMAGE_URL, userListItem.getImage());
+//                bundle.putString(AppConstants.PHONE_NUMBER, userListItem.getPhone());
+//                bundle.putString(AppConstants.ID, userListItem.getId());
+//                bundle.putString(AppConstants.URL, getArguments().getString(AppConstants.URL));
+//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+//                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+//                intent.putExtras(bundle);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                getActivity().startActivity(intent);
+//            }
+//        });
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override

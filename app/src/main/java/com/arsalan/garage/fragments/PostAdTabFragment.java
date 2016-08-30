@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -82,6 +83,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private int MAX_ADV = 5;
     private int mImagesAdded = 0;
     private ProgressDialog mProgressDialog;
+    private Button mButtonLogin;
+    private final int LOGIN = 197;
+
     //private CustomProgressDialog mCustomProgressDialog;
 
 
@@ -102,6 +106,15 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_post_ad_tab, container, false);
+        mButtonLogin = (Button) rootView.findViewById(R.id.button_login);
+        prepareLogin();
+        if(PrefUtility.isLoggedIn()){
+            rootView.findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
+            rootView.findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
+        }else {
+            rootView.findViewById(R.id.relative_layout_login).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.scroll_view_container).setVisibility(View.GONE);
+        }
         mLinearLayoutAddViewContainer = (LinearLayout) rootView.findViewById(R.id.linear_layout_add_view_container);
         mSpinnerCategory = (Spinner) rootView.findViewById(R.id.spinner_category);
         mSpinnerSubCategory = (Spinner) rootView.findViewById(R.id.spinner_sub_category);
@@ -127,6 +140,29 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         setSubCategoryAdapter(getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code));
         return rootView;
     }
+
+    private void prepareLogin(){
+        if(PrefUtility.isLoggedIn()){
+            mButtonLogin.setText(R.string.logout);
+        }else {
+            mButtonLogin.setText(R.string.login);
+        }
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mButtonLogin.getText().toString().equals("Login")){
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivityForResult(intent, LOGIN);
+                }else {
+                    Utils.showToastMessage(getActivity(), "Logout Successfully");
+                    PrefUtility.clearUsrPrefs();
+                    mButtonLogin.setText(R.string.login);
+                }
+
+            }
+        });
+    }
+
 
     private void setCategoryAdapter() {
         mMakeRegionArrayList = getSpinnerArrayList(R.array.car_category_title, R.array.car_category_code);
@@ -369,6 +405,17 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                         Utils.showToastMessage(getActivity(), "Please choose another image.");
                     }
                 }
+                break;
+            case LOGIN:
+                if (resultCode == Activity.RESULT_OK) {
+                    if(getView() != null){
+                        getView().findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
+                        getView().findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
+                    }
+
+                    //mButtonLogin.setText(R.string.logout);
+                }
+                break;
             default:
                 break;
         }
