@@ -1,6 +1,8 @@
 package com.arsalan.garage.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.CategoryDescriptionActivity;
+import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.AmericanCarsVO;
@@ -27,7 +31,7 @@ import java.util.List;
  * <p/>
  */
 
-public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
+public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implements View.OnClickListener{
 
     private List<AmericanCarsVO.Result> mHomeMenuItemArrayList;
     private String mScrapType;
@@ -67,12 +71,18 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if (!isProgerssViewHolder(holder)) {
-            //In case of multiple/single view type put your code logic here...
+
             final AmericanCarsVO.Result model = mHomeMenuItemArrayList.get(position);
             ListItemViewHolder listItemViewHolder = (ListItemViewHolder) holder;
             listItemViewHolder.date.setVisibility(View.GONE);
-            //holder.title.setText(model.getDescription());
+
             ((ListItemViewHolder) holder).phoneNumbet.setText(model.getPhone());
+            ((ListItemViewHolder) holder).phoneNumbet.setTag(model.getPhone());
+            ((ListItemViewHolder) holder).phoneNumbet.setOnClickListener(this);
+
+            holder.itemView.setTag(R.id.textview_phone_number, position);
+            holder.itemView.setOnClickListener(this);
+
             if (mScrapType != null && mScrapType.equals(AppConstants.SCRAP_DELIVERY)) {
                 listItemViewHolder.title.setText(GarageApp.getInstance().getString(R.string.delivery));
             } else {
@@ -98,6 +108,30 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter {
     @Override
     public int getItemCount() {
         return mHomeMenuItemArrayList.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.textview_phone_number) {
+            String phoneNumber = v.getTag().toString();
+            Utils.initCall(phoneNumber, mContext);
+        } else {
+            int position = (int) v.getTag(R.id.textview_phone_number);
+            if (AppConstants.SCRAP_DELIVERY.equals(((CategorySaleListActivity)mContext).getIntent().getExtras().getString(AppConstants.SCRAP_TYPE))) {
+                return;
+            }
+            Intent intent = new Intent(mContext, CategoryDescriptionActivity.class);
+            Bundle bundle = new Bundle();
+            AmericanCarsVO.Result result = mHomeMenuItemArrayList.get(position);
+            bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
+            bundle.putString(AppConstants.IMAGE_URL, result.getImage());
+            bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
+            bundle.putString(AppConstants.ID, result.getItem_id());
+            bundle.putString(AppConstants.EXTRA_TITLE, ((CategorySaleListActivity)mContext).getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+            bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, ((CategorySaleListActivity)mContext).getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+            intent.putExtras(bundle);
+            mContext.startActivity(intent);
+        }
     }
 
 

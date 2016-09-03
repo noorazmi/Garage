@@ -9,8 +9,6 @@ import android.widget.FrameLayout;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.ForSaleMenuFragment;
-import com.arsalan.garage.fragments.LevelOneMenuActivityFragment;
-import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.utils.AppConstants;
 
 /**
@@ -21,7 +19,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ForSaleMenuActivity extends BaseActivity implements LevelOneMenuActivityFragment.OnMenuItemClickListener{
+public class ForSaleMenuActivity extends BaseActivity{
 
     private FragmentManager mFragmentManager;
 
@@ -53,12 +51,4 @@ public class ForSaleMenuActivity extends BaseActivity implements LevelOneMenuAct
 
     }
 
-    @Override
-    public void onMenuItemClick(HomeMenuItem homeMenuItem, int position) {
-        //if(position == 0){
-            //Intent intent = new Intent(this, HelpCarActivity.class);
-            //startActivity(intent);
-
-        //}
-    }
 }

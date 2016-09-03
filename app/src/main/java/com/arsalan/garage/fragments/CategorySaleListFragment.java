@@ -3,7 +3,6 @@ package com.arsalan.garage.fragments;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,16 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.CategoryDescriptionActivity;
 import com.arsalan.garage.activities.CategorySaleListActivity;
 import com.arsalan.garage.adapters.CategorySaleListAdapter;
 import com.arsalan.garage.adapters.CustomRecyclerViewAdapter;
-import com.arsalan.garage.interfaces.ClickListener;
-import com.arsalan.garage.interfaces.RecyclerTouchListener;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
@@ -118,33 +112,32 @@ public class CategorySaleListFragment extends Fragment {
             }
         });
 
-        mCategoryListAdapter.addOnClickCallback(new CustomRecyclerViewAdapter.OnClickCallback() {
-            @Override
-            public void onViewClickListener(View v, int position) {
-                Toast.makeText(GarageApp.getInstance(),"hello "+position,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mCategoryListAdapter.addOnClickCallback(new CustomRecyclerViewAdapter.OnClickCallback() {
+//            @Override
+//            public void onViewClickListener(View v, int position) {
+//                Toast.makeText(GarageApp.getInstance(),"hello "+position,Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                if (AppConstants.SCRAP_DELIVERY.equals(getArguments().getString(AppConstants.SCRAP_TYPE))) {
-                    return;
-                }
-                Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
-                Bundle bundle = new Bundle();
-                AmericanCarsVO.Result result = mCarList.get(position);
-                bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
-                bundle.putString(AppConstants.IMAGE_URL, result.getImage());
-                bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
-                bundle.putString(AppConstants.ID, result.getItem_id());
-                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
-                intent.putExtras(bundle);
-                getActivity().startActivity(intent);
-            }
-        }));
-
+//        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                if (AppConstants.SCRAP_DELIVERY.equals(getArguments().getString(AppConstants.SCRAP_TYPE))) {
+//                    return;
+//                }
+//                Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
+//                Bundle bundle = new Bundle();
+//                AmericanCarsVO.Result result = mCarList.get(position);
+//                bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
+//                bundle.putString(AppConstants.IMAGE_URL, result.getImage());
+//                bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
+//                bundle.putString(AppConstants.ID, result.getItem_id());
+//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+//                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+//                intent.putExtras(bundle);
+//                getActivity().startActivity(intent);
+//            }
+//        }));
     }
 
 

@@ -53,10 +53,6 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.TaxiActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
             android:name=".activities.ForSaleMenuActivity"
             android:label="@string/title_activity_scrap"
             android:screenOrientation="portrait">

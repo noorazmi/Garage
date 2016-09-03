@@ -93,18 +93,6 @@ public class CarWashListFragment extends Fragment {
         mRecyclerView.addItemDecoration(horizontalDivider);
         //mRecyclerView.addItemDecoration(verticalDivider);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Intent intent = new Intent(getActivity(), CarWashDetailsActivity.class);
-//                Bundle bundle = new Bundle();
-//                CarWashVO.CarWash carWash = mCarWashVO.getResults().get(position);
-//                bundle.putString(AppConstants.ID, carWash.getCar_wash_id());
-//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-//                intent.putExtras(bundle);
-//                getActivity().startActivity(intent);
-//            }
-//        }));
         mCarWashListItems = new ArrayList<>(0);
         setAdapter();
         if (Utils.isNetworkAvailable()) {
