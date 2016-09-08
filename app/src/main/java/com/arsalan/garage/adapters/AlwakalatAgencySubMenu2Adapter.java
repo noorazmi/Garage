@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.arsalan.garage.R;
 import com.arsalan.garage.vo.HouseDisplayVo;
 import com.bumptech.glide.Glide;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,6 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
     public void onBindViewHolder(AlwakalatAgencySubMenu2Adapter.ListItemViewHolder holder, int position) {
         HouseDisplayVo.CarModel model = mHomeMenuItemArrayList.get(position);
         holder.title.setText(model.getModel());
-        ImageLoader imageLoader = ImageLoader.getInstance();
         holder.imgView.getLayoutParams().width = 500;
         holder.imgView.getLayoutParams().height = 304;
 
@@ -53,7 +51,6 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
         holder.imgView.setLayoutParams(layoutParams);
 
         if(!TextUtils.isEmpty(model.getImage())){
-            //imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
             Glide.with(mContext)
                     .load(model.getImage()).placeholder(R.mipmap.ic_launcher)
                     .override(500, 304)

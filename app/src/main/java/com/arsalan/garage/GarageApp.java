@@ -3,6 +3,7 @@ package com.arsalan.garage;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
@@ -39,6 +40,7 @@ public class GarageApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        MultiDex.install(this);
         sGarageApp = this;
 //        if (FlavorConstants.BUILD_TYPE == AppConstants.BUILD_TYPE_DEVELOPMENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
 //            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());

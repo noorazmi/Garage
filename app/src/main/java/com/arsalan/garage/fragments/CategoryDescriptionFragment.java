@@ -25,7 +25,7 @@ import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.ItemDescriptionVo;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.bumptech.glide.Glide;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -33,6 +33,8 @@ import networking.loader.LoaderHandler;
 import networking.models.HTTPModel;
 import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
+
+import static com.arsalan.garage.R.string.model;
 
 public class CategoryDescriptionFragment extends Fragment implements View.OnClickListener{
 
@@ -159,9 +161,13 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
             mTextViewPhone2.setText(getUnderlinedSpannable(valueObject.getResults().getPhone2()));
 
         }
-        ImageLoader imageLoader = ImageLoader.getInstance();
+        //ImageLoader imageLoader = ImageLoader.getInstance();
         if(!TextUtils.isEmpty(valueObject.getResults().getImage())){
-            imageLoader.displayImage(valueObject.getResults().getImage(), mImageViewItem);
+            //imageLoader.displayImage(valueObject.getResults().getImage(), mImageViewItem);
+            Glide.with(getActivity())
+                    .load(valueObject.getResults().getImage()).placeholder(R.mipmap.ic_launcher)
+                    //.override(500, 304)
+                    .into(mImageViewItem);
         }
 
     }

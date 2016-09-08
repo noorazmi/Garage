@@ -13,7 +13,7 @@ import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.AmericanCarsVO;
 import com.arsalan.garage.vo.ForSaleUserListData;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -76,8 +76,13 @@ public class BuyAndSaleListAdapter extends RecyclerView.Adapter<BuyAndSaleListAd
         }
 
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
+        //ImageLoader imageLoader = ImageLoader.getInstance();
+        //imageLoader.displayImage(model.getImage(), holder.imgView, Utils.gerDisplayImageOptions());
+
+        Glide.with(mContext)
+                .load(model.getImage()).placeholder(R.mipmap.ic_launcher)
+                //.override(500, 304)
+                .into(holder.imgView);
     }
 
     /**

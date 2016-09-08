@@ -12,8 +12,7 @@ import android.widget.ImageView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.ImageInfo;
-import com.arsalan.garage.utils.Utils;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -56,9 +55,13 @@ public class GalleryImageAdapter extends BaseAdapter {
         imageView.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         Uri ImageUrl = Uri.parse(mProductImagesList.get(position).getPhoto_name());
-        ImageLoader imageLoader = ImageLoader.getInstance();
+        //ImageLoader imageLoader = ImageLoader.getInstance();
         if(!TextUtils.isEmpty(ImageUrl.toString())){
-            imageLoader.displayImage(ImageUrl.toString(), imageView, Utils.gerDisplayImageOptions());
+            //imageLoader.displayImage(ImageUrl.toString(), imageView, Utils.gerDisplayImageOptions());
+            Glide.with(mContext)
+                    .load(ImageUrl.toString()).placeholder(R.mipmap.ic_launcher)
+                    //.override(500, 304)
+                    .into(imageView);
         }
         Gallery.LayoutParams lp = new Gallery.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
         imageView.setLayoutParams(lp);
