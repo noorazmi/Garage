@@ -30,6 +30,7 @@ import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
@@ -60,6 +61,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
     private EditText mEditTextTitle;
     private EditText mEditTextMobile;
     private EditText mEditTextPrice;
+    private EditText mEditTextModel;
     private EditText mEditTextDescription;
     //private String mMakeRegion = AppConstants.AMERICAN;
     private String mMakeRegion;
@@ -110,6 +112,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
         mEditTextTitle = (EditText) findViewById(R.id.edittext_title);
         mEditTextMobile = (EditText) findViewById(R.id.edittext_mobile_no);
         mEditTextPrice = (EditText) findViewById(R.id.edittext_price);
+        mEditTextModel = (EditText) findViewById(R.id.edittext_model);
         mEditTextDescription = (EditText) findViewById(R.id.edittext_description);
         mButtonFirstImage = findViewById(R.id.button_first_img);
         mButtonSecondImage = findViewById(R.id.button_second_img);
@@ -133,6 +136,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
         mEditTextTitle.setText(bundle.getString(AppConstants.TITLE));
         mEditTextMobile.setText(bundle.getString(AppConstants.PHONE));
         mEditTextPrice.setText(bundle.getString(AppConstants.PRICE));
+        mEditTextModel.setText(bundle.getString(AppConstants.MODEL));
         mEditTextDescription.setText(bundle.getString(AppConstants.DESCRIPTION));
         mMake = bundle.getString(AppConstants.MODEL);
         mId = bundle.getString(AppConstants.ID);
@@ -396,7 +400,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
                     return;
                 }
 
-                if (TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())) {
+                if (TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextModel.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())) {
                     showSnackBar(getString(R.string.all_fields_are_compulsory));
                     return;
                 }
@@ -580,6 +584,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
         mEditTextTitle.setText("");
         mEditTextMobile.setText("");
         mEditTextPrice.setText("");
+        mEditTextModel.setText("");
         mEditTextDescription.setText("");
     }
 
@@ -641,19 +646,20 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
             }
 
             reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(this)));
-            reqEntity.addPart(AppConstants.UUID, new StringBody(Utils.getUDID(this)));
-            if (urlString.equals(Urls.SCRAP_UPLOAD)) {
+            reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
+            if (urlString.equals(Urls.SCRAP_UPLOAD) || urlString.equals(Urls.MARINE_UPLOAD)) {
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
             } else {
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
             }
             reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
-            reqEntity.addPart(AppConstants.MODEL, new StringBody(mMake));
             reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
+            reqEntity.addPart(AppConstants.MODEL, new StringBody(mEditTextModel.getText().toString().trim()));
             reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
 
+            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mEditTextModel.getText().toString().trim());
 
             post.setEntity(reqEntity);
             HttpResponse response = client.execute(post);

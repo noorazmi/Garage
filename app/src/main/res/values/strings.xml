@@ -119,6 +119,7 @@
     <string name="title">Title</string>
     <string name="mobile_no">Mobile No</string>
     <string name="price">Price</string>
+    <string name="model">Model</string>
     <string name="msg_select_file">Select file to upload</string>
     <string name="no_network_connection">Internet connection in not available.</string>
     <string name="details">المواصفات</string>

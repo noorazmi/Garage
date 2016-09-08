@@ -183,7 +183,33 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_text_border"
                             android:hint="@string/price"
-                            android:inputType="text"/>
+                            android:inputType="numberDecimal"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/app_padding_left_right_post"
+                    android:paddingRight="@dimen/app_padding_left_right_post">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextLabel">
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edittext_model"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="@string/model"
+                            android:inputType="number"/>
 
                     </android.support.design.widget.TextInputLayout>
 

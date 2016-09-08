@@ -14,7 +14,9 @@ public interface Urls {
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
     String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
     String SCRAP_UPLOAD = "http://kuwaitgarage.com/api/scrap";
+    String SCRAP_UPDATE = "http://kuwaitgarage.com/api/scrap/update";
     String MARINE_UPLOAD = "http://kuwaitgarage.com/api/marine";
+    String MARINE_UPDATE = "http://kuwaitgarage.com/api/marine/update";
     String ACCESSORIES_UPLOAD = "http://kuwaitgarage.com/api/accessories";
 
     /* Delete Urls */

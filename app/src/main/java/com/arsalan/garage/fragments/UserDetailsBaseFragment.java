@@ -153,10 +153,10 @@ public abstract class UserDetailsBaseFragment extends Fragment{
             case R.id.menu_item_edit:
                 Intent intent = new Intent(getActivity(), EditPostActivity.class);
                 intent.putExtra(AppConstants.ID, getItemId());
-                intent.putExtra(AppConstants.MODEL, mUserDetailsBase.getModel());
                 intent.putExtra(AppConstants.TITLE, mUserDetailsBase.getTitle());
                 intent.putExtra(AppConstants.PHONE, mUserDetailsBase.getPhone());
                 intent.putExtra(AppConstants.PRICE, mUserDetailsBase.getPrice());
+                intent.putExtra(AppConstants.MODEL, mUserDetailsBase.getModel());
                 intent.putExtra(AppConstants.DESCRIPTION, mUserDetailsBase.getDescription());
                 intent.putExtra(AppConstants.CATEGORY, getCategory());
                 intent.putExtra(AppConstants.SUB_CATEGORY, mUserDetailsBase.getMake_region_name());

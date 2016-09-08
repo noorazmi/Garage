@@ -1,5 +1,4 @@
 <android.support.design.widget.CoordinatorLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -77,7 +76,6 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp">
 
-                <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
                 <Spinner
                     android:id="@+id/spinner_category"
                     style="@android:style/Widget.Holo.Light.Spinner"
@@ -85,7 +83,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
-                <!--style="@style/Widget.AppCompat.Spinner.Underlined"-->
                 <Spinner
                     android:id="@+id/spinner_sub_category"
                     style="@android:style/Widget.Holo.Light.Spinner"
@@ -99,22 +96,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
-
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--android:id="@+id/textview_phone_number"-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/title"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                />
+                android:paddingRight="@dimen/app_padding_left_right_post">/>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -131,44 +117,17 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_title"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
+                android:paddingRight="@dimen/app_padding_left_right_post">
 
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/mobile_no"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
-
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_mobile_no"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,39 +140,17 @@
                         android:background="@drawable/edit_text_border"
                         android:hint="@string/mobile_no"
                         android:inputType="phone"/>
-
                 </android.support.design.widget.TextInputLayout>
-
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
-
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="@string/price"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
-
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_price"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
+                android:paddingRight="@dimen/app_padding_left_right_post">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -235,30 +172,37 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/app_padding_left_right_post"
-                android:paddingRight="@dimen/app_padding_left_right_post"
-                android:layout_marginTop="10dp">
+                android:paddingRight="@dimen/app_padding_left_right_post">
 
-                <!--<com.arsalan.garage.uicomponents.CustomTextViewEnglish-->
-                <!--style="@style/TextViewStyle.Regular.English"-->
-                <!--android:layout_width="@dimen/title_text_width"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="Description"-->
-                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--/>-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-                <!--<EditText-->
-                <!--android:id="@+id/edittext_description"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:background="@drawable/edit_text_border"-->
-                <!--android:paddingLeft="@dimen/edit_text_padding"/>-->
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/edittext_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="@string/model"
+                        android:inputType="number"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/app_padding_left_right_post"
+                android:paddingRight="@dimen/app_padding_left_right_post">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -283,40 +227,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Post Ad"
-                android:background="@drawable/green_selector"/>
+                android:background="@drawable/green_selector"
+                android:text="Post Ad"/>
         </LinearLayout>
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/relative_layout_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:id="@+id/relative_layout_login">
+        android:layout_gravity="center_vertical|center_horizontal">
 
         <Button
             android:id="@+id/button_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="14dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Login"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"/>
+            android:text="Login"/>
 
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-            style="@style/TextViewStyle.SemiBold.English"
             android:id="@+id/textview_login_first"
+            style="@style/TextViewStyle.SemiBold.English"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please login for posting the advertisements."
             android:layout_above="@+id/button_login"
             android:layout_centerHorizontal="true"
+            android:text="Please login for posting the advertisements."
             android:textSize="15dp"/>
 
     </RelativeLayout>

@@ -62,6 +62,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private EditText mEditTextTitle;
     private EditText mEditTextMobile;
     private EditText mEditTextPrice;
+    private EditText mEditTextModel;
     private EditText mEditTextDescription;
     //private String mMakeRegion = AppConstants.AMERICAN;
     private String mMakeRegion;
@@ -86,9 +87,6 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private Button mButtonLogin;
     private final int LOGIN = 197;
 
-    //private CustomProgressDialog mCustomProgressDialog;
-
-
     public PostAdTabFragment() {
     }
 
@@ -98,9 +96,6 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         mImagePaths = new String[MAX_ADV];
         mMakeAmericanArrayList = getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code);
-        //mCustomProgressDialog = new CustomProgressDialog(getActivity());
-        //mCustomProgressDialog.setCancelable(true);
-        //mCustomProgressDialog.setCanceledOnTouchOutside(false);
     }
 
     @Override
@@ -122,6 +117,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mEditTextTitle = (EditText)rootView.findViewById(R.id.edittext_title);
         mEditTextMobile = (EditText)rootView.findViewById(R.id.edittext_mobile_no);
         mEditTextPrice = (EditText)rootView.findViewById(R.id.edittext_price);
+        mEditTextModel = (EditText)rootView.findViewById(R.id.edittext_model);
         mEditTextDescription = (EditText)rootView.findViewById(R.id.edittext_description);
         mButtonFirstImage = rootView.findViewById(R.id.button_first_img);
         mButtonSecondImage = rootView.findViewById(R.id.button_second_img);
@@ -348,7 +344,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                     return;
                 }
 
-                if(TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())){
+                if(TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextModel.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())){
                     showSnackBar(getString(R.string.all_fields_are_compulsory));
                     return;
                 }
@@ -537,6 +533,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mEditTextTitle.setText("");
         mEditTextMobile.setText("");
         mEditTextPrice.setText("");
+        mEditTextModel.setText("");
         mEditTextDescription.setText("");
     }
 
@@ -569,11 +566,11 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
         String urlString = Urls.FORESALE_UPLOAD;
         if(mMakeRegion.equals(AppConstants.SCRAP)){
-            urlString = Urls.SCRAP_UPLOAD;
+            urlString = Urls.SCRAP_UPDATE;
         }
 
         if(mMakeRegion.equals(AppConstants.MARINE)){
-            urlString = Urls.MARINE_UPLOAD;
+            urlString = Urls.MARINE_UPDATE;
         }
 
         if(mMakeRegion.equals(AppConstants.ACCESSORIES)){
@@ -601,19 +598,19 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
             reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(PrefUtility.getAccessToken()));
             reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
-            if(urlString.equals(Urls.SCRAP_UPLOAD) || urlString.equals(Urls.MARINE_UPLOAD)){
+            if(urlString.equals(Urls.SCRAP_UPDATE) || urlString.equals(Urls.MARINE_UPDATE)){
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
             }else {
                 reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
             }
             reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
-            reqEntity.addPart(AppConstants.MODEL, new StringBody(mMake));
             reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
             reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
+            reqEntity.addPart(AppConstants.MODEL, new StringBody(mEditTextModel.getText().toString().trim()));
             reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
             post.setEntity(reqEntity);
-            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mMake);
+            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mEditTextModel.getText().toString().trim());
 
             HttpResponse response = client.execute(post);
             resEntity = response.getEntity();

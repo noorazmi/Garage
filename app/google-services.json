@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "266090677983",
+    "firebase_url": "https://garageandroidapp-ecfa7.firebaseio.com",
+    "project_id": "garageandroidapp-ecfa7",
+    "storage_bucket": "garageandroidapp-ecfa7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266090677983:android:b6cd99c05280f5ad",
+        "android_client_info": {
+          "package_name": "com.arsalan.garage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266090677983-ovcepv6tgbuvarohea3jhqqee4p9l4gu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arsalan.garage",
+            "certificate_hash": "2858B2B94AC342276DCB5C06A4B798305C1C7AAE"
+          }
+        },
+        {
+          "client_id": "266090677983-rcal4hs8rd7jh1vhiv3gnq1cop1djaf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATx4zy8K0bWpTO2gkqiq5ZvP43PPp0-jE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266090677983-rcal4hs8rd7jh1vhiv3gnq1cop1djaf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.FullImageActivity;
@@ -25,6 +27,7 @@ import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.ShowroomCarVo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -49,6 +52,8 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
     private ShowroomCarVo mShowroomCarVo;
     private GestureDetector mGestureDetector;
     private int mCurrentCarIndex = 0;
+    private LinearLayout indicatorLayout;
+    private List<ImageView> indicatorImage;
 
     public AlwakalatAgencyDescriptionFragment() {
     }
@@ -57,6 +62,7 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_alwakalat_agency_description, container, false);
+        indicatorLayout = (LinearLayout) rootView.findViewById(R.id.pager_indicator_layout);
         mViewPagerCarImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
         mViewPagerCarImages.setOnTouchListener(new View.OnTouchListener() {
@@ -72,6 +78,25 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         }else {
             Utils.showSnackBar(getActivity(), getString(R.string.no_network_connection));
         }
+
+        mViewPagerCarImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (indicatorImage != null && indicatorImage.size() > 0) {
+                    position = position % indicatorImage.size();
+                    Utils.setIndicator(position, indicatorImage);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         return rootView;
     }
 
@@ -79,6 +104,13 @@ public class AlwakalatAgencyDescriptionFragment extends Fragment {
         ArrayList<ImageInfo> carImageArrayList = mShowroomCarVo.getResults().getImages();
         AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
         mViewPagerCarImages.setAdapter(adapter);
+        indicatorImage = Utils.getCircleIndicator(getActivity(), carImageArrayList.size(), indicatorLayout);
+        Utils.setIndicator(0, indicatorImage);
+        if (carImageArrayList.size() <= 1) {
+            indicatorLayout.setVisibility(View.INVISIBLE);
+        } else {
+            indicatorLayout.setVisibility(View.VISIBLE);
+        }
     }
     private void setDecriptionPagerAdapter(){
         AlwakalatAgencyDescriptionTabViewPagerAdapter seasonsFragmentStatePagerAdapter = new AlwakalatAgencyDescriptionTabViewPagerAdapter(getActivity(), getFragmentManager(), mShowroomCarVo);

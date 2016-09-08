@@ -29,7 +29,8 @@
                 android:background="@android:color/transparent"
                 android:gravity="bottom|center"
                 android:orientation="horizontal"
-                android:visibility="visible" android:layout_gravity="center_horizontal|bottom"/>
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal|bottom"/>
         </FrameLayout>
         <RelativeLayout
             android:id="@+id/relative_layout_price_container"
