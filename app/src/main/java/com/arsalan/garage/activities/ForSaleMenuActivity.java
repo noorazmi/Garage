@@ -19,7 +19,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ForSaleMenuActivity extends BaseActivity{
+public class ForSaleMenuActivity extends BaseActivity {
 
     private FragmentManager mFragmentManager;
 

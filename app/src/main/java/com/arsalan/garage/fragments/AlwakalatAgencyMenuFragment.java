@@ -112,7 +112,7 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.toyota, "تويوتا", null, AppConstants.TOYOTA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, "انفينتي", null, AppConstants.INFINITI));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.honda, "هوندا" , null, AppConstants.HONDA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي", null,AppConstants.MITSUBISHI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي", null, AppConstants.MITSUBISHI));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mazda, "مازدا" , null, AppConstants.MAZDA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.changan, "شانجان", null, AppConstants.CHANGAN));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.citroen, "سيتروين", null, AppConstants.CITROEN));

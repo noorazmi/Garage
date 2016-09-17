@@ -28,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         public void setToolbar(Toolbar toolbar, boolean displayHomeAsUpEnabled) {
             setSupportActionBar(toolbar);
 
-            int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+            int currentapiVersion = Build.VERSION.SDK_INT;
             int padding = 0;
             if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {
                 padding = getResources().getDimensionPixelOffset(R.dimen.toolbar_padding);

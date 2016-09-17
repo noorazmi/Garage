@@ -18,7 +18,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class KhidmatShamlaActivity extends BaseActivity{
+public class KhidmatShamlaActivity extends BaseActivity {
 
     private FragmentManager mFragmentManager;
 

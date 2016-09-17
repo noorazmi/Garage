@@ -1,6 +1,6 @@
 package com.arsalan.garage.models;
 
-import com.arsalan.garage.volleytask.ResponseModel;
+import networking.models.ValueObject;
 
 /**
  * <p/>
@@ -9,7 +9,7 @@ import com.arsalan.garage.volleytask.ResponseModel;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class StatusMessage implements ResponseModel{
+public class StatusMessage implements ValueObject {
     protected String status;
     protected String message;
 

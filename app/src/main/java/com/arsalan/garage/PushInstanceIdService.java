@@ -6,22 +6,11 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * <p/>
- * Created by: Noor  Alam on 08/09/16.<br/>
- * Email id: noor.alam@tothenew.com<br/>
- * Skype id: mfsi_noora
- * <p/>
+ * Created by Shivang Goel on 12/8/16.
  */
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
+public class PushInstanceIdService extends FirebaseInstanceIdService {
+    private String TAG = "PushInstanceIdService";
 
-    public static final String TAG = MyFirebaseInstanceIDService.class.getSimpleName();
-
-    /**
-     * Called if InstanceID token is updated. This may occur if the security of
-     * the previous token had been compromised. Note that this is called when the InstanceID token
-     * is initially generated so this is where you would retrieve the token.
-     */
-    // [START refresh_token]
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.
@@ -31,8 +20,10 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
+
         sendRegistrationToServer(refreshedToken);
     }
+
     // [END refresh_token]
 
     /**
@@ -46,5 +37,4 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
     }
-
 }

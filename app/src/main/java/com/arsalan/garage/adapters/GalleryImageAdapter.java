@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 
@@ -52,7 +51,7 @@ public class GalleryImageAdapter extends BaseAdapter {
         final ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(R.mipmap.ic_launcher);
         imageView.setAdjustViewBounds(true);
-        imageView.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        imageView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         Uri ImageUrl = Uri.parse(mProductImagesList.get(position).getPhoto_name());
         //ImageLoader imageLoader = ImageLoader.getInstance();
@@ -63,7 +62,7 @@ public class GalleryImageAdapter extends BaseAdapter {
                     //.override(500, 304)
                     .into(imageView);
         }
-        Gallery.LayoutParams lp = new Gallery.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
+        LayoutParams lp = new LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
         imageView.setLayoutParams(lp);
 
         return imageView;

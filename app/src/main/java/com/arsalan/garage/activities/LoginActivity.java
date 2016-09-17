@@ -18,8 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.StatusMessage;
 import com.arsalan.garage.models.UserInfo;
@@ -31,12 +29,16 @@ import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.volleytask.VolleyHttpListener;
-import com.arsalan.garage.volleytask.VolleyHttpResponse;
-import com.arsalan.garage.volleytask.VolleyHttpTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import networking.HttpConstants;
+import networking.listeners.OnLoadCompleteListener;
+import networking.loader.LoaderHandler;
+import networking.models.HTTPModel;
+import networking.models.HTTPRequest;
+import networking.models.HTTPResponse;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
     EditText editPhone;
@@ -117,38 +119,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             loginJson.put("password", pass.trim());
             loginJson.put("confirm_password", pass.trim());
             progressDialog.show();
-            VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.LOGIN, Request.Method.POST, new VolleyHttpListener() {
-                @Override
-                public void onResult(VolleyHttpResponse volleyHttpResponse) {
-                    if (volleyHttpResponse.getResponseModel() instanceof UserInfo) {
-                        if (progressDialog.isShowing()){
-                            progressDialog.dismiss();
-                        }
-                        mUserInfo = (UserInfo) volleyHttpResponse.getResponseModel();
-                        if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.SUCCESS)) {
-                            Utils.showToastMessage(LoginActivity.this, mUserInfo.getMessage());
-                            loginSuccess(mUserInfo);
-                        } else if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.FAIL)) {
-                            Utils.showSnackBar(LoginActivity.this, mUserInfo.getMessage());
-                        }
-                    }
-                }
 
+            HTTPRequest httpRequest = new HTTPRequest();
+            httpRequest.setShowProgressDialog(true);
+            String fullUrl = Urls.LOGIN;
+            httpRequest.setUrl(fullUrl);
+            httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
+            httpRequest.setValueObjectFullyQualifiedName(UserInfo.class.getName());
+            httpRequest.setJSONPayload(loginJson.toString());
+            LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
+            loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
                 @Override
-                public void onError(VolleyError error) {
+                public void onLoadComplete(HTTPModel httpModel) {
+                    HTTPResponse httpResponse = (HTTPResponse) httpModel;
                     if (progressDialog.isShowing()){
                         progressDialog.dismiss();
                     }
-                    if (!Utils.isNetworkAvailable()) {
-                        Utils.showSnackBar(LoginActivity.this, getString(R.string.internet_error_msg));
+                    mUserInfo = (UserInfo) httpResponse.getValueObject();
+                    if(mUserInfo == null){
+                        Utils.showSnackBar(LoginActivity.this, getString(R.string.error_something_went_wrong));
                         return;
+                    }if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.SUCCESS)) {
+                        Utils.showToastMessage(LoginActivity.this, mUserInfo.getMessage());
+                        loginSuccess(mUserInfo);
+                    } else if (mUserInfo.getStatus().equalsIgnoreCase(AppConstants.FAIL)) {
+                        Utils.showSnackBar(LoginActivity.this, mUserInfo.getMessage());
                     }
-                    Utils.showSnackBar(LoginActivity.this, getString(R.string.error_something_went_wrong));
                 }
             });
-            volleyHttpTask.setJsonPayload(loginJson);
-            volleyHttpTask.setResponseModelClassFullyQualifiedName(UserInfo.class.getName());
-            volleyHttpTask.start();
+            loaderHandler.loadData();
+
         } catch (JSONException e) {
             Log.e("Exception", Log.getStackTraceString(e));
         }
@@ -270,7 +270,35 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         Log.e("Exception:", Log.getStackTraceString(e));
                     }
                     progressDialog.show();
-                    VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.RESET_PASSWORD, Request.Method.POST, new VolleyHttpListener() {
+                    HTTPRequest httpRequest = new HTTPRequest();
+                    httpRequest.setShowProgressDialog(true);
+                    String fullUrl = Urls.RESET_PASSWORD;
+                    httpRequest.setUrl(fullUrl);
+                    httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
+                    httpRequest.setValueObjectFullyQualifiedName(UserInfo.class.getName());
+                    httpRequest.setJSONPayload(forgotPasswordJSON.toString());
+                    LoaderHandler loaderHandler = LoaderHandler.newInstance(LoginActivity.this, httpRequest);
+                    loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+                        @Override
+                        public void onLoadComplete(HTTPModel httpModel) {
+                            HTTPResponse httpResponse = (HTTPResponse) httpModel;
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            StatusMessage statusMessage = (StatusMessage)  httpResponse.getValueObject();
+                            if (statusMessage.getStatus().equals(AppConstants.SUCCESS)) {
+                                Utils.showSnackBar(LoginActivity.this, getString(R.string.msg_password_sent));
+                                forgotPasswordDialog.dismiss();
+                            } else {
+                                Utils.showSnackBar(LoginActivity.this, statusMessage.getMessage());
+                                inputLayoutEmailForgotPassword.setError(statusMessage.getMessage());
+                            }
+                        }
+                    });
+                    loaderHandler.loadData();
+
+
+                    /*VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.RESET_PASSWORD, Request.Method.POST, new VolleyHttpListener() {
                         @Override
                         public void onResult(VolleyHttpResponse volleyHttpResponse) {
                             StatusMessage statusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
@@ -300,7 +328,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     });
                     volleyHttpTask.setJsonPayload(forgotPasswordJSON);
                     volleyHttpTask.setResponseModelClassFullyQualifiedName(StatusMessage.class.getName());
-                    volleyHttpTask.start();
+                    volleyHttpTask.start();*/
 
                 }
             }

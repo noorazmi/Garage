@@ -1,9 +1,9 @@
 package com.arsalan.garage.activities;
 
-import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.FrameLayout;

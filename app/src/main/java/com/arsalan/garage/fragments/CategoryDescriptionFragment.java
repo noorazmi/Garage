@@ -34,8 +34,6 @@ import networking.models.HTTPModel;
 import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
 
-import static com.arsalan.garage.R.string.model;
-
 public class CategoryDescriptionFragment extends Fragment implements View.OnClickListener{
 
     private TextView mTextViewDescription;
@@ -190,25 +188,17 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         startActivity(imageViewerIntent);
     }
 
-
-    private void initCall(String phoneNumber){
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + phoneNumber));
-        startActivity(intent);
-    }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.textview_phone_number:
-                initCall(mItemDescriptionVO.getResults().getPhone());
+                Utils.initCall(mItemDescriptionVO.getResults().getPhone(), getActivity());
             break;
             case R.id.textview_phone_number1:
-                initCall(mItemDescriptionVO.getResults().getPhone1());
+                Utils.initCall(mItemDescriptionVO.getResults().getPhone1(), getActivity());
                 break;
             case R.id.textview_phone_number2:
-                initCall(mItemDescriptionVO.getResults().getPhone2());
+                Utils.initCall(mItemDescriptionVO.getResults().getPhone2(), getActivity());
                 break;
 
             case R.id.imageview_icon:

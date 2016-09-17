@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CategorySaleListActivity;
-import com.arsalan.garage.activities.ScrapUserMenuActivity;
 import com.arsalan.garage.activities.ScrapSubMenuActivity;
+import com.arsalan.garage.activities.ScrapUserMenuActivity;
 import com.arsalan.garage.adapters.RecyclerViewAdapter;
 import com.arsalan.garage.interfaces.ClickListener;
 import com.arsalan.garage.interfaces.RecyclerTouchListener;

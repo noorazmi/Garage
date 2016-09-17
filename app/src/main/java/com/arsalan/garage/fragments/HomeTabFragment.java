@@ -182,9 +182,9 @@ public class HomeTabFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gragesjpg, "كراجات", AppConstants.MENU_ITEM_TYPE_KARAJAT));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.hellpthecarhome, " المساعده على الطريق", AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, "السكراب", AppConstants.MENU_ITEM_TYPE_SCRAP));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, "تكسي",AppConstants.MENU_ITEM_TYPE_TAXI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, "تكسي", AppConstants.MENU_ITEM_TYPE_TAXI));
 
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "الوكالات",AppConstants.MENU_ITEM_TYPE_AGENCIES));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "الوكالات", AppConstants.MENU_ITEM_TYPE_AGENCIES));
 
 
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));

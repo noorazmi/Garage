@@ -23,7 +23,7 @@ public class AccessoriesUserListData extends UserBaseData implements ValueObject
         this.results = results;
     }
 
-    public static class AccessoriesUserItem extends UserListItem{
+    public static class AccessoriesUserItem extends UserListItem {
         private String accessories_id;
 
         public String getAccessories_id() {

@@ -3,14 +3,12 @@ package com.arsalan.garage;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.PrefUtility;
-import com.arsalan.garage.volleytask.VolleyController;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -40,12 +38,8 @@ public class GarageApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MultiDex.install(this);
+        //MultiDex.install(this);
         sGarageApp = this;
-//        if (FlavorConstants.BUILD_TYPE == AppConstants.BUILD_TYPE_DEVELOPMENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-//            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
-//            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
-//        }
         initVolleyController();
         initImageLoader(this);
         initLoaderHandler(this);
@@ -54,7 +48,7 @@ public class GarageApp extends Application {
 
 
     private void initVolleyController(){
-        VolleyController.initVolleyRequestQueueAndImageLoader(this);
+        //VolleyController.initVolleyRequestQueueAndImageLoader(this);
     }
 
     private void initImageLoader(Context applicationContext) {

@@ -1,16 +1,21 @@
 package com.arsalan.garage.activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v13.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.AlbumStorageDirFactory;
@@ -24,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CameraGalleryActivity extends Activity {
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 676;
     public static final int RESULT_REMOVED = 2001;
     private static final int ACTION_CAMERA = 1001;
     private static final int ACTION_GALLERY = 1002;
@@ -60,6 +66,7 @@ public class CameraGalleryActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        grantCameraPermission();
     }
 
     @Override
@@ -72,15 +79,6 @@ public class CameraGalleryActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_camera_gallery);
-
-//        if (getIntent().getBooleanExtra(AppConstants.EXTRA_IS_CAMERA_LAYOUT, true)) {
-//            setContentView(R.layout.activity_camera_gallery);
-//        } else {
-//            setContentView(R.layout.activity_camera_gallery_new);
-//            localyticsScreenPrefix = getIntent().getStringExtra(AppConstants.EXTRA_LOCALYTICS_SCREEN_NAME_PREFIX);
-//        }
-
-        // ApptimizeUtils apptimizeUtils = new ApptimizeUtils(this);
         mAlbumStorageDirFactory = new BaseAlbumDirFactory();
         linkViewsId();
     }
@@ -97,6 +95,34 @@ public class CameraGalleryActivity extends Activity {
             mCurrentPhotoPath = savedInstanceState.getString(AppConstants.FILE_PATH);
         }
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the camera-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the functionality that depends on this permission.
+                }
+                return;
+            }
+        }
+    }
+
+    private void grantCameraPermission(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                // Show an explanation to the user *asynchronously* -- don't block this thread waiting for the user's response! After the user sees the explanation, try again to request the permission.
+                Toast.makeText(this, "Please grant the Camera permission by going in the App info", Toast.LENGTH_SHORT).show();
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+            }
+        }
     }
 
     private void linkViewsId() {
@@ -134,6 +160,10 @@ public class CameraGalleryActivity extends Activity {
     }
 
     private void dispatchTakePictureIntent(int actionCode) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            grantCameraPermission();
+            return;
+        }
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         switch (actionCode) {
             case ACTION_CAMERA:

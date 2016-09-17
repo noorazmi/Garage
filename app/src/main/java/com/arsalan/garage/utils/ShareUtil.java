@@ -140,7 +140,7 @@ public class ShareUtil {
     public static void shareContent(Context context, String text) {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
         context.startActivity(Intent.createChooser(sharingIntent, "Share using"));
     }
 

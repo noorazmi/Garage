@@ -15,7 +15,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,24 +29,8 @@ import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
-import com.arsalan.garage.utils.PrefUtility;
-import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-
-import java.io.File;
 import java.util.ArrayList;
 
 public class EditPostActivity extends BaseActivity implements View.OnClickListener {
@@ -600,7 +583,7 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
     private class LongOperation extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            doFileUpload();
+            //doFileUpload();
             return null;
         }
 
@@ -612,81 +595,81 @@ public class EditPostActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-    private void doFileUpload() {
-
-        for (int i = 0; i < 5 ; i++) {
-            Logger.e("TAG", "ImagesUpload****:"+mImagePaths[i]);
-        }
-
-
-        String urlString = Urls.FORESALE_UPLOAD;
-        if (mMakeRegion.equals(AppConstants.SCRAP)) {
-            urlString = Urls.SCRAP_UPLOAD;
-        }else if (mMakeRegion.equals(AppConstants.MARINE)){
-            urlString = Urls.MARINE_UPLOAD;
-        }
-
-
-        HttpEntity resEntity = null;
-        try {
-
-            HttpParams httpParams = new BasicHttpParams();
-
-            HttpClient client = new DefaultHttpClient(httpParams);
-
-            HttpPost post = new HttpPost(urlString);
-
-            post.setParams(httpParams);
-            MultipartEntity reqEntity = new MultipartEntity();
-
-            for (int i = 0; i < 5; i++) {
-                if (mImagePaths[i] != null) {
-                    reqEntity.addPart("image" + (i + 1), new FileBody(new File(mImagePaths[i])));
-                }
-            }
-
-            reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(this)));
-            reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
-            if (urlString.equals(Urls.SCRAP_UPLOAD) || urlString.equals(Urls.MARINE_UPLOAD)) {
-                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
-            } else {
-                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
-            }
-            reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
-            reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.MODEL, new StringBody(mEditTextModel.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
-
-            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mEditTextModel.getText().toString().trim());
-
-            post.setEntity(reqEntity);
-            HttpResponse response = client.execute(post);
-            resEntity = response.getEntity();
-            final String response_str = EntityUtils.toString(resEntity);
-            JSONObject jsonObject = new JSONObject(response_str);
-            final String status = jsonObject.getString("status");
-            if (resEntity != null) {
-                Log.i("RESPONSE", response_str);
-                this.runOnUiThread(new Runnable() {
-                    public void run() {
-                        try {
-                            Logger.d(TAG, "Response from server : " + response_str);
-                            showSnackBar(response_str);
-                            if(status.equals("success")){
-                                resetAllFields();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        } catch (Exception ex) {
-            Log.e("Debug", "error: " + ex.getMessage(), ex);
-        }
-    }
+//    private void doFileUpload() {
+//
+//        for (int i = 0; i < 5 ; i++) {
+//            Logger.e("TAG", "ImagesUpload****:"+mImagePaths[i]);
+//        }
+//
+//
+//        String urlString = Urls.FORESALE_UPLOAD;
+//        if (mMakeRegion.equals(AppConstants.SCRAP)) {
+//            urlString = Urls.SCRAP_UPLOAD;
+//        }else if (mMakeRegion.equals(AppConstants.MARINE)){
+//            urlString = Urls.MARINE_UPLOAD;
+//        }
+//
+//
+//        HttpEntity resEntity = null;
+//        try {
+//
+//            HttpParams httpParams = new BasicHttpParams();
+//
+//            HttpClient client = new DefaultHttpClient(httpParams);
+//
+//            HttpPost post = new HttpPost(urlString);
+//
+//            post.setParams(httpParams);
+//            MultipartEntity reqEntity = new MultipartEntity();
+//
+//            for (int i = 0; i < 5; i++) {
+//                if (mImagePaths[i] != null) {
+//                    reqEntity.addPart("image" + (i + 1), new FileBody(new File(mImagePaths[i])));
+//                }
+//            }
+//
+//            reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(Utils.getUDID(this)));
+//            reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
+//            if (urlString.equals(Urls.SCRAP_UPLOAD) || urlString.equals(Urls.MARINE_UPLOAD)) {
+//                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
+//            } else {
+//                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
+//            }
+//            reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
+//            reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
+//            reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
+//            reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
+//            reqEntity.addPart(AppConstants.MODEL, new StringBody(mEditTextModel.getText().toString().trim()));
+//            reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
+//
+//            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mEditTextModel.getText().toString().trim());
+//
+//            post.setEntity(reqEntity);
+//            HttpResponse response = client.execute(post);
+//            resEntity = response.getEntity();
+//            final String response_str = EntityUtils.toString(resEntity);
+//            JSONObject jsonObject = new JSONObject(response_str);
+//            final String status = jsonObject.getString("status");
+//            if (resEntity != null) {
+//                Log.i("RESPONSE", response_str);
+//                this.runOnUiThread(new Runnable() {
+//                    public void run() {
+//                        try {
+//                            Logger.d(TAG, "Response from server : " + response_str);
+//                            showSnackBar(response_str);
+//                            if(status.equals("success")){
+//                                resetAllFields();
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//            }
+//        } catch (Exception ex) {
+//            Log.e("Debug", "error: " + ex.getMessage(), ex);
+//        }
+//    }
 
     private void showSnackBar(String message) {
         Utils.showSnackBar(this.findViewById(R.id.coordinator_layout), message);

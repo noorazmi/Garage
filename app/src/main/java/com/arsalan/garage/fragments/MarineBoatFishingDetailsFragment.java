@@ -136,12 +136,12 @@ public class MarineBoatFishingDetailsFragment extends Fragment {
             }
         });
 
-        mImageViewEmail.setOnClickListener(new View.OnClickListener() {
+        /*mImageViewEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ShareUtil.shareOnGmail(getActivity(), mShareText, mShareImage);
             }
-        });
+        });*/
     }
 
     protected GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){

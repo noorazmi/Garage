@@ -224,7 +224,7 @@ public class CategorySaleListFragment extends Fragment {
 
         Bundle bundle = getArguments();
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + bundle.getString(AppConstants.URL));
-        httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page="+(++pageNumber)+"&limit="+AppConstants.REQUEST_ITEM_COUNT);
+        httpRequest.setUrl(getArguments().getString(AppConstants.URL) + "?page="+(++pageNumber)+"&limit="+ AppConstants.REQUEST_ITEM_COUNT);
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
         httpRequest.setValueObjectFullyQualifiedName(AmericanCarsVO.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);

@@ -13,7 +13,7 @@ import networking.models.HTTPModel;
 import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
 
-public class ProductGalleryFragment extends BaseGalleryFragment{
+public class ProductGalleryFragment extends BaseGalleryFragment {
 
     private ShowroomCarVo mShowroomCarVo;
     private static final String TAG = "ProductGalleryFragment";

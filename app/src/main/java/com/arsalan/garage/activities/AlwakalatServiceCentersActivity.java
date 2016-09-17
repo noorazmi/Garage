@@ -19,7 +19,7 @@ import com.arsalan.garage.utils.AppConstants;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AlwakalatServiceCentersActivity extends BaseActivity  {
+public class AlwakalatServiceCentersActivity extends BaseActivity {
     private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

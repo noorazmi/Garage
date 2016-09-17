@@ -292,7 +292,7 @@ public interface AppConstants {
     String MESSAGE = "message";
     String SUCCESS = "success";
     String FAIL = "fail";
-    java.lang.String STATUS = "status";
+    String STATUS = "status";
     String IMAGE_LIST = "image_list";
     String CATEGORY = "category";
     String SUB_CATEGORY = "sub_category";

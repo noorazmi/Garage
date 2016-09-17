@@ -19,12 +19,13 @@
         <LinearLayout
             android:id="@+id/pager_indicator_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="6dp"
             android:background="@android:color/transparent"
             android:gravity="bottom|center"
             android:orientation="horizontal"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal|bottom"/>
     </FrameLayout>
     <RelativeLayout
         android:id="@+id/relative_layout_price_container"

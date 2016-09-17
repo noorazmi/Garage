@@ -10,7 +10,7 @@ package com.arsalan.garage.utils;
  */
 public interface Urls {
 
-    /* Post upload urls */
+    /* s upload urls */
     String URL_ITEM_DESCRIPTION_BASE = "http://kuwaitgarage.com/api/item/";
     String FORESALE_UPLOAD = "http://kuwaitgarage.com/api/foresale";
     String SCRAP_UPLOAD = "http://kuwaitgarage.com/api/scrap";

@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,21 +33,19 @@ import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class PostAdTabFragment extends Fragment implements View.OnClickListener {
 
@@ -90,7 +87,6 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     public PostAdTabFragment() {
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,10 +99,10 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         View rootView = inflater.inflate(R.layout.fragment_post_ad_tab, container, false);
         mButtonLogin = (Button) rootView.findViewById(R.id.button_login);
         prepareLogin();
-        if(PrefUtility.isLoggedIn()){
+        if (PrefUtility.isLoggedIn()) {
             rootView.findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
             rootView.findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
-        }else {
+        } else {
             rootView.findViewById(R.id.relative_layout_login).setVisibility(View.VISIBLE);
             rootView.findViewById(R.id.scroll_view_container).setVisibility(View.GONE);
         }
@@ -114,11 +110,11 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mSpinnerCategory = (Spinner) rootView.findViewById(R.id.spinner_category);
         mSpinnerSubCategory = (Spinner) rootView.findViewById(R.id.spinner_sub_category);
         rootView.findViewById(R.id.button_post_add).setOnClickListener(this);
-        mEditTextTitle = (EditText)rootView.findViewById(R.id.edittext_title);
-        mEditTextMobile = (EditText)rootView.findViewById(R.id.edittext_mobile_no);
-        mEditTextPrice = (EditText)rootView.findViewById(R.id.edittext_price);
-        mEditTextModel = (EditText)rootView.findViewById(R.id.edittext_model);
-        mEditTextDescription = (EditText)rootView.findViewById(R.id.edittext_description);
+        mEditTextTitle = (EditText) rootView.findViewById(R.id.edittext_title);
+        mEditTextMobile = (EditText) rootView.findViewById(R.id.edittext_mobile_no);
+        mEditTextPrice = (EditText) rootView.findViewById(R.id.edittext_price);
+        mEditTextModel = (EditText) rootView.findViewById(R.id.edittext_model);
+        mEditTextDescription = (EditText) rootView.findViewById(R.id.edittext_description);
         mButtonFirstImage = rootView.findViewById(R.id.button_first_img);
         mButtonSecondImage = rootView.findViewById(R.id.button_second_img);
         mButtonThirdImage = rootView.findViewById(R.id.button_third_img);
@@ -137,19 +133,19 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         return rootView;
     }
 
-    private void prepareLogin(){
-        if(PrefUtility.isLoggedIn()){
+    private void prepareLogin() {
+        if (PrefUtility.isLoggedIn()) {
             mButtonLogin.setText(R.string.logout);
-        }else {
+        } else {
             mButtonLogin.setText(R.string.login);
         }
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mButtonLogin.getText().toString().equals("Login")){
+                if (mButtonLogin.getText().toString().equals("Login")) {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivityForResult(intent, LOGIN);
-                }else {
+                } else {
                     Utils.showToastMessage(getActivity(), "Logout Successfully");
                     PrefUtility.clearUsrPrefs();
                     mButtonLogin.setText(R.string.login);
@@ -168,49 +164,49 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0){
+                if (position == 0) {
                     mMakeRegion = null;
                     return;
                 }
 
-                if(position > 0){
-                    position = position-1;
+                if (position > 0) {
+                    position = position - 1;
                 }
                 SpinnerItem spinnerItem = mMakeRegionArrayList.get(position);
                 mMakeRegion = spinnerItem.getCode();
                 switch (mMakeRegion) {
                     case AppConstants.AMERICAN:
-                        if(mMakeAmericanArrayList == null){
+                        if (mMakeAmericanArrayList == null) {
                             mMakeAmericanArrayList = getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code);
                         }
                         setSubCategoryAdapter(mMakeAmericanArrayList);
                         break;
                     case AppConstants.EUROPEAN:
-                        if(mMakeEuropeanArrayList == null){
+                        if (mMakeEuropeanArrayList == null) {
                             mMakeEuropeanArrayList = getSpinnerArrayList(R.array.car_sub_category_european_title, R.array.car_sub_category_european_code);
                         }
                         setSubCategoryAdapter(mMakeEuropeanArrayList);
                         break;
                     case AppConstants.ASIAN:
-                        if(mMakeAsianArrayList == null){
+                        if (mMakeAsianArrayList == null) {
                             mMakeAsianArrayList = getSpinnerArrayList(R.array.car_sub_category_asian_title, R.array.car_sub_category_asian_code);
                         }
                         setSubCategoryAdapter(mMakeAsianArrayList);
                         break;
                     case AppConstants.SCRAP:
-                        if(mMakeScrapArrayList == null){
+                        if (mMakeScrapArrayList == null) {
                             mMakeScrapArrayList = getSpinnerArrayList(R.array.car_sub_category_scrap_title, R.array.car_sub_category_scrap_code);
                         }
                         setSubCategoryAdapter(mMakeScrapArrayList);
                         break;
                     case AppConstants.MARINE:
-                        if(mMakeMarineArrayList == null){
+                        if (mMakeMarineArrayList == null) {
                             mMakeMarineArrayList = getSpinnerArrayList(R.array.car_sub_category_marine_title, R.array.car_sub_category_marine_code);
                         }
                         setSubCategoryAdapter(mMakeMarineArrayList);
                         break;
                     case AppConstants.ACCESSORIES:
-                        if(mAccessoriesMarineArrayList == null){
+                        if (mAccessoriesMarineArrayList == null) {
                             mAccessoriesMarineArrayList = getSpinnerArrayList(R.array.car_sub_category_accessories_title, R.array.car_sub_category_accessories_code);
                         }
                         setSubCategoryAdapter(mAccessoriesMarineArrayList);
@@ -280,9 +276,9 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         mSpinnerSubCategory.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        if(mMakeRegion == null){
+                        if (mMakeRegion == null) {
                             showSnackBar(getString(R.string.please_select_region_first));
                             return true;
                         }
@@ -306,6 +302,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
             case R.id.button_first_img:
                 mCurrentImageSelection = 1;
@@ -328,30 +325,29 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                 openPhotoOptions();
                 break;
             case R.id.button_post_add:
-                if(!Utils.isNetworkAvailable()){
+                if (!Utils.isNetworkAvailable()) {
                     showSnackBar(getString(R.string.no_internet_connection));
                     return;
                 }
 
-                if(!PrefUtility.isLoggedIn()){
+                if (!PrefUtility.isLoggedIn()) {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                     return;
                 }
 
-                if( mImagesAdded == 0){
+                if (mImagesAdded == 0) {
                     showSnackBar(getString(R.string.there_is_no_image_to_post));
                     return;
                 }
 
-                if(TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextModel.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())){
+                if (TextUtils.isEmpty(mMakeRegion) || TextUtils.isEmpty(mMake) || TextUtils.isEmpty(mEditTextTitle.getText().toString()) || TextUtils.isEmpty(mEditTextMobile.getText().toString()) || TextUtils.isEmpty(mEditTextPrice.getText().toString()) || TextUtils.isEmpty(mEditTextModel.getText().toString()) || TextUtils.isEmpty(mEditTextDescription.getText().toString())) {
                     showSnackBar(getString(R.string.all_fields_are_compulsory));
                     return;
                 }
                 mProgressDialog = new ProgressDialog(getActivity());
                 mProgressDialog.setCancelable(false);
                 mProgressDialog.show();
-                //mCustomProgressDialog.show();
                 new LongOperation().execute();
                 break;
             default:
@@ -371,7 +367,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
             case CHOOSE_PHOTO:
                 if (resultCode == Activity.RESULT_OK) {
                     mProfileImagePath = data.getStringExtra(AppConstants.EXTRA_IMAGE_PATH);
-                    mImagePaths[mCurrentImageSelection-1] = mProfileImagePath;
+                    mImagePaths[mCurrentImageSelection - 1] = mProfileImagePath;
                     if (mProfileImagePath != null) {
                         Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
                         mImagesAdded++;
@@ -404,7 +400,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
                 break;
             case LOGIN:
                 if (resultCode == Activity.RESULT_OK) {
-                    if(getView() != null){
+                    if (getView() != null) {
                         getView().findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
                         getView().findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
                     }
@@ -417,7 +413,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    private void setAddImageTexVisibility(int imageIndex, int visibility){
+    private void setAddImageTexVisibility(int imageIndex, int visibility) {
         switch (imageIndex) {
             case 1:
                 mButtonFirstImage.findViewById(R.id.textview_add_image).setVisibility(visibility);
@@ -439,7 +435,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    private void setRemoveImageIconVisibility(int imageIndex, int visibility){
+    private void setRemoveImageIconVisibility(int imageIndex, int visibility) {
         switch (imageIndex) {
             case 1:
                 mButtonFirstImage.findViewById(R.id.imagebutton_remove).setVisibility(visibility);
@@ -461,14 +457,15 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    private void setRemoveImageIconTags(){
+    private void setRemoveImageIconTags() {
         mButtonFirstImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_ONE);
         mButtonSecondImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_TWO);
         mButtonThirdImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_THREE);
         mButtonFourthImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_FOUR);
         mButtonFifthImage.findViewById(R.id.imagebutton_remove).setTag(AppConstants.REMOVE_IMAGE_FIVE);
     }
-    private void registerRemoveImageListeners(){
+
+    private void registerRemoveImageListeners() {
         mButtonFirstImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
         mButtonSecondImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
         mButtonThirdImage.findViewById(R.id.imagebutton_remove).setOnClickListener(mRemoveImageClickListener);
@@ -479,13 +476,13 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private View.OnClickListener mRemoveImageClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            removeImage((String)v.getTag());
+            removeImage((String) v.getTag());
         }
     };
 
-    private void removeImage(String tag){
+    private void removeImage(String tag) {
         mImagesAdded--;
-        switch (tag){
+        switch (tag) {
             case AppConstants.REMOVE_IMAGE_ONE:
                 ((ImageView) mButtonFirstImage.findViewById(R.id.imageview_ad)).setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_images));
                 setRemoveImageIconVisibility(1, View.GONE);
@@ -521,7 +518,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    private void removeAllImages(){
+    private void removeAllImages() {
         removeImage(AppConstants.REMOVE_IMAGE_ONE);
         removeImage(AppConstants.REMOVE_IMAGE_TWO);
         removeImage(AppConstants.REMOVE_IMAGE_THREE);
@@ -529,7 +526,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
         removeImage(AppConstants.REMOVE_IMAGE_FIVE);
     }
 
-    private void resetEditTexts(){
+    private void resetEditTexts() {
         mEditTextTitle.setText("");
         mEditTextMobile.setText("");
         mEditTextPrice.setText("");
@@ -540,7 +537,7 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private void resetAllFields() {
         removeAllImages();
         resetEditTexts();
-        mMake =  null;
+        mMake = null;
         mMakeRegion = null;
         setCategoryAdapter();
         setSubCategoryAdapter(getSpinnerArrayList(R.array.car_sub_category_american_title, R.array.car_sub_category_american_code));
@@ -549,97 +546,106 @@ public class PostAdTabFragment extends Fragment implements View.OnClickListener 
     private class LongOperation extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            doFileUpload();
+            OKHTTpUplaod();
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             mProgressDialog.dismiss();
-            //mCustomProgressDialog.hide();
             super.onPostExecute(aVoid);
         }
     }
 
-
-    private void doFileUpload() {
+    private void OKHTTpUplaod() {
 
         String urlString = Urls.FORESALE_UPLOAD;
-        if(mMakeRegion.equals(AppConstants.SCRAP)){
-            urlString = Urls.SCRAP_UPDATE;
+        if (mMakeRegion.equals(AppConstants.SCRAP)) {
+            urlString = Urls.SCRAP_UPLOAD;
         }
 
-        if(mMakeRegion.equals(AppConstants.MARINE)){
-            urlString = Urls.MARINE_UPDATE;
+        if (mMakeRegion.equals(AppConstants.MARINE)) {
+            urlString = Urls.MARINE_UPLOAD;
         }
 
-        if(mMakeRegion.equals(AppConstants.ACCESSORIES)){
+        if (mMakeRegion.equals(AppConstants.ACCESSORIES)) {
             urlString = Urls.ACCESSORIES_UPLOAD;
         }
 
-        HttpEntity resEntity = null;
+        String makeRegion = mMakeRegion;
+        String make = mMake;
+        String title = mEditTextTitle.getText().toString();
+        String price = mEditTextPrice.getText().toString();
+        String phone = mEditTextMobile.getText().toString();
+        String model = mEditTextModel.getText().toString();
+        String description = mEditTextDescription.getText().toString();
+        MediaType MEDIA_TYPE_IMAGE = MediaType.parse("image/*");
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+        MultipartBody.Builder builder = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart(AppConstants.UUID, PrefUtility.getAccessToken())
+                .addFormDataPart(AppConstants.DEVICE_PHONE, PrefUtility.getAccessToken())
+                .addFormDataPart(AppConstants.MAKE_REGION, makeRegion)
+                .addFormDataPart(AppConstants.MAKE, make)
+                .addFormDataPart(AppConstants.TITLE, title)
+                .addFormDataPart(AppConstants.PRICE, price)
+                .addFormDataPart(AppConstants.MODEL, model)
+                .addFormDataPart(AppConstants.PHONE, phone)
+                .addFormDataPart(AppConstants.DESCRIPTION, description);
+
+        for (int i = 0; i < 5; i++) {
+            if (mImagePaths[i] != null) {
+                String attributeName = "image" + (i + 1);
+                String imageName = "image" + (i + 1) + ".jpeg";
+                builder.addFormDataPart(attributeName, imageName, RequestBody.create(MEDIA_TYPE_IMAGE, new File(mImagePaths[i])));
+            }
+        }
+        RequestBody requestBody = builder.build();
+        Request request = new Request.Builder()
+                .url(urlString)
+                .post(requestBody)
+                .build();
+
+        okhttp3.Response response = null;
         try {
-
-            HttpParams httpParams = new BasicHttpParams();
-
-            HttpClient client = new DefaultHttpClient(httpParams);
-
-            HttpPost post = new HttpPost(urlString);
-
-            post.setParams(httpParams);
-            MultipartEntity reqEntity = new MultipartEntity();
-
-            for (int i = 0; i < 5 ; i++) {
-                if(mImagePaths[i] != null){
-                    reqEntity.addPart("image"+(i+1), new FileBody(new File(mImagePaths[i])));
+            response = client.newCall(request).execute();
+            final String response_str = response.body().string();
+            Logger.d(TAG, "Response from server : " + response_str);
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            } else {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(response_str);
+                    final String status = jsonObject.getString("status");
+                    getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                            try {
+                                showSnackBar(response_str);
+                                if (status.equals("success")) {
+                                    resetAllFields();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-
-
-            reqEntity.addPart(AppConstants.DEVICE_PHONE, new StringBody(PrefUtility.getAccessToken()));
-            reqEntity.addPart(AppConstants.UUID, new StringBody(PrefUtility.getAccessToken()));
-            if(urlString.equals(Urls.SCRAP_UPDATE) || urlString.equals(Urls.MARINE_UPDATE)){
-                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMake));
-            }else {
-                reqEntity.addPart(AppConstants.MAKE_REGION, new StringBody(mMakeRegion));
-            }
-            reqEntity.addPart(AppConstants.MAKE, new StringBody(mMake));
-            reqEntity.addPart(AppConstants.TITLE, new StringBody(mEditTextTitle.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.PHONE, new StringBody(mEditTextMobile.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.PRICE, new StringBody(mEditTextPrice.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.MODEL, new StringBody(mEditTextModel.getText().toString().trim()));
-            reqEntity.addPart(AppConstants.DESCRIPTION, new StringBody(mEditTextDescription.getText().toString().trim()));
-            post.setEntity(reqEntity);
-            Logger.d("Garage", "url:"+urlString+" make:"+mMake+" makeRegion:"+mMakeRegion+" model:"+mEditTextModel.getText().toString().trim());
-
-            HttpResponse response = client.execute(post);
-            resEntity = response.getEntity();
-            final String response_str = EntityUtils.toString(resEntity);
-            JSONObject jsonObject = new JSONObject(response_str);
-            final String status = jsonObject.getString("status");
-            if (resEntity != null) {
-                Log.i("RESPONSE", response_str);
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        try {
-                            Logger.d(TAG, "Response from server : " + response_str);
-                            showSnackBar(response_str);
-                            if(status.equals("success")){
-                                resetAllFields();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        } catch (Exception ex) {
-            Log.e("Debug", "error: " + ex.getMessage(), ex);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private void showSnackBar(String message){
+    private void showSnackBar(String message) {
         Utils.showSnackBar(getActivity().findViewById(R.id.coordinator_layout), message);
     }
-
 }

@@ -12,7 +12,7 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.AlwakalatSparePartsFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class AlwakalatSparePartsActivity extends BaseActivity  {
+public class AlwakalatSparePartsActivity extends BaseActivity {
     private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

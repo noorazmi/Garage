@@ -7,7 +7,7 @@ package com.arsalan.garage.vo;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class UserBaseData extends BaseVO{
+public class UserBaseData extends BaseVO {
     private String data_count;
 
     public String getData_count() {

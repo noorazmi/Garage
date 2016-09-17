@@ -10,7 +10,7 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.AlwakalatCarServiceFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class AlwakalatCarServiceActivity extends BaseActivity  {
+public class AlwakalatCarServiceActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

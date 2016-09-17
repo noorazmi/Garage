@@ -337,6 +337,7 @@
     <string name="phone_min_length">The phone must be at least 6 characters</string>
     <string name="logout">Log Out</string>
     <string name="login">Login</string>
+    <string name="share">Share</string>
 
 
 </resources>

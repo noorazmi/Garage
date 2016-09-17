@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.StatusMessage;
+import com.arsalan.garage.models.UserInfo;
 import com.arsalan.garage.uicomponents.CustomButton;
 import com.arsalan.garage.uicomponents.CustomEditText;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
@@ -28,6 +28,13 @@ import com.arsalan.garage.volleytask.VolleyHttpTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import networking.HttpConstants;
+import networking.listeners.OnLoadCompleteListener;
+import networking.loader.LoaderHandler;
+import networking.models.HTTPModel;
+import networking.models.HTTPRequest;
+import networking.models.HTTPResponse;
 
 
 public class RegisterActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnClickListener{
@@ -282,17 +289,32 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
             isAllFieldsProperlySet = verifyPassword();
             isAllFieldsProperlySet = verifyConfirmPassword();
 
-            if (isAllFieldsProperlySet) {
+            if(isAllFieldsProperlySet){
+
                 JSONObject registerJSON = createRegisterUerJson();
-                progressDialog.show();
-                VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.REGISTER_USER, Request.Method.POST, new VolleyHttpListener() {
+                HTTPRequest httpRequest = new HTTPRequest();
+                httpRequest.setShowProgressDialog(true);
+                String fullUrl = Urls.REGISTER_USER;
+                httpRequest.setUrl(fullUrl);
+                httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
+                httpRequest.setValueObjectFullyQualifiedName(StatusMessage.class.getName());
+                httpRequest.setJSONPayload(registerJSON.toString());
+                LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
+                loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
                     @Override
-                    public void onResult(VolleyHttpResponse volleyHttpResponse) {
-                        if (volleyHttpResponse.getResponseModel() instanceof StatusMessage) {
+                    public void onLoadComplete(HTTPModel httpModel) {
+
+                        if (progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+
+                        HTTPResponse httpResponse = (HTTPResponse) httpModel;
+
+                        if (httpResponse.getValueObject() instanceof StatusMessage) {
                             if (progressDialog.isShowing()){
                                 progressDialog.dismiss();
                             }
-                            mStatusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
+                            mStatusMessage = (StatusMessage) httpResponse.getValueObject();
                             if(mStatusMessage != null){
                                 if(mStatusMessage.getStatus().equalsIgnoreCase("fail")){
                                     Utils.showSnackBar(RegisterActivity.this, mStatusMessage.getMessage());
@@ -304,24 +326,55 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
 
                                 }
                             }
+                        }else {
+                            Utils.showSnackBar(RegisterActivity.this, getString(R.string.error_something_went_wrong));
                         }
-                    }
-                    @Override
-                    public void onError(VolleyError error) {
-                        if (progressDialog.isShowing()){
-                            progressDialog.dismiss();
-                        }
-                        if (!Utils.isNetworkAvailable()) {
-                            Utils.showSnackBar(RegisterActivity.this, getString(R.string.internet_error_msg));
-                            return;
-                        }
-                        Utils.showSnackBar(RegisterActivity.this, getString(R.string.error_something_went_wrong));
                     }
                 });
-                volleyHttpTask.setJsonPayload(registerJSON);
-                volleyHttpTask.setResponseModelClassFullyQualifiedName(StatusMessage.class.getName());
-                volleyHttpTask.start();
+                loaderHandler.loadData();
             }
+
+
+//            if (isAllFieldsProperlySet) {
+//                JSONObject registerJSON = createRegisterUerJson();
+//                progressDialog.show();
+//                VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.REGISTER_USER, Request.Method.POST, new VolleyHttpListener() {
+//                    @Override
+//                    public void onResult(VolleyHttpResponse volleyHttpResponse) {
+//                        if (volleyHttpResponse.getResponseModel() instanceof StatusMessage) {
+//                            if (progressDialog.isShowing()){
+//                                progressDialog.dismiss();
+//                            }
+//                            mStatusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
+//                            if(mStatusMessage != null){
+//                                if(mStatusMessage.getStatus().equalsIgnoreCase("fail")){
+//                                    Utils.showSnackBar(RegisterActivity.this, mStatusMessage.getMessage());
+//                                }else if(mStatusMessage.getStatus().equalsIgnoreCase("success")){
+//                                    Utils.showToastMessage(RegisterActivity.this, mStatusMessage.getMessage());
+//                                    finish();
+//                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                                    startActivity(intent);
+//
+//                                }
+//                            }
+//                        }
+//                    }
+//                    @Override
+//                    public void onError(VolleyError error) {
+//                        if (progressDialog.isShowing()){
+//                            progressDialog.dismiss();
+//                        }
+//                        if (!Utils.isNetworkAvailable()) {
+//                            Utils.showSnackBar(RegisterActivity.this, getString(R.string.internet_error_msg));
+//                            return;
+//                        }
+//                        Utils.showSnackBar(RegisterActivity.this, getString(R.string.error_something_went_wrong));
+//                    }
+//                });
+//                volleyHttpTask.setJsonPayload(registerJSON);
+//                volleyHttpTask.setResponseModelClassFullyQualifiedName(StatusMessage.class.getName());
+//                volleyHttpTask.start();
+//            }
         } else {
             Utils.showSnackBar(this, getString(R.string.internet_error_msg));
             return;

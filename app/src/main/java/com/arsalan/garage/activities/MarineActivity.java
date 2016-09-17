@@ -10,7 +10,7 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.MarineFragment;
 import com.arsalan.garage.utils.AppConstants;
 
-public class MarineActivity extends BaseActivity  {
+public class MarineActivity extends BaseActivity {
     private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

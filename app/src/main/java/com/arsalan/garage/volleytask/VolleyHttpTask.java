@@ -1,17 +1,5 @@
 package com.arsalan.garage.volleytask;
 
-import android.text.TextUtils;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.arsalan.garage.utils.Logger;
-
-import org.json.JSONObject;
-
-import java.util.Map;
 
 /**
  * <p/>
@@ -22,7 +10,7 @@ import java.util.Map;
  */
 public class VolleyHttpTask {
 
-    private VolleyHttpListener mVolleyHttpListener;
+    /*private VolleyHttpListener mVolleyHttpListener;
     private int mRequestMethod = Request.Method.GET;
     private String mJsonPayload;
     private String mUrl;
@@ -30,22 +18,22 @@ public class VolleyHttpTask {
     private DefaultRetryPolicy mDefaultRetryPolicy;
     private String mTag;
 
-    /**
+    *//**
      * By default {@link Request.Method#GET} method type will be used.
      *
      * @param url                 resource url
      * @param mVolleyHttpListener {@link VolleyHttpListener}
-     */
+     *//*
     public VolleyHttpTask(String url, VolleyHttpListener mVolleyHttpListener) {
         this.mVolleyHttpListener = mVolleyHttpListener;
         this.mUrl = url;
     }
 
-    /**
+    *//**
      * @param url                 resource url
      * @param requestMethod       on of the constants from {@link Request.Method}
      * @param mVolleyHttpListener {@link VolleyHttpListener}
-     */
+     *//*
     public VolleyHttpTask(String url, int requestMethod, VolleyHttpListener mVolleyHttpListener) {
         this.mVolleyHttpListener = mVolleyHttpListener;
         this.mUrl = url;
@@ -60,11 +48,11 @@ public class VolleyHttpTask {
         this.mJsonPayload = jsonStringPayload;
     }
 
-    /**
+    *//**
      * Fully qualified name of the model class. The fully qualified name of a class includes the package name.
      *
      * @return
-     */
+     *//*
     public void setResponseModelClassFullyQualifiedName(String responseModelClassFullyQualifiedName) {
         this.mResponseModelClassFullyQualifiedName = responseModelClassFullyQualifiedName;
     }
@@ -127,5 +115,5 @@ public class VolleyHttpTask {
         }
 
         VolleyController.getRequestQueue().add(req);
-    }
+    }*/
 }
