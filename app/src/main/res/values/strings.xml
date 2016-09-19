@@ -154,32 +154,41 @@
     </string-array>
 
     <string-array name="car_sub_category_american_title">
-        <item>كاديلاك</item>
-        <item> دودج </item>
-        <item>شيفروليه</item>
-        <item>جمس</item>
-        <item>فورد /لنكون</item>
-        <item>همر</item>
+        <item> رام </item>
+        <item> ميركوري </item>
+        <item> امريكي </item>
         <item>جيب</item>
+        <item>همر</item>
+        <item>فورد /لنكون</item>
+        <item>جمس</item>
+        <item>شيفروليه</item>
+        <item> دودج </item>
+        <item>كاديلاك</item>
     </string-array>
 
     <string-array name="car_sub_category_american_code">
-         <item>cadillac</item> 
-        <item>dodge-chrysler</item>
-         <item>chevrolet</item> 
-        <item>gmc</item> 
-        <item>ford-lincoln</item>
-         <item>hummer</item> 
+        <item> ram </item>
+        <item> mercury </item>
+        <item> other </item>
         <item>jeep</item> 
+         <item>hummer</item> 
+        <item>fordlincoln</item>
+        <item>gmc</item> 
+         <item>chevrolet</item> 
+        <item>dodgechrysler</item>
+        <item> Cadillac </item>
     </string-array>
 
 
     <string-array name="car_sub_category_european_title">
+        <item> اوروبي </item>
+        <item> فولفو </item>
+        <item>بورش</item>
+        <item>اودي</item>
         <item>بيجو / ستروين</item>
         <item>سكودا</item>
         <item>ميني</item>
-        <item>اودي</item>
-        <item>بورش</item>
+        <item> رينو </item>
         <item>جاغوار</item>
         <item>فولكس</item>
         <item>رنج روفر</item>
@@ -187,21 +196,23 @@
         <item>مرسيدس</item>
     </string-array>
     <string-array name="car_sub_category_european_code">
-         <item>peugeot-citroen</item> 
+        <item>other</item> 
+        <item>volvo</item> 
+        <item>porsche</item> 
+         <item>audi</item> 
+         <item>peugeotcitroen</item> 
         <item>skoda</item> 
         <item>mini</item>
-         <item>audi</item> 
-        <item>porche</item> 
+        <item>renault</item>
         <item>jaguar</item> 
-        <item>volves-wagan</item>
-         
-        <item>range-rover</item>
+        <item>volveswagan</item>
+        <item>rangerover</item>
          <item>bmw</item> 
         <item>mercedes</item>
-        <item>other</item> 
     </string-array>
 
     <string-array name="car_sub_category_asian_title">
+        <item> اسيوي </item>
         <item>سوبارو</item>
         <item>ايسوزو</item>
         <item>مازدا</item>
@@ -216,13 +227,14 @@
         <item>تويوتا</item>
     </string-array>
     <string-array name="car_sub_category_asian_code">
+        <item>other</item>
         <item>subaru</item>
         <item>isuzu</item>
         <item>mazda</item>
         <item>suzuki</item>
         <item>mitsubishi</item>
         <item>kia</item>
-        <item>kyundai</item>
+        <item>hyundai</item>
         <item>honda</item>
         <item>infiniti</item>
         <item>lexus</item>
@@ -250,7 +262,7 @@
 
     <string-array name="car_sub_category_marine_code">
         <item>boats</item>
-        <item>jet ski</item>
+        <item>jetski</item>
         <item>marineequipment</item>
     </string-array>
     <string-array name="car_sub_category_accessories_title">

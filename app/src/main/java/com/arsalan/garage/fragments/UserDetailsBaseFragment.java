@@ -1,10 +1,14 @@
 package com.arsalan.garage.fragments;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v13.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -19,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.EditPostActivity;
@@ -70,6 +75,8 @@ public abstract class UserDetailsBaseFragment extends Fragment{
     protected UserDetailsBase mUserDetailsBase;
     private LinearLayout indicatorLayout;
     private List<ImageView> indicatorImage;
+    private static final int MY_PERMISSIONS_REQUEST_SMS = 89;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -140,10 +147,46 @@ public abstract class UserDetailsBaseFragment extends Fragment{
         mImageViewEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShareUtil.shareOnGmail(getActivity(), mShareText, mShareImage);
+                //ShareUtil.shareOnGmail(getActivity(), mShareText, mShareImage);
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                    grantSendSMSPermission();
+                    return;
+                }
+                ShareUtil.sendSMS(getActivity(), mTextviewPhone.getText().toString(), mShareText);
+
             }
         });
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SMS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the camera-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the functionality that depends on this permission.
+                }
+                return;
+            }
+        }
+    }
+
+    private void grantSendSMSPermission(){
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS)) {
+                // Show an explanation to the user *asynchronously* -- don't block this thread waiting for the user's response! After the user sees the explanation, try again to request the permission.
+                Toast.makeText(getActivity(), "Please grant the Send SMS permission by going in the App info", Toast.LENGTH_SHORT).show();
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SMS);
+            }
+        }
+    }
+
 
     protected GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener =  new  GestureDetector.SimpleOnGestureListener(){
 

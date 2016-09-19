@@ -1,5 +1,6 @@
 package com.arsalan.garage.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -145,4 +146,19 @@ public class ShareUtil {
     }
 
 
+    public static void sendSMS(Activity activity, String phoneNo, String msg){
+//        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//        sendIntent.setData(Uri.parse("sms:" + phoneNo));
+//        sendIntent.putExtra("address", phoneNo);
+//        sendIntent.putExtra("sms_body", msg);
+//        activity.startActivity(sendIntent);
+
+
+        Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", phoneNo);
+        smsIntent.setData(Uri.parse("sms:" + phoneNo));
+        smsIntent.putExtra("sms_body", msg);
+        activity.startActivity(Intent.createChooser(smsIntent, "Send SMS:"));
+    }
 }
