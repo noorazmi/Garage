@@ -313,6 +313,9 @@ public abstract class UserDetailsBaseFragment extends Fragment{
         ArrayList<ImageInfo> carImageArrayList = null;
         if (mUserDetailsBase != null) {
             carImageArrayList = mUserDetailsBase.getImages();
+            AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
+            mViewPagerItemImages.setAdapter(adapter);
+
             indicatorImage = Utils.getCircleIndicator(getActivity(), carImageArrayList.size(), indicatorLayout);
             Utils.setIndicator(0, indicatorImage);
             if (carImageArrayList.size() <= 1) {
@@ -323,8 +326,6 @@ public abstract class UserDetailsBaseFragment extends Fragment{
             if(carImageArrayList.size() > 0){
                 mShareImage = carImageArrayList.get(0).getPhoto_name();
             }
-            AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
-            mViewPagerItemImages.setAdapter(adapter);
         }
 
     }

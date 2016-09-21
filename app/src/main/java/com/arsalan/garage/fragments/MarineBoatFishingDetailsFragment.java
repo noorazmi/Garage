@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.MarineBoatFishingDetailsVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import networking.HttpConstants;
 import networking.listeners.OnLoadCompleteListener;
@@ -65,6 +67,9 @@ public class MarineBoatFishingDetailsFragment extends Fragment {
     protected TextView mTextViewModel;
     protected ImageView mImageViewEmail;
     protected MarineBoatFishingDetailsVO.Results mResults;
+
+    private List<ImageView> indicatorImage;
+    private LinearLayout indicatorLayout;
 
     public MarineBoatFishingDetailsFragment() {
     }
@@ -103,6 +108,8 @@ public class MarineBoatFishingDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_carwash_details, container, false);
+        indicatorLayout = (LinearLayout) rootView.findViewById(R.id.pager_indicator_layout);
+        mViewPagerItemImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mViewPagerItemImages = (ViewPager) rootView.findViewById(R.id.viewpager_car_images);
         mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone1 = (TextView) rootView.findViewById(R.id.textview_phone1);
@@ -116,6 +123,25 @@ public class MarineBoatFishingDetailsFragment extends Fragment {
                 return false;
             }
         });
+
+        mViewPagerItemImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (indicatorImage != null && indicatorImage.size() > 0) {
+                    position = position % indicatorImage.size();
+                    Utils.setIndicator(position, indicatorImage);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         if (Utils.isNetworkAvailable(getActivity())) {
             performGET();
         } else {
@@ -215,6 +241,14 @@ public class MarineBoatFishingDetailsFragment extends Fragment {
             }
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
             mViewPagerItemImages.setAdapter(adapter);
+
+            indicatorImage = Utils.getCircleIndicator(getActivity(), carImageArrayList.size(), indicatorLayout);
+            Utils.setIndicator(0, indicatorImage);
+            if (carImageArrayList.size() <= 1) {
+                indicatorLayout.setVisibility(View.INVISIBLE);
+            } else {
+                indicatorLayout.setVisibility(View.VISIBLE);
+            }
         }
 
     }

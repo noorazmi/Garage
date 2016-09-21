@@ -9,7 +9,6 @@
         android:id="@+id/framelayout_viewpager_container"
         android:layout_width="match_parent"
         android:layout_height="260dp">
-
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_car_images"
             android:layout_width="match_parent"
@@ -26,6 +25,7 @@
             android:orientation="horizontal"
             android:visibility="visible"
             android:layout_gravity="center_horizontal|bottom"/>
+
     </FrameLayout>
     <RelativeLayout
         android:id="@+id/relative_layout_price_container"
@@ -58,6 +58,12 @@
             android:textColor="@color/phone_number"
             android:textSize="20sp"/>
 
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true"
+            android:background="@color/black_dark"/>
+
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
             android:id="@+id/textview_model"
             style="@style/TextViewStyle.Regular.English"
@@ -73,8 +79,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/phone_number"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/phone_number"/>
 
     </RelativeLayout>
 
@@ -83,11 +89,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_layout_price_container"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="right"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="Wait..."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textview_title"
+        android:layout_marginTop="15dp"
+        android:background="@color/phone_number"/>
 
 
     <TextView
@@ -95,11 +108,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_title"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:gravity="right"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="Wait..."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textview_description"
+        android:layout_marginTop="15dp"
+        android:background="@color/phone_number"/>
 
     <com.arsalan.garage.uicomponents.CustomTextViewEnglish
         android:id="@+id/textview_phone1"
@@ -109,7 +129,7 @@
         android:layout_below="@+id/textview_description"
         android:layout_gravity="right|center_vertical"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="28dp"
         android:drawableLeft="@drawable/ic_phone_small"
         android:drawablePadding="10dp"
         android:gravity="left|center_vertical"
@@ -126,6 +146,14 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/textview_phone1"
         android:src="@drawable/message"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/imageview_email"
+        android:layout_marginTop="10dp"
+        android:background="@color/phone_number"/>
+
 
 
 </RelativeLayout>

@@ -41,6 +41,8 @@ import networking.models.HTTPRequest;
 import networking.models.HTTPResponse;
 import networking.models.ValueObject;
 
+import static com.arsalan.garage.R.id.textview_phone2;
+
 /**
  * <p/>
  * Created by: Noor  Alam on 06/08/16.<br/>
@@ -63,6 +65,8 @@ public class CarWashDetailsFragment extends Fragment {
     protected CarWashDetailsVO.Results mResults;
     private List<ImageView> indicatorImage;
     private LinearLayout indicatorLayout;
+    private TextView phone1Divider;
+    private TextView phone2Divider;
 
     public CarWashDetailsFragment() {
     }
@@ -102,7 +106,9 @@ public class CarWashDetailsFragment extends Fragment {
         mTextviewDescription = (TextView) rootView.findViewById(R.id.textview_description);
         mTextviewPhone1 = (TextView) rootView.findViewById(R.id.textview_phone1);
         mTextviewPhone1.setVisibility(View.VISIBLE);
-        mTextviewPhone2 = (TextView) rootView.findViewById(R.id.textview_phone2);
+        mTextviewPhone2 = (TextView) rootView.findViewById(textview_phone2);
+        phone1Divider = (TextView) rootView.findViewById(R.id.textview_phone1_divider);
+        phone2Divider = (TextView) rootView.findViewById(R.id.textview_phone2_divider);
         mTextViewModel = (TextView) rootView.findViewById(R.id.textview_model);
         mGestureDetector = new GestureDetector(getActivity(), mSimpleOnGestureListener);
         mViewPagerItemImages.setOnTouchListener(new View.OnTouchListener() {
@@ -148,10 +154,12 @@ public class CarWashDetailsFragment extends Fragment {
                 if (i == 0) {
                     mTextviewPhone1.setText(userDetailsBase.getPhone().get(i));
                     mTextviewPhone1.setVisibility(View.VISIBLE);
+                    phone1Divider.setVisibility(View.VISIBLE);
                 }
                 if (i == 1) {
                     mTextviewPhone2.setText(userDetailsBase.getPhone().get(i));
                     mTextviewPhone2.setVisibility(View.VISIBLE);
+                    phone2Divider.setVisibility(View.VISIBLE);
                 }
             }
         }
@@ -186,6 +194,7 @@ public class CarWashDetailsFragment extends Fragment {
             carImageArrayList = (ArrayList<ImageInfo>) mResults.getImages();
             AlwakalatAgencyDescriptionCarsViewPagerAdapter adapter = new AlwakalatAgencyDescriptionCarsViewPagerAdapter(getFragmentManager(), carImageArrayList);
             mViewPagerItemImages.setAdapter(adapter);
+
             indicatorImage = Utils.getCircleIndicator(getActivity(), carImageArrayList.size(), indicatorLayout);
             Utils.setIndicator(0, indicatorImage);
             if (carImageArrayList.size() <= 1) {
