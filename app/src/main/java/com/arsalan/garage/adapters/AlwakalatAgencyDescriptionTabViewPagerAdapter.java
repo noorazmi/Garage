@@ -46,7 +46,9 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
 
             case POSITION_CONTACT_US:
                 fragment = new ContactFragment();
-                bundle.putString(AppConstants.EXTRA_CONTACT, mShowroomCarVo.getResults().getContact());
+                //bundle.putString(AppConstants.EXTRA_CONTACT, );
+                bundle.putStringArray(AppConstants.EXTRA_CONTACT, getPhoneNumbers());
+                bundle.putString(AppConstants.EXTRA_CONTACT_INFO,mShowroomCarVo.getResults().getContact().split(":")[0]);
                 break;
             case POSITION_WARRANTY:
                 fragment = new WarrantyFragment();
@@ -69,6 +71,17 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
         }
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    private String[] getPhoneNumbers(){
+        String[] phoneNumbers = new String[mShowroomCarVo.getResults().getPhones().length + 1];
+        String contact1 = mShowroomCarVo.getResults().getContact().split(":")[1];
+        String[] phones = mShowroomCarVo.getResults().getPhones();
+        phoneNumbers[0] = contact1;
+        for (int i = 0; i < phones.length; i++) {
+            phoneNumbers[i+1] = phones[i];
+        }
+        return phoneNumbers;
     }
 
 

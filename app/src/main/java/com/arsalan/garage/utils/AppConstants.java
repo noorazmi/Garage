@@ -134,6 +134,7 @@ public interface AppConstants {
     String EXTRA_SERVICE_TYPE_SPARE_PARTS = "EXTRA_SERVICE_TYPE_SPARE_PARTS";
     String EXTRA_SERVICE_TYPE_CENTERS = "EXTRA_SERVICE_TYPE_CENTERS";
     String EXTRA_CONTACT = "contact";
+    String EXTRA_CONTACT_INFO = "contact_info";
     String EXTRA_IMAGE_PATH = "imagePath";
     String EXTRA_CAR_ID = "car_id";
     String EXTRA_INDEX = "index";

@@ -41,6 +41,7 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
         private String working_hours;
         private String warranty;
         private ArrayList<ImageInfo> images;
+        private String[] phones;
 
         public String getShowroom_car_id() {
             return showroom_car_id;
@@ -149,7 +150,13 @@ public class ShowroomCarVo extends BaseVO implements ValueObject {
         public void setImages(ArrayList<ImageInfo> images) {
             this.images = images;
         }
+
+        public String[] getPhones() {
+            return phones;
+        }
     }
+
+
 
 //    public static class CarImage {
 //        private String photo_id;
