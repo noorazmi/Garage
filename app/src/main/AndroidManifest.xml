@@ -244,7 +244,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.KuwaitRescueActivity">
+        <activity android:name=".activities.KuwaitRescueActivity"
+        android:theme="@style/AppTheme">
         </activity>
     </application>
 

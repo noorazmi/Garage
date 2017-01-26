@@ -8,6 +8,7 @@
         <!--to disable multitouch in whole app-->
         <item name="android:windowEnableSplitTouch">false</item>
         <item name="android:splitMotionEvents">false</item>
+        <item name="android:layoutDirection">ltr</item>
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme">
