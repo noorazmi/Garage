@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kuwait_rescue">الاداء العالي</string>
+    <string name="kuwait_rescue_message">فريق الإنقاذ الكويتي التطوعي \n(براً و على الشواطىء) \n  بإستعداد تام على مدار الساعةعمل تطوعي بدون مقابل \n!! يمكنك الاستفادة من هذا القسم في حال انقطاع الخدمة !!</string>
+    <string name="founder_of_team">مؤسس الفريق : محمد سيف</string>
+    <string name="mp">النائب : أحمد صالح</string>
+    <string name="operation_section">قسم عمليات الفريق</string>
+    <string name="khalid_saif">خالد سيف</string>
+    <string name="abdullah_al_ajmi">عبدالله العجمي</string>
+    <string name="mohsen_al_hajri">محسن الهاجري</string>
+</resources>

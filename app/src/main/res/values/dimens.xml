@@ -41,6 +41,9 @@
     <dimen name="font_size_large">18sp</dimen>
     <dimen name="font_size_extra_large">20sp</dimen>
     <dimen name="error_message_right_margin">5dp</dimen>
+    <dimen name="call_icon_padding">10dp</dimen>
+    <dimen name="call_icon_height">40dp</dimen>
+    <dimen name="call_text_size">20sp</dimen>
 
 
 </resources>

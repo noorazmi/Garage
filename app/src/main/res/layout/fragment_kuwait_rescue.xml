@@ -1,0 +1,100 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arsalan.garage.fragments.KuwaitRescueFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linear_layout_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/kuwait_rescue"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                android:id="@+id/textview_signup"
+                style="@style/TextViewStyle.Regular.English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/kuwait_rescue_message"
+                android:textColor="@color/black_dark"
+                android:textSize="@dimen/font_size_extra_large"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/KuwaitRescueCallLinearLayoutStyle">
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="66664588"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                style="@style/KuwaitRescueCallToTextViewStyle"
+                android:text="@string/founder_of_team"/>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/KuwaitRescueCallLinearLayoutStyle">
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="50788200"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                style="@style/KuwaitRescueCallToTextViewStyle"
+                android:text="@string/mp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_light"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/operation_section"
+            android:textColor="@color/black_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+
+        <LinearLayout
+            style="@style/KuwaitRescueCallLinearLayoutStyle">
+
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="55227778"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                style="@style/KuwaitRescueCallToTextViewStyle"
+                android:text="@string/khalid_saif"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/KuwaitRescueCallLinearLayoutStyle">
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="67773210"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                style="@style/KuwaitRescueCallToTextViewStyle"
+                android:text="@string/abdullah_al_ajmi"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/KuwaitRescueCallLinearLayoutStyle">
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="55996542"/>
+            <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+                style="@style/KuwaitRescueCallToTextViewStyle"
+                android:text="@string/mohsen_al_hajri"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
+

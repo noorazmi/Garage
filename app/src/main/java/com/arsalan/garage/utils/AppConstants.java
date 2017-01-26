@@ -28,6 +28,7 @@ public interface AppConstants {
     String SCREEN_TYPE_TECHNICAL_INSPECTION = "screen_type_technical_inspection";
     String SCREEN_FOR_RENT = "screen_type_rent";
     String SCREEN_KHIDMAT_SHAMLA = "screen_type_shamla";
+    String MENU_ITEM_KUWAIT_RESCUE = "menu_item_kuwait_rescue";
 
 
 

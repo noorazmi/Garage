@@ -163,4 +163,37 @@
     </style>
 
     <dimen name="tab_max_width">150dp</dimen>
+
+    <style name="CallIconTextViewStyle">
+        <item name="android:drawableLeft">@drawable/ic_phone_smaller</item>
+        <item name="fontName">@string/font_calibre_regular</item>
+        <item name="android:textSize">@dimen/call_text_size</item>
+        <item name="android:layout_height">@dimen/call_icon_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/phone_number</item>
+        <item name="android:layout_gravity">right|center_vertical</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="KuwaitRescueCallToTextViewStyle">
+        <item name="fontName">@string/font_calibre_regular</item>
+        <item name="android:textSize">@dimen/font_size_extra_large</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black_dark</item>
+    </style>
+    <style name="KuwaitRescueCallLinearLayoutStyle">
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
 </resources>

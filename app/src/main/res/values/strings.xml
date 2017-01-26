@@ -22,33 +22,33 @@
 
 
     <!--Arabic Text-->
-    <string name="karajat">        الكراجات         </string>
-    <string name="tariqal_salmi">        طريق السالمي       </string>
-    <string name="tariqal_sabih">        طريق الصبيه      </string>
-    <string name="tariqal_abdali">     طريق العبدلي     </string>
-    <string name="tariq_kabad">    طريق كبد   </string>
-    <string name="al_wafrah_wal_naviseeb">    الوفرة والنويصيب   </string>
-    <string name="fani_mutnaqal">   فني متنقل  </string>
-    <string name="al_asma">     العاصمه   </string>
-    <string name="al_jahra">    الجهراء   </string>
-    <string name="al_farwania">     الفروانية  </string>
-    <string name="al_ahmadi">   الاحمدي </string>
-    <string name="hauli">  حولي  </string>
-    <string name="mubarakal_kabir">  مبارك الكبير </string>
+    <string name="karajat">الكراجات</string>
+    <string name="tariqal_salmi">طريق السالمي</string>
+    <string name="tariqal_sabih">طريق الصبيه</string>
+    <string name="tariqal_abdali">طريق العبدلي</string>
+    <string name="tariq_kabad">طريق كبد</string>
+    <string name="al_wafrah_wal_naviseeb">الوفرة والنويصيب</string>
+    <string name="fani_mutnaqal">فني متنقل</string>
+    <string name="al_asma">العاصمه</string>
+    <string name="al_jahra">الجهراء</string>
+    <string name="al_farwania">الفروانية</string>
+    <string name="al_ahmadi">الاحمدي</string>
+    <string name="hauli">حولي</string>
+    <string name="mubarakal_kabir">مبارك الكبير</string>
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
     <string name="label_add_photo">Add Poster</string>
-    <string name="bai_ul_shara">  بيع و شرا  </string>
-    <string name="almarij"> المعرض  </string>
+    <string name="bai_ul_shara">بيع و شرا</string>
+    <string name="almarij">المعرض</string>
 
 
     <!--American Car Brands-->
     <string name="car_brand_cadillac">كاديلاك</string>
-    <string name="dodge"> دودج </string>
+    <string name="dodge">دودج</string>
     <string name="car_brand_chevrolet">شيفروليه</string>
     <string name="car_brand_gmc">جمس</string>
     <string name="car_brand_ram">رام</string>
-    <string name="car_brand_mercury"> ميركوري </string>
+    <string name="car_brand_mercury">ميركوري</string>
     <string name="car_brand_fordnlincoln">فورد /لنكون</string>
     <string name="car_brand_hummer">همر</string>
     <string name="car_brand_jeep">جيب</string>
@@ -72,7 +72,7 @@
     <string name="car_brand_nissan">نيسان</string>
     <string name="car_brand_lexus">لكزس</string>
     <string name="car_brand_sheri">شيري</string>
-    <string name="car_brand_other"> آخرون </string>
+    <string name="car_brand_other">آخرون</string>
     <string name="car_brand_subaru">سوبارو</string>
     <string name="car_brand_isuza">ايسوزو</string>
     <string name="car_brand_mazda">مازدا</string>
@@ -92,30 +92,34 @@
     <string name="title_activity_scrap_sub_menu">ScrapSubMenuActivity</string>
     <string name="label_take_photo">Take a photo</string>
     <string name="label_camera_roll">Select from camera roll</string>
-    <string name="label_remove_image"><u>Remove Image</u></string>
+    <string name="label_remove_image">
+        <u>Remove Image</u>
+    </string>
     <string name="message_app_exit">Press again to close the app</string>
 
 
-    <string name="taxi"> تكسي </string>
-    <string name="movable_wash">  غسيل متنقل </string>
-    <string name="tintingcar">    حمايه وتظليل     </string>
-    <string name="technical_inspection">   فحص فني    </string>
+    <string name="taxi">تكسي</string>
+    <string name="movable_wash">غسيل متنقل</string>
+    <string name="tintingcar">حمايه وتظليل</string>
+    <string name="technical_inspection">فحص فني</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="error_out_of_memory"><![CDATA[<string name=\"error_out_of_memory\">We are unable to process this image</string>]]></string>
-    <string name="msg_5xx"><![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
+    <string name="error_out_of_memory">
+        <![CDATA[<string name=\"error_out_of_memory\">We are unable to process this image</string>]]></string>
+    <string name="msg_5xx">
+        <![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
     <string name="no_internet_connection">No network connectivity</string>
     <string name="agencies">الوكالات</string>
     <string name="title_activity_alwakalat_agency_menu">AlwakalatAgencyMenuActivity</string>
     <string name="title_activity_alwakalat_agency_sub_menu">AlwakalatAgencySubMenuActivity</string>
 
 
-    <string name="main_info">معلومات اساسيه </string>
-    <string name="warranty"> الكفالة  </string>
+    <string name="main_info">معلومات اساسيه</string>
+    <string name="warranty">الكفالة</string>
     <string name="feature">المزايا</string>
-    <string name="contact_us"> اتصل بنا</string>
+    <string name="contact_us">اتصل بنا</string>
     <string name="title">Title</string>
     <string name="mobile_no">Mobile No</string>
     <string name="price">Price</string>
@@ -126,22 +130,22 @@
     <string name="year">الموديل</string>
     <string name="engine">المحرك</string>
     <string name="transmission">ناقل الحركه</string>
-    <string name="wheel_drive"> نظام الدفع </string>
+    <string name="wheel_drive">نظام الدفع</string>
     <string name="price_arb">السعر</string>
     <string name="dot">•</string>
-    <string name="for_more_information_please_call"> لمعرفة المزيد يرجى الإتصال </string>
-    <string name="american"> امريكي </string>
-    <string name="asian"> اسيوي </string>
-    <string name="european"> اوروبي </string>
+    <string name="for_more_information_please_call">لمعرفة المزيد يرجى الإتصال</string>
+    <string name="american">امريكي</string>
+    <string name="asian">اسيوي</string>
+    <string name="european">اوروبي</string>
 
 
     <string-array name="car_category_title">
         <item>امريكي</item>
         <item>اوروبي</item>
         <item>اسيوي</item>
-        <item> السكراب </item>
-        <item> مارين </item>
-        <item> اكسسوارات </item>
+        <item>السكراب</item>
+        <item>مارين</item>
+        <item>اكسسوارات</item>
     </string-array>
 
     <string-array name="car_category_code">
@@ -154,41 +158,41 @@
     </string-array>
 
     <string-array name="car_sub_category_american_title">
-        <item> رام </item>
-        <item> ميركوري </item>
-        <item> امريكي </item>
+        <item>رام</item>
+        <item>ميركوري</item>
+        <item>امريكي</item>
         <item>جيب</item>
         <item>همر</item>
         <item>فورد /لنكون</item>
         <item>جمس</item>
         <item>شيفروليه</item>
-        <item> دودج </item>
+        <item>دودج</item>
         <item>كاديلاك</item>
     </string-array>
 
     <string-array name="car_sub_category_american_code">
-        <item> ram </item>
-        <item> mercury </item>
-        <item> other </item>
+        <item>ram</item>
+        <item>mercury</item>
+        <item>other</item>
         <item>jeep</item> 
          <item>hummer</item> 
         <item>fordlincoln</item>
         <item>gmc</item> 
          <item>chevrolet</item> 
         <item>dodgechrysler</item>
-        <item> Cadillac </item>
+        <item>Cadillac</item>
     </string-array>
 
 
     <string-array name="car_sub_category_european_title">
-        <item> اوروبي </item>
-        <item> فولفو </item>
+        <item>اوروبي</item>
+        <item>فولفو</item>
         <item>بورش</item>
         <item>اودي</item>
         <item>بيجو / ستروين</item>
         <item>سكودا</item>
         <item>ميني</item>
-        <item> رينو </item>
+        <item>رينو</item>
         <item>جاغوار</item>
         <item>فولكس</item>
         <item>رنج روفر</item>
@@ -212,7 +216,7 @@
     </string-array>
 
     <string-array name="car_sub_category_asian_title">
-        <item> اسيوي </item>
+        <item>اسيوي</item>
         <item>سوبارو</item>
         <item>ايسوزو</item>
         <item>مازدا</item>
@@ -255,9 +259,9 @@
     </string-array>
 
     <string-array name="car_sub_category_marine_title">
-        <item> قوارب </item>
-        <item> جت سكي </item>
-        <item> معدات وقطع غيار </item>
+        <item>قوارب</item>
+        <item>جت سكي</item>
+        <item>معدات وقطع غيار</item>
     </string-array>
 
     <string-array name="car_sub_category_marine_code">
@@ -269,7 +273,7 @@
         <item>امريكي</item>
         <item>اوروبي</item>
         <item>اسيوي</item>
-        <item> اكسسوارات </item>
+        <item>اكسسوارات</item>
     </string-array>
 
     <string-array name="car_sub_category_accessories_code">
@@ -278,7 +282,6 @@
         <item>asian</item>
         <item>accessories</item>
     </string-array>
-
 
 
     <string name="title_activity_buy_and_sale_sub_menu">BuyAndSaleSubMenuActivity</string>
@@ -292,12 +295,14 @@
     <string name="all_fields_are_compulsory">All fields are compulsory</string>
     <string name="ad_successfully_posted">Congratulations! Ad successfully posted.</string>
     <string name="please_select_region_first">Please select region first</string>
-    <string name="app_warranty_message">We will provide you with the warranty policy for each company</string>
+    <string name="app_warranty_message">We will provide you with the warranty policy for each
+        company
+    </string>
     <string name="marine">مارين</string>
-    <string name="ship_yard"> فيبر وحداده </string>
-    <string name="repair_man"> ميكانيك وكهرباء </string>
-    <string name="ship_military"> مراكز بحرية </string>
-    <string name="fishing_ship"> نزهه وصيد </string>
+    <string name="ship_yard">فيبر وحداده</string>
+    <string name="repair_man">ميكانيك وكهرباء</string>
+    <string name="ship_military">مراكز بحرية</string>
+    <string name="fishing_ship">نزهه وصيد</string>
     <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
     <string name="qawarib">قوارب</string>
     <string name="jet_ski">جت سكي</string>
@@ -320,11 +325,13 @@
     <string name="hint_confirm_password">CONFIRM PASSWORD*</string>
     <string name="hint_mobile">MOBILE NUMBER*</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="forgot_password_message">Please enter your email address below. You will receive a link to reset your password.</string>
+    <string name="forgot_password_message">Please enter your email address below. You will receive a
+        link to reset your password.
+    </string>
     <string name="forgot_password_hint">Enter your email address</string>
     <string name="resetPassword">Reset password</string>
-    <string name="no_account">DON\'T HAVE AN ACCOUNT? </string>
-    <string name="sign_up_now">"  REGISTER"</string>
+    <string name="no_account">DON\'T HAVE AN ACCOUNT?</string>
+    <string name="sign_up_now">" REGISTER"</string>
     <string name="sign_in">Sign In</string>
     <string name="no_user_found">No User with this email</string>
     <string name="msg_password_sent">Reset password link sent</string>
@@ -336,9 +343,9 @@
     <string name="blank_email">Email can\'t be blank</string>
     <string name="blank_first_name">First name can\'t be blank</string>
     <string name="blank_last_name">Last name can\'t be blank</string>
-    <string name="blank_phone"> Phone can\'t be blank</string>
+    <string name="blank_phone">Phone can\'t be blank</string>
     <string name="invalid_email">Invalid email</string>
-    <string name="already_registered">ALREADY HAVE AN ACCOUNT? </string>
+    <string name="already_registered">ALREADY HAVE AN ACCOUNT?</string>
     <string name="register">Register</string>
     <string name="valid_email">Good!</string>
     <string name="error_blank_mobile">Mobile number can\'t be blank</string>
@@ -350,6 +357,16 @@
     <string name="logout">Log Out</string>
     <string name="login">Login</string>
     <string name="share">Share</string>
+    <string name="kuwait_rescue">الاداء العالي</string>
+    <string name="kuwait_rescue_message">Kuwait\'s volunteer rescue team\n(BPA and on beaches)\nVolunteer work at no charge !! You can take advantage of this section in the event of
+        service interruptions !!
+    </string>
+    <string name="founder_of_team">The founder of the team:\nMohammad Saif</string>
+    <string name="mp">MP:\nAhmed Saleh</string>
+    <string name="operation_section">Operations Section</string>
+    <string name="khalid_saif">Khalid Saif</string>
+    <string name="abdullah_al_ajmi">Abdullah Al-Ajmi</string>
+    <string name="mohsen_al_hajri">Mohsen Al-Hajri</string>
 
 
 </resources>
