@@ -15,12 +15,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/kuwait_rescue"/>
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_kuwait_rescue"/>
             <com.arsalan.garage.uicomponents.CustomTextViewEnglish
                 android:id="@+id/textview_signup"
                 style="@style/TextViewStyle.Regular.English"
@@ -31,7 +32,11 @@
                 android:textColor="@color/black_dark"
                 android:textSize="@dimen/font_size_extra_large"/>
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/grey_light"/>
         <LinearLayout
             style="@style/KuwaitRescueCallLinearLayoutStyle">
             <com.arsalan.garage.uicomponents.TextViewPhoneCall
@@ -59,6 +64,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/operation_section"
+            android:textAllCaps="true"
             android:textColor="@color/black_dark"
             android:textSize="15sp"
             android:textStyle="bold"/>
