@@ -44,6 +44,9 @@ public class ImageViewerActivity extends BaseActivity {
     private void linkViewsId() {
         mZoomableImageView = (ImageView) findViewById(R.id.imageview_profile_pic);
         mProgressBarLoading = (ProgressBar) findViewById(R.id.progressbar_loading);
+        View imageBlocker = findViewById(R.id.view_image_blocker);
+        //imageBlocker.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 1000));
+        imageBlocker.getLayoutParams().height = (int) (Utils.getScreenHeight(this)*.4);
     }
 
     private void showImage(String imageUrl) {

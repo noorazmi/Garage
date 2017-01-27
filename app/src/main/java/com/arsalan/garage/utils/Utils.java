@@ -19,6 +19,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -487,5 +488,12 @@ public class Utils {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public static int getScreenHeight(Activity activity ){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        return height;
     }
 }

@@ -5,6 +5,7 @@
     <dimen name="toolbar_padding">24dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="description_image_height">270dp</dimen>
+    <dimen name="description_image_blocker_height">100dp</dimen>
     <dimen name="list_divider">1dp</dimen>
 
 
