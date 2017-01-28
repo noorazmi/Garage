@@ -177,7 +177,8 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
                     String mProfileImagePath = data.getStringExtra(AppConstants.EXTRA_IMAGE_PATH);
                     mImagePaths[mCurrentImageSelection - 1] = mProfileImagePath;
                     if (mProfileImagePath != null) {
-                        Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
+                        //Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
+                        Bitmap bitmap = Utils.getSampledBitmapFromFilePath(mProfileImagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
                         mImagesAdded++;
                         switch (mCurrentImageSelection) {
                             case 1:

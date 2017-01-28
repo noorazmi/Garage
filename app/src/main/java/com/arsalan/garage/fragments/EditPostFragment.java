@@ -334,7 +334,8 @@ public class EditPostFragment extends AdvertisementBaseFragment implements View.
 
         mImagePaths[mCurrentImageSelection - 1] = imagePath;
         if (imagePath != null) {
-            Bitmap bitmap = Utils.getBitmapFromPath(imagePath);
+            //Bitmap bitmap = Utils.getBitmapFromPath(imagePath);
+            Bitmap bitmap = Utils.getSampledBitmapFromFilePath(imagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
             mImagesAdded++;
             switch (mCurrentImageSelection) {
                 case 1:

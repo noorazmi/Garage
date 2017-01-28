@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -342,7 +343,7 @@ public class Utils {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE}, 232);
             }
-        }else {
+        } else {
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:" + phoneNumber));
             context.startActivity(intent);
@@ -353,6 +354,42 @@ public class Utils {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
         return bitmap;
+    }
+
+    public static Bitmap getSampledBitmapFromFilePath(String path, int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(path, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(path, options);
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 
     public static Bitmap getBitmapFromFile(File file) {
@@ -368,6 +405,7 @@ public class Utils {
 
     /**
      * Non Swipable snackbar.
+     *
      * @param activity Activity reference.
      * @param message
      */
@@ -378,7 +416,8 @@ public class Utils {
     }
 
     /**
-     *  Display Snack bar
+     * Display Snack bar
+     *
      * @param holderView If holderView is CoordinatorLayout the snackBar will be swipable otherwise will be non swipable
      * @param message
      */
@@ -399,7 +438,7 @@ public class Utils {
     }
 
     public static String getUDID(Context context) {
-        return Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID)+6;
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID) + 6;
     }
 
     public static Point getDisplayPoint(Context context) {
@@ -409,7 +448,7 @@ public class Utils {
         return size;
     }
 
-    public static ArrayList<ShareOptionItem> getShareOptions(){
+    public static ArrayList<ShareOptionItem> getShareOptions() {
         ArrayList<ShareOptionItem> shareOptions = new ArrayList<>(3);
         shareOptions.add(new ShareOptionItem(R.string.facebook, R.drawable.facebook));
         shareOptions.add(new ShareOptionItem(R.string.twitter, R.drawable.twitter));
@@ -421,8 +460,8 @@ public class Utils {
     public static String getRealPathFromURI(Context context, Uri contentUri) {
         Cursor cursor = null;
         try {
-            String[] proj = { MediaStore.Images.Media.DATA };
-            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            String[] proj = {MediaStore.Images.Media.DATA};
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             return cursor.getString(column_index);
@@ -490,7 +529,7 @@ public class Utils {
         return matcher.matches();
     }
 
-    public static int getScreenHeight(Activity activity ){
+    public static int getScreenHeight(Activity activity) {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
