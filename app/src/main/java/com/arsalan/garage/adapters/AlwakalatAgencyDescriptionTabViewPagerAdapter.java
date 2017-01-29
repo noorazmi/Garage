@@ -74,10 +74,18 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
     }
 
     private String[] getPhoneNumbers(){
-        String[] phoneNumbers = new String[mShowroomCarVo.getResults().getPhones().length + 1];
-        String contact1 = mShowroomCarVo.getResults().getContact().split(":")[1];
+
+        String[] contacts = mShowroomCarVo.getResults().getContact().split(":");
         String[] phones = mShowroomCarVo.getResults().getPhones();
+
+        String contact1 = "";
+        if(contacts != null && contacts.length >= 2){
+            contact1 = contacts[1];
+        }
+
+        String[] phoneNumbers = new String[mShowroomCarVo.getResults().getPhones().length + 1];
         phoneNumbers[0] = contact1;
+
         for (int i = 0; i < phones.length; i++) {
             phoneNumbers[i+1] = phones[i];
         }
