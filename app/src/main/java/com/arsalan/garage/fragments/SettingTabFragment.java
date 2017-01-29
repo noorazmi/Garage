@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
@@ -40,6 +41,8 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
         rootView.findViewById(R.id.whatsapp3).setOnClickListener(this);
         rootView.findViewById(R.id.share).setOnClickListener(this);
         rootView.findViewById(R.id.logout).setOnClickListener(this);
+        rootView.findViewById(R.id.gmail).setOnClickListener(this);
+        rootView.findViewById(R.id.forgot_password).setOnClickListener(this);
 
         return rootView;
     }
@@ -70,17 +73,30 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
                 ShareUtil.shareImageWithText(getActivity(), mShareText, mShareImage);
                 break;
             case R.id.logout:
-                if (TextUtils.isEmpty(PrefUtility.getAccessToken())) {
-                    Utils.showSnackBar(getActivity(), getString(R.string.not_logged_in));
-                } else {
-                    performLogout();
-                }
+                handleLogout();
+                break;
+            case R.id.gmail:
+                handleGmail(((TextView)v).getText().toString());
+                break;
+            case R.id.forgot_password:
+                Utils.createForgotPasswordDialog(getActivity());
                 break;
             default:
                 break;
         }
     }
 
+    private void handleGmail(String recipient) {
+        ShareUtil.openGmail(getActivity(), recipient);
+    }
+
+    private void handleLogout(){
+        if (TextUtils.isEmpty(PrefUtility.getAccessToken())) {
+            Utils.showSnackBar(getActivity(), getString(R.string.not_logged_in));
+        } else {
+            performLogout();
+        }
+    }
 
     private void shareOnWhatApp() {
         ShareUtil.shareUsingTargetApp(getActivity(), getWhatsAppTextShareIntent(" "), ShareUtil.WHATSAPP);

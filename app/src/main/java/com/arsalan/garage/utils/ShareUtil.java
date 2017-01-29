@@ -1,6 +1,7 @@
 package com.arsalan.garage.utils;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -155,6 +156,29 @@ public class ShareUtil {
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         return intent;
+    }
+
+    public static void openGmail(Context context, String recipient) {
+        openGmail(context, recipient, "", "");
+    }
+
+    public static void openGmail(Context context, String recipient, String subject) {
+        openGmail(context, recipient, subject, "");
+    }
+
+    public static void openGmail(Context context, String recipient, String subject, String message) {
+        Intent gmailIntent = new Intent(Intent.ACTION_SENDTO);
+        gmailIntent.setType("text/plain");
+        setGmailClassNameToIntent(context, gmailIntent);
+        gmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+        gmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+        gmailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        try {
+            context.startActivity(gmailIntent);
+        } catch (ActivityNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private static void setGmailClassNameToIntent(Context context, Intent intent) {

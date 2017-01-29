@@ -67,23 +67,17 @@
                 android:text="+96550345710"/>
         </LinearLayout>
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/gmail"
             style="@style/TextViewStyle.Regular.English"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="q8motoman@gmail.com"
             android:textColor="@color/phone_number"
             android:textSize="20sp"
             android:textStyle="bold"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:background="@color/phone_number"/>
 
         <!--<RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,28 +1,20 @@
 package com.arsalan.garage.activities;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.models.StatusMessage;
 import com.arsalan.garage.models.UserInfo;
-import com.arsalan.garage.uicomponents.CustomButton;
-import com.arsalan.garage.uicomponents.CustomEditText;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
 import com.arsalan.garage.uicomponents.CustomTextViewEnglish;
 import com.arsalan.garage.utils.AppConstants;
@@ -51,7 +43,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     TextInputLayout inputLayoutPassword;
     ImageView showPassword;
     private CustomProgressDialog progressDialog;
-    private Dialog forgotPasswordDialog;
+    //private Dialog forgotPasswordDialog;
     private String calledFrom = "";
     private int passwordInputType;
     private UserInfo mUserInfo = null;
@@ -83,7 +75,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             calledFrom = bundle.getString(AppConstants.CALLED_FROM);
         }
 
-        forgotPasswordDialog = new Dialog(this);
         passwordInputType = editPassword.getInputType();
         editPhone.setOnFocusChangeListener(this);
         textViewSkip.setOnClickListener(this);
@@ -201,7 +192,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 togglePasswordVisiblity();
                 break;
             case R.id.forgotPassword:
-                createForgotPasswordDialog();
+                Utils.createForgotPasswordDialog(this);
                 break;
             default:
                 return;
@@ -241,105 +232,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
 
-    private void createForgotPasswordDialog() {
-        // Create custom dialog object
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.dialog_forgot_password, null, false);
-        final TextInputLayout inputLayoutEmailForgotPassword = (TextInputLayout) view.findViewById(R.id.input_layout_email_forgot_password);
-        forgotPasswordDialog.setContentView(view);
-        forgotPasswordDialog.setCanceledOnTouchOutside(true);
-        forgotPasswordDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        CustomButton resetPassword = (CustomButton) forgotPasswordDialog.findViewById(R.id.resetPassword);
-        final TextInputLayout emailError = (TextInputLayout) forgotPasswordDialog.findViewById(R.id.input_layout_email_forgot_password);
-        final CustomEditText emailForgotPassword = (CustomEditText) forgotPasswordDialog.findViewById(R.id.edittext_email_forgot_password);
-        //forgotPasswordResult = (SwanTextView) forgotPasswordDialog.findViewById(R.id.forgotPasswordResult);
-        ImageButton cancelDialog = (ImageButton) forgotPasswordDialog.findViewById(R.id.cancel_dialog);
-        forgotPasswordDialog.show();
-        resetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (TextUtils.isEmpty(emailForgotPassword.getText().toString())) {
-                    inputLayoutEmailForgotPassword.setError(getString(R.string.blank_email));
-                } else if (!Utils.isValidEmail(emailForgotPassword.getText().toString())) {
-                    inputLayoutEmailForgotPassword.setError(getString(R.string.invalid_email));
-                } else {
-                    JSONObject forgotPasswordJSON = new JSONObject();
-                    try {
-                        forgotPasswordJSON.put(AppConstants.EMAIL, emailForgotPassword.getText().toString());
-                    } catch (JSONException e) {
-                        Log.e("Exception:", Log.getStackTraceString(e));
-                    }
-                    progressDialog.show();
-                    HTTPRequest httpRequest = new HTTPRequest();
-                    httpRequest.setShowProgressDialog(true);
-                    String fullUrl = Urls.RESET_PASSWORD;
-                    httpRequest.setUrl(fullUrl);
-                    httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
-                    httpRequest.setValueObjectFullyQualifiedName(UserInfo.class.getName());
-                    httpRequest.setJSONPayload(forgotPasswordJSON.toString());
-                    LoaderHandler loaderHandler = LoaderHandler.newInstance(LoginActivity.this, httpRequest);
-                    loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-                        @Override
-                        public void onLoadComplete(HTTPModel httpModel) {
-                            HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                            if (progressDialog.isShowing()){
-                                progressDialog.dismiss();
-                            }
-                            StatusMessage statusMessage = (StatusMessage)  httpResponse.getValueObject();
-                            if (statusMessage.getStatus().equals(AppConstants.SUCCESS)) {
-                                Utils.showSnackBar(LoginActivity.this, getString(R.string.msg_password_sent));
-                                forgotPasswordDialog.dismiss();
-                            } else {
-                                Utils.showSnackBar(LoginActivity.this, statusMessage.getMessage());
-                                inputLayoutEmailForgotPassword.setError(statusMessage.getMessage());
-                            }
-                        }
-                    });
-                    loaderHandler.loadData();
 
-
-                    /*VolleyHttpTask volleyHttpTask = new VolleyHttpTask(Urls.RESET_PASSWORD, Request.Method.POST, new VolleyHttpListener() {
-                        @Override
-                        public void onResult(VolleyHttpResponse volleyHttpResponse) {
-                            StatusMessage statusMessage = (StatusMessage) volleyHttpResponse.getResponseModel();
-                            if (progressDialog.isShowing()){
-                                progressDialog.dismiss();
-                            }
-                            if (statusMessage.getStatus().equals(AppConstants.SUCCESS)) {
-                                Utils.showSnackBar(LoginActivity.this, getString(R.string.msg_password_sent));
-                                forgotPasswordDialog.dismiss();
-                            } else {
-                                Utils.showSnackBar(LoginActivity.this, statusMessage.getMessage());
-                                inputLayoutEmailForgotPassword.setError(statusMessage.getMessage());
-                            }
-                        }
-
-                        @Override
-                        public void onError(VolleyError error) {
-                            if (progressDialog.isShowing()){
-                                progressDialog.dismiss();
-                            }
-                            if (!Utils.isNetworkAvailable()) {
-                                Utils.showSnackBar(LoginActivity.this, getString(R.string.internet_error_msg));
-                                return;
-                            }
-                            Utils.showSnackBar(LoginActivity.this, getString(R.string.error_something_went_wrong));
-                        }
-                    });
-                    volleyHttpTask.setJsonPayload(forgotPasswordJSON);
-                    volleyHttpTask.setResponseModelClassFullyQualifiedName(StatusMessage.class.getName());
-                    volleyHttpTask.start();*/
-
-                }
-            }
-        });
-        cancelDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                forgotPasswordDialog.dismiss();
-            }
-        });
-    }
 
 
     private boolean checkInternetConnection() {

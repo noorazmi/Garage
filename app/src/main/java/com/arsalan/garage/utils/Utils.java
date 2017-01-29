@@ -2,6 +2,8 @@ package com.arsalan.garage.utils;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,18 +13,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,16 +39,31 @@ import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.HomeMenuItem;
 import com.arsalan.garage.models.ShareOptionItem;
+import com.arsalan.garage.models.StatusMessage;
+import com.arsalan.garage.models.UserInfo;
+import com.arsalan.garage.uicomponents.CustomButton;
+import com.arsalan.garage.uicomponents.CustomEditText;
+import com.arsalan.garage.uicomponents.CustomProgressDialog;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import networking.HttpConstants;
+import networking.listeners.OnLoadCompleteListener;
+import networking.loader.LoaderHandler;
+import networking.models.HTTPModel;
+import networking.models.HTTPRequest;
+import networking.models.HTTPResponse;
 
 /**
  * <p/>
@@ -534,5 +556,76 @@ public class Utils {
         activity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
         return height;
+    }
+
+    public static void createForgotPasswordDialog(final Activity activity) {
+
+        final ProgressDialog progressDialog = new CustomProgressDialog(activity);
+        progressDialog.setCancelable(true);
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        final Dialog forgotPasswordDialog = new Dialog(activity);
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.dialog_forgot_password, null, false);
+        final TextInputLayout inputLayoutEmailForgotPassword = (TextInputLayout) view.findViewById(R.id.input_layout_email_forgot_password);
+        forgotPasswordDialog.setContentView(view);
+        forgotPasswordDialog.setCanceledOnTouchOutside(true);
+        forgotPasswordDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        CustomButton resetPassword = (CustomButton) forgotPasswordDialog.findViewById(R.id.resetPassword);
+        final TextInputLayout emailError = (TextInputLayout) forgotPasswordDialog.findViewById(R.id.input_layout_email_forgot_password);
+        final CustomEditText emailForgotPassword = (CustomEditText) forgotPasswordDialog.findViewById(R.id.edittext_email_forgot_password);
+        //forgotPasswordResult = (SwanTextView) forgotPasswordDialog.findViewById(R.id.forgotPasswordResult);
+        ImageButton cancelDialog = (ImageButton) forgotPasswordDialog.findViewById(R.id.cancel_dialog);
+        forgotPasswordDialog.show();
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(emailForgotPassword.getText().toString())) {
+                    inputLayoutEmailForgotPassword.setError(activity.getString(R.string.blank_email));
+                } else if (!Utils.isValidEmail(emailForgotPassword.getText().toString())) {
+                    inputLayoutEmailForgotPassword.setError(activity.getString(R.string.invalid_email));
+                } else {
+                    JSONObject forgotPasswordJSON = new JSONObject();
+                    try {
+                        forgotPasswordJSON.put(AppConstants.EMAIL, emailForgotPassword.getText().toString());
+                    } catch (JSONException e) {
+                        Log.e("Exception:", Log.getStackTraceString(e));
+                    }
+                    progressDialog.show();
+                    HTTPRequest httpRequest = new HTTPRequest();
+                    httpRequest.setShowProgressDialog(true);
+                    String fullUrl = Urls.RESET_PASSWORD;
+                    httpRequest.setUrl(fullUrl);
+                    httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_POST);
+                    httpRequest.setValueObjectFullyQualifiedName(UserInfo.class.getName());
+                    httpRequest.setJSONPayload(forgotPasswordJSON.toString());
+                    LoaderHandler loaderHandler = LoaderHandler.newInstance(activity, httpRequest);
+                    loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+                        @Override
+                        public void onLoadComplete(HTTPModel httpModel) {
+                            HTTPResponse httpResponse = (HTTPResponse) httpModel;
+                            if (progressDialog.isShowing()){
+                                progressDialog.dismiss();
+                            }
+                            StatusMessage statusMessage = (StatusMessage)  httpResponse.getValueObject();
+                            if (statusMessage.getStatus().equals(AppConstants.SUCCESS)) {
+                                Utils.showSnackBar(activity, activity.getString(R.string.msg_password_sent));
+                                forgotPasswordDialog.dismiss();
+                            } else {
+                                Utils.showSnackBar(activity, statusMessage.getMessage());
+                                inputLayoutEmailForgotPassword.setError(statusMessage.getMessage());
+                            }
+                        }
+                    });
+                    loaderHandler.loadData();
+                }
+            }
+        });
+        cancelDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                forgotPasswordDialog.dismiss();
+            }
+        });
     }
 }
