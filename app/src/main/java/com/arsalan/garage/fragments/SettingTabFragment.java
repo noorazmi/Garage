@@ -13,6 +13,8 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Utils;
 
+import static com.arsalan.garage.utils.ShareUtil.getWhatsAppTextShareIntent;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -48,11 +50,11 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
         mTextViewWhatsApp = (TextView) rootView.findViewById(R.id.textview_whatsapp);
         mTextViewPhone1 = (TextView) rootView.findViewById(R.id.textview_phone1);
         mTextViewPhone2 = (TextView) rootView.findViewById(R.id.textview_phone2);
-        mTextViewPhone3 = (TextView) rootView.findViewById(R.id.textview_phone3);
+        //mTextViewPhone3 = (TextView) rootView.findViewById(R.id.textview_phone3);
 
         rootView.findViewById(R.id.whatsapp1).setOnClickListener(this);
         rootView.findViewById(R.id.whatsapp2).setOnClickListener(this);
-        rootView.findViewById(R.id.whatsapp2).setOnClickListener(this);
+        rootView.findViewById(R.id.whatsapp3).setOnClickListener(this);
 
 
         mImageViewTwitter.setOnClickListener(this);
@@ -61,9 +63,9 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
         mTextViewTwitter.setOnClickListener(this);
         mTextViewFacebook.setOnClickListener(this);
         mTextViewWhatsApp.setOnClickListener(this);
-        mTextViewPhone1.setOnClickListener(this);
-        mTextViewPhone2.setOnClickListener(this);
-        mTextViewPhone3.setOnClickListener(this);
+        //mTextViewPhone1.setOnClickListener(this);
+        //mTextViewPhone2.setOnClickListener(this);
+        //mTextViewPhone3.setOnClickListener(this);
 
         return rootView;
     }
@@ -78,9 +80,9 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
             case R.id.textview_phone2:
                 Utils.initCall(mTextViewPhone2.getText().toString(), getActivity());
                 break;
-            case R.id.textview_phone3:
+           /* case R.id.textvievvw_phone3:
                 Utils.initCall(mTextViewPhone3.getText().toString(), getActivity());
-                break;
+                break;*/
             case R.id.imageview_twitter:
                 ShareUtil.shareOnTwitter(getActivity(), mShareText, mShareImage);
                 break;
@@ -114,6 +116,6 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
     }
 
     private void shareOnWhatApp(){
-        ShareUtil.shareOnWhatsApp(getActivity(), "", null);
+        ShareUtil.share(getActivity(), getWhatsAppTextShareIntent(" "), ShareUtil.WHATSAPP);
     }
 }

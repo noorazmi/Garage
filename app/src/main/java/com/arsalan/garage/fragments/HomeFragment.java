@@ -20,7 +20,7 @@ public class HomeFragment extends Fragment {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private boolean isAboutFTLFragmentActive = true;
-    private int[] mPageTitles = {R.string.home, R.string.post_add, R.string.setting};
+    private int[] mPageTitles = {R.string.home, R.string.post_add, R.string.contact_us};
     private TextView[] mTabTextViews;
 
     public HomeFragment() {
