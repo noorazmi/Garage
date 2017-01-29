@@ -2,7 +2,7 @@
     <string name="app_name">" كراجي"</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="setting">Contact Us</string>
+    <string name="contact_us">Contact Us</string>
     <string name="karaji">" كراجي"</string>
     <string name="home">Home</string>
     <string name="offer">Offer</string>
@@ -119,7 +119,7 @@
     <string name="main_info">معلومات اساسيه</string>
     <string name="warranty">الكفالة</string>
     <string name="feature">المزايا</string>
-    <string name="contact_us">اتصل بنا</string>
+    <string name="contact_us_ar">اتصل بنا</string>
     <string name="title">Title</string>
     <string name="mobile_no">Mobile No</string>
     <string name="price">Price</string>
@@ -367,6 +367,13 @@
     <string name="khalid_saif">Khalid Saif</string>
     <string name="abdullah_al_ajmi">Abdullah Al-Ajmi</string>
     <string name="mohsen_al_hajri">Mohsen Al-Hajri</string>
+    <string name="english">English</string>
+    <string name="arabic_ar">العربية</string>
+
+    <string name="language">Language</string>
+    <string name="setting"></string>
+    <string name="post_ad">ضع اعلانك</string>
+    <string name="my_garage">كراجي</string>
 
 
 </resources>

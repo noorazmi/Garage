@@ -45,6 +45,8 @@
     <dimen name="call_icon_padding">10dp</dimen>
     <dimen name="call_icon_height">40dp</dimen>
     <dimen name="call_text_size">20sp</dimen>
+    <dimen name="settings_call_image_size">60dp</dimen>
+    <dimen name="setting_icon_margin_left">7dp</dimen>
 
 
 </resources>

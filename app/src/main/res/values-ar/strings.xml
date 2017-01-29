@@ -8,4 +8,13 @@
     <string name="khalid_saif">خالد سيف</string>
     <string name="abdullah_al_ajmi">عبدالله العجمي</string>
     <string name="mohsen_al_hajri">محسن الهاجري</string>
+    <string name="forgot_password">هل نسيت كلمة المرور</string>
+    <string name="language">لغة</string>
+    <string name="logout">خروج</string>
+    <string name="setting"></string>
+    <string name="share">مشاركة البرنامج</string>
+    <string name="home">القائمة</string>
+    <string name="post_ad">ضع اعلانك</string>
+    <string name="contact_us">اتصل بنا</string>
+    <string name="my_garage">كراجي</string>
 </resources>

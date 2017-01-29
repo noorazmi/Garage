@@ -166,15 +166,23 @@
     <dimen name="tab_max_width">150dp</dimen>
 
     <style name="CallIconTextViewStyle">
-        <item name="android:drawableLeft">@drawable/ic_phone_smaller</item>
+        <item name="android:drawableLeft">@drawable/ic_phone_small</item>
         <item name="fontName">@string/font_calibre_regular</item>
         <item name="android:textSize">@dimen/call_text_size</item>
-        <item name="android:layout_height">@dimen/call_icon_height</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:textColor">@color/phone_number</item>
         <item name="android:layout_gravity">right|center_vertical</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="SettingTextViewOptions" parent="CallIconTextViewStyle">
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/settings_call_image_size</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <style name="KuwaitRescueCallToTextViewStyle">
@@ -196,5 +204,24 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="SettingsPhoneLayoutStyle">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="SettingsPhoneIconLayoutStyle">
+        <item name="android:layout_width">@dimen/settings_call_image_size</item>
+        <item name="android:layout_height">@dimen/settings_call_image_size</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_marginRight">@dimen/setting_icon_margin_left</item>
+
     </style>
 </resources>

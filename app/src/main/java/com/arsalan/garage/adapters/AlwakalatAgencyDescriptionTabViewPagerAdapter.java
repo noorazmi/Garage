@@ -29,7 +29,7 @@ public class AlwakalatAgencyDescriptionTabViewPagerAdapter extends FragmentState
     private static final int POSITION_FEATURES = 2;
     private static final int POSITION_DETAILS = 3;
     private Context mContex;
-    private int[] mPageTitles = { R.string.contact_us, R.string.warranty, R.string.feature, R.string.details};
+    private int[] mPageTitles = { R.string.contact_us_ar, R.string.warranty, R.string.feature, R.string.details};
     private ShowroomCarVo mShowroomCarVo;
 
     public AlwakalatAgencyDescriptionTabViewPagerAdapter(Context context, FragmentManager fragmentManager, ShowroomCarVo showroomCarVo) {

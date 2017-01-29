@@ -2,95 +2,89 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_light"
+    android:background="@color/app_white"
     android:orientation="vertical"
-    >
+>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginTop="10dp"
-        android:gravity="center"
         android:orientation="vertical">
 
-        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-            android:id="@+id/textview_phone1"
-            style="@style/TextViewStyle.Regular.English"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/textview_description"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="25dp"
-            android:drawableLeft="@drawable/ic_phone_smaller"
-            android:drawablePadding="10dp"
-            android:gravity="left|center_vertical"
-            android:paddingRight="20dp"
-            android:text="+919310330655"
-            android:textColor="@color/phone_number"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="visible"/>
 
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-            android:id="@+id/textview_phone2"
-            style="@style/TextViewStyle.Regular.English"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/textview_phone1"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_phone_smaller"
-            android:drawablePadding="10dp"
-            android:gravity="left|center_vertical"
-            android:paddingRight="20dp"
-            android:text="+96550345710"
-            android:textColor="@color/phone_number"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="visible"/>
-
+            android:id="@+id/language"
+            style="@style/SettingTextViewOptions"
+            android:drawableLeft="@drawable/language_50"
+            android:text="@string/arabic_ar"/>
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-            android:id="@+id/textview_phone3"
+            android:id="@+id/forgot_password"
+            style="@style/SettingTextViewOptions"
+            android:drawableLeft="@drawable/forgot_password_50"
+            android:text="@string/forgot_password"/>
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/share"
+            style="@style/SettingTextViewOptions"
+            android:drawableLeft="@drawable/share_50"
+            android:text="@string/share"/>
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
+            android:id="@+id/logout"
+            style="@style/SettingTextViewOptions"
+            android:drawableLeft="@drawable/logout_50"
+            android:text="@string/logout"/>
+
+        <LinearLayout
+            style="@style/SettingsPhoneLayoutStyle"
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:id="@+id/whatsapp1"
+                style="@style/SettingsPhoneIconLayoutStyle"
+                android:src="@drawable/whatsapp"/>
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="+96566440068"/>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/SettingsPhoneLayoutStyle">
+            <ImageView
+                android:id="@+id/whatsapp2"
+                style="@style/SettingsPhoneIconLayoutStyle"
+                android:src="@drawable/whatsapp"/>
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="+96599292489"/>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/SettingsPhoneLayoutStyle">
+            <ImageView
+                android:id="@+id/whatsapp3"
+                style="@style/SettingsPhoneIconLayoutStyle"
+                android:src="@drawable/whatsapp"/>
+            <com.arsalan.garage.uicomponents.TextViewPhoneCall
+                style="@style/CallIconTextViewStyle"
+                android:text="+96550345710"/>
+        </LinearLayout>
+        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
             style="@style/TextViewStyle.Regular.English"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/textview_phone1"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_phone_smaller"
-            android:drawablePadding="10dp"
-            android:gravity="left|center_vertical"
-            android:paddingRight="20dp"
-            android:text="+9656640068"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="q8motoman@gmail.com"
             android:textColor="@color/phone_number"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="visible"/>
+            android:textStyle="bold"/>
+
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
             android:background="@color/phone_number"/>
 
-        <com.arsalan.garage.uicomponents.CustomTextViewEnglish
-            android:id="@+id/textview_share"
-            style="@style/TextViewStyle.Regular.English"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="@string/share"
-            android:textColor="@color/black_dark"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:visibility="visible"/>
-
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -99,25 +93,25 @@
             android:padding="8dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/imageview_twitter"
-                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:src="@drawable/twitter"
-                />
+            />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Twitter"
                 android:id="@+id/textview_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="25dp"
-                android:layout_toRightOf="@+id/imageview_twitter"
                 android:layout_toEndOf="@+id/imageview_twitter"
-                android:layout_centerInParent="true"/>
+                android:layout_toRightOf="@+id/imageview_twitter"
+                android:text="Twitter"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
         </RelativeLayout>
@@ -129,25 +123,25 @@
             android:padding="8dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/imageview_facebook"
-                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:src="@drawable/facebook"
-                />
+            />
 
             <TextView
+                android:id="@+id/textview_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Facebook"
-                android:id="@+id/textview_facebook"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="25dp"
-                android:layout_toRightOf="@+id/imageview_facebook"
                 android:layout_toEndOf="@+id/imageview_facebook"
-                android:layout_centerInParent="true"/>
+                android:layout_toRightOf="@+id/imageview_facebook"
+                android:text="Facebook"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
         </RelativeLayout>
@@ -159,25 +153,25 @@
             android:padding="8dp">
 
             <ImageView
+                android:id="@+id/imageview_whatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageview_whatsapp"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:src="@drawable/whatsapp"
-                />
+            />
 
             <TextView
+                android:id="@+id/textview_whatsapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="WhatsApp"
-                android:id="@+id/textview_whatsapp"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="25dp"
-                android:layout_toRightOf="@+id/imageview_whatsapp"
                 android:layout_toEndOf="@+id/imageview_whatsapp"
-                android:layout_centerInParent="true"/>
+                android:layout_toRightOf="@+id/imageview_whatsapp"
+                android:text="WhatsApp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
         </RelativeLayout>
