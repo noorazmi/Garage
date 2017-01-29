@@ -48,4 +48,13 @@ public class PrefUtility {
         prefEditor.commit();
     }
 
+    public static String getCurrentLanguage(){
+       return getPreferences().getString(AppConstants.APP_LANGUAGE, AppConstants.APP_LANGUAGE_AR);
+    }
+    public static void setCurrentLanguage(String loginToken) {
+        SharedPreferences.Editor editor = getEditor();
+        editor.putString(AppConstants.APP_LANGUAGE, loginToken);
+        editor.commit();
+    }
+
 }

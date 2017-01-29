@@ -314,4 +314,7 @@ public interface AppConstants {
     String ACCESSORIES_ID = "accessories_id";
     String RESULTS = "results";
     String DATA_COUNT = "data_count";
+    String APP_LANGUAGE = "app_language";
+    String APP_LANGUAGE_AR = "ar";
+    String APP_LANGUAGE_EN = "en";
 }

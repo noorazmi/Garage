@@ -460,7 +460,7 @@ public class Utils {
     }
 
     public static String getUDID(Context context) {
-        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID) + 6;
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     public static Point getDisplayPoint(Context context) {

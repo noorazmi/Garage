@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
+import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Utils;
@@ -26,6 +27,7 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
     private static final String TAG = "SettingTabFragment";
     protected String mShareImage = "http://ronsgaragea2.com/wp-content/uploads/ronsGarageAnnArborAutoRepair_slide21.jpg";
     protected String mShareText = "Hi there, Check this app https://play.google.com/store/apps/details?id=com.famelive";
+    //TODO Remove the place holder text and image in share functionality above
     private CustomProgressDialog progressDialog;
 
     public SettingTabFragment() {
@@ -43,6 +45,7 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
         rootView.findViewById(R.id.logout).setOnClickListener(this);
         rootView.findViewById(R.id.gmail).setOnClickListener(this);
         rootView.findViewById(R.id.forgot_password).setOnClickListener(this);
+        rootView.findViewById(R.id.language).setOnClickListener(this);
 
         return rootView;
     }
@@ -81,7 +84,20 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
             case R.id.forgot_password:
                 Utils.createForgotPasswordDialog(getActivity());
                 break;
+            case R.id.language:
+                changeLanguage();
+                break;
             default:
+                break;
+        }
+    }
+
+    private void changeLanguage() {
+        String appLanguage = PrefUtility.getCurrentLanguage();
+        switch (appLanguage){
+            case AppConstants.APP_LANGUAGE_AR:
+                break;
+            case AppConstants.APP_LANGUAGE_EN:
                 break;
         }
     }
