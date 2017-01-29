@@ -85,13 +85,12 @@
             android:layout_marginTop="20dp"
             android:background="@color/phone_number"/>
 
-        <RelativeLayout
+        <!--<RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
-
             <ImageView
                 android:id="@+id/imageview_twitter"
                 android:layout_width="wrap_content"
@@ -99,9 +98,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/twitter"
-            />
-
+                android:src="@drawable/twitter"/>
             <TextView
                 android:id="@+id/textview_twitter"
                 android:layout_width="match_parent"
@@ -112,10 +109,8 @@
                 android:layout_toRightOf="@+id/imageview_twitter"
                 android:text="Twitter"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-
-        </RelativeLayout>
-        <RelativeLayout
+        </RelativeLayout>-->
+        <!--<RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,9 +124,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/facebook"
-            />
-
+                android:src="@drawable/facebook"/>
             <TextView
                 android:id="@+id/textview_facebook"
                 android:layout_width="match_parent"
@@ -142,10 +135,8 @@
                 android:layout_toRightOf="@+id/imageview_facebook"
                 android:text="Facebook"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-
-        </RelativeLayout>
-        <RelativeLayout
+        </RelativeLayout>-->
+        <!--<RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,8 +150,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/whatsapp"
-            />
+                android:src="@drawable/whatsapp"/>
 
             <TextView
                 android:id="@+id/textview_whatsapp"
@@ -172,10 +162,7 @@
                 android:layout_toRightOf="@+id/imageview_whatsapp"
                 android:text="WhatsApp"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-
-        </RelativeLayout>
-
+        </RelativeLayout>-->
     </LinearLayout>
 
 </ScrollView>

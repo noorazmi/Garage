@@ -374,6 +374,8 @@
     <string name="setting">Settings</string>
     <string name="post_ad">ضع اعلانك</string>
     <string name="my_garage">كراجي</string>
+    <string name="not_logged_in">User is not logged in</string>
+    <string name="successfully_logge_out">Successfully logged out</string>
 
 
 </resources>

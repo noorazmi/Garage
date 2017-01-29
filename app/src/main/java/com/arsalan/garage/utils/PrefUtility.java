@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.arsalan.garage.GarageApp;
-import com.arsalan.garage.models.UserInfo;
 
 /**
  * This class represent shared preferences details for set and get details of application
@@ -18,12 +17,16 @@ public class PrefUtility {
         return getPreferences().getString(AppConstants.TOKEN, "");
     }
 
-    public static void saveUsrInfo(UserInfo userInfo) {
+    public static void saveUserLoginToken(String loginToken) {
         SharedPreferences.Editor editor = getEditor();
-        editor.putString(AppConstants.TOKEN, userInfo.getToken());
+        editor.putString(AppConstants.TOKEN, loginToken);
         editor.commit();
     }
-
+    public static void deleteUserLoginToken() {
+        SharedPreferences.Editor editor = getEditor();
+        editor.putString(AppConstants.TOKEN, "");
+        editor.commit();
+    }
 
     public static boolean isLoggedIn() {
         return !TextUtils.isEmpty(getPreferences().getString(AppConstants.TOKEN, ""));

@@ -17,4 +17,6 @@
     <string name="post_ad">ضع اعلانك</string>
     <string name="contact_us">اتصل بنا</string>
     <string name="my_garage">كراجي</string>
+    <string name="not_logged_in">لم يتم تسجيل المستخدم في</string>
+    <string name="successfully_logge_out">تسجيل دخولك بنجاح</string>
 </resources>

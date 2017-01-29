@@ -379,7 +379,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private void loginSuccess(UserInfo mUserInfo) {
         progressDialog.dismiss();
         if (mUserInfo.getStatus().equals(AppConstants.SUCCESS)) {
-            PrefUtility.saveUsrInfo(mUserInfo);
+            PrefUtility.saveUserLoginToken(mUserInfo.getToken());
             Intent intent = getIntent();
             setResult(Activity.RESULT_OK, intent);
             if (calledFrom.equals(AppConstants.CALLED_BY_POST_ADD)) {

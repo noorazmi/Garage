@@ -48,15 +48,29 @@ public class ShareUtil {
     }
 
 
-    public static void shareImageWithText(final Context context, final String shareContent, String shareUri, final String shareMedia) {
+    public static void shareImageWithText(final Context context, final String shareContent, String shareUri, final String targetApp) {
         new ShareTask(context, new ShareTask.OnImageUriFoundListener() {
             @Override
             public void onImageURIFound(Uri uri) {
                 if (uri == null) {
-                    ShareUtil.shareContent(context, shareContent);
+                    ShareUtil.shareContentUsingAppChoserDialog(context, shareContent);
                 } else {
                     Intent shareIntent = getShareIntent(uri, context, shareContent);
-                    share(context, shareIntent, shareMedia);
+                    shareUsingTargetApp(context, shareIntent, targetApp);
+                }
+            }
+        }).execute(shareUri);
+    }
+
+    public static void shareImageWithText(final Context context, final String shareContent, String shareUri) {
+        new ShareTask(context, new ShareTask.OnImageUriFoundListener() {
+            @Override
+            public void onImageURIFound(Uri uri) {
+                if (uri == null) {
+                    ShareUtil.shareContentUsingAppChoserDialog(context, shareContent);
+                } else {
+                    Intent shareIntent = getShareIntent(uri, context, shareContent);
+                    shareContentUsingAppChoserDialog(context, shareIntent);
                 }
             }
         }).execute(shareUri);
@@ -102,22 +116,22 @@ public class ShareUtil {
 
     }
 
-    public static void share(Context context, Intent intent, String shareMedia) {
+    public static void shareUsingTargetApp(Context context, Intent intent, String targetApp) {
 
-        if (shareMedia.equals(WHATSAPP)) {
+        if (targetApp.equals(WHATSAPP)) {
             intent.setPackage("com.whatsapp");
-        } else if (shareMedia.equals(FACEBOOK)) {
+        } else if (targetApp.equals(FACEBOOK)) {
             intent.setPackage("com.facebook.katana");
-        } else if (shareMedia.equals(TWITTER)) {
+        } else if (targetApp.equals(TWITTER)) {
             intent.setPackage("com.twitter.android");
-        } else if (shareMedia.equals(GMAIL)) {
+        } else if (targetApp.equals(GMAIL)) {
             setGmailClassNameToIntent(context, intent);
             intent.putExtra(Intent.EXTRA_SUBJECT, "Garage: Check It Out!!!");
         }
         try {
             context.startActivity(intent);
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(context, shareMedia + " is not installed on your device. Please install it and try again.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, targetApp + " is not installed on your device. Please install it and try again.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -164,11 +178,15 @@ public class ShareUtil {
      * @param context Context
      * @param text    String
      */
-    public static void shareContent(Context context, String text) {
+    public static void shareContentUsingAppChoserDialog(Context context, String text) {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
-        context.startActivity(Intent.createChooser(sharingIntent, "Share using"));
+        shareContentUsingAppChoserDialog(context, sharingIntent);
+    }
+
+    public static void shareContentUsingAppChoserDialog(Context context, Intent shareIntent) {
+        context.startActivity(Intent.createChooser(shareIntent, "Share using"));
     }
 
 

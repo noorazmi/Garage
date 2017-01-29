@@ -43,14 +43,6 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
         View rootView = inflater.inflate(R.layout.fragment_post_ad_tab, container, false);
         mButtonLogin = (Button) rootView.findViewById(R.id.button_login);
         prepareLogin();
-        if (PrefUtility.isLoggedIn()) {
-            rootView.findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
-            rootView.findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
-        } else {
-            rootView.findViewById(R.id.relative_layout_login).setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.scroll_view_container).setVisibility(View.GONE);
-        }
-
         init(rootView);
         setRemoveImageIconTags();
         registerRemoveImageListeners();
@@ -217,6 +209,20 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (PrefUtility.isLoggedIn()) {
+                getView().findViewById(R.id.relative_layout_login).setVisibility(View.GONE);
+                getView().findViewById(R.id.scroll_view_container).setVisibility(View.VISIBLE);
+            } else {
+                getView().findViewById(R.id.relative_layout_login).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.scroll_view_container).setVisibility(View.GONE);
+            }
         }
     }
 }
