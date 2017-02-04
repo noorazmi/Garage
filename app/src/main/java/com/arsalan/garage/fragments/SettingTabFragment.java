@@ -1,6 +1,7 @@
 package com.arsalan.garage.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -11,8 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.activities.HomeActivity;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
-import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Utils;
@@ -29,6 +31,7 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
     protected String mShareText = "Hi there, Check this app https://play.google.com/store/apps/details?id=com.famelive";
     //TODO Remove the place holder text and image in share functionality above
     private CustomProgressDialog progressDialog;
+    private TextView mTextViewLanguage;
 
     public SettingTabFragment() {
     }
@@ -45,9 +48,20 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
         rootView.findViewById(R.id.logout).setOnClickListener(this);
         rootView.findViewById(R.id.gmail).setOnClickListener(this);
         rootView.findViewById(R.id.forgot_password).setOnClickListener(this);
-        rootView.findViewById(R.id.language).setOnClickListener(this);
+        mTextViewLanguage = (TextView) rootView.findViewById(R.id.language);
+        mTextViewLanguage.setOnClickListener(this);
+        setLanguageChangeText();
 
         return rootView;
+    }
+
+    private void setLanguageChangeText(){
+        String locale = LocaleHelper.getPersistedData(getActivity(), "ar");
+        if(locale.equals("ar")){
+            mTextViewLanguage.setText(getString(R.string.english));
+        }else {
+            mTextViewLanguage.setText(getString(R.string.arabic_ar));
+        }
     }
 
     @Override
@@ -79,7 +93,7 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
                 handleLogout();
                 break;
             case R.id.gmail:
-                handleGmail(((TextView)v).getText().toString());
+                handleGmail(((TextView) v).getText().toString());
                 break;
             case R.id.forgot_password:
                 Utils.createForgotPasswordDialog(getActivity());
@@ -93,20 +107,22 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
     }
 
     private void changeLanguage() {
-        String appLanguage = PrefUtility.getCurrentLanguage();
-        switch (appLanguage){
-            case AppConstants.APP_LANGUAGE_AR:
-                break;
-            case AppConstants.APP_LANGUAGE_EN:
-                break;
+        if (mTextViewLanguage.getText().toString().equalsIgnoreCase("English")) {
+            LocaleHelper.setLocale(getActivity(), "en");
+        } else {
+            LocaleHelper.setLocale(getActivity(), "ar");
         }
+        //Restart the activity again to see the changes immediately
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     private void handleGmail(String recipient) {
         ShareUtil.openGmail(getActivity(), recipient);
     }
 
-    private void handleLogout(){
+    private void handleLogout() {
         if (TextUtils.isEmpty(PrefUtility.getAccessToken())) {
             Utils.showSnackBar(getActivity(), getString(R.string.not_logged_in));
         } else {

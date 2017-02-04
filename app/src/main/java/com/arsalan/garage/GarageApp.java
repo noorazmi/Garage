@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
+import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.PrefUtility;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -46,6 +47,10 @@ public class GarageApp extends Application {
 
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "ar"));
+    }
 
     private void initVolleyController(){
         //VolleyController.initVolleyRequestQueueAndImageLoader(this);

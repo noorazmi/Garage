@@ -19,4 +19,27 @@
     <string name="my_garage">كراجي</string>
     <string name="not_logged_in">لم يتم تسجيل المستخدم في</string>
     <string name="successfully_logge_out">تسجيل دخولك بنجاح</string>
+    <string name="mobile_no">التلفون</string>
+    <string name="price">السعر</string>
+    <string name="model">الموديل</string>
+    <string name="description">الوصف</string>
+    <string name="title">العنوان</string>
+    <string name="garages">كراجات</string>
+    <string name="assistance">المساعده على الطريق</string>
+    <string name="scrap">السكراب</string>
+    <string name="taxi">تكسي</string>
+    <string name="agencies">الوكالات</string>
+    <string name="sell_and_buy">بيع و شرا</string>
+    <string name="wash_mobile">غسيل متنقل</string>
+    <string name="protecting_polishing">حمايه وتظليل</string>
+    <string name="services">خدمات شامله</string>
+    <string name="marine">مارين</string>
+    <string name="technical_examination">فحص فني</string>
+    <string name="post_add">"ضع اعلانك</string>
+
+
+
+
+
+
 </resources>

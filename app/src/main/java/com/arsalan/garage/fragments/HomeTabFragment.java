@@ -137,7 +137,7 @@ public class HomeTabFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_TECHNICAL_INSPECTION);
                         bundle.putString(AppConstants.URL, Urls.TECHNICAL_INSPECTION);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.technical_inspection));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.technical_examination));
                         //bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
                         intent = new Intent(getActivity(), CategorySaleListActivity.class);
                         intent.putExtras(bundle);
@@ -185,23 +185,23 @@ public class HomeTabFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems(){
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gragesjpg, "كراجات", AppConstants.MENU_ITEM_TYPE_KARAJAT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.hellpthecarhome, " المساعده على الطريق", AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, "السكراب", AppConstants.MENU_ITEM_TYPE_SCRAP));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, "تكسي", AppConstants.MENU_ITEM_TYPE_TAXI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gragesjpg, getString(R.string.garages), AppConstants.MENU_ITEM_TYPE_KARAJAT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.hellpthecarhome, getString(R.string.assistance), AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, getString(R.string.scrap), AppConstants.MENU_ITEM_TYPE_SCRAP));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, getString(R.string.taxi), AppConstants.MENU_ITEM_TYPE_TAXI));
 
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, "الوكالات", AppConstants.MENU_ITEM_TYPE_AGENCIES));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cardealer, getString(R.string.agencies), AppConstants.MENU_ITEM_TYPE_AGENCIES));
 
 
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, "تأجير سيارات", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, "بيع و شرا", AppConstants.MENU_ITEM_TYPE_FOR_RENT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carsale, getString(R.string.sell_and_buy), AppConstants.MENU_ITEM_TYPE_FOR_RENT));
 
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, "غسيل متنقل", AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, "حمايه وتظليل", AppConstants.MENU_ITEM_TYPE_TINTINGCAR));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, " خدمات شامله" , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, getString(R.string.wash_mobile), AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, getString(R.string.protecting_polishing), AppConstants.MENU_ITEM_TYPE_TINTINGCAR));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, getString(R.string.services) , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.kuwait_rescue, getString(R.string.kuwait_rescue), AppConstants.MENU_ITEM_KUWAIT_RESCUE));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, "مارين", AppConstants.MENU_ITEM_TYPE_MARINE));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, "فحص فني", AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, getString(R.string.marine), AppConstants.MENU_ITEM_TYPE_MARINE));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, getString(R.string.technical_examination), AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.autoservice, "الوكالات"));
         return mHomeMenuItemArrayList;
     }

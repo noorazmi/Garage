@@ -1,5 +1,6 @@
 package com.arsalan.garage.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.view.Gravity;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.HomeFragment;
+import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
 
@@ -29,6 +31,10 @@ public class HomeActivity extends BaseActivity {
         setHomeFragment();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "ar"));
+    }
 
     private void setHomeFragment(){
         //FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);

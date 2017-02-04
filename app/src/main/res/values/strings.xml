@@ -98,10 +98,10 @@
     <string name="message_app_exit">Press again to close the app</string>
 
 
-    <string name="taxi">تكسي</string>
+    <string name="taxi">Taxi</string>
     <string name="movable_wash">غسيل متنقل</string>
     <string name="tintingcar">حمايه وتظليل</string>
-    <string name="technical_inspection">فحص فني</string>
+    <string name="technical_examination">Technical examination</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -111,7 +111,7 @@
     <string name="msg_5xx">
         <![CDATA[<string name=\"msg_5xx\">Oops!! Something happened. Please try again</string>]]></string>
     <string name="no_internet_connection">No network connectivity</string>
-    <string name="agencies">الوكالات</string>
+    <string name="agencies">Agencies</string>
     <string name="title_activity_alwakalat_agency_menu">AlwakalatAgencyMenuActivity</string>
     <string name="title_activity_alwakalat_agency_sub_menu">AlwakalatAgencySubMenuActivity</string>
 
@@ -298,7 +298,7 @@
     <string name="app_warranty_message">We will provide you with the warranty policy for each
         company
     </string>
-    <string name="marine">مارين</string>
+    <string name="marine">Marine</string>
     <string name="ship_yard">فيبر وحداده</string>
     <string name="repair_man">ميكانيك وكهرباء</string>
     <string name="ship_military">مراكز بحرية</string>
@@ -357,7 +357,7 @@
     <string name="logout">Log Out</string>
     <string name="login">Login</string>
     <string name="share">Share</string>
-    <string name="kuwait_rescue">الاداء العالي</string>
+    <string name="kuwait_rescue">Kuwait rescue</string>
     <string name="kuwait_rescue_message">Kuwait\'s volunteer rescue team\n(BPA and on beaches)\nVolunteer work at no charge !! You can take advantage of this section in the event of
         service interruptions !!
     </string>
@@ -376,6 +376,13 @@
     <string name="my_garage">كراجي</string>
     <string name="not_logged_in">User is not logged in</string>
     <string name="successfully_logge_out">Successfully logged out</string>
+    <string name="garages">Garages</string>
+    <string name="assistance">Assistance</string>
+    <string name="scrap">Scrap</string>
+    <string name="sell_and_buy">Sell and Buy</string>
+    <string name="wash_mobile">Wash Mobile</string>
+    <string name="protecting_polishing">Protecting polishing</string>
+    <string name="services">Services</string>
 
 
 </resources>
