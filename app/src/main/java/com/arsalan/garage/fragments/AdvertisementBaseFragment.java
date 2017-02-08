@@ -1,6 +1,7 @@
 package com.arsalan.garage.fragments;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import com.arsalan.garage.adapters.CustomSpinnerAdapter;
 import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.ImageUtils;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Utils;
@@ -24,9 +26,11 @@ import com.arsalan.garage.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -386,34 +390,88 @@ public abstract class AdvertisementBaseFragment extends Fragment implements View
     protected class LongOperation extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            OKHTTpUplaod();
+            OKHTTpUplaod(mImagePaths, getUploadUrl());
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(mProgressDialog != null){
+            if (mProgressDialog != null) {
                 mProgressDialog.dismiss();
             }
             super.onPostExecute(aVoid);
         }
     }
 
-    private void OKHTTpUplaod() {
+    private MultipartBody.Builder setFormData(MultipartBody.Builder builder, Map<String, Object> formData) {
+        for (Map.Entry<String, Object> entry : formData.entrySet()) {
+            String key = entry.getKey();
+            String value = (String) entry.getValue();
+            builder.addFormDataPart(key, value);
+        }
+        return builder;
+    }
 
-        String urlString = getUploadUrl();
+    private Map<String, Object> getFormData() {
+
+        Map<String, Object> formValues = new HashMap<>();
+
+        String accessToken = PrefUtility.getAccessToken();
         String makeRegion = mMakeRegion;
         String make = mMake;
-        if(mMakeRegion.equalsIgnoreCase(AppConstants.MARINE) || mMakeRegion.equalsIgnoreCase(AppConstants.SCRAP) || mMakeRegion.equalsIgnoreCase(AppConstants.ACCESSORIES)){
+        if (mMakeRegion.equalsIgnoreCase(AppConstants.MARINE) || mMakeRegion.equalsIgnoreCase(AppConstants.SCRAP) || mMakeRegion.equalsIgnoreCase(AppConstants.ACCESSORIES)) {
             makeRegion = make;
         }
-
         String title = mEditTextTitle.getText().toString();
         String price = mEditTextPrice.getText().toString();
         String phone = mEditTextMobile.getText().toString();
         String model = mEditTextModel.getText().toString();
         String description = mEditTextDescription.getText().toString();
+        String id = null;
+
+        formValues.put(AppConstants.UUID, accessToken);
+        formValues.put(AppConstants.DEVICE_PHONE, accessToken);
+        formValues.put(AppConstants.MAKE_REGION, makeRegion);
+        formValues.put(AppConstants.MAKE, make);
+        formValues.put(AppConstants.TITLE, title);
+        formValues.put(AppConstants.PRICE, price);
+        formValues.put(AppConstants.MODEL, model);
+        formValues.put(AppConstants.PHONE, phone);
+        formValues.put(AppConstants.DESCRIPTION, description);
+        if (getPostType().equalsIgnoreCase(POST_TYPE_UPDATE)) {
+            id = getArguments().getString(AppConstants.ID);
+            formValues.put(AppConstants.ID, id);
+        }
+        return formValues;
+    }
+
+    private byte[] getCompressedImage(Bitmap bitmap, int imageQuality){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, imageQuality, stream);
+        return stream.toByteArray();
+    }
+
+    private void setImageData(MultipartBody.Builder builder, String[] imagePaths){
         MediaType MEDIA_TYPE_IMAGE = MediaType.parse("image/*");
+        for (int i = 0; i < imagePaths.length; i++) {
+            if (imagePaths[i] != null) {
+                String attributeName = "image" + (i + 1);
+                String imageName = "image" + (i + 1) + ".jpeg";
+
+                Bitmap bitmap = ImageUtils.getSampledBitmapFromFilePath(imagePaths[i], AppConstants.UPLOAD_IMAGE_WIDTH, AppConstants.UPLOAD_IMAGE_HEIGHT /* aspect 9:16 */);
+                byte[] byteArray = getCompressedImage(bitmap, AppConstants.UPLOAD_IMAGE_QUALITY);
+                //builder.addFormDataPart(attributeName, imageName, RequestBody.create(MEDIA_TYPE_IMAGE, new File(mImagePaths[i])));
+                builder.addFormDataPart(attributeName, imageName, RequestBody.create(MEDIA_TYPE_IMAGE, byteArray));
+            }
+        }
+    }
+
+    private void OKHTTpUplaod(String[] imagePaths, String uploadUrl) {
+
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        Map formData = getFormData();
+        setFormData(builder, formData);
+        setImageData(builder, imagePaths);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
@@ -421,39 +479,16 @@ public abstract class AdvertisementBaseFragment extends Fragment implements View
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .build();
 
-        MultipartBody.Builder builder = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart(AppConstants.UUID, PrefUtility.getAccessToken())
-                .addFormDataPart(AppConstants.DEVICE_PHONE, PrefUtility.getAccessToken())
-                .addFormDataPart(AppConstants.MAKE_REGION, makeRegion)
-                .addFormDataPart(AppConstants.MAKE, make)
-                .addFormDataPart(AppConstants.TITLE, title)
-                .addFormDataPart(AppConstants.PRICE, price)
-                .addFormDataPart(AppConstants.MODEL, model)
-                .addFormDataPart(AppConstants.PHONE, phone)
-                .addFormDataPart(AppConstants.DESCRIPTION, description);
-
-        if(getPostType().equalsIgnoreCase(POST_TYPE_UPDATE)){
-            builder.addFormDataPart(AppConstants.ID, getArguments().getString(AppConstants.ID));
-        }
-
-        for (int i = 0; i < 5; i++) {
-            if (mImagePaths[i] != null) {
-                String attributeName = "image" + (i + 1);
-                String imageName = "image" + (i + 1) + ".jpeg";
-                builder.addFormDataPart(attributeName, imageName, RequestBody.create(MEDIA_TYPE_IMAGE, new File(mImagePaths[i])));
-            }
-        }
         RequestBody requestBody = builder.build();
         Request request = new Request.Builder()
-                .url(urlString)
+                .url(uploadUrl)
                 .post(requestBody)
                 .build();
 
         okhttp3.Response response = null;
         try {
             response = client.newCall(request).execute();
-            if(mProgressDialog != null && mProgressDialog.isShowing()){
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 mProgressDialog.dismiss();
             }
             final String response_str = response.body().string();

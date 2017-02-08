@@ -13,7 +13,7 @@ public interface AppConstants {
     int REQUEST_ITEM_COUNT = 20;
     int DIVIDER_ITEM_WIDTH = 5;
 
-    String URL= "url";
+    String URL = "url";
 
     int NUM_OF_COLUMNS = 3;
 
@@ -31,7 +31,6 @@ public interface AppConstants {
     String MENU_ITEM_KUWAIT_RESCUE = "menu_item_kuwait_rescue";
 
 
-
     String MENU_ITEM_TYPE_KARAJAT = "menu_item_type_karajat";
     String MENU_ITEM_TYPE_HELP_ON_ROAD = "menu_item_type_help_on_road";
     String MENU_ITEM_TYPE_SCRAP = "menu_item_type_scrap";
@@ -44,18 +43,18 @@ public interface AppConstants {
     String MENU_ITEM_TYPE_KHIDMAT_SHAMLA = "menu_item_type_khidmat_shamla";
     String MENU_ITEM_TYPE_MARINE = "menu_item_type_marine";
 
-    String MENU_ITEM_TYPE_TAREEQALABDALI =  "menu_item_type_tareeqalabdali";
-    String MENU_ITEM_TYPE_TAREEQALKABAD =  "menu_item_type_tareeqalkabad";
-    String MENU_ITEM_TYPE_TAREEQALSABEEH =  "menu_item_type_tareeqalsabeeh";
-    String MENU_ITEM_TYPE_TAREEQALSALMI =  "menu_item_type_tareeqalsalmi";
-    String MENU_ITEM_TYPE_ALASMAH =  "menu_item_type_alasmah";
-    String MENU_ITEM_TYPE_ALFARWANIYA =  "menu_item_type_alfarwaniya";
-    String MENU_ITEM_TYPE_ALJAHRA =  "menu_item_type_aljahra";
-    String MENU_ITEM_TYPE_TAREEQALWAFRATWAALNUWAISIB =  "menu_item_type_tareeqalwafratwaalnuwaisib";
-    String MENU_ITEM_TYPE_ALAHMADI =  "menu_item_type_alahmadi";
-    String MENU_ITEM_TYPE_FANIMOTANQAL =  "menu_item_type_fanimotanqal";
-    String MENU_ITEM_TYPE_HAULI =  "menu_item_type_hauli";
-    String MENU_ITEM_TYPE_MUBARAKALKABEER =  "menu_item_type_mubarakalkabeer";
+    String MENU_ITEM_TYPE_TAREEQALABDALI = "menu_item_type_tareeqalabdali";
+    String MENU_ITEM_TYPE_TAREEQALKABAD = "menu_item_type_tareeqalkabad";
+    String MENU_ITEM_TYPE_TAREEQALSABEEH = "menu_item_type_tareeqalsabeeh";
+    String MENU_ITEM_TYPE_TAREEQALSALMI = "menu_item_type_tareeqalsalmi";
+    String MENU_ITEM_TYPE_ALASMAH = "menu_item_type_alasmah";
+    String MENU_ITEM_TYPE_ALFARWANIYA = "menu_item_type_alfarwaniya";
+    String MENU_ITEM_TYPE_ALJAHRA = "menu_item_type_aljahra";
+    String MENU_ITEM_TYPE_TAREEQALWAFRATWAALNUWAISIB = "menu_item_type_tareeqalwafratwaalnuwaisib";
+    String MENU_ITEM_TYPE_ALAHMADI = "menu_item_type_alahmadi";
+    String MENU_ITEM_TYPE_FANIMOTANQAL = "menu_item_type_fanimotanqal";
+    String MENU_ITEM_TYPE_HAULI = "menu_item_type_hauli";
+    String MENU_ITEM_TYPE_MUBARAKALKABEER = "menu_item_type_mubarakalkabeer";
 
     String BUNDLE_EXTRA = "bundle_extra";
 
@@ -109,10 +108,6 @@ public interface AppConstants {
 
     String SCRAP_DELIVERY_SUB_TYPE = "scrap_delivery_sub_type";
     String SCRAP_DELIVERY_SUB_TYPE_NONE = "scrap_delivery_sub_type_none";
-
-
-
-
 
 
     /* BUILD_TYPE_CONSTANTS*/
@@ -200,43 +195,43 @@ public interface AppConstants {
     String MARINE = "marine";
     String ACCESSORIES = "accessories";
 
-    String CADILLAC="cadillac";
+    String CADILLAC = "cadillac";
     String CHEVROLET = "chevrolet";
     //String DODGE_CHRYSLER = "dodge-chrysler";
     String DODGE_CHRYSLER = "dodgechrysler";
-    String GMC="gmc";
-    String MERCURY="mercury";
+    String GMC = "gmc";
+    String MERCURY = "mercury";
     //String FORDL_INCOLN = "ford-lincoln";
     String FORD = "ford";
     String LINCOLN = "lincoln";
     String HUMMER = "hummer";
-    String JEEP="jeep";
+    String JEEP = "jeep";
     String PEUGEOT_CITROEN = "peugeotcitroen";
-    String SKODA="skoda";
-    String MINI="mini";
-    String RENAULT="renault";
-    String AUDI="audi";
-    String PORCHE="porche";
-    String JAGUAR="jaguar";
+    String SKODA = "skoda";
+    String MINI = "mini";
+    String RENAULT = "renault";
+    String AUDI = "audi";
+    String PORCHE = "porche";
+    String JAGUAR = "jaguar";
     //String VOLVES_WAGAN="volves-wagan";
-    String VOLVES_WAGAN="volveswagan";
+    String VOLVES_WAGAN = "volveswagan";
     //String RANGE_ROVER="range-rover";
-    String RANGE_ROVER="rangerover";
-    String BMW="bmw";
-    String MERCEDES="mercedes";
-    String OTHER="other";
-    String SUBARU="subaru";
-    String ISUZU="isuzu";
-    String MAZDA="mazda";
-    String SUZUKI="suzuki";
-    String MITSUBISHI="mitsubishi";
-    String KIA="kia";
-    String HYUNDAI="hyundai";
-    String HONDA="honda";
-    String INFINITI="infiniti";
-    String LEXUS="lexus";
-    String NISSAN="nissan";
-    String TOYOTA="toyota";
+    String RANGE_ROVER = "rangerover";
+    String BMW = "bmw";
+    String MERCEDES = "mercedes";
+    String OTHER = "other";
+    String SUBARU = "subaru";
+    String ISUZU = "isuzu";
+    String MAZDA = "mazda";
+    String SUZUKI = "suzuki";
+    String MITSUBISHI = "mitsubishi";
+    String KIA = "kia";
+    String HYUNDAI = "hyundai";
+    String HONDA = "honda";
+    String INFINITI = "infiniti";
+    String LEXUS = "lexus";
+    String NISSAN = "nissan";
+    String TOYOTA = "toyota";
 
 
     String REMOVE_IMAGE_ONE = "remove_image_one";
@@ -280,7 +275,6 @@ public interface AppConstants {
     String CHEVOLATE = "chevolate";
 
 
-
     //String TOYOTA = "toyota";
     //String INFINITI = "infiniti";
     //String MITSUBISHI = "mitsubishi";
@@ -317,4 +311,12 @@ public interface AppConstants {
     String APP_LANGUAGE = "app_language";
     String APP_LANGUAGE_AR = "ar";
     String APP_LANGUAGE_EN = "en";
+    /** Hint to the compressor, 0-100. 0 meaning compress for
+    *small size, 100 meaning compress for max quality. Some
+    *formats, like PNG which is lossless, will ignore the
+    *quality setting */
+    int UPLOAD_IMAGE_QUALITY = 50;
+    int UPLOAD_IMAGE_WIDTH = 500;
+    int UPLOAD_IMAGE_HEIGHT = 889;
+
 }

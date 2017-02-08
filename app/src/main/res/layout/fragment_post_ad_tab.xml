@@ -6,10 +6,10 @@
     android:background="@color/grey_light">
 
     <ScrollView
+        android:id="@+id/scroll_view_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:id="@+id/scroll_view_container">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -232,7 +232,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/green_selector"
-                android:text="Post Ad"/>
+                android:text="@string/post_ad"/>
         </LinearLayout>
     </ScrollView>
 
@@ -240,7 +240,8 @@
         android:id="@+id/relative_layout_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical|center_horizontal">
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/button_login"
@@ -251,7 +252,7 @@
             android:layout_marginTop="14dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Login"/>
+            android:text="@string/login"/>
 
         <com.arsalan.garage.uicomponents.CustomTextViewEnglish
             android:id="@+id/textview_login_first"

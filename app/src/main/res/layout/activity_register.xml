@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/registerLogo"
                 android:layout_marginTop="15dp"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+            android:visibility="gone">
                 <com.arsalan.garage.uicomponents.CustomEditText
                     android:id="@+id/edittext_first_name"
                     android:layout_width="match_parent"
@@ -67,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/input_layout_first_name"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                android:visibility="gone">
                 <com.arsalan.garage.uicomponents.CustomEditText
                     android:id="@+id/edittext_last_name"
                     android:layout_width="match_parent"
@@ -183,7 +185,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/alreadyRegistered"
                     android:gravity="center"
-                    android:text="@string/sign_in"
+                    android:text="@string/login"
                     android:textAllCaps="true"
                     android:textColor="@color/ASSecondaryPurple"
                     android:textSize="@dimen/font_size_small"

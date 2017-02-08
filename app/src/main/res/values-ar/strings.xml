@@ -14,7 +14,7 @@
     <string name="setting">Settings</string>
     <string name="share">مشاركة البرنامج</string>
     <string name="home">القائمة</string>
-    <string name="post_ad">ضع اعلانك</string>
+    <string name="post_ad">أضف إعلانك</string>
     <string name="contact_us">اتصل بنا</string>
     <string name="my_garage">كراجي</string>
     <string name="not_logged_in">لم يتم تسجيل المستخدم في</string>
@@ -36,6 +36,19 @@
     <string name="marine">مارين</string>
     <string name="technical_examination">فحص فني</string>
     <string name="post_add">"ضع اعلانك</string>
+    <string name="ad_limit_message">يمكنك وضع عدد 2 أعلان في اليوم كحد اقصى</string>
+    <string name="login">دخول</string>
+    <string name="select_region">إختر القسم</string>
+    <string name="select_model">إختر النوع</string>
+    <string name="add_image">أضف صورة</string>
+    <string name="kuwait_rescue_title">فريق الإنقاذ الكويتي</string>
+    <string name="hint_email">البريد الإلكتروني</string>
+    <string name="hint_phone">رقم الهاتف</string>
+    <string name="hint_password">الرقم السري</string>
+    <string name="hint_confirm_password">تأكيد الرقم السري</string>
+    <string name="register">تسجيل</string>
+    <string name="no_account">ليس لديك حساب؟</string>
+    <string name="already_registered">هل لديك حساب؟</string>
 
 
 

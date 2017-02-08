@@ -17,6 +17,7 @@ import com.arsalan.garage.R;
 import com.arsalan.garage.activities.CameraGalleryActivity;
 import com.arsalan.garage.activities.LoginActivity;
 import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.ImageUtils;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
@@ -41,8 +42,8 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_post_ad_tab, container, false);
-        mButtonLogin = (Button) rootView.findViewById(R.id.button_login);
-        prepareLogin();
+        rootView.findViewById(R.id.button_login).setOnClickListener(this);
+        //prepareLogin();
         init(rootView);
         setRemoveImageIconTags();
         registerRemoveImageListeners();
@@ -51,7 +52,7 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
         return rootView;
     }
 
-    private void prepareLogin() {
+    /*private void prepareLogin() {
         if (PrefUtility.isLoggedIn()) {
             mButtonLogin.setText(R.string.logout);
         } else {
@@ -61,8 +62,7 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
             @Override
             public void onClick(View v) {
                 if (mButtonLogin.getText().toString().equals("Login")) {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivityForResult(intent, LOGIN);
+
                 } else {
                     Utils.showToastMessage(getActivity(), "Logout Successfully");
                     PrefUtility.clearUsrPrefs();
@@ -71,7 +71,7 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
 
             }
         });
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
@@ -123,6 +123,10 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
                 mProgressDialog.show();
                 new LongOperation().execute();
                 break;
+            case R.id.button_login:
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivityForResult(intent, LOGIN);
+                break;
             default:
                 break;
         }
@@ -170,7 +174,7 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
                     mImagePaths[mCurrentImageSelection - 1] = mProfileImagePath;
                     if (mProfileImagePath != null) {
                         //Bitmap bitmap = Utils.getBitmapFromPath(mProfileImagePath);
-                        Bitmap bitmap = Utils.getSampledBitmapFromFilePath(mProfileImagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
+                        Bitmap bitmap = ImageUtils.getSampledBitmapFromFilePath(mProfileImagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
                         mImagesAdded++;
                         switch (mCurrentImageSelection) {
                             case 1:

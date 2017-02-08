@@ -19,7 +19,7 @@ public class KuwaitRescueActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getString(R.string.kuwait_rescue), true, Gravity.CENTER);
+        setToolbar(toolbar, getString(R.string.kuwait_rescue_title), true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

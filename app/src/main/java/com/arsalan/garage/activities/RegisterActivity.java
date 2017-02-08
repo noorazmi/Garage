@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.models.StatusMessage;
-import com.arsalan.garage.models.UserInfo;
 import com.arsalan.garage.uicomponents.CustomButton;
 import com.arsalan.garage.uicomponents.CustomEditText;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
@@ -22,9 +20,6 @@ import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.volleytask.VolleyHttpListener;
-import com.arsalan.garage.volleytask.VolleyHttpResponse;
-import com.arsalan.garage.volleytask.VolleyHttpTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,8 +109,8 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
     private JSONObject createRegisterUerJson() {
         JSONObject registerJSON = new JSONObject();
         try {
-            registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
-            registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());
+            //registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
+            //registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());
             registerJSON.put(AppConstants.PHONE, editTextPhone.getText().toString());
             if(!TextUtils.isEmpty(editTextEmail.getText().toString())){
                 registerJSON.put(AppConstants.EMAIL, editTextEmail.getText().toString());
@@ -282,8 +277,8 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
     private void registerUser() {
         if (Utils.isNetworkAvailable()) {
             boolean isAllFieldsProperlySet = true;
-            isAllFieldsProperlySet = verifyFirstName();
-            isAllFieldsProperlySet = verifyLastName();
+            //isAllFieldsProperlySet = verifyFirstName();
+            //isAllFieldsProperlySet = verifyLastName();
             isAllFieldsProperlySet = verifyPhone();
             isAllFieldsProperlySet = verifyEmailAddress();
             isAllFieldsProperlySet = verifyPassword();

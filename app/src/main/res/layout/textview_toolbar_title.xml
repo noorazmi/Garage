@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.arsalan.garage.uicomponents.CustomTextViewArabic
-    style="@style/TextViewStyle.Regular.Arabic"
+<com.arsalan.garage.uicomponents.CustomTextViewEnglish
+    style="@style/TextViewStyle.Regular.English"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -10,4 +10,4 @@
     android:textSize="24sp"
     android:textStyle="bold">
 
-</com.arsalan.garage.uicomponents.CustomTextViewArabic>
+</com.arsalan.garage.uicomponents.CustomTextViewEnglish>

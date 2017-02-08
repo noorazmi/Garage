@@ -161,7 +161,7 @@ public class HomeTabFragment extends Fragment {
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
                     }else if(homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_KUWAIT_RESCUE)){
                         Bundle bundle = new Bundle();
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.kuwait_rescue));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.kuwait_rescue_title));
                         intent = new Intent(getActivity(), KuwaitRescueActivity.class);
                         intent.putExtra(AppConstants.BUNDLE_EXTRA, bundle);
                     }else {
@@ -199,7 +199,7 @@ public class HomeTabFragment extends Fragment {
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carwash, getString(R.string.wash_mobile), AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.tinting8, getString(R.string.protecting_polishing), AppConstants.MENU_ITEM_TYPE_TINTINGCAR));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.manautoservice, getString(R.string.services) , AppConstants.MENU_ITEM_TYPE_KHIDMAT_SHAMLA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.kuwait_rescue, getString(R.string.kuwait_rescue), AppConstants.MENU_ITEM_KUWAIT_RESCUE));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.kuwait_rescue, getString(R.string.kuwait_rescue_title), AppConstants.MENU_ITEM_KUWAIT_RESCUE));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.boats, getString(R.string.marine), AppConstants.MENU_ITEM_TYPE_MARINE));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.checkingcar, getString(R.string.technical_examination), AppConstants.MENU_ITEM_TYPE_TECHNICAL_INSPECTION));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.autoservice, "الوكالات"));

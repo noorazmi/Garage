@@ -25,6 +25,7 @@ import com.arsalan.garage.adapters.CustomSpinnerAdapter;
 import com.arsalan.garage.adapters.NothingSelectedSpinnerAdapter;
 import com.arsalan.garage.models.SpinnerItem;
 import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.ImageUtils;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
@@ -335,7 +336,7 @@ public class EditPostFragment extends AdvertisementBaseFragment implements View.
         mImagePaths[mCurrentImageSelection - 1] = imagePath;
         if (imagePath != null) {
             //Bitmap bitmap = Utils.getBitmapFromPath(imagePath);
-            Bitmap bitmap = Utils.getSampledBitmapFromFilePath(imagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
+            Bitmap bitmap = ImageUtils.getSampledBitmapFromFilePath(imagePath, (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_width), (int) getActivity().getResources().getDimension(R.dimen.app_add_image_button_height));
             mImagesAdded++;
             switch (mCurrentImageSelection) {
                 case 1:
