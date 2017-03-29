@@ -166,8 +166,10 @@
             android:layout_alignEnd="@+id/input_layout_password"
             android:layout_alignRight="@+id/input_layout_password"
             android:layout_alignTop="@+id/input_layout_password"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="6dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_password"/>
+            android:src="@drawable/ic_password"
+        android:visibility="gone"/>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

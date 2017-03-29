@@ -81,7 +81,9 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
         inputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.input_layout_confirm_password);
         showPassword = (ImageView) findViewById(R.id.imageview_show_assword);
+        showPassword.setVisibility(View.GONE);
         showConfirmPassword = (ImageView) findViewById(R.id.imageview_show_confirm_password);
+        showConfirmPassword.setVisibility(View.GONE);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -109,8 +111,10 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
     private JSONObject createRegisterUerJson() {
         JSONObject registerJSON = new JSONObject();
         try {
-            //registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
-            //registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());
+            /*registerJSON.put(AppConstants.FIRST_NAME, editTextFirstName.getText().toString());
+            registerJSON.put(AppConstants.LAST_NAME, editTextLastName.getText().toString());*/
+            registerJSON.put(AppConstants.FIRST_NAME, "FN");
+            registerJSON.put(AppConstants.LAST_NAME, "LN");
             registerJSON.put(AppConstants.PHONE, editTextPhone.getText().toString());
             if(!TextUtils.isEmpty(editTextEmail.getText().toString())){
                 registerJSON.put(AppConstants.EMAIL, editTextEmail.getText().toString());

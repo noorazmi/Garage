@@ -259,7 +259,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     inputLayoutPassword.setError("");
                     inputLayoutPassword.setErrorEnabled(true);
                     buttonForgotPassword.setVisibility(View.VISIBLE);
-                    showPassword.setVisibility(View.VISIBLE);
+                    //showPassword.setVisibility(View.VISIBLE);
                 } else {
                     validatePassword();
                 }
