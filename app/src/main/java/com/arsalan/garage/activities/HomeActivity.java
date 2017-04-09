@@ -1,7 +1,11 @@
 package com.arsalan.garage.activities;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v13.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,6 +23,15 @@ public class HomeActivity extends BaseActivity {
     private FragmentManager mFragmentManager;
     private int backPressedCount = 0;
 
+    // Storage Permissions
+    private static final int REQUEST_CODE_PERMISSIONS = 113;
+    private static String[] PERMISSIONS = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.SEND_SMS
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +42,32 @@ public class HomeActivity extends BaseActivity {
 
 
         setHomeFragment();
+        verifyPermissions(this);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "ar"));
+    }
+
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    public static void verifyPermissions(Activity activity) {
+        for (int i = 0; i < PERMISSIONS.length; i++){
+        int permission = ActivityCompat.checkSelfPermission(activity, PERMISSIONS[i]);
+            if(permission != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(
+                        activity,
+                        PERMISSIONS,
+                        REQUEST_CODE_PERMISSIONS
+                );
+            }
+        }
     }
 
     private void setHomeFragment(){

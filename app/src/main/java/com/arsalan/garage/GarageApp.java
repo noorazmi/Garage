@@ -3,6 +3,7 @@ package com.arsalan.garage;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
@@ -39,6 +40,8 @@ public class GarageApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
         //MultiDex.install(this);
         sGarageApp = this;
         initVolleyController();
