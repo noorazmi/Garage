@@ -133,7 +133,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
             finish();
             return;
         }
-        Intent intent = new Intent(this, HomeActivity1.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();

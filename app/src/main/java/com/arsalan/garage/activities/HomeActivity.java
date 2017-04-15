@@ -121,7 +121,12 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        showHomeTabOnBackPressed();
+        if (mViewPager.getCurrentItem() != 0) {
+            mViewPager.setCurrentItem(0, true);
+            mBottomNavigationView.getMenu().getItem(0).setChecked(true);
+        }else {
+            showHomeTabOnBackPressed();
+        }
     }
 
     private void showHomeTabOnBackPressed() {

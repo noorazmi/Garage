@@ -19,7 +19,7 @@ public class MarineUserDescriptionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home1);
+        setContentView(R.layout.activity_layout_container);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setToolbar(toolbar,  getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);

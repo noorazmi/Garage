@@ -36,10 +36,10 @@ public class SectionsFragmentPagerAdapter extends FragmentPagerAdapter {
                 fragment = HomeTabFragment.newInstance(mContext.getString(R.string.home));
                 break;
             case 1:
-                fragment = PostAdTabFragment.newInstance(mContext.getString(R.string.contact_us));
+                fragment = PostAdTabFragment.newInstance(mContext.getString(R.string.post_add));
                 break;
             case 2:
-                fragment = SettingsFragment.newInstance(mContext.getString(R.string.setting));
+                fragment = SettingsFragment.newInstance(mContext.getString(R.string.contact_us));
                 break;
         }
         return fragment;
