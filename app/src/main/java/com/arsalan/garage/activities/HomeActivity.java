@@ -18,6 +18,9 @@ import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeActivity extends BaseActivity {
 
     private FragmentManager mFragmentManager;
@@ -38,7 +41,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.karaji), false, Gravity.CENTER);
+        setToolbar(toolbar, getResources().getString(R.string.garage), false, Gravity.CENTER);
 
 
         setHomeFragment();
@@ -58,16 +61,23 @@ public class HomeActivity extends BaseActivity {
      * @param activity
      */
     public static void verifyPermissions(Activity activity) {
+        List<String> nonGrantedPermissionsList = new ArrayList(PERMISSIONS.length);
+
         for (int i = 0; i < PERMISSIONS.length; i++){
         int permission = ActivityCompat.checkSelfPermission(activity, PERMISSIONS[i]);
             if(permission != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(
-                        activity,
-                        PERMISSIONS,
-                        REQUEST_CODE_PERMISSIONS
-                );
+                nonGrantedPermissionsList.add(PERMISSIONS[i]);
             }
         }
+
+        if(nonGrantedPermissionsList.size() == 0){
+            return;
+        }
+        ActivityCompat.requestPermissions(
+                activity,
+                nonGrantedPermissionsList.toArray(new String[nonGrantedPermissionsList.size()]),
+                REQUEST_CODE_PERMISSIONS
+        );
     }
 
     private void setHomeFragment(){

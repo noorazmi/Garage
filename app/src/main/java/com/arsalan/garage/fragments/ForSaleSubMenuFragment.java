@@ -161,6 +161,7 @@ public class ForSaleSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RANGE_ROVER);
                             bundle.putString(AppConstants.URL, Urls.RANGEROVER);
                             bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_rangerover));
+                            make = AppConstants.RANGE_ROVER;
                         } else if (position == 3) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_VOLKSWAGEN);
                             //bundle.putString(AppConstants.URL, Urls.VOLVOWAGON);

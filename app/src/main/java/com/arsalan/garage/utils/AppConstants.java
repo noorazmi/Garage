@@ -211,7 +211,7 @@ public interface AppConstants {
     String MINI = "mini";
     String RENAULT = "renault";
     String AUDI = "audi";
-    String PORCHE = "porche";
+    String PORCHE = "porsche";
     String JAGUAR = "jaguar";
     //String VOLVES_WAGAN="volves-wagan";
     String VOLVES_WAGAN = "volveswagan";

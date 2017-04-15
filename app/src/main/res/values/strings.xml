@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">" كراجي"</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="contact_us">Contact Us</string>
-    <string name="karaji">" كراجي"</string>
     <string name="home">Home</string>
     <string name="offer">Offer</string>
     <string name="post_add">PostAd</string>
@@ -359,7 +357,9 @@
     <string name="share">Share</string>
     <string name="kuwait_rescue">Kuwait rescue</string>
     <string name="kuwait_rescue_title">Kuwait rescue</string>
-    <string name="kuwait_rescue_message">Kuwait\'s volunteer rescue team\n(DESERT and on beaches)\nVolunteer work at no charge !! You can take advantage of this section in the event of
+    <string name="kuwait_rescue_message">Kuwait\'s volunteer rescue team\n(DESERT and on
+        beaches)\nVolunteer work at no charge !! You can take advantage of this section in the event
+        of
         service interruptions !!
     </string>
     <string name="founder_of_team">The founder of the team:\nMohammad Saif</string>
@@ -374,7 +374,7 @@
     <string name="language">Language</string>
     <string name="setting">Settings</string>
     <string name="post_ad">Post Ad</string>
-    <string name="my_garage">كراجي</string>
+    <string name="garage">Garage</string>
     <string name="not_logged_in">User is not logged in</string>
     <string name="successfully_logge_out">Successfully logged out</string>
     <string name="garages">Garages</string>

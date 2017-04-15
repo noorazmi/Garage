@@ -30,6 +30,8 @@ import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 
+import java.io.File;
+
 import static android.content.Context.DOWNLOAD_SERVICE;
 
 /**
@@ -96,7 +98,16 @@ public class EditPostFragment extends AdvertisementBaseFragment implements View.
                         unregisterReceiver();
                         return;
                     }
-                    String filePath = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
+                    //String filePath = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
+
+                    int fileUriIdx = c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI);
+                    String fileUri = c.getString(fileUriIdx);
+                    String filePath = null;
+                    if (fileUri != null) {
+                        File mFile = new File(Uri.parse(fileUri).getPath());
+                        filePath = mFile.getAbsolutePath();
+                    }
+
                     mImageDownloadCounter++;
                     mCurrentImageSelection++;
                     mImagePaths[mImageDownloadCounter] = filePath;
@@ -374,7 +385,9 @@ public class EditPostFragment extends AdvertisementBaseFragment implements View.
     private void unregisterReceiver(){
         if (mImageDownloadReceiver != null) {
             try {
-                getActivity().unregisterReceiver(mImageDownloadReceiver);
+                if(getActivity() != null){
+                    getActivity().unregisterReceiver(mImageDownloadReceiver);
+                }
             }catch (IllegalArgumentException e){
                 e.printStackTrace();
             }
