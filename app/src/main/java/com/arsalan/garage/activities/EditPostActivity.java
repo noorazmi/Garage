@@ -1,5 +1,7 @@
 package com.arsalan.garage.activities;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
@@ -19,8 +21,8 @@ public class EditPostActivity extends BaseActivity{
     }
 
     private void setEditPostFragment() {
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         EditPostFragment fragment = new EditPostFragment();
         fragment.setArguments(getIntent().getExtras());
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();

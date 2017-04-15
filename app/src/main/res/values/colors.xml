@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
     <!-- colors for styles -->
     <color name="secondaryTextToolbar">#FFFFFF</color>
@@ -88,6 +91,5 @@
     <color name="app_secondary_teal">#19B9AF</color>
     <color name="ASSecondaryPurple">#A5195A</color>
     <color name="image_blocker">@color/grey_very_light</color>
-
 
 </resources>

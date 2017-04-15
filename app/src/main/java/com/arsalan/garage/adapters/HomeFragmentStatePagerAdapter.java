@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.arsalan.garage.fragments.HomeTabFragment;
-import com.arsalan.garage.fragments.PostAdTabFragment;
 import com.arsalan.garage.fragments.SettingTabFragment;
 
 
@@ -43,10 +41,10 @@ public class HomeFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
 
             case POSITION_DAILY:
-                fragment = new HomeTabFragment();
+                //fragment = new HomeTabFragment();
                 break;
             case POSITION_MONTHLY:
-                fragment = new PostAdTabFragment();
+                //fragment = new PostAdTabFragment();
                 break;
             case POSITION_SEASON:
                 fragment = new SettingTabFragment();

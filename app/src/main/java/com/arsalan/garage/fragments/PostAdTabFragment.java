@@ -32,6 +32,13 @@ public class PostAdTabFragment extends AdvertisementBaseFragment implements View
     public PostAdTabFragment() {
     }
 
+    public static PostAdTabFragment newInstance(String title) {
+        PostAdTabFragment fragment = new PostAdTabFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConstants.TITLE, title);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

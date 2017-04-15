@@ -13,7 +13,17 @@
 
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowDisablePreview">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <!--<style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--<item name="colorPrimaryDark">@color/primary_dark_material_light</item>-->
+        <!--<item name="colorPrimary">@color/primary_material_light</item>-->
+        <!--<item name="colorAccent">@color/accent_material_light</item>-->
+        <!--<item name="android:layoutDirection">ltr</item>-->
+    <!--</style>-->
 
 
     <style name="ToolBarTheme" parent="Theme.AppCompat">

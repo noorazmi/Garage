@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.fragments.HomeFragment;
+import com.arsalan.garage.fragments.HomeFragment1;
 import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Utils;
@@ -84,7 +84,7 @@ public class HomeActivity1 extends BaseActivity {
         //FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout_container, new HomeFragment()).commit();
+        fragmentTransaction.replace(R.id.framelayout_container, new HomeFragment1()).commit();
 
     }
 

@@ -3,7 +3,7 @@ package com.arsalan.garage.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -50,6 +50,13 @@ public class HomeTabFragment extends Fragment {
     private RecyclerViewAdapter recyclerViewAdapter;
     private int addItemCount = 0;
 
+
+    public static HomeTabFragment newInstance(String title) {
+        HomeTabFragment fragment = new HomeTabFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConstants.TITLE, title);
+        return fragment;
+    }
 
 
 

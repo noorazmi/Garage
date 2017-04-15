@@ -27,7 +27,7 @@ public class LanguageChooserActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity(){
-        Intent intent = new Intent(this, HomeActivity1.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }
