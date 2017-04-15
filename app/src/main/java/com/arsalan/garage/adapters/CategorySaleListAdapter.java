@@ -20,7 +20,6 @@ import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.AmericanCarsVO;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ import java.util.List;
  * <p/>
  */
 
-public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implements View.OnClickListener{
+public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implements View.OnClickListener {
 
     private List<AmericanCarsVO.Result> mHomeMenuItemArrayList;
     private String mScrapType;
@@ -42,7 +41,7 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implement
     public CategorySaleListAdapter(Context context, RecyclerView recyclerView, List<AmericanCarsVO.Result> mCarList, String scrapType, String descriptionLanguage) {
         super(recyclerView);
         this.mContext = context;
-        this.mHomeMenuItemArrayList = (ArrayList<AmericanCarsVO.Result>) mCarList;
+        this.mHomeMenuItemArrayList = mCarList;
         this.mScrapType = scrapType;
         this.mDescriptionLanguage = descriptionLanguage;
     }
@@ -52,7 +51,6 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implement
 
         RecyclerView.ViewHolder viewHolder;
         if (isItemView(viewType)) {
-            //In case of multiple/single view type put your code logic here...
             View itemView = null;
             if (!TextUtils.isEmpty(mDescriptionLanguage) && mDescriptionLanguage.equals(AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH)) {
                 itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_category_sale_english, parent, false);
@@ -91,7 +89,7 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implement
 
             ImageLoader imageLoader = ImageLoader.getInstance();
             imageLoader.displayImage(model.getImage(), listItemViewHolder.imgView, Utils.gerDisplayImageOptions());
-        }else{
+        } else {
             showProgressBar(holder);
         }
     }
@@ -117,7 +115,7 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implement
             Utils.initCall(phoneNumber, mContext);
         } else {
             int position = (int) v.getTag(R.id.textview_phone_number);
-            if (AppConstants.SCRAP_DELIVERY.equals(((CategorySaleListActivity)mContext).getIntent().getExtras().getString(AppConstants.SCRAP_TYPE))) {
+            if (AppConstants.SCRAP_DELIVERY.equals(((CategorySaleListActivity) mContext).getIntent().getExtras().getString(AppConstants.SCRAP_TYPE))) {
                 return;
             }
             Intent intent = new Intent(mContext, CategoryDescriptionActivity.class);
@@ -127,16 +125,14 @@ public class CategorySaleListAdapter extends CustomRecyclerViewAdapter implement
             bundle.putString(AppConstants.IMAGE_URL, result.getImage());
             bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
             bundle.putString(AppConstants.ID, result.getItem_id());
-            bundle.putString(AppConstants.EXTRA_TITLE, ((CategorySaleListActivity)mContext).getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-            bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, ((CategorySaleListActivity)mContext).getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
+            bundle.putString(AppConstants.EXTRA_TITLE, ((CategorySaleListActivity) mContext).getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
+            bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, ((CategorySaleListActivity) mContext).getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
             intent.putExtras(bundle);
             mContext.startActivity(intent);
         }
     }
 
-
     public class ListItemViewHolder extends CustomViewHolder {
-
         ImageView imgView;
         TextView title;
         TextView phoneNumbet;

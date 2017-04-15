@@ -111,33 +111,6 @@ public class CategorySaleListFragment extends Fragment {
                 }
             }
         });
-
-//        mCategoryListAdapter.addOnClickCallback(new CustomRecyclerViewAdapter.OnClickCallback() {
-//            @Override
-//            public void onViewClickListener(View v, int position) {
-//                Toast.makeText(GarageApp.getInstance(),"hello "+position,Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                if (AppConstants.SCRAP_DELIVERY.equals(getArguments().getString(AppConstants.SCRAP_TYPE))) {
-//                    return;
-//                }
-//                Intent intent = new Intent(getActivity(), CategoryDescriptionActivity.class);
-//                Bundle bundle = new Bundle();
-//                AmericanCarsVO.Result result = mCarList.get(position);
-//                bundle.putString(AppConstants.DESCRIPTION, result.getDescription());
-//                bundle.putString(AppConstants.IMAGE_URL, result.getImage());
-//                bundle.putString(AppConstants.PHONE_NUMBER, result.getPhone());
-//                bundle.putString(AppConstants.ID, result.getItem_id());
-//                bundle.putString(AppConstants.EXTRA_TITLE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_TITLE));
-//                bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, getActivity().getIntent().getStringExtra(AppConstants.EXTRA_DESCRIPTION_LANGUAGE));
-//                intent.putExtras(bundle);
-//                getActivity().startActivity(intent);
-//            }
-//        }));
     }
 
 
@@ -178,9 +151,9 @@ public class CategorySaleListFragment extends Fragment {
 
         final List<AmericanCarsVO.Result> filteredModelList = new ArrayList<>();
         for (AmericanCarsVO.Result model : models) {
-            //final String text = model.getDescription();
-            final String text = ""+model.getPhone();
-            if (text.contains(query)) {
+            if (model.getPhone().contains(query)) {
+                filteredModelList.add(model);
+            }else if(model.getDescription().contains(query)){
                 filteredModelList.add(model);
             }
         }

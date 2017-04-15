@@ -1,9 +1,9 @@
 package com.arsalan.garage.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -15,13 +15,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.ImageViewerActivity;
+import com.arsalan.garage.adapters.ShareListAdapter;
+import com.arsalan.garage.models.ShareOptionItem;
 import com.arsalan.garage.utils.AppConstants;
+import com.arsalan.garage.utils.CustomDialogHelper;
 import com.arsalan.garage.utils.Logger;
+import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.ItemDescriptionVo;
@@ -44,6 +50,9 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     private String TAG = "CategoryDescriptionFragment";
     private ItemDescriptionVo mItemDescriptionVO;
     private String mDescriptionLanguage;
+    protected AlertDialog mShareOptionsAlertDialog;
+    private String mShareImage;
+    private String mShareText;
 
     public CategoryDescriptionFragment() {
     }
@@ -64,12 +73,49 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_share:
-                return false;
+                showShareOptions();
+                break;
             default:
                 break;
         }
 
         return false;
+    }
+
+    protected void showShareOptions() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        ListView mBankListView = new ListView(getActivity());
+
+        final ShareListAdapter shareListAdapter = new ShareListAdapter(getActivity(), Utils.getShareOptions());
+        mBankListView.setAdapter(shareListAdapter);
+        mBankListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                ShareOptionItem shareOptionItem = (ShareOptionItem) shareListAdapter.getItem(position);
+                mShareOptionsAlertDialog.dismiss();
+                switch (position) {
+                    case 0://facebook
+                        ShareUtil.shareOnFacebook(getActivity(), mShareText, mShareImage);
+                        break;
+                    case 1://twitter
+                        ShareUtil.shareOnTwitter(getActivity(), mShareText, mShareImage);
+                        break;
+                    case 2://whatsapp
+                        ShareUtil.shareOnWhatsApp(getActivity(), mShareText, mShareImage);
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+        });
+        builder.setView(mBankListView);
+        builder.setTitle(getActivity().getString(R.string.select_sharing_option));
+        mShareOptionsAlertDialog = builder.create();
+        CustomDialogHelper customDialogHelper = new CustomDialogHelper(getActivity());
+        mShareOptionsAlertDialog.show();
+        customDialogHelper.changeDialog(mShareOptionsAlertDialog);
     }
 
     @Override
@@ -136,12 +182,14 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
             return;
         }
         mTextViewDescription.setText(valueObject.getResults().getDescription());
+        mShareText = valueObject.getResults().getDescription();
 
         if(TextUtils.isEmpty(valueObject.getResults().getPhone())){
             mTextViewPhone.setVisibility(View.GONE);
         }else {
             mTextViewPhone.setVisibility(View.VISIBLE);
             mTextViewPhone.setText(getUnderlinedSpannable(valueObject.getResults().getPhone()));
+            mShareText = mShareText + "\n" + getUnderlinedSpannable(valueObject.getResults().getPhone());
 
         }
         if(TextUtils.isEmpty(valueObject.getResults().getPhone1())){
@@ -149,6 +197,7 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         }else {
             mTextViewPhone1.setVisibility(View.VISIBLE);
             mTextViewPhone1.setText(getUnderlinedSpannable(valueObject.getResults().getPhone1()));
+            mShareText = mShareText + "\n" + getUnderlinedSpannable(valueObject.getResults().getPhone1());
 
         }
 
@@ -157,17 +206,22 @@ public class CategoryDescriptionFragment extends Fragment implements View.OnClic
         }else {
             mTextViewPhone2.setVisibility(View.VISIBLE);
             mTextViewPhone2.setText(getUnderlinedSpannable(valueObject.getResults().getPhone2()));
+            mShareText = mShareText + "\n" + getUnderlinedSpannable(valueObject.getResults().getPhone2());
 
         }
-        //ImageLoader imageLoader = ImageLoader.getInstance();
+       String imageUrl = null;
         if(!TextUtils.isEmpty(valueObject.getResults().getImage())){
             //imageLoader.displayImage(valueObject.getResults().getImage(), mImageViewItem);
-            Glide.with(getActivity())
-                    .load(valueObject.getResults().getImage()).placeholder(R.mipmap.ic_launcher)
-                    //.override(500, 304)
-                    .into(mImageViewItem);
+            imageUrl = valueObject.getResults().getImage();
+        }else{
+            imageUrl = getArguments().getString(AppConstants.IMAGE_URL);
         }
 
+        Glide.with(getActivity())
+                    .load(imageUrl).placeholder(R.mipmap.ic_launcher)
+                    //.override(500, 304)
+                    .into(mImageViewItem);
+        mShareImage = imageUrl;
     }
 
     private SpannableString getUnderlinedSpannable(String str){

@@ -27,9 +27,6 @@ public class CategoryDescriptionActivity extends BaseActivity {
         setLevelOneMenuFragment();
     }
 
-
-
-
     private void setLevelOneMenuFragment(){
         FrameLayout frameLayoutContainer = (FrameLayout) findViewById(R.id.framelayout_container);
         mFragmentManager = getFragmentManager();
@@ -37,7 +34,6 @@ public class CategoryDescriptionActivity extends BaseActivity {
         Fragment fragment = new CategoryDescriptionFragment();
         fragment.setArguments(getIntent().getExtras());
         fragmentTransaction.replace(R.id.framelayout_container, fragment).commit();
-
     }
 }
 
