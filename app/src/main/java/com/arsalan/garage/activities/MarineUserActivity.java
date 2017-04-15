@@ -16,7 +16,7 @@ public class MarineUserActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home1);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         Bundle bundle = getIntent().getExtras();

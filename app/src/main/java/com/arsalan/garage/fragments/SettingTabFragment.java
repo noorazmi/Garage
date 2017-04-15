@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.activities.HomeActivity;
+import com.arsalan.garage.activities.HomeActivity1;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
 import com.arsalan.garage.utils.LocaleHelper;
 import com.arsalan.garage.utils.PrefUtility;
@@ -113,7 +113,7 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
             LocaleHelper.setLocale(getActivity(), "ar");
         }
         //Restart the activity again to see the changes immediately
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        Intent intent = new Intent(getActivity(), HomeActivity1.class);
         startActivity(intent);
         getActivity().finish();
     }

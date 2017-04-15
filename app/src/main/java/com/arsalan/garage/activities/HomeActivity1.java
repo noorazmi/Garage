@@ -21,7 +21,7 @@ import com.arsalan.garage.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity1 extends BaseActivity {
 
     private FragmentManager mFragmentManager;
     private int backPressedCount = 0;
@@ -38,7 +38,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home1);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setToolbar(toolbar, getResources().getString(R.string.garage), false, Gravity.CENTER);

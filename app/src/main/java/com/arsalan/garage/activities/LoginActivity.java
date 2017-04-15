@@ -91,7 +91,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             finish();
             return;
         }
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, HomeActivity1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();

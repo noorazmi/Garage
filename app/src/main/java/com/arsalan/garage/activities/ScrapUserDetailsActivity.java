@@ -18,7 +18,7 @@ public class ScrapUserDetailsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home1);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setToolbar(toolbar,  getIntent().getStringExtra(AppConstants.EXTRA_TITLE), true, Gravity.CENTER);
