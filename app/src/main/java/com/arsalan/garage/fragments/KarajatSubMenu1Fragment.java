@@ -161,23 +161,23 @@ public class KarajatSubMenu1Fragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage1, "ميكانيكي"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage2, "جيرات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage3, "صبغ وحداده"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage4, "بريك وهيئه"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage5, "تنجيد"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage6, "اطارات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage7, "زجاج"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage8, "كهرباء وتكييف"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage9, "قطع غيار"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage10, "برمجة سيارات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage11, "تعديل رنجات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage13, "مخرطه"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage14, "عوادم وراديترات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage15, "طلي معادن"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage16, "زينه سيارات"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage20, "هايدروليك"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage21, "شفط صدمات"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage1, getString(R.string.mechanics)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage2, getString(R.string.jirat)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage3, getString(R.string.paint_bodywork)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage4, getString(R.string.brake_balance)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage5, getString(R.string.interior_restoration)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage6, getString(R.string.tyres_rims)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage7, getString(R.string.glass)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage8, getString(R.string.ac_electric)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage9, getString(R.string.spare_parts)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage10, getString(R.string.programming)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage11, getString(R.string.fix_rims)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage13, getString(R.string.lathe)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage14, getString(R.string.exhaust_radiator)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage15, getString(R.string.painting_metals)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage16, getString(R.string.auto_accessories)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage20, getString(R.string.hydraulic)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage21, getString(R.string.dent_removal)));
 
         return mHomeMenuItemArrayList;
     }

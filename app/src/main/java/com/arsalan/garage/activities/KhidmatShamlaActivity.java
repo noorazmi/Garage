@@ -31,7 +31,7 @@ public class KhidmatShamlaActivity extends BaseActivity {
         //getSupportActionBar().setTitle(" خدمات شامله");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, " خدمات شامله", true, Gravity.CENTER);
+        setToolbar(toolbar, getString(R.string.services), true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

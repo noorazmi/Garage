@@ -27,7 +27,7 @@ public class HelpOnRoadActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_container);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, "المساعدة على الطريق" ,true, Gravity.CENTER);
+        setToolbar(toolbar, getString(R.string.roadside_assistance) ,true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

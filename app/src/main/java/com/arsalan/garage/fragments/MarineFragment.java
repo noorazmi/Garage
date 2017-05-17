@@ -84,24 +84,24 @@ public class MarineFragment extends Fragment {
                 switch (position) {
                     case 0:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FIBERGLASS_AND_SMITHY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_yard));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.fiber_vhdadh));
                         break;
                     case 1:
                         bundle.putString(AppConstants.URL, Urls.MARINE_MOBILE_MECHANICS_ELECTRICITY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.repair_man));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.mechanic_and_electricity));
                         break;
                     case 2:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ship_military));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.freely_centers));
                         break;
                     case 3:
                         bundle.putString(AppConstants.URL, Urls.MARINE_BOAT_FISHING_LIST);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.fishing_ship));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.picnic_and_fishing));
                         intent = new Intent(getActivity(), MarineBoatFishingActivity.class);
                         break;
                     case 4:
                         bundle.putString(AppConstants.URL, Urls.MARINE_FREELY_CENTERS);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.bai_ul_shara));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.buy_and_sale));
                         intent = new Intent(getActivity(), MarineUserActivity.class);
                         break;
                     default:
@@ -122,11 +122,11 @@ public class MarineFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mMarineItemArrayList = new ArrayList<>();
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, getString(R.string.ship_yard)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, getString(R.string.repair_man)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , getString(R.string.ship_military)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.fishermen , getString(R.string.fishing_ship)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.marine_in_hand , getString(R.string.bai_ul_shara)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_yard, getString(R.string.fiber_vhdadh)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.repair_man, getString(R.string.mechanic_and_electricity)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.ship_military , getString(R.string.freely_centers)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.fishermen , getString(R.string.picnic_and_fishing)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.marine_in_hand , getString(R.string.buy_and_sale)));
         return mMarineItemArrayList;
     }
 

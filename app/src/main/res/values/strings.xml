@@ -21,18 +21,18 @@
 
     <!--Arabic Text-->
     <string name="karajat">الكراجات</string>
-    <string name="tariqal_salmi">طريق السالمي</string>
-    <string name="tariqal_sabih">طريق الصبيه</string>
-    <string name="tariqal_abdali">طريق العبدلي</string>
-    <string name="tariq_kabad">طريق كبد</string>
-    <string name="al_wafrah_wal_naviseeb">الوفرة والنويصيب</string>
-    <string name="fani_mutnaqal">فني متنقل</string>
-    <string name="al_asma">العاصمه</string>
-    <string name="al_jahra">الجهراء</string>
-    <string name="al_farwania">الفروانية</string>
-    <string name="al_ahmadi">الاحمدي</string>
-    <string name="hauli">حولي</string>
-    <string name="mubarakal_kabir">مبارك الكبير</string>
+    <string name="alsalmi_road">Alsalmi road</string>
+    <string name="alsubiya_road">Alsubiya road</string>
+    <string name="alabdali_road">Alabdali road</string>
+    <string name="kabd_road">Kabd road</string>
+    <string name="alwafara_nuwaiseeb">Alwafara Nuwaiseeb</string>
+    <string name="help_on_road">Help on road</string>
+    <string name="alasimah">Alasimah</string>
+    <string name="al_jahra">Aljahra</string>
+    <string name="farwania">Farwania</string>
+    <string name="al_ahmadi">Alahmadi</string>
+    <string name="hawalli">Hawalli</string>
+    <string name="mubarak_alkabir">Mubarak AlKabir</string>
     <string name="title_activity_help_car">Help Car</string>
     <string name="title_activity_scrap">ScrapActivity</string>
     <string name="label_add_photo">Add Poster</string>
@@ -42,7 +42,7 @@
 
     <!--American Car Brands-->
     <string name="car_brand_cadillac">كاديلاك</string>
-    <string name="dodge">دودج</string>
+    <string name="dodge">Dodge</string>
     <string name="car_brand_chevrolet">شيفروليه</string>
     <string name="car_brand_gmc">جمس</string>
     <string name="car_brand_ram">رام</string>
@@ -52,18 +52,7 @@
     <string name="car_brand_jeep">جيب</string>
 
     <!--European Car Brands-->
-    <string name="car_brand_mercedes">مرسيدس</string>
-    <string name="car_brand_bmw">بي ام دبليو</string>
-    <string name="car_brand_rangerover">رنج روفر</string>
-    <string name="car_brand_volvowagon">فولكس</string>
-    <string name="car_brand_jaguar">جاغوار</string>
-    <string name="car_brand_porsche">بورش</string>
-    <string name="car_brand_audi">اودي</string>
-    <string name="car_brand_peugeot">بيجو / ستروين</string>
-    <string name="car_brand_skoda">سكودا</string>
-    <string name="car_brand_mini">ميني</string>
-    <string name="car_brand_renault">رينو</string>
-    <string name="car_brand_volvo"></string>
+    <string name="rangerover">رنج روفر</string>
 
     <!--Asian Car Brands-->
     <string name="car_brand_toyota">تويوتا</string>
@@ -128,13 +117,14 @@
     <string name="year">الموديل</string>
     <string name="engine">المحرك</string>
     <string name="transmission">ناقل الحركه</string>
+    <string name="jirat">Transmission</string>
     <string name="wheel_drive">نظام الدفع</string>
     <string name="price_arb">السعر</string>
     <string name="dot">•</string>
     <string name="for_more_information_please_call">لمعرفة المزيد يرجى الإتصال</string>
-    <string name="american">امريكي</string>
-    <string name="asian">اسيوي</string>
-    <string name="european">اوروبي</string>
+    <string name="american">American</string>
+    <string name="asian">Asian</string>
+    <string name="european">European</string>
 
 
     <string-array name="car_category_title">
@@ -297,19 +287,21 @@
         company
     </string>
     <string name="marine">Marine</string>
-    <string name="ship_yard">فيبر وحداده</string>
-    <string name="repair_man">ميكانيك وكهرباء</string>
-    <string name="ship_military">مراكز بحرية</string>
-    <string name="fishing_ship">نزهه وصيد</string>
+
+    <string name="fiber_vhdadh">Fiber Vhdadh</string>
+    <string name="mechanic_and_electricity">Mechanic and Electricity</string>
+    <string name="freely_centers">Freely Centers</string>
+    <string name="picnic_and_fishing">Picnic and fishing</string>
+
     <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
     <string name="qawarib">قوارب</string>
     <string name="jet_ski">جت سكي</string>
     <string name="accessories">قطع غيار واكسسوارات</string>
     <string name="search">Search</string>
     <string name="alkaswarat">اكسسوارات</string>
-    <string name="ford">فورد</string>
+    <string name="ford">Ford</string>
     <string name="lincoln">لنكون</string>
-    <string name="chrysler">كلايزلر</string>
+    <string name="chrysler">Chrysler</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
     <string name="whatsapp">WhatsApp</string>
@@ -375,15 +367,76 @@
     <string name="setting">Settings</string>
     <string name="post_ad">Post Ad</string>
     <string name="garage">Garage</string>
+    <string name="my_garage">My garage</string>
     <string name="not_logged_in">User is not logged in</string>
     <string name="successfully_logge_out">Successfully logged out</string>
     <string name="garages">Garages</string>
-    <string name="assistance">Assistance</string>
+    <string name="assistance">Roadside Assistance</string>
     <string name="scrap">Scrap</string>
     <string name="sell_and_buy">Sell and Buy</string>
     <string name="wash_mobile">Wash Mobile</string>
     <string name="protecting_polishing">Protecting polishing</string>
     <string name="services">Services</string>
-
+    <string name="mechanics">Mechanics</string>
+    <string name="paint_bodywork">Paint/Body work</string>
+    <string name="brake_balance">Break/Balance</string>
+    <string name="interior_restoration">Interior restoration</string>
+    <string name="tyres_rims">Tyres/Rims</string>
+    <string name="glass">Glass</string>
+    <string name="ac_electric">AC/Electric</string>
+    <string name="spare_parts">Spare parts</string>
+    <string name="programming">Programming</string>
+    <string name="fix_rims">Fix Rims</string>
+    <string name="lathe">Lathe</string>
+    <string name="exhaust_radiator">Exhaust/Radiator</string>
+    <string name="painting_metals">Painting metals</string>
+    <string name="auto_accessories">Auto accessories</string>
+    <string name="hydraulic">Hydraulic</string>
+    <string name="dent_removal">Dent removal</string>
+    <string name="roadside_assistance">Roadside Assistance</string>
+    <string name="connecting_pieces">Connecting pieces</string>
+    <string name="buy_and_sale">Buy and sale</string>
+    <string name="parts_and_accessories">Parts and accessories</string>
+    <string name="toyota">Toyota</string>
+    <string name="nissan">Nissan</string>
+    <string name="lexus">Lexus</string>
+    <string name="infiniti">Infiniti</string>
+    <string name="honda">Honda</string>
+    <string name="hyundai">Hyundai</string>
+    <string name="kia">Kia</string>
+    <string name="mitsubishi">Mitsubishi</string>
+    <string name="suzuki">Suzuki</string>
+    <string name="mazda">Mazda</string>
+    <string name="isuzu">Isuzu</string>
+    <string name="subaru">Subaru</string>
+    <string name="others">Others</string>
+    <string name="cadillac">Cadillac</string>
+    <string name="chevrolet">Chevrolet</string>
+    <string name="gmc">James</string>
+    <string name="ford_lincoln">Ford/Lincoln</string>
+    <string name="hummer">Hummer</string>
+    <string name="pocket">Pocket</string>
+    <string name="mercury">Mercury</string>
+    <string name="ram">Ram</string>
+    <string name="mercedes">Mercedes</string>
+    <string name="bmw">BMW</string>
+    <string name="land_rover">Rnage rover</string>
+    <string name="volkswagen">Volkswagen</string>
+    <string name="jaguar">Jaguar</string>
+    <string name="porsche">porsche</string>
+    <string name="audi">Audi</string>
+    <string name="peugeot">Peugeot / Citroen</string>
+    <string name="skoda">Skoda</string>
+    <string name="mini">Mini</string>
+    <string name="renault">Renault</string>
+    <string name="blacksmith_and_umbrellas">Blacksmith and umbrellas</string>
+    <string name="denying_water">Denying water</string>
+    <string name="more_intuitive">More intuitive</string>
+    <string name="crane">Crane</string>
+    <string name="nsav">Nsav</string>
+    <string name="transfer_and_relocation">Transfer and relocation</string>
+    <string name="driving_school">Driving school</string>
+    <string name="open_cars">Open cars</string>
+    <string name="land_shipping">Land shipping</string>
 
 </resources>

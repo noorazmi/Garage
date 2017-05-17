@@ -50,7 +50,7 @@ public class ScrapMainMenuFragment extends Fragment {
     }
 
     private void initMenuItems() {
-        mMenuItemsArrayList = Utils.getScrapScreenMenuItems();
+        mMenuItemsArrayList = Utils.getScrapScreenMenuItems(getActivity());
     }
 
 

@@ -151,57 +151,57 @@ public class ForSaleSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_MERCEDES);
                             //bundle.putString(AppConstants.URL, Urls.MERCEDES);
                             make = AppConstants.MERCEDES;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_mercedes));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.mercedes));
                         } else if (position == 1) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_BMW);
                             //bundle.putString(AppConstants.URL, Urls.BMW);
                             make = AppConstants.BMW;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_bmw));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.bmw));
                         } else if (position == 2) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RANGE_ROVER);
                             bundle.putString(AppConstants.URL, Urls.RANGEROVER);
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_rangerover));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.rangerover));
                             make = AppConstants.RANGE_ROVER;
                         } else if (position == 3) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_VOLKSWAGEN);
                             //bundle.putString(AppConstants.URL, Urls.VOLVOWAGON);
                             make = AppConstants.VOLVES_WAGAN;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_volvowagon));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.volkswagen));
                         } else if (position == 4) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_JAGUAR);
                             //bundle.putString(AppConstants.URL, Urls.JAGUAR);
                             make = AppConstants.JAGUAR;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_jaguar));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.jaguar));
                         } else if (position == 5) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_PORCHE);
                             //bundle.putString(AppConstants.URL, Urls.PORSCHE);
                             make = AppConstants.PORCHE;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_porsche));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.porsche));
                         } else if (position == 6) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_AUDI);
                             //bundle.putString(AppConstants.URL, Urls.AUDI);
                             make = AppConstants.AUDI;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_audi));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.audi));
                         } else if (position == 7) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_PEUGEOT_CITROEN);
                             //bundle.putString(AppConstants.URL, Urls.PEUGEOT);
                             make = AppConstants.PEUGEOT_CITROEN;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_peugeot));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.peugeot));
                         } else if (position == 8) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_SKODA);
                             //bundle.putString(AppConstants.URL, Urls.SKODA);
                             make = AppConstants.SKODA;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_skoda));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.skoda));
                         } else if (position == 9) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_MINI);
                             //bundle.putString(AppConstants.URL, Urls.MINI);
                             make = AppConstants.MINI;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_mini));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.mini));
                         } else if (position == 10) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RENAULT);
                             //bundle.putString(AppConstants.URL, Urls.RENAULT);
                             make = AppConstants.RENAULT;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_renault));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.renault));
                         }else if (position == 11) {
                             bundle.putString(AppConstants.SCRAP_AWARBY_SUB_TYPE, AppConstants.SCRAP_AWARBY_SUB_TYPE_RENAULT);
                             //bundle.putString(AppConstants.URL, Urls.RENAULT);
@@ -264,7 +264,7 @@ public class ForSaleSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_ISUZA);
                             //bundle.putString(AppConstants.URL, Urls.ISUZA);
                             make = AppConstants.ISUZU;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_isuza));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.isuzu));
                         } else if (position == 11) {
                             bundle.putString(AppConstants.SCRAP_ASIA_SUB_TYPE, AppConstants.SCRAP_ASIA_SUB_TYPE_SUBARU);
                             //bundle.putString(AppConstants.URL, Urls.SUBARU);
@@ -305,11 +305,11 @@ public class ForSaleSubMenuFragment extends Fragment {
     private void initMenuItems() {
 
         if (scrapeType.equals(AppConstants.SCRAP_AMERICA)) {
-            mMenuItemsArrayList = Utils.geBuyAndSaleAmericaMenuItems();
+            mMenuItemsArrayList = Utils.geBuyAndSaleAmericaMenuItems(getActivity());
         } else if (scrapeType.equals(AppConstants.SCRAP_EUROPEAN)) {
-            mMenuItemsArrayList = Utils.getBuyAndSaleEuropeanMenuItems();
+            mMenuItemsArrayList = Utils.getBuyAndSaleEuropeanMenuItems(getActivity());
         } else if (scrapeType.equals(AppConstants.SCRAP_ASIAN)) {
-            mMenuItemsArrayList = Utils.getBuyAndSaleAsianMenuItems();
+            mMenuItemsArrayList = Utils.getBuyAndSaleAsianMenuItems(getActivity());
         } else if (scrapeType.equals(AppConstants.SCRAP_DELIVERY)) {
             mMenuItemsArrayList = Utils.getScrapTawsilKataMenuItems();
         }

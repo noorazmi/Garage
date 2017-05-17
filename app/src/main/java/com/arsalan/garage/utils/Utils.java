@@ -7,10 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
@@ -52,7 +49,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -77,52 +73,39 @@ public class Utils {
     public static ArrayList<HomeMenuItem> getRoadHelpScreenMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayList = new ArrayList<>();
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_salmi, AppConstants.SCREEN_ROAD_HELP)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_sabih, AppConstants.SCREEN_ROAD_HELP)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariqal_abdali)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.tariq_kabad)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.al_wafrah_wal_naviseeb)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.menroad, context.getString(R.string.fani_mutnaqal)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_asma)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.alsalmi_road, AppConstants.SCREEN_ROAD_HELP)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.alsubiya_road, AppConstants.SCREEN_ROAD_HELP)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.alabdali_road)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.kabd_road)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.longroad, context.getString(R.string.alwafara_nuwaiseeb)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.menroad, context.getString(R.string.help_on_road)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.alasimah)));
         menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_jahra)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_farwania)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.farwania)));
         menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.al_ahmadi)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.hauli)));
-        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.mubarakal_kabir)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.hawalli)));
+        menuItemsArrayList.add(new HomeMenuItem(R.drawable.helproad, context.getString(R.string.mubarak_alkabir)));
         return menuItemsArrayList;
     }
 
-    public static ArrayList<HomeMenuItem> getKarajatScreenMenuItems() {
-
+    public static ArrayList<HomeMenuItem> getScrapScreenMenuItems(Context context) {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
-        // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "صليبيه"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الفحيحيل"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, context.getString(R.string.american)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, context.getString(R.string.european)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, context.getString(R.string.asian)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, context.getString(R.string.connecting_pieces)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, context.getString(R.string.buy_and_sale)));
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapScreenMenuItems() {
+    public static ArrayList<HomeMenuItem> getBuyAndSaleScreenMenuItems(Context context) {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.delivery, "توصيل قطع"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "يع و شرا  "));
-        return menuItemsArrayLis;
-    }
-
-    public static ArrayList<HomeMenuItem> getBuyAndSaleScreenMenuItems() {
-        ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
-
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, "امريكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, "اوروبي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, "اسيوي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.accessories, "قطع غيار واكسسوارات"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home1, context.getString(R.string.american)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_logos, context.getString(R.string.european)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.image_home, context.getString(R.string.asian)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.accessories, context.getString(R.string.parts_and_accessories)));
         return menuItemsArrayLis;
     }
 
@@ -138,112 +121,112 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getKhidmatShamlaMenuItems() {
+    public static ArrayList<HomeMenuItem> getKhidmatShamlaMenuItems(Context context) {
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser1, "مظلات"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser2, "تنكر مياه"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser3, "دركتر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser4, "كرين"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser5, "نساف"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser6, "نقل عفش"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser7, "تعليم قياده"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser8, "فتح سيارات"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser9, "الشحن البري"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser1, context.getString(R.string.blacksmith_and_umbrellas)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser2, context.getString(R.string.denying_water)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser3, context.getString(R.string.more_intuitive)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser4, context.getString(R.string.crane)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser5, context.getString(R.string.nsav)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser6, context.getString(R.string.transfer_and_relocation)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser7, context.getString(R.string.driving_school)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser8, context.getString(R.string.open_cars)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.autoser9, context.getString(R.string.land_shipping)));
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getScrapAmericaMenuItems() {
+    public static ArrayList<HomeMenuItem> getScrapAmericaMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, "دودج"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, "جمس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.fordlinc5, "فورد /لنكون"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, "همر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, "جيب"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cadillac1, context.getString(R.string.cadillac)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, context.getString(R.string.dodge)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3, context.getString(R.string.chevrolet)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, context.getString(R.string.gmc)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.fordlinc5, context.getString(R.string.ford_lincoln)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, context.getString(R.string.hummer)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, context.getString(R.string.pocket)));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.car_chrashed, "آخر"));
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> geBuyAndSaleAmericaMenuItems() {
+    public static ArrayList<HomeMenuItem> geBuyAndSaleAmericaMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, "دودج"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, "جمس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercury, "ميركوري"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ram, "رام"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ford, " فورد "));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lincoln, " لنكون "));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6, "همر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, "جيب"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chrysler, "كلايزلر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.american, "آخرون"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cadillac1, context.getString(R.string.cadillac)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.dodge, context.getString(R.string.dodge)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chevrolet3,context.getString(R.string.chevrolet) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.gmc4, context.getString(R.string.gmc)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercury, context.getString(R.string.mercury)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ram, context.getString(R.string.ram)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.ford, context.getString(R.string.ford)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lincoln, context.getString(R.string.lincoln)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hummerlogo6,context.getString(R.string.hummer) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jeep7, context.getString(R.string.pocket)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.chrysler,context.getString(R.string.chrysler) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.american,context.getString(R.string.others)));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.american, "آخر"));
         return menuItemsArrayLis;
     }
 
 
-    public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems() {
+    public static ArrayList<HomeMenuItem> getScrapEuropeanMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercedesbenz1, "مرسيدس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.bmw2, "بي ام دبليو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.land_rover3, "رنج روفر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.volkswagen4, "فولكس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jaguarlogo5, "جاغوار"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, "بورش"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, "اودي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, "بيجو / ستروين"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercedesbenz1,context.getString(R.string.mercedes) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.bmw2, context.getString(R.string.bmw)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.land_rover3,context.getString(R.string.land_rover) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.volkswagen4, context.getString(R.string.volkswagen)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jaguarlogo5, context.getString(R.string.jaguar)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, context.getString(R.string.porsche)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, context.getString(R.string.audi)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, context.getString(R.string.peugeot)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, context.getString(R.string.skoda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, context.getString(R.string.mini)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, context.getString(R.string.renault)));
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getBuyAndSaleEuropeanMenuItems() {
+    public static ArrayList<HomeMenuItem> getBuyAndSaleEuropeanMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercedesbenz1, "مرسيدس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.bmw2, "بي ام دبليو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.land_rover3, "رنج روفر"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.volkswagen4, "فولكس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jaguarlogo5, "جاغوار"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, "بورش"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, "اودي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, "بيجو / ستروين"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, "سكودا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, "ميني"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault, "رينو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.europian, "آخرون"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mercedesbenz1, context.getString(R.string.mercedes)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.bmw2, context.getString(R.string.bmw)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.land_rover3, context.getString(R.string.land_rover)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.volkswagen4, context.getString(R.string.volkswagen)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.jaguarlogo5, context.getString(R.string.jaguar)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.porsche6, context.getString(R.string.porsche)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.oodcar7, context.getString(R.string.audi)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.peugeot8, context.getString(R.string.peugeot)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.skoda9, context.getString(R.string.skoda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mini10, context.getString(R.string.mini)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.renault,context.getString(R.string.renault) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.europian, context.getString(R.string.others)));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.europian, "آخر"));
         return menuItemsArrayLis;
     }
 
 
-    public static ArrayList<HomeMenuItem> getScrapAsianMenuItems() {
+    public static ArrayList<HomeMenuItem> getScrapAsianMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.toyota, "تويوتا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name, "لكزس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, "انفينتي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, "هوندا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, "هيونداي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, "كيا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.toyota, context.getString(R.string.toyota)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.nissan,context.getString(R.string.nissan) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name,context.getString(R.string.lexus) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, context.getString(R.string.infiniti)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, context.getString(R.string.honda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, context.getString(R.string.hydraulic)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, context.getString(R.string.kia)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi,context.getString(R.string.mitsubishi)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, context.getString(R.string.suzuki)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, context.getString(R.string.mazda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, context.getString(R.string.isuzu)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, context.getString(R.string.subaru)));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخر"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));
@@ -252,23 +235,23 @@ public class Utils {
         return menuItemsArrayLis;
     }
 
-    public static ArrayList<HomeMenuItem> getBuyAndSaleAsianMenuItems() {
+    public static ArrayList<HomeMenuItem> getBuyAndSaleAsianMenuItems(Context context) {
 
         ArrayList<HomeMenuItem> menuItemsArrayLis = new ArrayList<>();
 
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.toyota, "تويوتا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.nissan, "نيسان"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name, "لكزس"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, "انفينتي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, "هوندا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai, "هيونداي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo, "كيا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, "سوزوكي"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, "مازدا"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, "ايسوزو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, "سوبارو"));
-        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخرون"));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.toyota, context.getString(R.string.toyota)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.nissan, context.getString(R.string.nissan)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.lexus_name,context.getString(R.string.lexus) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.infinit, context.getString(R.string.infiniti)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.honda, context.getString(R.string.honda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.hyundai,context.getString(R.string.hyundai) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.kia_logo,context.getString(R.string.kia) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mitsubishi,context.getString(R.string.mitsubishi) ));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.suzuki, context.getString(R.string.suzuki)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.mazda, context.getString(R.string.mazda)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.isuzu, context.getString(R.string.isuzu)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.sbaru12, context.getString(R.string.subaru)));
+        menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, context.getString(R.string.others)));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.asian, "آخر"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.cherylogo, "شيري"));
         //menuItemsArrayLis.add(new HomeMenuItem(R.drawable.tata, "تاتا"));

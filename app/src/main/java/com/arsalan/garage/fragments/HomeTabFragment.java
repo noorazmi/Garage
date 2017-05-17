@@ -193,7 +193,7 @@ public class HomeTabFragment extends Fragment {
 
         mHomeMenuItemArrayList = new ArrayList<>();
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gragesjpg, getString(R.string.garages), AppConstants.MENU_ITEM_TYPE_KARAJAT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.hellpthecarhome, getString(R.string.assistance), AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.roadside_assistance, getString(R.string.assistance), AppConstants.MENU_ITEM_TYPE_HELP_ON_ROAD));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.scrap, getString(R.string.scrap), AppConstants.MENU_ITEM_TYPE_SCRAP));
         mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.taxicopy, getString(R.string.taxi), AppConstants.MENU_ITEM_TYPE_TAXI));
 

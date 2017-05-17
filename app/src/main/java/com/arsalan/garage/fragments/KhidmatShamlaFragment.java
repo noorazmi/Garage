@@ -57,7 +57,7 @@ public class KhidmatShamlaFragment extends Fragment {
     }
 
     private void initMenuItems() {
-        mMenuItemsArrayList = Utils.getKhidmatShamlaMenuItems();
+        mMenuItemsArrayList = Utils.getKhidmatShamlaMenuItems(getActivity());
     }
 
     @Override

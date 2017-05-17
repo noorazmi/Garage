@@ -19,7 +19,7 @@ public class KarajatSubMenu1Activity extends BaseActivity {
         setContentView(R.layout.activity_layout_container);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.karajat), true, Gravity.CENTER);
+        setToolbar(toolbar, getResources().getString(R.string.garages), true, Gravity.CENTER);
 
         setHomeFragment();
     }

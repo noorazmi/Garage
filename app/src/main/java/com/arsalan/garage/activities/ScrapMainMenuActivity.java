@@ -32,7 +32,7 @@ public class ScrapMainMenuActivity extends BaseActivity {
     }
 
     private String getToolbarTitle() {
-        return  "السكراب";
+        return  getString(R.string.scrap);
     }
 
 
