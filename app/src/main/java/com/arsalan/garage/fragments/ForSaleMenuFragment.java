@@ -103,7 +103,8 @@ public class ForSaleMenuFragment extends Fragment {
                         bundle.putString(AppConstants.SCRAP_TYPE, AppConstants.SCRAP_DELIVERY);
                         bundle.putString(AppConstants.SCRAP_DELIVERY_SUB_TYPE, AppConstants.SCRAP_DELIVERY_SUB_TYPE_NONE);
                         bundle.putString(AppConstants.URL, Urls.DELIVERY);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.accessories));
+                        //bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.accessories));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.parts_and_accessories));
                         intent = new Intent(getActivity(), AccessoriesMenuActivity.class);
 
                     }

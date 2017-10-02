@@ -40,13 +40,15 @@ public class ForSaleSubMenuActivity extends BaseActivity {
         String title = null;
 
         if (scrapeType.equals(AppConstants.SCRAP_AMERICA)) {
-            title = "امريكي";
+            title =getString(R.string.american);
         } else if (scrapeType.equals(AppConstants.SCRAP_EUROPEAN)) {
-            title = "اوربي";
+            title = getString(R.string.european);
         } else if (scrapeType.equals(AppConstants.SCRAP_ASIAN)) {
-            title = "اسيوي";
+            title =getString(R.string.asian);
         } else if (scrapeType.equals(AppConstants.SCRAP_DELIVERY)) {
-            title = "توصيل قطع";
+            //title = "توصيل قطع";
+            title =getString(R.string.parts_and_accessories);
+
         }
 
         return title;

@@ -124,8 +124,8 @@ public class AlwakalatCarServiceFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, "مراكز الخدمة"));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage9, "قطع الغيار"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice, getString(R.string.service_centers)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.grage9, getString(R.string.car_spare_parts)));
         return mHomeMenuItemArrayList;
     }
 

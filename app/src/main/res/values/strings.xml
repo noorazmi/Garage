@@ -37,7 +37,7 @@
     <string name="title_activity_scrap">ScrapActivity</string>
     <string name="label_add_photo">Add Poster</string>
     <string name="bai_ul_shara">بيع و شرا</string>
-    <string name="almarij">المعرض</string>
+    <string name="showroom">Showroom</string>
 
 
     <!--American Car Brands-->
@@ -292,15 +292,15 @@
     <string name="mechanic_and_electricity">Mechanic and Electricity</string>
     <string name="freely_centers">Freely Centers</string>
     <string name="picnic_and_fishing">Picnic and fishing</string>
-
-    <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
-    <string name="qawarib">قوارب</string>
-    <string name="jet_ski">جت سكي</string>
-    <string name="accessories">قطع غيار واكسسوارات</string>
+    <string name="madat_waqta_ghayar">Spare parts</string>
+    <string name="qawarib">Boats</string>
+    <string name="jet_ski">Jet ski</string>
+   <!-- <string name="accessories">قطع غيار واكسسوارات</string>-->
     <string name="search">Search</string>
     <string name="alkaswarat">اكسسوارات</string>
+    <string name="accessories">Accessories</string>
     <string name="ford">Ford</string>
-    <string name="lincoln">لنكون</string>
+    <string name="lincoln">Lincoln</string>
     <string name="chrysler">Chrysler</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
@@ -438,5 +438,21 @@
     <string name="driving_school">Driving school</string>
     <string name="open_cars">Open cars</string>
     <string name="land_shipping">Land shipping</string>
+    <string name="suwaikh_alrai">Suwaikh/Alrai</string>
+    <string name="acura">Acura</string>
+    <string name="volvo">Volvo</string>
+    <string name="geely">Geely</string>
+    <string name="jeep">Jeep</string>
+    <string name="changan">Changan</string>
+    <string name="citreon">Citroen</string>
+    <string name="peugeot1" >Peugeot</string>
+    <string name="baic">Baic</string>
+    <string name="dfm">DFM</string>
+    <string name="fiat">Fiat</string>
+    <string name="gac">GAC</string>
+    <string name="mg">MG </string>
+    <string name="maintenance">Maintenance</string>
+    <string name="service_centers">Service Centers</string>
+    <string name="car_spare_parts">Spare Parts</string>
 
 </resources>

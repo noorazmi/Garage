@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.utils.LocaleHelper;
+import com.arsalan.garage.utils.LocaleUtils;
+
+import java.util.Locale;
 
 public class LanguageChooserActivity extends AppCompatActivity {
 
@@ -17,12 +20,16 @@ public class LanguageChooserActivity extends AppCompatActivity {
     }
 
     public void onArabicClick(View view){
-        LocaleHelper.setLocale(this, "ar");
+        //LocaleHelper.setLocale(this, "ar");
+        LocaleUtils.setLocale(new Locale("ar"));
+        LocaleUtils.persist(this, "ar");
         startHomeActivity();
     }
 
     public void onEnglishClick(View view){
-        LocaleHelper.setLocale(this, "en");
+        //LocaleHelper.setLocale(this, "en");
+        LocaleUtils.setLocale(new Locale("en"));
+        LocaleUtils.persist(this, "en");
         startHomeActivity();
     }
 

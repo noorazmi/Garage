@@ -26,7 +26,8 @@ public class ScrapUserMenuActivity extends BaseActivity {
 
     private String getToolbarTitle() {
 
-        return  getString(R.string.car_brand_other);
+        //return  getString(R.string.car_brand_other);
+        return  getString(R.string.buy_and_sale);
     }
 
 

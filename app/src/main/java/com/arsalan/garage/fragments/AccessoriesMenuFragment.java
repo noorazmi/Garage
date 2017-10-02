@@ -91,7 +91,8 @@ public class AccessoriesMenuFragment extends Fragment {
                         break;
                     case 3:
                         bundle.putString(AppConstants.URL, Urls.ACCESSORIESUSER_OTHER);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.alkaswarat));
+                        //bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.alkaswarat));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.accessories));
                         break;
                     default:
                         break;
@@ -115,7 +116,7 @@ public class AccessoriesMenuFragment extends Fragment {
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.american, getString(R.string.american)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.europian, getString(R.string.european)));
         mMarineItemArrayList.add(new HomeMenuItem(R.drawable.asian, getString(R.string.asian)));
-        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.accessories, getString(R.string.alkaswarat)));
+        mMarineItemArrayList.add(new HomeMenuItem(R.drawable.accessories, getString(R.string.accessories)));
 
         return mMarineItemArrayList;
     }

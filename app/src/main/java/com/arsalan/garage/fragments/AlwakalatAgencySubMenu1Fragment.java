@@ -83,7 +83,8 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
                 switch (position) {
                     case 0:
                         bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                        bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        //bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.showroom));
                         bundle.putString(AppConstants.EXTRA_URL, Urls.SHOWROOM_BASE_URL +getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_COMPANY_NAME, getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
@@ -95,7 +96,8 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
                     case 1:
 
                         bundle.putString(AppConstants.URL, Urls.ALWAKALAT_AGENCIES);
-                        bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        //bundle.putString(AppConstants.EXTRA_TITLE, homeMenuItem.getMenuTitle());
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.maintenance));
                         bundle.putString(AppConstants.EXTRA_URL, getArguments().getString(AppConstants.EXTRA_URL));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ARABIC);
                         //Intent intent = new Intent(getActivity(), CategorySaleStaticListActivity.class);
@@ -119,8 +121,8 @@ public class AlwakalatAgencySubMenu1Fragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carshowroom, getString(R.string.almarij)));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice , "الصيانة و القطع"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carshowroom, getString(R.string.showroom)));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.carservice , getString(R.string.maintenance)));
         return mHomeMenuItemArrayList;
     }
 

@@ -4,20 +4,24 @@ package com.arsalan.garage.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.arsalan.garage.GarageApp;
 import com.arsalan.garage.R;
 import com.arsalan.garage.activities.HomeActivity;
 import com.arsalan.garage.uicomponents.CustomProgressDialog;
 import com.arsalan.garage.utils.LocaleHelper;
+import com.arsalan.garage.utils.LocaleUtils;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.ShareUtil;
 import com.arsalan.garage.utils.Utils;
+
+import java.util.Locale;
 
 import static com.arsalan.garage.utils.ShareUtil.getWhatsAppTextShareIntent;
 
@@ -56,7 +60,8 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
     }
 
     private void setLanguageChangeText(){
-        String locale = LocaleHelper.getPersistedData(getActivity(), "ar");
+        //String locale = LocaleHelper.getPersistedData(getActivity(), "ar");
+        String locale = LocaleUtils.getPersistedData(getActivity(), "ar");
         if(locale.equals("ar")){
             mTextViewLanguage.setText(getString(R.string.english));
         }else {
@@ -108,10 +113,16 @@ public class SettingTabFragment extends Fragment implements View.OnClickListener
 
     private void changeLanguage() {
         if (mTextViewLanguage.getText().toString().equalsIgnoreCase("English")) {
-            LocaleHelper.setLocale(getActivity(), "en");
+            //LocaleHelper.setLocale(getActivity(), "en");
+            LocaleUtils.setLocale(new Locale("en"));
+            LocaleUtils.persist(getActivity(), "en");
+
         } else {
-            LocaleHelper.setLocale(getActivity(), "ar");
+            //LocaleHelper.setLocale(getActivity(), "ar");
+            LocaleUtils.setLocale(new Locale("ar"));
+            LocaleUtils.persist(getActivity(), "ar");
         }
+        LocaleUtils.updateConfig(GarageApp.getInstance(), getActivity().getResources().getConfiguration());
         //Restart the activity again to see the changes immediately
         Intent intent = new Intent(getActivity(), HomeActivity.class);
         startActivity(intent);

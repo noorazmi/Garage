@@ -8,6 +8,7 @@ import android.support.v13.app.FragmentPagerAdapter;
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.HomeTabFragment;
 import com.arsalan.garage.fragments.PostAdTabFragment;
+import com.arsalan.garage.fragments.SettingTabFragment;
 import com.arsalan.garage.fragments.SettingsFragment;
 
 
@@ -39,7 +40,9 @@ public class SectionsFragmentPagerAdapter extends FragmentPagerAdapter {
                 fragment = PostAdTabFragment.newInstance(mContext.getString(R.string.post_add));
                 break;
             case 2:
-                fragment = SettingsFragment.newInstance(mContext.getString(R.string.contact_us));
+                //fragment = SettingsFragment.newInstance(mContext.getString(R.string.contact_us));
+                fragment = new SettingTabFragment();
+                //fragment = SettingsFragment.newInstance(mContext.getString(R.string.contact_us));
                 break;
         }
         return fragment;

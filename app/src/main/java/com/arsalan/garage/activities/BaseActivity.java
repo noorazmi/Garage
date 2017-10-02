@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
+import com.arsalan.garage.utils.LocaleUtils;
 
 
 /**
@@ -24,7 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         //private TextView mTextViewTitle;
         private static final String TAG = "BaseActionBarActivity";
-
+    public BaseActivity() {
+        LocaleUtils.updateConfig(this);
+    }
         public void setToolbar(Toolbar toolbar, boolean displayHomeAsUpEnabled) {
             setSupportActionBar(toolbar);
 

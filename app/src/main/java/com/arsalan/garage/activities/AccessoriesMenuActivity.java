@@ -26,7 +26,8 @@ public class AccessoriesMenuActivity extends BaseActivity {
 
     private String getToolbarTitle() {
 
-        return  getString(R.string.bai_ul_shara);
+        //return  getString(R.string.bai_ul_shara);
+        return  getString(R.string.parts_and_accessories);
     }
 
 

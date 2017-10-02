@@ -8,6 +8,7 @@ import android.view.Gravity;
 
 import com.arsalan.garage.R;
 import com.arsalan.garage.fragments.KarajatMenuFragment;
+import com.arsalan.garage.utils.LocaleHelper;
 
 public class KarajatMenuActivity extends BaseActivity {
 
@@ -19,8 +20,8 @@ public class KarajatMenuActivity extends BaseActivity {
         setContentView(R.layout.activity_layout_container);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.karajat), true, Gravity.CENTER);
-
+        setToolbar(toolbar, getResources().getString(R.string.garages), true, Gravity.CENTER);
+        LocaleHelper.onAttach(this, "ar");
         setHomeFragment();
     }
 

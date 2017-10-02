@@ -93,7 +93,7 @@ public class KarajatMenuFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الشويخ/الري"));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, getString(R.string.suwaikh_alrai)));
         // menuItemsArrayLis.add(new HomeMenuItem(R.drawable.subgrag_icon2, "الري"));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon2, "شرق"));
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.subgrag_icon1, "الجهراء"));

@@ -13,6 +13,7 @@ import java.util.Locale;
 public class LocaleHelper {
 
 	private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+	public static final String DEFAULT_LANGUAGE = "ar";
 
 	public static Context onAttach(Context context, String defaultLanguage) {
 		String lang = getPersistedData(context, defaultLanguage);

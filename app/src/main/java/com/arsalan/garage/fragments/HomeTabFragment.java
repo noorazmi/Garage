@@ -127,7 +127,8 @@ public class HomeTabFragment extends Fragment {
 
                     }else if (homeMenuItem.getMenuType().equals(AppConstants.MENU_ITEM_TYPE_MOVABLE_WASH)) {
                         Bundle bundle = new Bundle();
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.movable_wash));
+                        //bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.movable_wash));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.wash_mobile));
                         intent = new Intent(getActivity(), CarWashListActivity.class);
                         intent.putExtras(bundle);
 
@@ -135,7 +136,7 @@ public class HomeTabFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         //bundle.putString(AppConstants.SCREEN_TYPE, AppConstants.SCREEN_TYPE_MOVABLE_WASH);
                         bundle.putString(AppConstants.URL, Urls.TINTINGCAR);
-                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.tintingcar));
+                        bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.protecting_polishing));
                         bundle.putString(AppConstants.EXTRA_DESCRIPTION_LANGUAGE, AppConstants.EXTRA_DESCRIPTION_LANGUAGE_ENGLISH);
                         intent = new Intent(getActivity(), CategorySaleListActivity.class);
                         intent.putExtras(bundle);

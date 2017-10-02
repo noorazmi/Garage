@@ -109,7 +109,8 @@
     <string name="mercury">ميركوري</string>
     <string name="ram">رام</string>
     <string name="ford">فورد</string>
-    <string name="chrysler">كلايزلر</string>
+    <!--<string name="chrysler">كلايزلر</string>-->
+    <string name="chrysler">كرايسلر</string>
     <string name="mercedes">مرسيدس</string>
     <string name="bmw">بي ام دبليو</string>
     <string name="land_rover">رنج روفر</string>
@@ -135,7 +136,28 @@
     <string name="mechanic_and_electricity">ميكانيك وكهرباء</string>
     <string name="freely_centers">مراكز بحرية</string>
     <string name="picnic_and_fishing">نزهه وصيد</string>
-
+    <string name="jet_ski">جت سكي</string>
+    <string name="qawarib">قوارب</string>
+    <string name="madat_waqta_ghayar">معدات وقطع غيار</string>
+    <string name="suwaikh_alrai">الشويخ/الري</string>
+    <string name="lincoln">لنكون</string>
+    <string name="accessories">اكسسوارات</string>
+    <string name="acura">اكورا</string>
+    <string name="volvo">فولفو</string>
+    <string name="geely">قيلي</string>
+    <string name="jeep">جيب</string>
+    <string name="changan">شانجان</string>
+    <string name="citreon">سيتروين</string>
+    <string name="peugeot1" >بيجو</string>
+    <string name="baic">بايك</string>
+    <string name="dfm">دي اف ام</string>
+    <string name="fiat">فيات</string>
+    <string name="gac">جي اي سي</string>
+    <string name="mg">ام جي</string>
+    <string name="showroom">المعرض</string>
+    <string name="maintenance">الصيانة و القطع</string>
+    <string name="service_centers">مراكز الخدمة</string>
+    <string name="car_spare_parts">قطع الغيار</string>
 
 
 </resources>

@@ -33,7 +33,7 @@ public class ForSaleMenuActivity extends BaseActivity {
         //getSupportActionBar().setTitle(getResources().getString(R.string.karajat));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setToolbar(toolbar, getResources().getString(R.string.bai_ul_shara), true, Gravity.CENTER);
+        setToolbar(toolbar, getResources().getString(R.string.buy_and_sale), true, Gravity.CENTER);
 
         setMenuHolderFragment();
     }

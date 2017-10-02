@@ -3,12 +3,14 @@ package com.arsalan.garage;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.StrictMode;
 import android.util.Log;
 
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.FlavorConstants;
 import com.arsalan.garage.utils.LocaleHelper;
+import com.arsalan.garage.utils.LocaleUtils;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.PrefUtility;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -16,6 +18,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
+import java.util.Locale;
 import java.util.Map;
 
 import networking.loader.LoaderHandler;
@@ -40,6 +43,11 @@ public class GarageApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
+        LocaleUtils.setLocale(new Locale("ar"));
+        LocaleUtils.updateConfig(this, getBaseContext().getResources().getConfiguration());
+
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         //MultiDex.install(this);
@@ -144,5 +152,11 @@ public class GarageApp extends Application {
                 prefEditor.commit();
             }
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LocaleUtils.updateConfig(this, newConfig);
     }
 }

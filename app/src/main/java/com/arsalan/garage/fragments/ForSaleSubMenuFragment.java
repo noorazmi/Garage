@@ -88,7 +88,7 @@ public class ForSaleSubMenuFragment extends Fragment {
                         if (position == 0) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_CADILLAC);
                             make = AppConstants.CADILLAC;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_cadillac));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.cadillac));
                         } else if (position == 1) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_DODGENCHRYSLER);
                             //bundle.putString(AppConstants.URL, Urls.DODGENCHRYSLER);
@@ -98,22 +98,22 @@ public class ForSaleSubMenuFragment extends Fragment {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_CHEVROLET);
                             //bundle.putString(AppConstants.URL, Urls.CHEVROLET);
                             make = AppConstants.CHEVROLET;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_chevrolet));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.chevrolet));
                         } else if (position == 3) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_GMC);
                             //bundle.putString(AppConstants.URL, Urls.GMC);
                             make = AppConstants.GMC;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_gmc));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.gmc));
                         } else if (position == 4) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_MERCURY);
                             //bundle.putString(AppConstants.URL, Urls.GMC);
                             make = AppConstants.MERCURY;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_mercury));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.mercury));
                         } else if (position == 5) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_RAM);
                             //bundle.putString(AppConstants.URL, Urls.GMC);
                             make = AppConstants.RAM;
-                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.car_brand_ram));
+                            bundle.putString(AppConstants.EXTRA_TITLE, getString(R.string.ram));
                         }else if (position == 6) {
                             bundle.putString(AppConstants.SCRAP_AMERICA_SUB_TYPE, AppConstants.SCRAP_AMERICA_SUB_TYPE_FORDNLINCOLN);
                             //bundle.putString(AppConstants.URL, Urls.FORDNLINCOLN);

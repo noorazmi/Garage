@@ -99,30 +99,30 @@ public class AlwakalatAgencyMenuFragment extends Fragment {
     private ArrayList<HomeMenuItem> getMenuItems() {
 
         mHomeMenuItemArrayList = new ArrayList<>();
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, "كاديلاك", null, AppConstants.CADILLAC));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.acura, "اكورا", null, AppConstants.ACURA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volvo, "فولفو", null, AppConstants.VOLVO));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chrysler, "كرايسلر", null,  AppConstants.CHRYSLER));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dodge, "دودج", null, AppConstants.DODGE));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3, "شيفروليه", null, AppConstants.CHEVOLATE));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.geely, "قيلي" , null, AppConstants.GEELY));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.jeep7, "جيب", null,  AppConstants.JEEP));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volkswagen4, "فولكس", null, AppConstants.VOLKSWAGEN));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, "رنولت" , null, AppConstants.RENAULT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.toyota, "تويوتا", null, AppConstants.TOYOTA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, "انفينتي", null, AppConstants.INFINITI));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.honda, "هوندا" , null, AppConstants.HONDA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, "ميتسوبيشي", null, AppConstants.MITSUBISHI));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mazda, "مازدا" , null, AppConstants.MAZDA));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.changan, "شانجان", null, AppConstants.CHANGAN));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.citroen, "سيتروين", null, AppConstants.CITROEN));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.peugeot, "بيجو", null, AppConstants.PEUGEOT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ram, "رام", null, AppConstants.RAM));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.baic, "بايك", null, AppConstants.BAIC));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dfm, "دي اف ام", null, AppConstants.DFM));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.fiat, "فيات", null, AppConstants.FIAT));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gac_motor, "جي اي سي", null, AppConstants.GAC));
-        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mg, "ام جي" , null, AppConstants.MG));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.cadillac1, getString(R.string.cadillac), null, AppConstants.CADILLAC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.acura, getString(R.string.acura), null, AppConstants.ACURA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volvo, getString(R.string.volvo), null, AppConstants.VOLVO));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chrysler, getString(R.string.chrysler), null,  AppConstants.CHRYSLER));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dodge,getString(R.string.dodge), null, AppConstants.DODGE));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.chevrolet3,getString(R.string.chevrolet), null, AppConstants.CHEVOLATE));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.geely, getString(R.string.geely) , null, AppConstants.GEELY));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.jeep7, getString(R.string.jeep), null,  AppConstants.JEEP));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.volkswagen4,getString(R.string.volkswagen), null, AppConstants.VOLKSWAGEN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.renault, getString(R.string.renault)  , null, AppConstants.RENAULT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.toyota, getString(R.string.toyota), null, AppConstants.TOYOTA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.infinit, getString(R.string.infiniti), null, AppConstants.INFINITI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.honda, getString(R.string.honda) , null, AppConstants.HONDA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mitsubishi, getString(R.string.mitsubishi), null, AppConstants.MITSUBISHI));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mazda, getString(R.string.mazda) , null, AppConstants.MAZDA));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.changan, getString(R.string.changan), null, AppConstants.CHANGAN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.citroen, getString(R.string.citreon), null, AppConstants.CITROEN));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.peugeot,getString(R.string.peugeot1) , null, AppConstants.PEUGEOT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ram,getString(R.string.ram) , null, AppConstants.RAM));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.baic,getString(R.string.baic), null, AppConstants.BAIC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.dfm,getString(R.string.dfm), null, AppConstants.DFM));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.fiat, getString(R.string.fiat), null, AppConstants.FIAT));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.gac_motor,getString(R.string.gac), null, AppConstants.GAC));
+        mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.mg,getString(R.string.mg) , null, AppConstants.MG));
 
 
         //mHomeMenuItemArrayList.add(new HomeMenuItem(R.drawable.ford, "فورد"));
