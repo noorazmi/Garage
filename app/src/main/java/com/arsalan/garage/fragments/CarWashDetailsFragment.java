@@ -24,7 +24,7 @@ import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
 import com.arsalan.garage.vo.CarWashDetailsVO;
-import com.arsalan.garage.vo.ForSaleUserDetailsData;
+import com.arsalan.garage.vo.ForsaleUserDetailsData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,7 +94,7 @@ public class CarWashDetailsFragment extends Fragment {
     }
 
     protected String getValueObjectFullyQualifiedName() {
-        return ForSaleUserDetailsData.class.getName();
+        return ForsaleUserDetailsData.class.getName();
     }
 
     @Nullable

@@ -9,7 +9,7 @@ import com.arsalan.garage.activities.FullImageActivity;
 import com.arsalan.garage.utils.AppConstants;
 import com.arsalan.garage.utils.PrefUtility;
 import com.arsalan.garage.utils.Urls;
-import com.arsalan.garage.vo.ForSaleUserDetailsData;
+import com.arsalan.garage.vo.ForsaleUserDetailsData;
 
 import networking.models.ValueObject;
 
@@ -19,7 +19,7 @@ import networking.models.ValueObject;
 public class ForSaleUserDetailsFragment extends UserDetailsBaseFragment {
 
     private String TAG = "ForSaleUserDetailsFragment";
-    private ForSaleUserDetailsData mForSaleUserDetailsData;
+    private ForsaleUserDetailsData mForSaleUserDetailsData;
 
     public ForSaleUserDetailsFragment() {
     }
@@ -60,7 +60,7 @@ public class ForSaleUserDetailsFragment extends UserDetailsBaseFragment {
 
     @Override
     protected void setDetails(ValueObject valueObject) {
-        mForSaleUserDetailsData = (ForSaleUserDetailsData) valueObject;
+        mForSaleUserDetailsData = (ForsaleUserDetailsData) valueObject;
         mUserDetailsBase = mForSaleUserDetailsData.getResults();
         setPagerAdapter();
         setDescription(mUserDetailsBase);
@@ -68,7 +68,7 @@ public class ForSaleUserDetailsFragment extends UserDetailsBaseFragment {
 
     @Override
     protected String getValueObjectFullyQualifiedName() {
-        return ForSaleUserDetailsData.class.getName();
+        return ForsaleUserDetailsData.class.getName();
     }
 
 

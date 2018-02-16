@@ -454,5 +454,9 @@
     <string name="maintenance">Maintenance</string>
     <string name="service_centers">Service Centers</string>
     <string name="car_spare_parts">Spare Parts</string>
+    <string name="report_wrong_number">Report the wrong number</string>
+    <string name="following_phone_numbers_not_working">The following phone number(s) are not working:</string>
+    <string name="phone_numbers_not_working">Phone number(s) not working</string>
+
 
 </resources>

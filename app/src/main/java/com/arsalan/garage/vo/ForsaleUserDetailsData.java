@@ -11,7 +11,7 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class ForSaleUserDetailsData extends BaseVO implements ValueObject {
+public class ForsaleUserDetailsData extends BaseVO implements ValueObject {
 
     private ForSaleUserDetails results;
 

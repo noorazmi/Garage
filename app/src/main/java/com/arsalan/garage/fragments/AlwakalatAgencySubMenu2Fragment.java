@@ -22,7 +22,7 @@ import com.arsalan.garage.utils.DividerItemDecoration;
 import com.arsalan.garage.utils.Logger;
 import com.arsalan.garage.utils.Urls;
 import com.arsalan.garage.utils.Utils;
-import com.arsalan.garage.vo.HouseDisplayVo;
+import com.arsalan.garage.vo.HouseDisplayVO;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
     private static final int NUM_OF_COLUMNS = 2;
     private RecyclerView mRecyclerView;
     private AlwakalatAgencySubMenu2Adapter recyclerViewAdapter;
-    private HouseDisplayVo mHouseDisplayVo;
+    private HouseDisplayVO mHouseDisplayVo;
 
 
     public AlwakalatAgencySubMenu2Fragment() {
@@ -66,7 +66,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                HouseDisplayVo.CarModel carModel = mHouseDisplayVo.getResults().get(position);
+                HouseDisplayVO.CarModel carModel = mHouseDisplayVo.getResults().get(position);
                 if(carModel.getHasChild().equals("1")){
                     String baseUrl1 = getArguments().getString(AppConstants.EXTRA_URL);
                     String baseUrl = Urls.SHOWROOM_BASE_URL;
@@ -102,13 +102,13 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         Log.e(TAG, " ******^^^^^^^^^bundle URL:" + getArguments().getString(AppConstants.EXTRA_URL));
         httpRequest.setUrl(getArguments().getString(AppConstants.EXTRA_URL));
         httpRequest.setRequestType(HttpConstants.HTTP_REQUEST_TYPE_GET);
-        httpRequest.setValueObjectFullyQualifiedName(HouseDisplayVo.class.getName());
+        httpRequest.setValueObjectFullyQualifiedName(HouseDisplayVO.class.getName());
         LoaderHandler loaderHandler = LoaderHandler.newInstance(this, httpRequest);
         loaderHandler.setOnLoadCompleteListener(new OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(HTTPModel httpModel) {
                 HTTPResponse httpResponse = (HTTPResponse) httpModel;
-                mHouseDisplayVo = (HouseDisplayVo) httpResponse.getValueObject();
+                mHouseDisplayVo = (HouseDisplayVO) httpResponse.getValueObject();
                 setAdapter();
 
                 Logger.i(TAG, "***** GET | onLoadComplete() | loaderId:" + httpResponse.getLoaderId() + "|responseJSONString:" + httpResponse.getResponseJSONString());
@@ -121,7 +121,7 @@ public class AlwakalatAgencySubMenu2Fragment extends Fragment {
         if(mHouseDisplayVo == null){
             return;
         }
-        ArrayList<HouseDisplayVo.CarModel> carModelArrayList = mHouseDisplayVo.getResults();
+        ArrayList<HouseDisplayVO.CarModel> carModelArrayList = mHouseDisplayVo.getResults();
         recyclerViewAdapter = new AlwakalatAgencySubMenu2Adapter(getActivity(), carModelArrayList);
         mRecyclerView.setAdapter(recyclerViewAdapter);
     }

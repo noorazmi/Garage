@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arsalan.garage.R;
-import com.arsalan.garage.vo.HouseDisplayVo;
+import com.arsalan.garage.vo.HouseDisplayVO;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ import java.util.ArrayList;
  */
 public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<AlwakalatAgencySubMenu2Adapter.ListItemViewHolder> {
 
-    private ArrayList<HouseDisplayVo.CarModel> mHomeMenuItemArrayList;
+    private ArrayList<HouseDisplayVO.CarModel> mHomeMenuItemArrayList;
     private Context mContext;
 
-    public AlwakalatAgencySubMenu2Adapter(Context context, ArrayList<HouseDisplayVo.CarModel> mHomeMenuItemArrayList) {
+    public AlwakalatAgencySubMenu2Adapter(Context context, ArrayList<HouseDisplayVO.CarModel> mHomeMenuItemArrayList) {
         this.mHomeMenuItemArrayList = mHomeMenuItemArrayList;
         this.mContext = context;
     }
@@ -41,7 +41,7 @@ public class AlwakalatAgencySubMenu2Adapter extends RecyclerView.Adapter<Alwakal
 
     @Override
     public void onBindViewHolder(AlwakalatAgencySubMenu2Adapter.ListItemViewHolder holder, int position) {
-        HouseDisplayVo.CarModel model = mHomeMenuItemArrayList.get(position);
+        HouseDisplayVO.CarModel model = mHomeMenuItemArrayList.get(position);
         holder.title.setText(model.getModel());
         holder.imgView.getLayoutParams().width = 500;
         holder.imgView.getLayoutParams().height = 304;

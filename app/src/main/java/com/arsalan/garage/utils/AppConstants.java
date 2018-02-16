@@ -319,4 +319,6 @@ public interface AppConstants {
     int UPLOAD_IMAGE_WIDTH = 500;
     int UPLOAD_IMAGE_HEIGHT = 889;
 
+    String WRONG_PHONE_REPORT_EMAIL_ADDRESS = "kuwaitgarage.com@gmail.com";
+    String WRONG_PHONE_REPORT_SMS_NUMBER= "99292489;66440068";
 }

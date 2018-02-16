@@ -11,7 +11,7 @@ import networking.models.ValueObject;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class HouseDisplayVo extends BaseVO implements ValueObject {
+public class HouseDisplayVO extends BaseVO implements ValueObject {
 
     private int data_count;
     private ArrayList<CarModel> results;

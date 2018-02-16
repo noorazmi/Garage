@@ -158,6 +158,8 @@
     <string name="maintenance">الصيانة و القطع</string>
     <string name="service_centers">مراكز الخدمة</string>
     <string name="car_spare_parts">قطع الغيار</string>
-
+    <string name="report_wrong_number">ابلغ عن الرقم الخطأ</string>
+    <string name="following_phone_numbers_not_working">أرقام الهاتف التالية (ق) لا تعمل:</string>
+    <string name="phone_numbers_not_working">رقم (أرقام) الهاتف لا يعمل</string>
 
 </resources>
